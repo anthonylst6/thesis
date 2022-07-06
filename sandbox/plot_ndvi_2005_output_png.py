@@ -45,7 +45,7 @@ contouring = mv.mcont(
     )
 
 mv.setoutput(mv.png_output(
-    output_name="/home/anthony/metview/Thesis/sandbox/test_png_output/ndvi2005",
+    output_name="/home/anthony/metview/Thesis/sandbox/sandbox_output/ndvi2005",
     output_name_first_page_number="off"),
     output_png_meta="test metadata",
     output_png_desc="test desc",

@@ -82,6 +82,7 @@ dependencies:
   - findlibs=0.0.2=pyhd8ed1ab_0
   - flex=2.6.4=h58526e2_1004
   - flit-core=3.7.1=pyhd8ed1ab_0
+  - flox=0.5.8=pyhd8ed1ab_0
   - font-ttf-dejavu-sans-mono=2.37=hab24e00_0
   - font-ttf-inconsolata=3.000=h77eed37_0
   - font-ttf-source-code-pro=2.038=h77eed37_0
@@ -265,10 +266,11 @@ dependencies:
   - numba=0.55.2=py310ha5257ce_0
   - numcodecs=0.10.0=py310hd8f1fbe_1
   - numpy=1.22.4=py310h4ef5377_0
+  - numpy_groupies=0.9.17=pyhd8ed1ab_0
   - oauthlib=3.2.0=pyhd8ed1ab_0
   - openblas=0.3.20=pthreads_h320a7e8_0
   - openjpeg=2.4.0=hb52868f_1
-  - openssl=1.1.1p=h166bdaf_0
+  - openssl=1.1.1q=h166bdaf_0
   - packaging=21.3=pyhd8ed1ab_0
   - pandoc=2.18=ha770c72_0
   - pandocfilters=1.5.0=pyhd8ed1ab_0
@@ -377,6 +379,7 @@ dependencies:
   - widgetsnbextension=3.6.1=pyha770c72_0
   - xarray=2022.3.0=pyhd8ed1ab_0
   - xerces-c=3.2.3=h55805fa_5
+  - xhistogram=0.3.1=pyhd8ed1ab_0
   - xorg-fixesproto=5.0=h7f98852_1002
   - xorg-inputproto=2.3.2=h7f98852_1002
   - xorg-kbproto=1.0.7=h7f98852_1002
