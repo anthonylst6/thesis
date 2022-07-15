@@ -242,6 +242,7 @@ dependencies:
   - markupsafe=2.1.1=py310h5764c6d_1
   - matplotlib-base=3.5.2=py310h5701ce4_0
   - matplotlib-inline=0.1.3=pyhd8ed1ab_0
+  - metpy=1.3.1=pyhd8ed1ab_0
   - metview=5.16.0=hf95c885_1
   - metview-python=1.12.0=pyhd8ed1ab_0
   - mistune=0.8.4=py310h6acc77f_1005
