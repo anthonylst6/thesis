@@ -10,7 +10,9 @@
 187,515,MWIND,Wind Plotting
 -100,-100,FOLDER,Wind Plotting#
 25,13,PDF,cor_info_lai_msl.pdf
+224,591,PDF,cor_info_lai_msl_lon_fixed.pdf
 160,13,PDF,cor_info_lai_wind10m.pdf
+415,591,PDF,cor_info_lai_wind10m_lon_fixed.pdf
 344,13,PNG,ndvi1990.png
 499,13,PSFILE,ndvi1990.ps
 647,13,SVG,ndvi1990.svg

@@ -1,6 +1,8 @@
+615,401,NOTE,barb_example.ipynb
 487,275,NOTE,correlation-coarsen-global.ipynb
 685,275,NOTE,correlation-coarsen-test.ipynb
 885,275,NOTE,correlation-global-v2.ipynb
+787,401,NOTE,correlation-global-v3.ipynb
 1086,275,NOTE,correlation-other.ipynb
 42,338,NOTE,correlation-other.md
 238,338,FOLDER,dask-worker-space
