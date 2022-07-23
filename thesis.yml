@@ -43,6 +43,7 @@ dependencies:
   - cachetools=5.0.0=pyhd8ed1ab_0
   - cairo=1.16.0=ha61ee94_1011
   - cartopy=0.20.3=py310he7eef42_1
+  - cdsapi=0.5.1=pyhd8ed1ab_0
   - cf_xarray=0.7.3=pyhd8ed1ab_0
   - cffi=1.15.0=py310h0fdd8cc_0
   - cfgrib=0.9.10.1=pyhd8ed1ab_0
@@ -352,6 +353,7 @@ dependencies:
   - simpervisor=0.4=pyhd8ed1ab_0
   - simplejson=3.17.6=py310h5764c6d_1
   - sip=6.5.1=py310h122e73d_2
+  - siphon=0.9=pyhd8ed1ab_2
   - six=1.16.0=pyh6c4a22f_0
   - snappy=1.1.9=hbd366e4_1
   - sniffio=1.2.0=py310hff52083_3
