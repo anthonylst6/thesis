@@ -1,0 +1,2 @@
+/var/spool/pbs/mom_priv/jobs/2966845.kman.restech.unsw.edu.au.SC: line 14: cd: /home/z5060070/Testing: No such file or directory
+python3: can't open file 'python-example.py': [Errno 2] No such file or directory
