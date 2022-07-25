@@ -1,4 +1,5 @@
 .ipynb_checkpoints
 data_archived/
 data_raw/
-textbooks
+textbooks/
+logs/
