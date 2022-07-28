@@ -2,6 +2,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 \usepackage{preamble}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
 %The bibliography is made with BibLaTeX, not BibTeX. To compile with BibLaTeX, substitute "bibtex %.aux" with "biber %" in the Bib(la)tex voice you can find in TexMaker configuration menu.
 \usepackage[backend=biber,style=chem-acs]{biblatex}
 \addbibresource{biblio.bib}
@@ -39,11 +41,13 @@ July, 2022
 \newpage
 \thispagestyle{empty}
 
+\begin{flushright}
 \begin{minipage}{.9\textwidth}
 {\bf \LARGE\hfill\color{reddy}  Abstract} \vspace{20 pt}\\
-\addcontentsline{toc}{chapter}{Abstract}
+%\addcontentsline{toc}{chapter}{Abstract}
 Give thanks to the mother Gaia, give thanks to the father sun; give thanks to the plants in the garden where the mother and father are one.
 \end{minipage}
+\end{flushright}
 
 %TOC------------------------------------------------------------
 \small
@@ -81,11 +85,17 @@ Give thanks to the mother Gaia, give thanks to the father sun; give thanks to th
 
 \subsection{Datasets and models}
 
-\section{Observational findings and modelling results on changes in wind resource following land cover change}
+\section{Findings and results on the effect of land cover change on surface winds}
 
-\subsection{Recently observed decreases in near-surface wind speed ("global terrestrial stilling")}
+\subsection{Observed changes in near-surface wind speed over the last few decades}
 
-\subsection{Conversion of agricultural land into urban}
+\subsubsection{Slowdown and "global terrestrial stilling"}
+
+\subsubsection{Trend reversal and large-scale ocean-atmosphere circulations}
+
+\subsubsection{Instrument drift}
+
+\subsection{Conversion of agricultural land into urban centres}
 
 \subsubsection{Rate of urbanisation and size of cities}
 
@@ -99,15 +109,15 @@ Give thanks to the mother Gaia, give thanks to the father sun; give thanks to th
 
 \subsubsection{Teleconnections}
 
-\subsection{Vegetation-atmosphere interactions and their possible mechanisms}
+\section{Vegetation-atmosphere interactions and their possible mechanisms}
 
-\subsubsection{Secondary organic aerosols}
+\subsection{Secondary organic aerosols}
 
-\subsubsection{Convective cloud development}
+\subsection{Convective cloud development}
 
-\subsubsection{Surface and latent heat fluxes}
+\subsection{Surface and latent heat fluxes}
 
-\subsubsection{Surface temperature and pressure}
+\subsection{Surface temperature and pressure}
 
 	\chapter{Methodology}
 
@@ -115,11 +125,25 @@ Give thanks to the mother Gaia, give thanks to the father sun; give thanks to th
 
 \subsection{Focus regions}
 
+\subsubsection{Central America}
+
+\subsubsection{South America}
+
+\subsubsection{Western Australia}
+
 \subsection{Statistical metrics}
+
+\subsubsection{Mean diurnal profile climatology}
+
+\subsubsection{Weibull parameters}
 
 \section{Reproducibility}
 
 \section{Datasets}
+
+\subsection{Reanalysis data for atmospheric variables}
+
+\subsection{Long-term satellite-derived products for land surface variables}
 
 \section{Software}
 
@@ -149,9 +173,13 @@ Give thanks to the mother Gaia, give thanks to the father sun; give thanks to th
 
 	\chapter{Supplementary information and graphs}
 	
-\section{Description of analysis functions}
+\section{Comparison of leaf area index datasets}
 	
-	\chapter{Data, codebook and files}
+	\chapter{Data, files and codebooks}
+	
+\section{Availability and reproducible results}
+	
+\section{Description of analysis functions}
 
 	\chapter*{Probably, The Introduction} 
 	\epigraph{\it A cool citation is always an extra-point.}{-- Someone Important}
