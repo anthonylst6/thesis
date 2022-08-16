@@ -1,0 +1,5 @@
+GEOVIEW,
+    COASTLINES = Coastlines,
+    MAP_AREA_DEFINITION = CORNERS,
+    AREA       = 7/-91/17/-81
+

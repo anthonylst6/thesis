@@ -1,0 +1,3 @@
+This is a test script for python on Katana
+6.48074069840786
+2022-06-27 23:50:23.875798

@@ -1,0 +1,22 @@
+16,405,MCOAST,Coastlines
+-100,-100,FOLDER,Coastlines#
+109,408,GEOVIEW,Geographical View
+-100,-100,FOLDER,Geographical View#
+65,501,INPUT_VISUALISER,Input Visualiser
+-100,-100,FOLDER,Input Visualiser#
+224,409,NETCDF_VISUALISER,NetCDF Visualiser
+-100,-100,FOLDER,NetCDF Visualiser#
+55,591,PYTHON,Python Script.py
+187,515,MWIND,Wind Plotting
+-100,-100,FOLDER,Wind Plotting#
+25,13,PDF,cor_info_lai_msl.pdf
+224,591,PDF,cor_info_lai_msl_lon_fixed.pdf
+160,13,PDF,cor_info_lai_wind10m.pdf
+415,591,PDF,cor_info_lai_wind10m_lon_fixed.pdf
+344,13,PNG,ndvi1990.png
+499,13,PSFILE,ndvi1990.ps
+647,13,SVG,ndvi1990.svg
+797,13,PNG,ndvi2005.png
+952,13,PSFILE,ndvi2005.ps
+1100,13,SVG,ndvi2005.svg
+52,76,NETCDF,wsmax.nc
