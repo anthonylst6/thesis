@@ -1,6 +1,0 @@
-DEBUG:root:Executing: check_args to check whether input arguments into calc_glass_mean_clim are valid.
-INFO:root:Passed: validity check for input arguments into calc_glass_mean_clim.
-DEBUG:root:Executing: check_args to check whether input arguments into select_glass_data_source are valid.
-INFO:root:Passed: validity check for input arguments into select_glass_data_source.
-DEBUG:root:Executing: select_glass_data_source to select the appropriate glass data source for use between Jun-2004 and Aug-2007 in calc_glass_mean_clim.
-INFO:root:Selected: modis glass data source for use between Jun-2004 and Aug-2007 in calc_glass_mean_clim.

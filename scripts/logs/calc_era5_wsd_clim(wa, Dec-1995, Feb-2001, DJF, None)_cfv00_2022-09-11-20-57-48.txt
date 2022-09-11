@@ -1,2 +1,0 @@
-DEBUG:root:Executing: check_args to check whether input arguments into calc_era5_wsd_clim are valid.
-INFO:root:Passed: validity check for input arguments into calc_era5_wsd_clim.
