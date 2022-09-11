@@ -1,0 +1,10 @@
+DEBUG:root:Executing: check_args to check whether input arguments into calc_diff are valid.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+DEBUG:root:Executing: check_args to check whether input arguments into calc_diff are valid.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+DEBUG:root:Executing: check_args to check whether input arguments into get_paths_for_calc_diff are valid.
+INFO:root:Passed: validity check for input arguments into get_paths_for_calc_diff.
+DEBUG:root:Executing: check_args to check whether input arguments into get_paths_for_calc_diff are valid.
+INFO:root:Passed: validity check for input arguments into get_paths_for_calc_diff.
+DEBUG:root:Executing: get_paths_for_calc_diff to obtain calc_diff output path and intermediate output paths from calc_era5_wsd_clim for use in calc_diff.
+INFO:root:Obtained: calc_diff output path and intermediate output paths from calc_era5_wsd_clim for use in calc_diff.

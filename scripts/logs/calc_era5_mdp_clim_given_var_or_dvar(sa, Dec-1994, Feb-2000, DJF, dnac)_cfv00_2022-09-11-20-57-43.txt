@@ -1,0 +1,2 @@
+DEBUG:root:Executing: check_args to check whether input arguments into calc_era5_mdp_clim_given_var_or_dvar are valid.
+INFO:root:Passed: validity check for input arguments into calc_era5_mdp_clim_given_var_or_dvar.
