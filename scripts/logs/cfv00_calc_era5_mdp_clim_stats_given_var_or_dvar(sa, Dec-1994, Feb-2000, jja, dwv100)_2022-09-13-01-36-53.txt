@@ -1,0 +1,5 @@
+INFO:root:Passed: validity check for input arguments into calc_era5_mdp_clim_stats_given_var_or_dvar.
+INFO:root:Executing: calc_era5_mdp_clim_stats_given_var_or_dvar to obtain jja climatology of dwv100 MDP stats between Dec-1994 and Feb-2000.
+INFO:root:Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/cfv00_calc_sa_Dec-1994_Feb-2000_jja_era5-mdp_dwv100.nc.
+INFO:root:Obtained: vector magnitudes from du100 and dv100 for use in calc_era5_mdp_clim_stats_given_var_or_dvar.
+INFO:root:Obtained: vector magnitudes from du100 and dv100 for use in get_da_range_for_vector_mdp_values.

@@ -1,0 +1,2 @@
+INFO:root:Passed: validity check for input arguments into get_vars_level_and_type.
+INFO:root:Obtained: dnac classifications of ('atm', 'dvars').
