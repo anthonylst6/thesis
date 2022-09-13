@@ -1,0 +1,49 @@
+DEBUG:root:Executing: check_args to check whether input arguments into calc_era5_mdp_clim_stats_given_var_or_dvar are valid.
+INFO:root:Passed: validity check for input arguments into calc_era5_mdp_clim_stats_given_var_or_dvar.
+INFO:root:Executing: calc_era5_mdp_clim_stats_given_var_or_dvar to obtain jja climatology of nac MDP stats between Dec-1994 and Feb-2000.
+DEBUG:root:Executing: check_args to check whether input arguments into calc_era5_mdp_clim_given_var_or_dvar are valid.
+INFO:root:Passed: validity check for input arguments into calc_era5_mdp_clim_given_var_or_dvar.
+INFO:root:Executing: calc_era5_mdp_clim_given_var_or_dvar to obtain jja climatology of nac MDP between Dec-1994 and Feb-2000 for use in calc_era5_mdp_clim_stats_given_var_or_dvar.
+DEBUG:root:Executing: check_args to check whether input arguments into get_vars_level_and_type are valid.
+INFO:root:Passed: validity check for input arguments into get_vars_level_and_type.
+DEBUG:root:Executing: get_vars_level_and_type to obtain the vars_level and vars_type classification of nac for use in calc_era5_mdp_clim_given_var_or_dvar.
+INFO:root:Obtained: nac classifications of ('atm', 'vars') for use in calc_era5_mdp_clim_given_var_or_dvar.
+DEBUG:root:Filtering: ERA5 atm files from data_raw folder for use in calc_era5_mdp_clim_given_var_or_dvar.
+DEBUG:root:Opening: ERA5 atm files from data_raw folder for use in calc_era5_mdp_clim_given_var_or_dvar.
+DEBUG:rasterio.session:Could not import boto3, continuing with reduced functionality.
+DEBUG:root:Preprocessing: file for use in calc_era5_mdp_clim_given_var_or_dvar ../data_raw/sa_era5-slv-atm_month-hour/sa_era5-slv-atm_month-hour_1995.nc.
+DEBUG:root:Preprocessing: file for use in calc_era5_mdp_clim_given_var_or_dvar ../data_raw/sa_era5-slv-atm_month-hour/sa_era5-slv-atm_month-hour_1999.nc.
+DEBUG:root:Preprocessing: file for use in calc_era5_mdp_clim_given_var_or_dvar ../data_raw/sa_era5-slv-atm_month-hour/sa_era5-slv-atm_month-hour_1994.nc.
+DEBUG:root:Preprocessing: file for use in calc_era5_mdp_clim_given_var_or_dvar ../data_raw/sa_era5-slv-atm_month-hour/sa_era5-slv-atm_month-hour_2000.nc.
+DEBUG:root:Executing: regrid_era5 on file to make ERA5 coordinates consistent with xarray plotting for use in preprocess_era5_month_hour: ../data_raw/sa_era5-slv-atm_month-hour/sa_era5-slv-atm_month-hour_1995.nc.
+DEBUG:root:Executing: regrid_era5 on file to make ERA5 coordinates consistent with xarray plotting for use in preprocess_era5_month_hour: ../data_raw/sa_era5-slv-atm_month-hour/sa_era5-slv-atm_month-hour_1999.nc.
+DEBUG:root:Executing: regrid_era5 on file to make ERA5 coordinates consistent with xarray plotting for use in preprocess_era5_month_hour: ../data_raw/sa_era5-slv-atm_month-hour/sa_era5-slv-atm_month-hour_2000.nc.
+DEBUG:root:Regridded: ERA5 coordinates in file for use in preprocess_era5_month_hour: ../data_raw/sa_era5-slv-atm_month-hour/sa_era5-slv-atm_month-hour_1999.nc.
+DEBUG:root:Regridded: ERA5 coordinates in file for use in preprocess_era5_month_hour: ../data_raw/sa_era5-slv-atm_month-hour/sa_era5-slv-atm_month-hour_2000.nc.
+DEBUG:root:Regridded: ERA5 coordinates in file for use in preprocess_era5_month_hour: ../data_raw/sa_era5-slv-atm_month-hour/sa_era5-slv-atm_month-hour_1995.nc.
+DEBUG:root:Preprocessing: file for use in calc_era5_mdp_clim_given_var_or_dvar ../data_raw/sa_era5-slv-atm_month-hour/sa_era5-slv-atm_month-hour_1998.nc.
+DEBUG:root:Executing: regrid_era5 on file to make ERA5 coordinates consistent with xarray plotting for use in preprocess_era5_month_hour: ../data_raw/sa_era5-slv-atm_month-hour/sa_era5-slv-atm_month-hour_1994.nc.
+DEBUG:root:Regridded: ERA5 coordinates in file for use in preprocess_era5_month_hour: ../data_raw/sa_era5-slv-atm_month-hour/sa_era5-slv-atm_month-hour_1994.nc.
+DEBUG:root:Preprocessing: file for use in calc_era5_mdp_clim_given_var_or_dvar ../data_raw/sa_era5-slv-atm_month-hour/sa_era5-slv-atm_month-hour_1997.nc.
+DEBUG:root:Preprocessing: file for use in calc_era5_mdp_clim_given_var_or_dvar ../data_raw/sa_era5-slv-atm_month-hour/sa_era5-slv-atm_month-hour_1996.nc.
+DEBUG:root:Executing: regrid_era5 on file to make ERA5 coordinates consistent with xarray plotting for use in preprocess_era5_month_hour: ../data_raw/sa_era5-slv-atm_month-hour/sa_era5-slv-atm_month-hour_1997.nc.
+DEBUG:root:Executing: regrid_era5 on file to make ERA5 coordinates consistent with xarray plotting for use in preprocess_era5_month_hour: ../data_raw/sa_era5-slv-atm_month-hour/sa_era5-slv-atm_month-hour_1996.nc.
+DEBUG:root:Regridded: ERA5 coordinates in file for use in preprocess_era5_month_hour: ../data_raw/sa_era5-slv-atm_month-hour/sa_era5-slv-atm_month-hour_1997.nc.
+DEBUG:root:Regridded: ERA5 coordinates in file for use in preprocess_era5_month_hour: ../data_raw/sa_era5-slv-atm_month-hour/sa_era5-slv-atm_month-hour_1996.nc.
+DEBUG:root:Executing: regrid_era5 on file to make ERA5 coordinates consistent with xarray plotting for use in preprocess_era5_month_hour: ../data_raw/sa_era5-slv-atm_month-hour/sa_era5-slv-atm_month-hour_1998.nc.
+DEBUG:root:Regridded: ERA5 coordinates in file for use in preprocess_era5_month_hour: ../data_raw/sa_era5-slv-atm_month-hour/sa_era5-slv-atm_month-hour_1998.nc.
+DEBUG:root:Computing: MDPs of ['nse', 'vidmf', 'vidcfwf', 'vidclwf', 'tcwv'] for use in calc_era5_mdp_clim_given_var_or_dvar.
+DEBUG:root:Computing: averages for consecutive nse accumulation periods to estimate instantaneous nac hourly values for use in calc_era5_mdp_clim_given_var_or_dvar.
+DEBUG:root:Executing: get_da_mdp_for_and_lag to obtain forwarded and lagged nse DataArray's for use in calc_era5_mdp_clim_given_var_or_dvar.
+INFO:root:Obtained: forwarded and lagged nse DataArray's for use in calc_era5_mdp_clim_given_var_or_dvar.
+DEBUG:root:Executing: get_nac to calculate net atmospheric condensation from ERA5 atmospheric variables for use in calc_era5_mdp_clim_given_var_or_dvar.
+DEBUG:root:Computing: average rate of change in tcwv over consecutive hours to estimate instantaneous rate of change at each hour for use in get_nac.
+DEBUG:root:Executing: get_da_mdp_for_and_lag to obtain forwarded and lagged tcwv DataArray's for use in get_nac.
+INFO:root:Obtained: forwarded and lagged tcwv DataArray's for use in get_nac.
+INFO:root:Obtained: net atmospheric condensation from ERA5 atmospheric variables for use in calc_era5_mdp_clim_given_var_or_dvar.
+INFO:root:Creating: file: ../data_processed/cfv00_calc_sa_Dec-1994_Feb-2000_jja_era5-mdp_nac.nc.
+INFO:root:CREATED: file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/cfv00_calc_sa_Dec-1994_Feb-2000_jja_era5-mdp_nac.nc.
+INFO:root:Creating: file: ../data_processed/cfv00_calc_sa_Dec-1994_Feb-2000_jja_era5-mdp_nac.nc.
+INFO:root:CREATED: file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/cfv00_calc_sa_Dec-1994_Feb-2000_jja_era5-mdp_nac.nc.
+DEBUG:root:Computing: nac MDP stats for use in calc_era5_mdp_clim_stats_given_var_or_dvar.
+DEBUG:root:Merging: nac MDP stat DataArray's into Dataset.

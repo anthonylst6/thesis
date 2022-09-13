@@ -1,0 +1,7 @@
+DEBUG:root:Executing: check_args to check whether input arguments into calc_era5_mdp_clim_stats_given_var_or_dvar are valid.
+INFO:root:Passed: validity check for input arguments into calc_era5_mdp_clim_stats_given_var_or_dvar.
+INFO:root:Executing: calc_era5_mdp_clim_stats_given_var_or_dvar to obtain jja climatology of nac MDP stats between Dec-1994 and Feb-2000.
+INFO:root:Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/cfv00_calc_sa_Dec-1994_Feb-2000_jja_era5-mdp_nac.nc.
+DEBUG:root:Computing: nac MDP stats for use in calc_era5_mdp_clim_stats_given_var_or_dvar.
+DEBUG:rasterio.session:Could not import boto3, continuing with reduced functionality.
+DEBUG:root:Merging: nac MDP stat DataArray's into Dataset.

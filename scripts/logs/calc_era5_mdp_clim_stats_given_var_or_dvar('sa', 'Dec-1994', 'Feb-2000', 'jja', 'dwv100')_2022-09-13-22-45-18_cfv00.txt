@@ -1,0 +1,4 @@
+DEBUG:root:Executing: check_args to check whether input arguments into calc_era5_mdp_clim_stats_given_var_or_dvar are valid.
+INFO:root:Passed: validity check for input arguments into calc_era5_mdp_clim_stats_given_var_or_dvar.
+INFO:root:Executing: calc_era5_mdp_clim_stats_given_var_or_dvar to obtain jja climatology of dwv100 MDP stats between Dec-1994 and Feb-2000.
+ERROR:root:TERMINATED: calc_era5_mdp_clim_stats_given_var_or_dvar because file already exists: ../data_processed/cfv00_calc_sa_Dec-1994_Feb-2000_jja_era5-mdp_dwv100_stats.nc.

@@ -1,0 +1,90 @@
+DEBUG:root:Executing: check_args to check whether input arguments into calc_diff are valid.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+DEBUG:root:Executing: check_args to check whether input arguments into calc_diff are valid.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Executing: calc_diff to obtain difference in outputs from calc_era5_wsd_clim over the given periods.
+DEBUG:root:Executing: check_args to check whether input arguments into get_paths_for_calc_diff are valid.
+INFO:root:Passed: validity check for input arguments into get_paths_for_calc_diff.
+DEBUG:root:Executing: check_args to check whether input arguments into get_paths_for_calc_diff are valid.
+INFO:root:Passed: validity check for input arguments into get_paths_for_calc_diff.
+DEBUG:root:Executing: get_paths_for_calc_diff to obtain calc_diff output path and intermediate output paths from calc_era5_wsd_clim for use in calc_diff.
+INFO:root:Obtained: calc_diff output path and intermediate output paths from calc_era5_wsd_clim for use in calc_diff.
+DEBUG:root:Executing: check_args to check whether input arguments into calc_era5_wsd_clim are valid.
+INFO:root:Passed: validity check for input arguments into calc_era5_wsd_clim.
+INFO:root:Executing: calc_era5_wsd_clim to obtain wind speed distribution parameters over all months between Jan-1985 and Dec-1990 for use in calc_diff.
+DEBUG:root:Filtering: ERA5 atm files from data_raw folder for use in calc_era5_wsd_clim.
+DEBUG:root:Opening: ERA5 atm files from data_raw folder for use in calc_era5_wsd_clim.
+DEBUG:root:Preprocessing: file for use in calc_era5_wsd_clim ../data_raw/wa_era5-slv-sfc_hour/wa_era5-slv-sfc_hour_1988.nc.
+DEBUG:root:Executing: regrid_era5 on file to make ERA5 coordinates consistent with xarray plotting for use in preprocess_era5_hour: ../data_raw/wa_era5-slv-sfc_hour/wa_era5-slv-sfc_hour_1988.nc.
+DEBUG:root:Regridded: ERA5 coordinates in file for use in preprocess_era5_hour: ../data_raw/wa_era5-slv-sfc_hour/wa_era5-slv-sfc_hour_1988.nc.
+DEBUG:root:Preprocessing: file for use in calc_era5_wsd_clim ../data_raw/wa_era5-slv-sfc_hour/wa_era5-slv-sfc_hour_1987.nc.
+DEBUG:root:Preprocessing: file for use in calc_era5_wsd_clim ../data_raw/wa_era5-slv-sfc_hour/wa_era5-slv-sfc_hour_1986.nc.
+DEBUG:root:Preprocessing: file for use in calc_era5_wsd_clim ../data_raw/wa_era5-slv-sfc_hour/wa_era5-slv-sfc_hour_1990.nc.
+DEBUG:root:Executing: regrid_era5 on file to make ERA5 coordinates consistent with xarray plotting for use in preprocess_era5_hour: ../data_raw/wa_era5-slv-sfc_hour/wa_era5-slv-sfc_hour_1987.nc.
+DEBUG:root:Preprocessing: file for use in calc_era5_wsd_clim ../data_raw/wa_era5-slv-sfc_hour/wa_era5-slv-sfc_hour_1989.nc.
+DEBUG:root:Preprocessing: file for use in calc_era5_wsd_clim ../data_raw/wa_era5-slv-sfc_hour/wa_era5-slv-sfc_hour_1985.nc.
+DEBUG:root:Regridded: ERA5 coordinates in file for use in preprocess_era5_hour: ../data_raw/wa_era5-slv-sfc_hour/wa_era5-slv-sfc_hour_1987.nc.
+DEBUG:root:Executing: regrid_era5 on file to make ERA5 coordinates consistent with xarray plotting for use in preprocess_era5_hour: ../data_raw/wa_era5-slv-sfc_hour/wa_era5-slv-sfc_hour_1989.nc.
+DEBUG:root:Regridded: ERA5 coordinates in file for use in preprocess_era5_hour: ../data_raw/wa_era5-slv-sfc_hour/wa_era5-slv-sfc_hour_1989.nc.
+DEBUG:root:Executing: regrid_era5 on file to make ERA5 coordinates consistent with xarray plotting for use in preprocess_era5_hour: ../data_raw/wa_era5-slv-sfc_hour/wa_era5-slv-sfc_hour_1986.nc.
+DEBUG:root:Regridded: ERA5 coordinates in file for use in preprocess_era5_hour: ../data_raw/wa_era5-slv-sfc_hour/wa_era5-slv-sfc_hour_1986.nc.
+DEBUG:root:Executing: regrid_era5 on file to make ERA5 coordinates consistent with xarray plotting for use in preprocess_era5_hour: ../data_raw/wa_era5-slv-sfc_hour/wa_era5-slv-sfc_hour_1990.nc.
+DEBUG:root:Regridded: ERA5 coordinates in file for use in preprocess_era5_hour: ../data_raw/wa_era5-slv-sfc_hour/wa_era5-slv-sfc_hour_1990.nc.
+DEBUG:root:Executing: regrid_era5 on file to make ERA5 coordinates consistent with xarray plotting for use in preprocess_era5_hour: ../data_raw/wa_era5-slv-sfc_hour/wa_era5-slv-sfc_hour_1985.nc.
+DEBUG:root:Regridded: ERA5 coordinates in file for use in preprocess_era5_hour: ../data_raw/wa_era5-slv-sfc_hour/wa_era5-slv-sfc_hour_1985.nc.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in calc_era5_wsd_clim.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in calc_era5_wsd_clim.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u100 and v100 for use in calc_era5_wsd_clim.
+INFO:root:Obtained: vector magnitudes from u100 and v100 for use in calc_era5_wsd_clim.
+DEBUG:root:Executing: get_weibull_params to obtain Weibull parameters from ws10_mean and ws10_std for use in calc_era5_wsd_clim.
+INFO:root:Obtained: Weibull parameters from ws10_mean and ws10_std for use in calc_era5_wsd_clim.
+DEBUG:root:Executing: get_weibull_params to obtain Weibull parameters from ws100_mean and ws100_std for use in calc_era5_wsd_clim.
+INFO:root:Obtained: Weibull parameters from ws100_mean and ws100_std for use in calc_era5_wsd_clim.
+DEBUG:root:Executing: get_weibull_eroe to obtain 42.5 m/s expected rate of exceedance from c100 and k100 for use in calc_era5_wsd_clim.
+INFO:root:Obtained: 42.5 m/s expected rate of exceedance from c100 and k100 for use in calc_era5_wsd_clim.
+DEBUG:root:Executing: get_gcf to obtain ws100 gross capacity factor for use in calc_era5_wsd_clim.
+INFO:root:Obtained: ws100 gross capacity factor for use in calc_era5_wsd_clim.
+DEBUG:root:Merging: wind speed distribution parameter DataArray's into Dataset.
+INFO:root:Creating: file: ../data_processed/cfv00_calc_wa_Jan-1985_Dec-1990_all_era5-wsd.nc.
+INFO:root:CREATED: file for use in calc_diff: ../data_processed/cfv00_calc_wa_Jan-1985_Dec-1990_all_era5-wsd.nc.
+DEBUG:root:Executing: check_args to check whether input arguments into calc_era5_wsd_clim are valid.
+INFO:root:Passed: validity check for input arguments into calc_era5_wsd_clim.
+INFO:root:Executing: calc_era5_wsd_clim to obtain wind speed distribution parameters over all months between Jan-2005 and Dec-2010 for use in calc_diff.
+DEBUG:root:Filtering: ERA5 atm files from data_raw folder for use in calc_era5_wsd_clim.
+DEBUG:root:Opening: ERA5 atm files from data_raw folder for use in calc_era5_wsd_clim.
+DEBUG:root:Preprocessing: file for use in calc_era5_wsd_clim ../data_raw/wa_era5-slv-sfc_hour/wa_era5-slv-sfc_hour_2007.nc.
+DEBUG:root:Executing: regrid_era5 on file to make ERA5 coordinates consistent with xarray plotting for use in preprocess_era5_hour: ../data_raw/wa_era5-slv-sfc_hour/wa_era5-slv-sfc_hour_2007.nc.
+DEBUG:root:Regridded: ERA5 coordinates in file for use in preprocess_era5_hour: ../data_raw/wa_era5-slv-sfc_hour/wa_era5-slv-sfc_hour_2007.nc.
+DEBUG:root:Preprocessing: file for use in calc_era5_wsd_clim ../data_raw/wa_era5-slv-sfc_hour/wa_era5-slv-sfc_hour_2006.nc.
+DEBUG:root:Preprocessing: file for use in calc_era5_wsd_clim ../data_raw/wa_era5-slv-sfc_hour/wa_era5-slv-sfc_hour_2010.nc.
+DEBUG:root:Executing: regrid_era5 on file to make ERA5 coordinates consistent with xarray plotting for use in preprocess_era5_hour: ../data_raw/wa_era5-slv-sfc_hour/wa_era5-slv-sfc_hour_2006.nc.
+DEBUG:root:Preprocessing: file for use in calc_era5_wsd_clim ../data_raw/wa_era5-slv-sfc_hour/wa_era5-slv-sfc_hour_2008.nc.
+DEBUG:root:Executing: regrid_era5 on file to make ERA5 coordinates consistent with xarray plotting for use in preprocess_era5_hour: ../data_raw/wa_era5-slv-sfc_hour/wa_era5-slv-sfc_hour_2008.nc.
+DEBUG:root:Regridded: ERA5 coordinates in file for use in preprocess_era5_hour: ../data_raw/wa_era5-slv-sfc_hour/wa_era5-slv-sfc_hour_2006.nc.
+DEBUG:root:Regridded: ERA5 coordinates in file for use in preprocess_era5_hour: ../data_raw/wa_era5-slv-sfc_hour/wa_era5-slv-sfc_hour_2008.nc.
+DEBUG:root:Preprocessing: file for use in calc_era5_wsd_clim ../data_raw/wa_era5-slv-sfc_hour/wa_era5-slv-sfc_hour_2009.nc.
+DEBUG:root:Executing: regrid_era5 on file to make ERA5 coordinates consistent with xarray plotting for use in preprocess_era5_hour: ../data_raw/wa_era5-slv-sfc_hour/wa_era5-slv-sfc_hour_2010.nc.
+DEBUG:root:Regridded: ERA5 coordinates in file for use in preprocess_era5_hour: ../data_raw/wa_era5-slv-sfc_hour/wa_era5-slv-sfc_hour_2010.nc.
+DEBUG:root:Preprocessing: file for use in calc_era5_wsd_clim ../data_raw/wa_era5-slv-sfc_hour/wa_era5-slv-sfc_hour_2005.nc.
+DEBUG:root:Executing: regrid_era5 on file to make ERA5 coordinates consistent with xarray plotting for use in preprocess_era5_hour: ../data_raw/wa_era5-slv-sfc_hour/wa_era5-slv-sfc_hour_2005.nc.
+DEBUG:root:Executing: regrid_era5 on file to make ERA5 coordinates consistent with xarray plotting for use in preprocess_era5_hour: ../data_raw/wa_era5-slv-sfc_hour/wa_era5-slv-sfc_hour_2009.nc.
+DEBUG:root:Regridded: ERA5 coordinates in file for use in preprocess_era5_hour: ../data_raw/wa_era5-slv-sfc_hour/wa_era5-slv-sfc_hour_2005.nc.
+DEBUG:root:Regridded: ERA5 coordinates in file for use in preprocess_era5_hour: ../data_raw/wa_era5-slv-sfc_hour/wa_era5-slv-sfc_hour_2009.nc.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in calc_era5_wsd_clim.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in calc_era5_wsd_clim.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u100 and v100 for use in calc_era5_wsd_clim.
+INFO:root:Obtained: vector magnitudes from u100 and v100 for use in calc_era5_wsd_clim.
+DEBUG:root:Executing: get_weibull_params to obtain Weibull parameters from ws10_mean and ws10_std for use in calc_era5_wsd_clim.
+INFO:root:Obtained: Weibull parameters from ws10_mean and ws10_std for use in calc_era5_wsd_clim.
+DEBUG:root:Executing: get_weibull_params to obtain Weibull parameters from ws100_mean and ws100_std for use in calc_era5_wsd_clim.
+INFO:root:Obtained: Weibull parameters from ws100_mean and ws100_std for use in calc_era5_wsd_clim.
+DEBUG:root:Executing: get_weibull_eroe to obtain 42.5 m/s expected rate of exceedance from c100 and k100 for use in calc_era5_wsd_clim.
+INFO:root:Obtained: 42.5 m/s expected rate of exceedance from c100 and k100 for use in calc_era5_wsd_clim.
+DEBUG:root:Executing: get_gcf to obtain ws100 gross capacity factor for use in calc_era5_wsd_clim.
+INFO:root:Obtained: ws100 gross capacity factor for use in calc_era5_wsd_clim.
+DEBUG:root:Merging: wind speed distribution parameter DataArray's into Dataset.
+INFO:root:Creating: file: ../data_processed/cfv00_calc_wa_Jan-2005_Dec-2010_all_era5-wsd.nc.
+INFO:root:CREATED: file for use in calc_diff: ../data_processed/cfv00_calc_wa_Jan-2005_Dec-2010_all_era5-wsd.nc.
+DEBUG:root:Computing: difference in results for <function calc_era5_wsd_clim at 0x7f47a3dc3370> over the given periods.
+INFO:root:Creating: file: ../data_processed/cfv00_diff_wa_Jan-1985_Dec-1990_Jan-2005_Dec-2010_all_era5-wsd.nc.
+INFO:root:CREATED: file: ../data_processed/cfv00_diff_wa_Jan-1985_Dec-1990_Jan-2005_Dec-2010_all_era5-wsd.nc.
