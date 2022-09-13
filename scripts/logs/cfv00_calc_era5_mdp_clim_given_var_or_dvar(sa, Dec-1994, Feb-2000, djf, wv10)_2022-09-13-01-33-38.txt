@@ -1,8 +1,0 @@
-INFO:root:Passed: validity check for input arguments into calc_era5_mdp_clim_given_var_or_dvar.
-INFO:root:Executing: calc_era5_mdp_clim_given_var_or_dvar to obtain djf climatology of wv10 MDP between Dec-1994 and Feb-2000.
-INFO:root:Passed: validity check for input arguments into get_vars_level_and_type.
-INFO:root:Obtained: wv10 classifications of ('sfc', 'vars') for use in calc_era5_mdp_clim_given_var_or_dvar.
-INFO:root:Creating: file: ../data_processed/cfv00_calc_sa_Dec-1994_Feb-2000_djf_era5-mdp_wv10.nc.
-INFO:root:CREATED: file: ../data_processed/cfv00_calc_sa_Dec-1994_Feb-2000_djf_era5-mdp_wv10.nc.
-INFO:root:Creating: file: ../data_processed/cfv00_calc_sa_Dec-1994_Feb-2000_djf_era5-mdp_wv10.nc.
-INFO:root:CREATED: file: ../data_processed/cfv00_calc_sa_Dec-1994_Feb-2000_djf_era5-mdp_wv10.nc.

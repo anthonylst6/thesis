@@ -1,9 +1,0 @@
-INFO:root:Passed: validity check for input arguments into calc_diff.
-INFO:root:Passed: validity check for input arguments into calc_diff.
-INFO:root:Executing: calc_diff to obtain difference in outputs from calc_era5_mdp_clim_given_var_or_dvar over the given periods.
-INFO:root:Passed: validity check for input arguments into get_paths_for_calc_diff.
-INFO:root:Passed: validity check for input arguments into get_paths_for_calc_diff.
-INFO:root:Obtained: calc_diff output path and intermediate output paths from calc_era5_mdp_clim_given_var_or_dvar for use in calc_diff.
-INFO:root:Passed: validity check for input arguments into calc_era5_mdp_clim_given_var_or_dvar.
-INFO:root:Executing: calc_era5_mdp_clim_given_var_or_dvar to obtain all climatology of None MDP between Jan-1985 and Dec-1994 for use in calc_diff.
-INFO:root:Passed: validity check for input arguments into get_vars_level_and_type.
