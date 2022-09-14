@@ -1,0 +1,216 @@
+DEBUG:root:Executing: check_args to check whether input arguments into calc_glass_mean_clim are valid.
+INFO:root:Passed: validity check for input arguments into calc_glass_mean_clim.
+DEBUG:root:Executing: check_args to check whether input arguments into select_glass_data_source are valid.
+INFO:root:Passed: validity check for input arguments into select_glass_data_source.
+DEBUG:root:Executing: select_glass_data_source to select the appropriate glass data source for use between Jan-1990 and Feb-1990 in calc_glass_mean_clim.
+INFO:root:Selected: avhrr glass data source for use between Jan-1990 and Feb-1990 in calc_glass_mean_clim.
+INFO:root:Executing: calc_glass_mean_clim to obtain all climatology of MLAI and MFAPAR using avhrr data between Jan-1990 and Feb-1990.
+DEBUG:root:Filtering: lai files from data_raw folder for use in calc_glass_mean_clim.
+DEBUG:root:Opening: lai files from data_raw folder for use in calc_glass_mean_clim.
+DEBUG:rasterio.session:Could not import boto3, continuing with reduced functionality.
+DEBUG:rasterio.env:Entering env context: <rasterio.env.Env object at 0x7f2d36c81240>
+DEBUG:rasterio.env:Starting outermost env
+DEBUG:rasterio.env:No GDAL environment exists
+DEBUG:rasterio.env:New GDAL environment <rasterio._env.GDALEnv object at 0x7f2d36c81270> created
+DEBUG:rasterio._env:GDAL_DATA found in environment.
+DEBUG:rasterio._env:PROJ_LIB found in environment.
+DEBUG:rasterio._env:Started GDALEnv: self=<rasterio._env.GDALEnv object at 0x7f2d36c81270>.
+DEBUG:rasterio.env:Entered env context: <rasterio.env.Env object at 0x7f2d36c81240>
+DEBUG:rasterio._base:Sharing flag: 0
+DEBUG:rasterio._base:Nodata success: 1, Nodata value: 2550.000000
+DEBUG:rasterio._base:Dataset <open DatasetReader name='../data_raw/global_glass-lai-avhrr_8-day/global_glass-lai-avhrr_8-day_1990-017.hdf' mode='r'> is started.
+DEBUG:rasterio.env:Exiting env context: <rasterio.env.Env object at 0x7f2d36c81240>
+DEBUG:rasterio.env:Cleared existing <rasterio._env.GDALEnv object at 0x7f2d36c81270> options
+DEBUG:rasterio._env:Stopped GDALEnv <rasterio._env.GDALEnv object at 0x7f2d36c81270>.
+DEBUG:rasterio.env:Exiting outermost env
+DEBUG:rasterio.env:Exited env context: <rasterio.env.Env object at 0x7f2d36c81240>
+DEBUG:rasterio.env:Entering env context: <rasterio.env.Env object at 0x7f2d36c81240>
+DEBUG:rasterio.env:Starting outermost env
+DEBUG:rasterio.env:No GDAL environment exists
+DEBUG:rasterio.env:New GDAL environment <rasterio._env.GDALEnv object at 0x7f2d36c812a0> created
+DEBUG:rasterio._env:GDAL_DATA found in environment.
+DEBUG:rasterio._env:PROJ_LIB found in environment.
+DEBUG:rasterio._env:Started GDALEnv: self=<rasterio._env.GDALEnv object at 0x7f2d36c812a0>.
+DEBUG:rasterio.env:Entered env context: <rasterio.env.Env object at 0x7f2d36c81240>
+DEBUG:rasterio._base:Sharing flag: 0
+DEBUG:rasterio._base:Nodata success: 1, Nodata value: 2550.000000
+DEBUG:rasterio._base:Dataset <open DatasetReader name='../data_raw/global_glass-lai-avhrr_8-day/global_glass-lai-avhrr_8-day_1990-049.hdf' mode='r'> is started.
+DEBUG:rasterio.env:Exiting env context: <rasterio.env.Env object at 0x7f2d36c81240>
+DEBUG:rasterio.env:Cleared existing <rasterio._env.GDALEnv object at 0x7f2d36c812a0> options
+DEBUG:rasterio._env:Stopped GDALEnv <rasterio._env.GDALEnv object at 0x7f2d36c812a0>.
+DEBUG:rasterio.env:Exiting outermost env
+DEBUG:rasterio.env:Exited env context: <rasterio.env.Env object at 0x7f2d36c81240>
+DEBUG:rasterio.env:Entering env context: <rasterio.env.Env object at 0x7f2d36c81240>
+DEBUG:rasterio.env:Starting outermost env
+DEBUG:rasterio.env:No GDAL environment exists
+DEBUG:rasterio.env:New GDAL environment <rasterio._env.GDALEnv object at 0x7f2d36c81270> created
+DEBUG:rasterio._env:GDAL_DATA found in environment.
+DEBUG:rasterio._env:PROJ_LIB found in environment.
+DEBUG:rasterio._env:Started GDALEnv: self=<rasterio._env.GDALEnv object at 0x7f2d36c81270>.
+DEBUG:rasterio.env:Entered env context: <rasterio.env.Env object at 0x7f2d36c81240>
+DEBUG:rasterio._base:Sharing flag: 0
+DEBUG:rasterio._base:Nodata success: 1, Nodata value: 2550.000000
+DEBUG:rasterio._base:Dataset <open DatasetReader name='../data_raw/global_glass-lai-avhrr_8-day/global_glass-lai-avhrr_8-day_1990-009.hdf' mode='r'> is started.
+DEBUG:rasterio.env:Exiting env context: <rasterio.env.Env object at 0x7f2d36c81240>
+DEBUG:rasterio.env:Cleared existing <rasterio._env.GDALEnv object at 0x7f2d36c81270> options
+DEBUG:rasterio._env:Stopped GDALEnv <rasterio._env.GDALEnv object at 0x7f2d36c81270>.
+DEBUG:rasterio.env:Exiting outermost env
+DEBUG:rasterio.env:Exited env context: <rasterio.env.Env object at 0x7f2d36c81240>
+DEBUG:rasterio.env:Entering env context: <rasterio.env.Env object at 0x7f2d36c81240>
+DEBUG:rasterio.env:Starting outermost env
+DEBUG:rasterio.env:No GDAL environment exists
+DEBUG:rasterio.env:New GDAL environment <rasterio._env.GDALEnv object at 0x7f2d36c812a0> created
+DEBUG:rasterio._env:GDAL_DATA found in environment.
+DEBUG:rasterio._env:PROJ_LIB found in environment.
+DEBUG:rasterio._env:Started GDALEnv: self=<rasterio._env.GDALEnv object at 0x7f2d36c812a0>.
+DEBUG:rasterio.env:Entered env context: <rasterio.env.Env object at 0x7f2d36c81240>
+DEBUG:rasterio._base:Sharing flag: 0
+DEBUG:rasterio._base:Nodata success: 1, Nodata value: 2550.000000
+DEBUG:rasterio._base:Dataset <open DatasetReader name='../data_raw/global_glass-lai-avhrr_8-day/global_glass-lai-avhrr_8-day_1990-041.hdf' mode='r'> is started.
+DEBUG:rasterio.env:Exiting env context: <rasterio.env.Env object at 0x7f2d36c81240>
+DEBUG:rasterio.env:Cleared existing <rasterio._env.GDALEnv object at 0x7f2d36c812a0> options
+DEBUG:rasterio._env:Stopped GDALEnv <rasterio._env.GDALEnv object at 0x7f2d36c812a0>.
+DEBUG:rasterio.env:Exiting outermost env
+DEBUG:rasterio.env:Exited env context: <rasterio.env.Env object at 0x7f2d36c81240>
+DEBUG:rasterio.env:Entering env context: <rasterio.env.Env object at 0x7f2d36c81240>
+DEBUG:rasterio.env:Starting outermost env
+DEBUG:rasterio.env:No GDAL environment exists
+DEBUG:rasterio.env:New GDAL environment <rasterio._env.GDALEnv object at 0x7f2d36c81270> created
+DEBUG:rasterio._env:GDAL_DATA found in environment.
+DEBUG:rasterio._env:PROJ_LIB found in environment.
+DEBUG:rasterio._env:Started GDALEnv: self=<rasterio._env.GDALEnv object at 0x7f2d36c81270>.
+DEBUG:rasterio.env:Entered env context: <rasterio.env.Env object at 0x7f2d36c81240>
+DEBUG:rasterio._base:Sharing flag: 0
+DEBUG:rasterio._base:Nodata success: 1, Nodata value: 2550.000000
+DEBUG:rasterio._base:Dataset <open DatasetReader name='../data_raw/global_glass-lai-avhrr_8-day/global_glass-lai-avhrr_8-day_1990-001.hdf' mode='r'> is started.
+DEBUG:rasterio.env:Exiting env context: <rasterio.env.Env object at 0x7f2d36c81240>
+DEBUG:rasterio.env:Cleared existing <rasterio._env.GDALEnv object at 0x7f2d36c81270> options
+DEBUG:rasterio._env:Stopped GDALEnv <rasterio._env.GDALEnv object at 0x7f2d36c81270>.
+DEBUG:rasterio.env:Exiting outermost env
+DEBUG:rasterio.env:Exited env context: <rasterio.env.Env object at 0x7f2d36c81240>
+DEBUG:rasterio.env:Entering env context: <rasterio.env.Env object at 0x7f2d36c81240>
+DEBUG:rasterio.env:Starting outermost env
+DEBUG:rasterio.env:No GDAL environment exists
+DEBUG:rasterio.env:New GDAL environment <rasterio._env.GDALEnv object at 0x7f2d36c812a0> created
+DEBUG:rasterio._env:GDAL_DATA found in environment.
+DEBUG:rasterio._env:PROJ_LIB found in environment.
+DEBUG:rasterio._env:Started GDALEnv: self=<rasterio._env.GDALEnv object at 0x7f2d36c812a0>.
+DEBUG:rasterio.env:Entered env context: <rasterio.env.Env object at 0x7f2d36c81240>
+DEBUG:rasterio._base:Sharing flag: 0
+DEBUG:rasterio._base:Nodata success: 1, Nodata value: 2550.000000
+DEBUG:rasterio._base:Dataset <open DatasetReader name='../data_raw/global_glass-lai-avhrr_8-day/global_glass-lai-avhrr_8-day_1990-025.hdf' mode='r'> is started.
+DEBUG:rasterio.env:Exiting env context: <rasterio.env.Env object at 0x7f2d36c81240>
+DEBUG:rasterio.env:Cleared existing <rasterio._env.GDALEnv object at 0x7f2d36c812a0> options
+DEBUG:rasterio._env:Stopped GDALEnv <rasterio._env.GDALEnv object at 0x7f2d36c812a0>.
+DEBUG:rasterio.env:Exiting outermost env
+DEBUG:rasterio.env:Exited env context: <rasterio.env.Env object at 0x7f2d36c81240>
+DEBUG:rasterio.env:Entering env context: <rasterio.env.Env object at 0x7f2d36c81240>
+DEBUG:rasterio.env:Starting outermost env
+DEBUG:rasterio.env:No GDAL environment exists
+DEBUG:rasterio.env:New GDAL environment <rasterio._env.GDALEnv object at 0x7f2d36c81270> created
+DEBUG:rasterio._env:GDAL_DATA found in environment.
+DEBUG:rasterio._env:PROJ_LIB found in environment.
+DEBUG:rasterio._env:Started GDALEnv: self=<rasterio._env.GDALEnv object at 0x7f2d36c81270>.
+DEBUG:rasterio.env:Entered env context: <rasterio.env.Env object at 0x7f2d36c81240>
+DEBUG:rasterio._base:Sharing flag: 0
+DEBUG:rasterio._base:Nodata success: 1, Nodata value: 2550.000000
+DEBUG:rasterio._base:Dataset <open DatasetReader name='../data_raw/global_glass-lai-avhrr_8-day/global_glass-lai-avhrr_8-day_1990-057.hdf' mode='r'> is started.
+DEBUG:rasterio.env:Exiting env context: <rasterio.env.Env object at 0x7f2d36c81240>
+DEBUG:rasterio.env:Cleared existing <rasterio._env.GDALEnv object at 0x7f2d36c81270> options
+DEBUG:rasterio._env:Stopped GDALEnv <rasterio._env.GDALEnv object at 0x7f2d36c81270>.
+DEBUG:rasterio.env:Exiting outermost env
+DEBUG:rasterio.env:Exited env context: <rasterio.env.Env object at 0x7f2d36c81240>
+DEBUG:rasterio.env:Entering env context: <rasterio.env.Env object at 0x7f2d36c81240>
+DEBUG:rasterio.env:Starting outermost env
+DEBUG:rasterio.env:No GDAL environment exists
+DEBUG:rasterio.env:New GDAL environment <rasterio._env.GDALEnv object at 0x7f2d36c812a0> created
+DEBUG:rasterio._env:GDAL_DATA found in environment.
+DEBUG:rasterio._env:PROJ_LIB found in environment.
+DEBUG:rasterio._env:Started GDALEnv: self=<rasterio._env.GDALEnv object at 0x7f2d36c812a0>.
+DEBUG:rasterio.env:Entered env context: <rasterio.env.Env object at 0x7f2d36c81240>
+DEBUG:rasterio._base:Sharing flag: 0
+DEBUG:rasterio._base:Nodata success: 1, Nodata value: 2550.000000
+DEBUG:rasterio._base:Dataset <open DatasetReader name='../data_raw/global_glass-lai-avhrr_8-day/global_glass-lai-avhrr_8-day_1990-033.hdf' mode='r'> is started.
+DEBUG:rasterio.env:Exiting env context: <rasterio.env.Env object at 0x7f2d36c81240>
+DEBUG:rasterio.env:Cleared existing <rasterio._env.GDALEnv object at 0x7f2d36c812a0> options
+DEBUG:rasterio._env:Stopped GDALEnv <rasterio._env.GDALEnv object at 0x7f2d36c812a0>.
+DEBUG:rasterio.env:Exiting outermost env
+DEBUG:rasterio.env:Exited env context: <rasterio.env.Env object at 0x7f2d36c81240>
+DEBUG:root:Preprocessing: file for use in calc_glass_mean_clim: ../data_raw/global_glass-lai-avhrr_8-day/global_glass-lai-avhrr_8-day_1990-017.hdf.
+DEBUG:root:Preprocessing: file for use in calc_glass_mean_clim: ../data_raw/global_glass-lai-avhrr_8-day/global_glass-lai-avhrr_8-day_1990-049.hdf.
+DEBUG:root:Preprocessing: file for use in calc_glass_mean_clim: ../data_raw/global_glass-lai-avhrr_8-day/global_glass-lai-avhrr_8-day_1990-009.hdf.
+DEBUG:root:Preprocessing: file for use in calc_glass_mean_clim: ../data_raw/global_glass-lai-avhrr_8-day/global_glass-lai-avhrr_8-day_1990-041.hdf.
+DEBUG:root:Preprocessing: file for use in calc_glass_mean_clim: ../data_raw/global_glass-lai-avhrr_8-day/global_glass-lai-avhrr_8-day_1990-001.hdf.
+DEBUG:root:Preprocessing: file for use in calc_glass_mean_clim: ../data_raw/global_glass-lai-avhrr_8-day/global_glass-lai-avhrr_8-day_1990-057.hdf.
+DEBUG:root:Preprocessing: file for use in calc_glass_mean_clim: ../data_raw/global_glass-lai-avhrr_8-day/global_glass-lai-avhrr_8-day_1990-025.hdf.
+DEBUG:root:Preprocessing: file for use in calc_glass_mean_clim: ../data_raw/global_glass-lai-avhrr_8-day/global_glass-lai-avhrr_8-day_1990-033.hdf.
+DEBUG:rasterio._io:Output nodata value read from file: 2550.0
+DEBUG:rasterio._io:Output nodata values: [2550.0]
+DEBUG:rasterio._io:all_valid: False
+DEBUG:rasterio._io:mask_flags: ([<MaskFlags.nodata: 8>],)
+DEBUG:rasterio._io:Jump straight to _read()
+DEBUG:rasterio._io:Window: Window(col_off=0, row_off=0, width=7200, height=3600)
+DEBUG:rasterio._io:IO window xoff=0.0 yoff=0.0 width=7200.0 height=3600.0
+DEBUG:rasterio._io:IO window xoff=0.0 yoff=0.0 width=7200.0 height=3600.0
+DEBUG:rasterio._io:Output nodata value read from file: 2550.0
+DEBUG:rasterio._io:Output nodata values: [2550.0]
+DEBUG:rasterio._io:all_valid: False
+DEBUG:rasterio._io:mask_flags: ([<MaskFlags.nodata: 8>],)
+DEBUG:rasterio._io:Jump straight to _read()
+DEBUG:rasterio._io:Window: Window(col_off=0, row_off=0, width=7200, height=3600)
+DEBUG:rasterio._io:IO window xoff=0.0 yoff=0.0 width=7200.0 height=3600.0
+DEBUG:rasterio._io:IO window xoff=0.0 yoff=0.0 width=7200.0 height=3600.0
+DEBUG:rasterio._io:Output nodata value read from file: 2550.0
+DEBUG:rasterio._io:Output nodata values: [2550.0]
+DEBUG:rasterio._io:all_valid: False
+DEBUG:rasterio._io:mask_flags: ([<MaskFlags.nodata: 8>],)
+DEBUG:rasterio._io:Jump straight to _read()
+DEBUG:rasterio._io:Window: Window(col_off=0, row_off=0, width=7200, height=3600)
+DEBUG:rasterio._io:IO window xoff=0.0 yoff=0.0 width=7200.0 height=3600.0
+DEBUG:rasterio._io:IO window xoff=0.0 yoff=0.0 width=7200.0 height=3600.0
+DEBUG:rasterio._io:Output nodata value read from file: 2550.0
+DEBUG:rasterio._io:Output nodata values: [2550.0]
+DEBUG:rasterio._io:all_valid: False
+DEBUG:rasterio._io:mask_flags: ([<MaskFlags.nodata: 8>],)
+DEBUG:rasterio._io:Jump straight to _read()
+DEBUG:rasterio._io:Window: Window(col_off=0, row_off=0, width=7200, height=3600)
+DEBUG:rasterio._io:IO window xoff=0.0 yoff=0.0 width=7200.0 height=3600.0
+DEBUG:rasterio._io:IO window xoff=0.0 yoff=0.0 width=7200.0 height=3600.0
+DEBUG:rasterio._io:Output nodata value read from file: 2550.0
+DEBUG:rasterio._io:Output nodata values: [2550.0]
+DEBUG:rasterio._io:all_valid: False
+DEBUG:rasterio._io:mask_flags: ([<MaskFlags.nodata: 8>],)
+DEBUG:rasterio._io:Jump straight to _read()
+DEBUG:rasterio._io:Window: Window(col_off=0, row_off=0, width=7200, height=3600)
+DEBUG:rasterio._io:IO window xoff=0.0 yoff=0.0 width=7200.0 height=3600.0
+DEBUG:rasterio._io:IO window xoff=0.0 yoff=0.0 width=7200.0 height=3600.0
+DEBUG:rasterio._io:Output nodata value read from file: 2550.0
+DEBUG:rasterio._io:Output nodata values: [2550.0]
+DEBUG:rasterio._io:all_valid: False
+DEBUG:rasterio._io:mask_flags: ([<MaskFlags.nodata: 8>],)
+DEBUG:rasterio._io:Jump straight to _read()
+DEBUG:rasterio._io:Window: Window(col_off=0, row_off=0, width=7200, height=3600)
+DEBUG:rasterio._io:IO window xoff=0.0 yoff=0.0 width=7200.0 height=3600.0
+DEBUG:rasterio._io:IO window xoff=0.0 yoff=0.0 width=7200.0 height=3600.0
+DEBUG:rasterio._io:Output nodata value read from file: 2550.0
+DEBUG:rasterio._io:Output nodata values: [2550.0]
+DEBUG:rasterio._io:all_valid: False
+DEBUG:rasterio._io:mask_flags: ([<MaskFlags.nodata: 8>],)
+DEBUG:rasterio._io:Jump straight to _read()
+DEBUG:rasterio._io:Window: Window(col_off=0, row_off=0, width=7200, height=3600)
+DEBUG:rasterio._io:IO window xoff=0.0 yoff=0.0 width=7200.0 height=3600.0
+DEBUG:rasterio._io:IO window xoff=0.0 yoff=0.0 width=7200.0 height=3600.0
+DEBUG:rasterio._io:Output nodata value read from file: 2550.0
+DEBUG:rasterio._io:Output nodata values: [2550.0]
+DEBUG:rasterio._io:all_valid: False
+DEBUG:rasterio._io:mask_flags: ([<MaskFlags.nodata: 8>],)
+DEBUG:rasterio._io:Jump straight to _read()
+DEBUG:rasterio._io:Window: Window(col_off=0, row_off=0, width=7200, height=3600)
+DEBUG:rasterio._io:IO window xoff=0.0 yoff=0.0 width=7200.0 height=3600.0
+DEBUG:rasterio._io:IO window xoff=0.0 yoff=0.0 width=7200.0 height=3600.0
+DEBUG:parso.python.diff:diff parser start
+DEBUG:parso.python.diff:line_lengths old: 2; new: 1
+DEBUG:parso.python.diff:-> code[delete] old[1:1] new[1:0]
+DEBUG:parso.python.diff:-> code[equal] old[2:2] new[1:1]
+DEBUG:parso.python.diff:copy old[2:1] new[1:1]
+DEBUG:parso.python.diff:diff parser end

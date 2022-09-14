@@ -1,0 +1,10 @@
+INFO:root:Executing: calc_era5_land_elev to obtain global land surface elevation for use in <cell line: 1>.
+DEBUG:root:Opening: global static ERA5 files from data_raw folder for use in calc_era5_land_elev.
+DEBUG:rasterio.session:Could not import boto3, continuing with reduced functionality.
+DEBUG:root:Executing: regrid_era5 on file to make ERA5 coordinates consistent with xarray plotting for use in calc_era5_land_elev: ../data_raw/global_era5-slv_static/global_era5-slv_static_geopotential.nc.
+DEBUG:root:Regridded: ERA5 coordinates in file for use in calc_era5_land_elev: ../data_raw/global_era5-slv_static/global_era5-slv_static_geopotential.nc.
+DEBUG:root:Executing: regrid_era5 on file to make ERA5 coordinates consistent with xarray plotting for use in calc_era5_land_elev: ../data_raw/global_era5-slv_static/global_era5-slv_static_land-sea-mask.nc.
+DEBUG:root:Regridded: ERA5 coordinates in file for use in calc_era5_land_elev: ../data_raw/global_era5-slv_static/global_era5-slv_static_land-sea-mask.nc.
+DEBUG:root:Computing: land surface elevation.
+INFO:root:Creating: file: ../data_processed/cfv00__calc_global_static_land-elev.nc.
+INFO:root:CREATED: file for use in <cell line: 1>: ../data_processed/cfv00__calc_global_static_land-elev.nc.

@@ -1,0 +1,12 @@
+DEBUG:root:Executing: check_args to check whether input arguments into calc_era5_mdp_clim_given_var_or_dvar are valid.
+INFO:root:Passed: validity check for input arguments into calc_era5_mdp_clim_given_var_or_dvar.
+INFO:root:Executing: calc_era5_mdp_clim_given_var_or_dvar to obtain all climatology of mslp MDP between Jan-1990 and Feb-1990 for use in <cell line: 1>.
+DEBUG:root:Executing: check_args to check whether input arguments into get_vars_level_and_type are valid.
+INFO:root:Passed: validity check for input arguments into get_vars_level_and_type.
+DEBUG:root:Executing: get_vars_level_and_type to obtain the vars_level and vars_type classification of mslp for use in calc_era5_mdp_clim_given_var_or_dvar.
+INFO:root:Obtained: mslp classifications of ('sfc', 'vars') for use in calc_era5_mdp_clim_given_var_or_dvar.
+DEBUG:root:Filtering: ERA5 sfc files from data_raw folder for use in calc_era5_mdp_clim_given_var_or_dvar.
+DEBUG:root:Opening: ERA5 sfc files from data_raw folder for use in calc_era5_mdp_clim_given_var_or_dvar.
+DEBUG:root:Preprocessing: file for use in calc_era5_mdp_clim_given_var_or_dvar: ../data_raw/wa_era5-slv-sfc_month-hour/wa_era5-slv-sfc_month-hour_1990.nc.
+DEBUG:root:Executing: regrid_era5 on file to make ERA5 coordinates consistent with xarray plotting for use in preprocess_era5_month_hour: ../data_raw/wa_era5-slv-sfc_month-hour/wa_era5-slv-sfc_month-hour_1990.nc.
+DEBUG:root:Regridded: ERA5 coordinates in file for use in preprocess_era5_month_hour: ../data_raw/wa_era5-slv-sfc_month-hour/wa_era5-slv-sfc_month-hour_1990.nc.
