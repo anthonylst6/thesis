@@ -1,0 +1,2 @@
+INFO:root:Executing: calc_era5_land_elev to obtain global land surface elevation.
+ERROR:root:TERMINATED: calc_era5_land_elev because file already exists: ../data_processed/cfv00_calc_global_static_land-elev.nc.

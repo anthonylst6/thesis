@@ -1,0 +1,65 @@
+DEBUG:root:Executing: check_args to check whether input arguments into calc_glass_rolling_avg_of_annual_diff are valid.
+INFO:root:Passed: validity check for input arguments into calc_glass_rolling_avg_of_annual_diff.
+INFO:root:Executing: calc_glass_rolling_avg_of_annual_diff to obtain the rolling average of the annual difference in MLAI AND MFAPAR for years 2005 to 2007.
+DEBUG:root:Executing: check_args to check whether input arguments into get_paths_for_calc_diff are valid.
+INFO:root:Passed: validity check for input arguments into get_paths_for_calc_diff.
+DEBUG:root:Executing: check_args to check whether input arguments into get_paths_for_calc_diff are valid.
+INFO:root:Passed: validity check for input arguments into get_paths_for_calc_diff.
+DEBUG:root:Executing: get_paths_for_calc_diff to obtain calc_diff output path and intermediate output paths from calc_glass_mean_clim for use in calc_glass_rolling_avg_of_annual_diff.
+DEBUG:root:Executing: check_args to check whether input arguments into select_glass_data_source are valid.
+INFO:root:Passed: validity check for input arguments into select_glass_data_source.
+DEBUG:root:Executing: select_glass_data_source to select the appropriate glass data source for use between Jan-2004 and Dec-2004 in get_paths_for_calc_diff.
+INFO:root:Selected: modis glass data source for use between Jan-2004 and Dec-2004 in get_paths_for_calc_diff.
+DEBUG:root:Executing: check_args to check whether input arguments into select_glass_data_source are valid.
+INFO:root:Passed: validity check for input arguments into select_glass_data_source.
+DEBUG:root:Executing: select_glass_data_source to select the appropriate glass data source for use between Jan-2005 and Dec-2005 in get_paths_for_calc_diff.
+INFO:root:Selected: modis glass data source for use between Jan-2005 and Dec-2005 in get_paths_for_calc_diff.
+INFO:root:Opening: existing file for use in calc_glass_rolling_avg_of_annual_diff: ../data_processed/cfv00_diff_wa_Jan-2004_Dec-2004_Jan-2005_Dec-2005_all_glass-mean_modis.nc.
+DEBUG:root:Executing: check_args to check whether input arguments into get_paths_for_calc_diff are valid.
+INFO:root:Passed: validity check for input arguments into get_paths_for_calc_diff.
+DEBUG:root:Executing: check_args to check whether input arguments into get_paths_for_calc_diff are valid.
+INFO:root:Passed: validity check for input arguments into get_paths_for_calc_diff.
+DEBUG:root:Executing: get_paths_for_calc_diff to obtain calc_diff output path and intermediate output paths from calc_glass_mean_clim for use in calc_glass_rolling_avg_of_annual_diff.
+DEBUG:root:Executing: check_args to check whether input arguments into select_glass_data_source are valid.
+INFO:root:Passed: validity check for input arguments into select_glass_data_source.
+DEBUG:root:Executing: select_glass_data_source to select the appropriate glass data source for use between Jan-2005 and Dec-2005 in get_paths_for_calc_diff.
+INFO:root:Selected: modis glass data source for use between Jan-2005 and Dec-2005 in get_paths_for_calc_diff.
+DEBUG:root:Executing: check_args to check whether input arguments into select_glass_data_source are valid.
+INFO:root:Passed: validity check for input arguments into select_glass_data_source.
+DEBUG:root:Executing: select_glass_data_source to select the appropriate glass data source for use between Jan-2006 and Dec-2006 in get_paths_for_calc_diff.
+INFO:root:Selected: modis glass data source for use between Jan-2006 and Dec-2006 in get_paths_for_calc_diff.
+INFO:root:Opening: existing file for use in calc_glass_rolling_avg_of_annual_diff: ../data_processed/cfv00_diff_wa_Jan-2005_Dec-2005_Jan-2006_Dec-2006_all_glass-mean_modis.nc.
+DEBUG:root:Executing: check_args to check whether input arguments into get_paths_for_calc_diff are valid.
+INFO:root:Passed: validity check for input arguments into get_paths_for_calc_diff.
+DEBUG:root:Executing: check_args to check whether input arguments into get_paths_for_calc_diff are valid.
+INFO:root:Passed: validity check for input arguments into get_paths_for_calc_diff.
+DEBUG:root:Executing: get_paths_for_calc_diff to obtain calc_diff output path and intermediate output paths from calc_glass_mean_clim for use in calc_glass_rolling_avg_of_annual_diff.
+DEBUG:root:Executing: check_args to check whether input arguments into select_glass_data_source are valid.
+INFO:root:Passed: validity check for input arguments into select_glass_data_source.
+DEBUG:root:Executing: select_glass_data_source to select the appropriate glass data source for use between Jan-2006 and Dec-2006 in get_paths_for_calc_diff.
+INFO:root:Selected: modis glass data source for use between Jan-2006 and Dec-2006 in get_paths_for_calc_diff.
+DEBUG:root:Executing: check_args to check whether input arguments into select_glass_data_source are valid.
+INFO:root:Passed: validity check for input arguments into select_glass_data_source.
+DEBUG:root:Executing: select_glass_data_source to select the appropriate glass data source for use between Jan-2007 and Dec-2007 in get_paths_for_calc_diff.
+INFO:root:Selected: modis glass data source for use between Jan-2007 and Dec-2007 in get_paths_for_calc_diff.
+INFO:root:Opening: existing file for use in calc_glass_rolling_avg_of_annual_diff: ../data_processed/cfv00_diff_wa_Jan-2006_Dec-2006_Jan-2007_Dec-2007_all_glass-mean_modis.nc.
+DEBUG:root:Executing: check_args to check whether input arguments into get_paths_for_calc_diff are valid.
+INFO:root:Passed: validity check for input arguments into get_paths_for_calc_diff.
+DEBUG:root:Executing: check_args to check whether input arguments into get_paths_for_calc_diff are valid.
+INFO:root:Passed: validity check for input arguments into get_paths_for_calc_diff.
+DEBUG:root:Executing: get_paths_for_calc_diff to obtain calc_diff output path and intermediate output paths from calc_glass_mean_clim for use in calc_glass_rolling_avg_of_annual_diff.
+DEBUG:root:Executing: check_args to check whether input arguments into select_glass_data_source are valid.
+INFO:root:Passed: validity check for input arguments into select_glass_data_source.
+DEBUG:root:Executing: select_glass_data_source to select the appropriate glass data source for use between Jan-2007 and Dec-2007 in get_paths_for_calc_diff.
+INFO:root:Selected: modis glass data source for use between Jan-2007 and Dec-2007 in get_paths_for_calc_diff.
+DEBUG:root:Executing: check_args to check whether input arguments into select_glass_data_source are valid.
+INFO:root:Passed: validity check for input arguments into select_glass_data_source.
+DEBUG:root:Executing: select_glass_data_source to select the appropriate glass data source for use between Jan-2008 and Dec-2008 in get_paths_for_calc_diff.
+INFO:root:Selected: modis glass data source for use between Jan-2008 and Dec-2008 in get_paths_for_calc_diff.
+INFO:root:Opening: existing file for use in calc_glass_rolling_avg_of_annual_diff: ../data_processed/cfv00_diff_wa_Jan-2007_Dec-2007_Jan-2008_Dec-2008_all_glass-mean_modis.nc.
+DEBUG:root:Computing: rolling avg of annual difference in mean glass datasets.
+DEBUG:matplotlib.colorbar:locator: <matplotlib.ticker.AutoLocator object at 0x7fd7ce7c18d0>
+DEBUG:matplotlib.colorbar:locator: <matplotlib.ticker.AutoLocator object at 0x7fd7ce8648b0>
+DEBUG:matplotlib.colorbar:locator: <matplotlib.ticker.AutoLocator object at 0x7fd7ce70b310>
+DEBUG:matplotlib.colorbar:locator: <matplotlib.ticker.AutoLocator object at 0x7fd7ce5dd660>
+DEBUG:matplotlib.colorbar:locator: <matplotlib.ticker.AutoLocator object at 0x7fd7ccf70790>
