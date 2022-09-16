@@ -1,0 +1,1154 @@
+DEBUG:root:Executing: get_da_range_for_vector_mdp_values to compute wv10 MDP range DataArray.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Executing: get_magnitude to calculate vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in get_da_range_for_vector_mdp_values.
+DEBUG:root:Obtained: wv10 MDP range DataArray.
