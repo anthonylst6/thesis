@@ -1,2 +1,0 @@
-DEBUG:root:Executing: check_args to check whether input arguments arevalid.
-INFO:root:Passed: validity check for input arguments.

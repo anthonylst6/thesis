@@ -1,2 +1,0 @@
-DEBUG:root:Executing: regrid_era5 on file to make ERA5 coordinates consistent with xarray plotting: ../data_raw/global_era5-slv_static/global_era5-slv_static_geopotential.nc.
-DEBUG:root:Regridded: ERA5 coordinates in file: ../data_raw/global_era5-slv_static/global_era5-slv_static_geopotential.nc.

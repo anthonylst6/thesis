@@ -1,8 +1,0 @@
-DEBUG:root:Executing: check_args to check whether input arguments into calc_glass_mean_clim are valid.
-INFO:root:Passed: validity check for input arguments into calc_glass_mean_clim.
-DEBUG:root:Executing: check_args to check whether input arguments into select_glass_data_source are valid.
-INFO:root:Passed: validity check for input arguments into select_glass_data_source.
-DEBUG:root:Executing: select_glass_data_source to select the appropriate glass data source for use between Jun-2000 and Aug-2005 in calc_glass_mean_clim.
-INFO:root:Selected: modis glass data source for use between Jun-2000 and Aug-2005 in calc_glass_mean_clim.
-INFO:root:Executing: calc_glass_mean_clim to obtain 6-7-8 climatology of MLAI and MFAPAR using modis data between Jun-2000 and Aug-2005.
-ERROR:root:TERMINATED: calc_glass_mean_clim because file already exists: ../data_processed/cfv00_calc_wa_Jun-2000_Aug-2005_6-7-8_glass-mean_modis.nc.

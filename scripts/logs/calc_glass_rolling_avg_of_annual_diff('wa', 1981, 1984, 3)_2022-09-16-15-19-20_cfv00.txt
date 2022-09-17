@@ -1,1 +1,0 @@
-DEBUG:root:Executing: check_args to check whether input arguments into calc_glass_rolling_avg_of_annual_diff are valid.

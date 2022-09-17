@@ -1,3 +1,0 @@
-DEBUG:root:Executing: check_args to check whether input arguments into calc_glass_rolling_avg_of_annual_diff are valid.
-INFO:root:Passed: validity check for input arguments into calc_glass_rolling_avg_of_annual_diff.
-INFO:root:Executing: calc_glass_rolling_avg_of_annual_diff to obtain the rolling average of the annual difference in MLAI AND MFAPAR for years 2005 to 2007.
