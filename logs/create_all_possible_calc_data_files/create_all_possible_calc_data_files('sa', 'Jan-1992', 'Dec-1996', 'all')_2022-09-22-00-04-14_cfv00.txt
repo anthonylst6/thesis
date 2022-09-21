@@ -1,0 +1,68 @@
+INFO:root:CREATED: log file for create_all_possible_calc_data_files: ../logs/create_all_possible_calc_data_files/create_all_possible_calc_data_files('sa', 'Jan-1992', 'Dec-1996', 'all')_2022-09-22-00-04-14_cfv00.txt.
+INFO:root:Passed: validity check for input arguments into create_all_possible_calc_data_files.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in create_all_possible_calc_data_files.
+INFO:root:Executing: create_all_possible_calc_data_files to create all possible data files in sa over all months between Jan-1992 and Dec-1996.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into select_glass_data_source.
+INFO:root:Selected: avhrr glass data source for use between Jan-1992 and Dec-1996 in get_path_for_calc_func.
+INFO:root:Obtained: calc_glass_mean_clim output path for use in create_all_possible_calc_data_files.
+INFO:root:Skipped: file already exists: ../data_processed/glass_mean_clim/cfv00_calc_sa_Jan-1992_Dec-1996_all_glass-mean_avhrr.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in create_all_possible_calc_data_files.
+INFO:root:Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv00_calc_sa_Jan-1992_Dec-1996_all_era5-mdp_wv10.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in create_all_possible_calc_data_files.
+INFO:root:Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv00_calc_sa_Jan-1992_Dec-1996_all_era5-mdp_wv100.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in create_all_possible_calc_data_files.
+INFO:root:Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv00_calc_sa_Jan-1992_Dec-1996_all_era5-mdp_mslp.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in create_all_possible_calc_data_files.
+INFO:root:Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv00_calc_sa_Jan-1992_Dec-1996_all_era5-mdp_t2.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in create_all_possible_calc_data_files.
+INFO:root:Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv00_calc_sa_Jan-1992_Dec-1996_all_era5-mdp_slhf.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in create_all_possible_calc_data_files.
+INFO:root:Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv00_calc_sa_Jan-1992_Dec-1996_all_era5-mdp_sshf.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in create_all_possible_calc_data_files.
+INFO:root:Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv00_calc_sa_Jan-1992_Dec-1996_all_era5-mdp_viec.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in create_all_possible_calc_data_files.
+INFO:root:Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv00_calc_sa_Jan-1992_Dec-1996_all_era5-mdp_vipile.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in create_all_possible_calc_data_files.
+INFO:root:Passed: validity check for input arguments into calc_era5_mdp_clim_given_var_or_dvar.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in calc_era5_mdp_clim_given_var_or_dvar.
+INFO:root:Executing: calc_era5_mdp_clim_given_var_or_dvar to obtain all climatology of vike MDP between Jan-1992 and Dec-1996 for use in create_all_possible_calc_data_files.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in calc_era5_mdp_clim_given_var_or_dvar.
+INFO:root:Passed: validity check for input arguments into convert_period_data_types.
+INFO:root:Obtained: converted period data types for use in calc_era5_mdp_clim_given_var_or_dvar.
+INFO:root:Passed: validity check for input arguments into get_param_layer_and_type.
+INFO:root:Obtained: vike classifications of ('atm', 'vars') for use in calc_era5_mdp_clim_given_var_or_dvar.

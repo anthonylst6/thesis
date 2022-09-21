@@ -1,0 +1,1 @@
+INFO:root:CREATED: log file for create_all_possible_diff_data_files: ../logs/create_all_possible_diff_data_files/create_all_possible_diff_data_files('wa', 'Jan-1992', 'Dec-1996', 'Jan-2002', 'Dec-2006', 'all')_2022-09-22-00-41-09_cfv00.txt.
