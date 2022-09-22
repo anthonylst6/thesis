@@ -1,0 +1,1 @@
+java -Dmf.cfg=config.cfg -cp aterm.jar arc.mf.command.Execute import -verbose true -import-empty-folders true -namespace %2 %1 

@@ -1,0 +1,19 @@
+INFO:root:CREATED: log file for calc_glass_mean_clim: ../logs/calc_glass_mean_clim/calc_glass_mean_clim('wa', 'Jun-2000', 'Aug-2005', [8, 6, 7], None)_2022-09-22-12-22-40_cfv1g.txt.
+INFO:root:Passed: validity check for input arguments into calc_glass_mean_clim.
+INFO:root:Passed: validity check for input arguments into select_glass_data_source.
+INFO:root:Selected: avhrr glass data source for use between Jun-2000 and Aug-2005 in calc_glass_mean_clim.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of [6, 7, 8] for use in calc_glass_mean_clim.
+INFO:root:Executing: calc_glass_mean_clim to obtain 6-7-8 climatology of MLAI and MFAPAR using avhrr data between Jun-2000 and Aug-2005.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of [6, 7, 8] for use in get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into select_glass_data_source.
+INFO:root:Selected: avhrr glass data source for use between Jun-2000 and Aug-2005 in get_path_for_calc_func.
+INFO:root:Obtained: calc_glass_mean_clim output path for use in calc_glass_mean_clim.
+INFO:root:Passed: validity check for input arguments into convert_period_data_types.
+INFO:root:Obtained: converted period data types for use in calc_glass_mean_clim.
+INFO:root:Adding: attributes for each DataArray within output Dataset from calc_glass_mean_clim.
+INFO:root:Added: attributes to dataset output from calc_glass_mean_clim.
+INFO:root:Creating: file: ../data_processed/glass_mean_clim/cfv1g_calc_wa_Jun-2000_Aug-2005_6-7-8_glass-mean_avhrr.nc.
+INFO:root:CREATED: file: ../data_processed/glass_mean_clim/cfv1g_calc_wa_Jun-2000_Aug-2005_6-7-8_glass-mean_avhrr.nc.

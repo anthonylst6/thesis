@@ -1,1 +1,0 @@
-java -Dmf.cfg=config.cfg -cp aterm.jar arc.mf.command.Execute download -verbose true -export-empty-namespaces true -namespace %1 %2 
