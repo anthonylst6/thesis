@@ -1,0 +1,35 @@
+INFO:root:CREATED: log file for calc_era5_mdp_clim_stats_given_var_or_dvar: ../logs/calc_era5_mdp_clim_stats_given_var_or_dvar/calc_era5_mdp_clim_stats_given_var_or_dvar('sa', 'Jan-1992', 'Dec-1996', 'all', 'mslp')_2022-09-22-20-43-30_cfv1h.txt.
+INFO:root:Passed: validity check for input arguments into calc_era5_mdp_clim_stats_given_var_or_dvar.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in calc_era5_mdp_clim_stats_given_var_or_dvar.
+INFO:root:Executing: calc_era5_mdp_clim_stats_given_var_or_dvar to obtain all climatology of mslp MDP stats between Jan-1992 and Dec-1996.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_stats_given_var_or_dvar output path for use in calc_era5_mdp_clim_stats_given_var_or_dvar.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in calc_era5_mdp_clim_stats_given_var_or_dvar.
+INFO:root:Passed: validity check for input arguments into calc_era5_mdp_clim_given_var_or_dvar.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in calc_era5_mdp_clim_given_var_or_dvar.
+INFO:root:Executing: calc_era5_mdp_clim_given_var_or_dvar to obtain all climatology of mslp MDP between Jan-1992 and Dec-1996 for use in calc_era5_mdp_clim_stats_given_var_or_dvar.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in calc_era5_mdp_clim_given_var_or_dvar.
+INFO:root:Passed: validity check for input arguments into convert_period_data_types.
+INFO:root:Obtained: converted period data types for use in calc_era5_mdp_clim_given_var_or_dvar.
+INFO:root:Passed: validity check for input arguments into get_param_layer_and_type.
+INFO:root:Obtained: mslp classifications of ('sfc', 'vars') for use in calc_era5_mdp_clim_given_var_or_dvar.
+INFO:root:Adding: attributes for each DataArray within output Dataset from calc_era5_mdp_clim_given_var_or_dvar.
+INFO:root:Added: attributes to dataset output from calc_era5_mdp_clim_given_var_or_dvar.
+INFO:root:Creating: file: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1h_calc_sa_Jan-1992_Dec-1996_all_era5-mdp_mslp.nc.
+INFO:root:CREATED: file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1h_calc_sa_Jan-1992_Dec-1996_all_era5-mdp_mslp.nc.
+INFO:root:Passed: validity check for input arguments into convert_period_data_types.
+INFO:root:Obtained: converted period data types for use in calc_era5_mdp_clim_stats_given_var_or_dvar.
+INFO:root:Adding: attributes for each DataArray within output Dataset from calc_era5_mdp_clim_stats_given_var_or_dvar.
+INFO:root:Added: attributes to dataset output from calc_era5_mdp_clim_stats_given_var_or_dvar.
+INFO:root:Creating: file: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1h_calc_sa_Jan-1992_Dec-1996_all_era5-mdp_mslp_stats.nc.
+INFO:root:CREATED: file: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1h_calc_sa_Jan-1992_Dec-1996_all_era5-mdp_mslp_stats.nc.

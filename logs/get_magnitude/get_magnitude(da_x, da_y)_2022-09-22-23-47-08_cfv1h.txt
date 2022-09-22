@@ -1,0 +1,2 @@
+INFO:root:CREATED: log file for get_magnitude: ../logs/get_magnitude/get_magnitude(da_x, da_y)_2022-09-22-23-47-08_cfv1h.txt.
+INFO:root:Obtained: vector magnitudes from max_u and max_v.

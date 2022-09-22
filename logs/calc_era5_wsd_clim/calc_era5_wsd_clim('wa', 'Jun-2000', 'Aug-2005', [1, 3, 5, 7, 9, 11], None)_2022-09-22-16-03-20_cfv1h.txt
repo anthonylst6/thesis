@@ -1,0 +1,21 @@
+INFO:root:CREATED: log file for calc_era5_wsd_clim: ../logs/calc_era5_wsd_clim/calc_era5_wsd_clim('wa', 'Jun-2000', 'Aug-2005', [1, 3, 5, 7, 9, 11], None)_2022-09-22-16-03-20_cfv1h.txt.
+INFO:root:Passed: validity check for input arguments into calc_era5_wsd_clim.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of [1, 3, 5, 7, 9, 11] for use in calc_era5_wsd_clim.
+INFO:root:Executing: calc_era5_wsd_clim to obtain wind speed distribution parameters over 1-3-5-7-9-11 months between Jun-2000 and Aug-2005.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of [1, 3, 5, 7, 9, 11] for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_wsd_clim output path for use in calc_era5_wsd_clim.
+INFO:root:Passed: validity check for input arguments into convert_period_data_types.
+INFO:root:Obtained: converted period data types for use in calc_era5_wsd_clim.
+INFO:root:Obtained: vector magnitudes from u10 and v10 for use in calc_era5_wsd_clim.
+INFO:root:Obtained: vector magnitudes from u100 and v100 for use in calc_era5_wsd_clim.
+INFO:root:Obtained: Weibull parameters from ws10_mean and ws10_std for use in calc_era5_wsd_clim.
+INFO:root:Obtained: Weibull parameters from ws100_mean and ws100_std for use in calc_era5_wsd_clim.
+INFO:root:Obtained: 42.5 m/s expected rate of exceedance from c100 and k100 for use in calc_era5_wsd_clim.
+INFO:root:Obtained: ws100 gross capacity factor for use in calc_era5_wsd_clim.
+INFO:root:Adding: attributes for each DataArray within output Dataset from calc_era5_wsd_clim.
+INFO:root:Added: attributes to dataset output from calc_era5_wsd_clim.
+INFO:root:Creating: file: ../data_processed/era5_wsd_clim/cfv1h_calc_wa_Jun-2000_Aug-2005_1-3-5-7-9-11_era5-wsd.nc.
+INFO:root:CREATED: file: ../data_processed/era5_wsd_clim/cfv1h_calc_wa_Jun-2000_Aug-2005_1-3-5-7-9-11_era5-wsd.nc.
