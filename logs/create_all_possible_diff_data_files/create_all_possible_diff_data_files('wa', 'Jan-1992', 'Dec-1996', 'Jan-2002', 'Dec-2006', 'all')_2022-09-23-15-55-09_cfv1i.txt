@@ -1,0 +1,1584 @@
+INFO:root:CREATED: log file for create_all_possible_diff_data_files: ../logs/create_all_possible_diff_data_files/create_all_possible_diff_data_files('wa', 'Jan-1992', 'Dec-1996', 'Jan-2002', 'Dec-2006', 'all')_2022-09-23-15-55-09_cfv1i.txt.
+INFO:root:Passed: validity check for input arguments into create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in create_all_possible_diff_data_files.
+INFO:root:Executing: create_all_possible_diff_data_files to create all possible all difference data files in wa over Jan-1992 to Dec-1996 and Jan-2002 to Dec-2006.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into select_glass_data_source.
+INFO:root:Selected: avhrr glass data source for use between Jan-1992 and Dec-1996 in get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into select_glass_data_source.
+INFO:root:Selected: avhrr glass data source for use between Jan-2002 and Dec-2006 in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_glass_mean_clim for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Executing: calc_diff to obtain difference in outputs from calc_glass_mean_clim over Jan-1992 to Dec-1996 and Jan-2002 to Dec-2006 for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into select_glass_data_source.
+INFO:root:Selected: avhrr glass data source for use between Jan-1992 and Dec-1996 in get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into select_glass_data_source.
+INFO:root:Selected: avhrr glass data source for use between Jan-2002 and Dec-2006 in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_glass_mean_clim for use in calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into select_glass_data_source.
+INFO:root:Selected: avhrr glass data source for use between Jan-1992 and Dec-1996 in get_path_for_calc_func.
+INFO:root:Obtained: calc_glass_mean_clim output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/glass_mean_clim/cfv1i_calc_wa_Jan-1992_Dec-1996_all_glass-mean_avhrr.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into select_glass_data_source.
+INFO:root:Selected: avhrr glass data source for use between Jan-2002 and Dec-2006 in get_path_for_calc_func.
+INFO:root:Obtained: calc_glass_mean_clim output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/glass_mean_clim/cfv1i_calc_wa_Jan-2002_Dec-2006_all_glass-mean_avhrr.nc.
+INFO:root:Adding: attributes for each DataArray within output Dataset from calc_diff.
+INFO:root:Added: attributes to dataset output from calc_diff.
+INFO:root:Creating: file: ../data_processed/glass_mean_clim/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_glass-mean_avhrr.nc.
+INFO:root:CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/glass_mean_clim/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_glass-mean_avhrr.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_given_var_or_dvar for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Executing: calc_diff to obtain difference in outputs from calc_era5_mdp_clim_given_var_or_dvar over Jan-1992 to Dec-1996 and Jan-2002 to Dec-2006 for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_given_var_or_dvar for use in calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_calc_wa_Jan-1992_Dec-1996_all_era5-mdp_ws10.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_calc_wa_Jan-2002_Dec-2006_all_era5-mdp_ws10.nc.
+INFO:root:Adding: attributes for each DataArray within output Dataset from calc_diff.
+INFO:root:Added: attributes to dataset output from calc_diff.
+INFO:root:Creating: file: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_ws10.nc.
+INFO:root:CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_ws10.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_given_var_or_dvar for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Executing: calc_diff to obtain difference in outputs from calc_era5_mdp_clim_given_var_or_dvar over Jan-1992 to Dec-1996 and Jan-2002 to Dec-2006 for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_given_var_or_dvar for use in calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_calc_wa_Jan-1992_Dec-1996_all_era5-mdp_ws100.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_calc_wa_Jan-2002_Dec-2006_all_era5-mdp_ws100.nc.
+INFO:root:Adding: attributes for each DataArray within output Dataset from calc_diff.
+INFO:root:Added: attributes to dataset output from calc_diff.
+INFO:root:Creating: file: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_ws100.nc.
+INFO:root:CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_ws100.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_given_var_or_dvar for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Executing: calc_diff to obtain difference in outputs from calc_era5_mdp_clim_given_var_or_dvar over Jan-1992 to Dec-1996 and Jan-2002 to Dec-2006 for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_given_var_or_dvar for use in calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_calc_wa_Jan-1992_Dec-1996_all_era5-mdp_wv10.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_calc_wa_Jan-2002_Dec-2006_all_era5-mdp_wv10.nc.
+INFO:root:Adding: attributes for each DataArray within output Dataset from calc_diff.
+INFO:root:Added: attributes to dataset output from calc_diff.
+INFO:root:Creating: file: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_wv10.nc.
+INFO:root:CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_wv10.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_given_var_or_dvar for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Executing: calc_diff to obtain difference in outputs from calc_era5_mdp_clim_given_var_or_dvar over Jan-1992 to Dec-1996 and Jan-2002 to Dec-2006 for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_given_var_or_dvar for use in calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_calc_wa_Jan-1992_Dec-1996_all_era5-mdp_wv100.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_calc_wa_Jan-2002_Dec-2006_all_era5-mdp_wv100.nc.
+INFO:root:Adding: attributes for each DataArray within output Dataset from calc_diff.
+INFO:root:Added: attributes to dataset output from calc_diff.
+INFO:root:Creating: file: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_wv100.nc.
+INFO:root:CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_wv100.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_given_var_or_dvar for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Executing: calc_diff to obtain difference in outputs from calc_era5_mdp_clim_given_var_or_dvar over Jan-1992 to Dec-1996 and Jan-2002 to Dec-2006 for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_given_var_or_dvar for use in calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_calc_wa_Jan-1992_Dec-1996_all_era5-mdp_mslp.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_calc_wa_Jan-2002_Dec-2006_all_era5-mdp_mslp.nc.
+INFO:root:Adding: attributes for each DataArray within output Dataset from calc_diff.
+INFO:root:Added: attributes to dataset output from calc_diff.
+INFO:root:Creating: file: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_mslp.nc.
+INFO:root:CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_mslp.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_given_var_or_dvar for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Executing: calc_diff to obtain difference in outputs from calc_era5_mdp_clim_given_var_or_dvar over Jan-1992 to Dec-1996 and Jan-2002 to Dec-2006 for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_given_var_or_dvar for use in calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_calc_wa_Jan-1992_Dec-1996_all_era5-mdp_t2.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_calc_wa_Jan-2002_Dec-2006_all_era5-mdp_t2.nc.
+INFO:root:Adding: attributes for each DataArray within output Dataset from calc_diff.
+INFO:root:Added: attributes to dataset output from calc_diff.
+INFO:root:Creating: file: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_t2.nc.
+INFO:root:CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_t2.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_given_var_or_dvar for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Executing: calc_diff to obtain difference in outputs from calc_era5_mdp_clim_given_var_or_dvar over Jan-1992 to Dec-1996 and Jan-2002 to Dec-2006 for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_given_var_or_dvar for use in calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_calc_wa_Jan-1992_Dec-1996_all_era5-mdp_slhf.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_calc_wa_Jan-2002_Dec-2006_all_era5-mdp_slhf.nc.
+INFO:root:Adding: attributes for each DataArray within output Dataset from calc_diff.
+INFO:root:Added: attributes to dataset output from calc_diff.
+INFO:root:Creating: file: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_slhf.nc.
+INFO:root:CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_slhf.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_given_var_or_dvar for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Executing: calc_diff to obtain difference in outputs from calc_era5_mdp_clim_given_var_or_dvar over Jan-1992 to Dec-1996 and Jan-2002 to Dec-2006 for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_given_var_or_dvar for use in calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_calc_wa_Jan-1992_Dec-1996_all_era5-mdp_sshf.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_calc_wa_Jan-2002_Dec-2006_all_era5-mdp_sshf.nc.
+INFO:root:Adding: attributes for each DataArray within output Dataset from calc_diff.
+INFO:root:Added: attributes to dataset output from calc_diff.
+INFO:root:Creating: file: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_sshf.nc.
+INFO:root:CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_sshf.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_given_var_or_dvar for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Executing: calc_diff to obtain difference in outputs from calc_era5_mdp_clim_given_var_or_dvar over Jan-1992 to Dec-1996 and Jan-2002 to Dec-2006 for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_given_var_or_dvar for use in calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_calc_wa_Jan-1992_Dec-1996_all_era5-mdp_viec.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_calc_wa_Jan-2002_Dec-2006_all_era5-mdp_viec.nc.
+INFO:root:Adding: attributes for each DataArray within output Dataset from calc_diff.
+INFO:root:Added: attributes to dataset output from calc_diff.
+INFO:root:Creating: file: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_viec.nc.
+INFO:root:CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_viec.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_given_var_or_dvar for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Executing: calc_diff to obtain difference in outputs from calc_era5_mdp_clim_given_var_or_dvar over Jan-1992 to Dec-1996 and Jan-2002 to Dec-2006 for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_given_var_or_dvar for use in calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_calc_wa_Jan-1992_Dec-1996_all_era5-mdp_vipile.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_calc_wa_Jan-2002_Dec-2006_all_era5-mdp_vipile.nc.
+INFO:root:Adding: attributes for each DataArray within output Dataset from calc_diff.
+INFO:root:Added: attributes to dataset output from calc_diff.
+INFO:root:Creating: file: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_vipile.nc.
+INFO:root:CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_vipile.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_given_var_or_dvar for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Executing: calc_diff to obtain difference in outputs from calc_era5_mdp_clim_given_var_or_dvar over Jan-1992 to Dec-1996 and Jan-2002 to Dec-2006 for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_given_var_or_dvar for use in calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_calc_wa_Jan-1992_Dec-1996_all_era5-mdp_vike.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_calc_wa_Jan-2002_Dec-2006_all_era5-mdp_vike.nc.
+INFO:root:Adding: attributes for each DataArray within output Dataset from calc_diff.
+INFO:root:Added: attributes to dataset output from calc_diff.
+INFO:root:Creating: file: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_vike.nc.
+INFO:root:CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_vike.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_given_var_or_dvar for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Executing: calc_diff to obtain difference in outputs from calc_era5_mdp_clim_given_var_or_dvar over Jan-1992 to Dec-1996 and Jan-2002 to Dec-2006 for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_given_var_or_dvar for use in calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_calc_wa_Jan-1992_Dec-1996_all_era5-mdp_tcclw.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_calc_wa_Jan-2002_Dec-2006_all_era5-mdp_tcclw.nc.
+INFO:root:Adding: attributes for each DataArray within output Dataset from calc_diff.
+INFO:root:Added: attributes to dataset output from calc_diff.
+INFO:root:Creating: file: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_tcclw.nc.
+INFO:root:CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_tcclw.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_given_var_or_dvar for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Executing: calc_diff to obtain difference in outputs from calc_era5_mdp_clim_given_var_or_dvar over Jan-1992 to Dec-1996 and Jan-2002 to Dec-2006 for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_given_var_or_dvar for use in calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_calc_wa_Jan-1992_Dec-1996_all_era5-mdp_tcwv.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_calc_wa_Jan-2002_Dec-2006_all_era5-mdp_tcwv.nc.
+INFO:root:Adding: attributes for each DataArray within output Dataset from calc_diff.
+INFO:root:Added: attributes to dataset output from calc_diff.
+INFO:root:Creating: file: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_tcwv.nc.
+INFO:root:CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_tcwv.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_given_var_or_dvar for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Executing: calc_diff to obtain difference in outputs from calc_era5_mdp_clim_given_var_or_dvar over Jan-1992 to Dec-1996 and Jan-2002 to Dec-2006 for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_given_var_or_dvar for use in calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_calc_wa_Jan-1992_Dec-1996_all_era5-mdp_nac.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_calc_wa_Jan-2002_Dec-2006_all_era5-mdp_nac.nc.
+INFO:root:Adding: attributes for each DataArray within output Dataset from calc_diff.
+INFO:root:Added: attributes to dataset output from calc_diff.
+INFO:root:Creating: file: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_nac.nc.
+INFO:root:CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_nac.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_given_var_or_dvar for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Executing: calc_diff to obtain difference in outputs from calc_era5_mdp_clim_given_var_or_dvar over Jan-1992 to Dec-1996 and Jan-2002 to Dec-2006 for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_given_var_or_dvar for use in calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_calc_wa_Jan-1992_Dec-1996_all_era5-mdp_dws10.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_calc_wa_Jan-2002_Dec-2006_all_era5-mdp_dws10.nc.
+INFO:root:Adding: attributes for each DataArray within output Dataset from calc_diff.
+INFO:root:Added: attributes to dataset output from calc_diff.
+INFO:root:Creating: file: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dws10.nc.
+INFO:root:CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dws10.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_given_var_or_dvar for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Executing: calc_diff to obtain difference in outputs from calc_era5_mdp_clim_given_var_or_dvar over Jan-1992 to Dec-1996 and Jan-2002 to Dec-2006 for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_given_var_or_dvar for use in calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_calc_wa_Jan-1992_Dec-1996_all_era5-mdp_dws100.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_calc_wa_Jan-2002_Dec-2006_all_era5-mdp_dws100.nc.
+INFO:root:Adding: attributes for each DataArray within output Dataset from calc_diff.
+INFO:root:Added: attributes to dataset output from calc_diff.
+INFO:root:Creating: file: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dws100.nc.
+INFO:root:CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dws100.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_given_var_or_dvar for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Executing: calc_diff to obtain difference in outputs from calc_era5_mdp_clim_given_var_or_dvar over Jan-1992 to Dec-1996 and Jan-2002 to Dec-2006 for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_given_var_or_dvar for use in calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_calc_wa_Jan-1992_Dec-1996_all_era5-mdp_dwv10.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_calc_wa_Jan-2002_Dec-2006_all_era5-mdp_dwv10.nc.
+INFO:root:Adding: attributes for each DataArray within output Dataset from calc_diff.
+INFO:root:Added: attributes to dataset output from calc_diff.
+INFO:root:Creating: file: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dwv10.nc.
+INFO:root:CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dwv10.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_given_var_or_dvar for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Executing: calc_diff to obtain difference in outputs from calc_era5_mdp_clim_given_var_or_dvar over Jan-1992 to Dec-1996 and Jan-2002 to Dec-2006 for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_given_var_or_dvar for use in calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_calc_wa_Jan-1992_Dec-1996_all_era5-mdp_dwv100.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_calc_wa_Jan-2002_Dec-2006_all_era5-mdp_dwv100.nc.
+INFO:root:Adding: attributes for each DataArray within output Dataset from calc_diff.
+INFO:root:Added: attributes to dataset output from calc_diff.
+INFO:root:Creating: file: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dwv100.nc.
+INFO:root:CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dwv100.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_given_var_or_dvar for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Executing: calc_diff to obtain difference in outputs from calc_era5_mdp_clim_given_var_or_dvar over Jan-1992 to Dec-1996 and Jan-2002 to Dec-2006 for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_given_var_or_dvar for use in calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_calc_wa_Jan-1992_Dec-1996_all_era5-mdp_dmslp.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_calc_wa_Jan-2002_Dec-2006_all_era5-mdp_dmslp.nc.
+INFO:root:Adding: attributes for each DataArray within output Dataset from calc_diff.
+INFO:root:Added: attributes to dataset output from calc_diff.
+INFO:root:Creating: file: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dmslp.nc.
+INFO:root:CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dmslp.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_given_var_or_dvar for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Executing: calc_diff to obtain difference in outputs from calc_era5_mdp_clim_given_var_or_dvar over Jan-1992 to Dec-1996 and Jan-2002 to Dec-2006 for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_given_var_or_dvar for use in calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_calc_wa_Jan-1992_Dec-1996_all_era5-mdp_dt2.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_calc_wa_Jan-2002_Dec-2006_all_era5-mdp_dt2.nc.
+INFO:root:Adding: attributes for each DataArray within output Dataset from calc_diff.
+INFO:root:Added: attributes to dataset output from calc_diff.
+INFO:root:Creating: file: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dt2.nc.
+INFO:root:CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dt2.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_given_var_or_dvar for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Executing: calc_diff to obtain difference in outputs from calc_era5_mdp_clim_given_var_or_dvar over Jan-1992 to Dec-1996 and Jan-2002 to Dec-2006 for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_given_var_or_dvar for use in calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_calc_wa_Jan-1992_Dec-1996_all_era5-mdp_dslhf.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_calc_wa_Jan-2002_Dec-2006_all_era5-mdp_dslhf.nc.
+INFO:root:Adding: attributes for each DataArray within output Dataset from calc_diff.
+INFO:root:Added: attributes to dataset output from calc_diff.
+INFO:root:Creating: file: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dslhf.nc.
+INFO:root:CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dslhf.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_given_var_or_dvar for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Executing: calc_diff to obtain difference in outputs from calc_era5_mdp_clim_given_var_or_dvar over Jan-1992 to Dec-1996 and Jan-2002 to Dec-2006 for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_given_var_or_dvar for use in calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_calc_wa_Jan-1992_Dec-1996_all_era5-mdp_dsshf.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_calc_wa_Jan-2002_Dec-2006_all_era5-mdp_dsshf.nc.
+INFO:root:Adding: attributes for each DataArray within output Dataset from calc_diff.
+INFO:root:Added: attributes to dataset output from calc_diff.
+INFO:root:Creating: file: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dsshf.nc.
+INFO:root:CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dsshf.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_given_var_or_dvar for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Executing: calc_diff to obtain difference in outputs from calc_era5_mdp_clim_given_var_or_dvar over Jan-1992 to Dec-1996 and Jan-2002 to Dec-2006 for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_given_var_or_dvar for use in calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_calc_wa_Jan-1992_Dec-1996_all_era5-mdp_dviec.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_calc_wa_Jan-2002_Dec-2006_all_era5-mdp_dviec.nc.
+INFO:root:Adding: attributes for each DataArray within output Dataset from calc_diff.
+INFO:root:Added: attributes to dataset output from calc_diff.
+INFO:root:Creating: file: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dviec.nc.
+INFO:root:CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dviec.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_given_var_or_dvar for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Executing: calc_diff to obtain difference in outputs from calc_era5_mdp_clim_given_var_or_dvar over Jan-1992 to Dec-1996 and Jan-2002 to Dec-2006 for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_given_var_or_dvar for use in calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_calc_wa_Jan-1992_Dec-1996_all_era5-mdp_dvipile.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_calc_wa_Jan-2002_Dec-2006_all_era5-mdp_dvipile.nc.
+INFO:root:Adding: attributes for each DataArray within output Dataset from calc_diff.
+INFO:root:Added: attributes to dataset output from calc_diff.
+INFO:root:Creating: file: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dvipile.nc.
+INFO:root:CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dvipile.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_given_var_or_dvar for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Executing: calc_diff to obtain difference in outputs from calc_era5_mdp_clim_given_var_or_dvar over Jan-1992 to Dec-1996 and Jan-2002 to Dec-2006 for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_given_var_or_dvar for use in calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_calc_wa_Jan-1992_Dec-1996_all_era5-mdp_dvike.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_calc_wa_Jan-2002_Dec-2006_all_era5-mdp_dvike.nc.
+INFO:root:Adding: attributes for each DataArray within output Dataset from calc_diff.
+INFO:root:Added: attributes to dataset output from calc_diff.
+INFO:root:Creating: file: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dvike.nc.
+INFO:root:CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dvike.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_given_var_or_dvar for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Executing: calc_diff to obtain difference in outputs from calc_era5_mdp_clim_given_var_or_dvar over Jan-1992 to Dec-1996 and Jan-2002 to Dec-2006 for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_given_var_or_dvar for use in calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_calc_wa_Jan-1992_Dec-1996_all_era5-mdp_dtcclw.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_calc_wa_Jan-2002_Dec-2006_all_era5-mdp_dtcclw.nc.
+INFO:root:Adding: attributes for each DataArray within output Dataset from calc_diff.
+INFO:root:Added: attributes to dataset output from calc_diff.
+INFO:root:Creating: file: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dtcclw.nc.
+INFO:root:CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dtcclw.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_given_var_or_dvar for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Executing: calc_diff to obtain difference in outputs from calc_era5_mdp_clim_given_var_or_dvar over Jan-1992 to Dec-1996 and Jan-2002 to Dec-2006 for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_given_var_or_dvar for use in calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_calc_wa_Jan-1992_Dec-1996_all_era5-mdp_dtcwv.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_calc_wa_Jan-2002_Dec-2006_all_era5-mdp_dtcwv.nc.
+INFO:root:Adding: attributes for each DataArray within output Dataset from calc_diff.
+INFO:root:Added: attributes to dataset output from calc_diff.
+INFO:root:Creating: file: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dtcwv.nc.
+INFO:root:CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dtcwv.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_given_var_or_dvar for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Executing: calc_diff to obtain difference in outputs from calc_era5_mdp_clim_given_var_or_dvar over Jan-1992 to Dec-1996 and Jan-2002 to Dec-2006 for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_given_var_or_dvar for use in calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_calc_wa_Jan-1992_Dec-1996_all_era5-mdp_dnac.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_calc_wa_Jan-2002_Dec-2006_all_era5-mdp_dnac.nc.
+INFO:root:Adding: attributes for each DataArray within output Dataset from calc_diff.
+INFO:root:Added: attributes to dataset output from calc_diff.
+INFO:root:Creating: file: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dnac.nc.
+INFO:root:CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dnac.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_stats_given_var_or_dvar for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Executing: calc_diff to obtain difference in outputs from calc_era5_mdp_clim_stats_given_var_or_dvar over Jan-1992 to Dec-1996 and Jan-2002 to Dec-2006 for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_stats_given_var_or_dvar for use in calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_stats_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_calc_wa_Jan-1992_Dec-1996_all_era5-mdp_ws10_stats.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_stats_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_calc_wa_Jan-2002_Dec-2006_all_era5-mdp_ws10_stats.nc.
+INFO:root:Adding: attributes for each DataArray within output Dataset from calc_diff.
+INFO:root:Added: attributes to dataset output from calc_diff.
+INFO:root:Creating: file: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_ws10_stats.nc.
+INFO:root:CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_ws10_stats.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_stats_given_var_or_dvar for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Executing: calc_diff to obtain difference in outputs from calc_era5_mdp_clim_stats_given_var_or_dvar over Jan-1992 to Dec-1996 and Jan-2002 to Dec-2006 for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_stats_given_var_or_dvar for use in calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_stats_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_calc_wa_Jan-1992_Dec-1996_all_era5-mdp_ws100_stats.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_stats_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_calc_wa_Jan-2002_Dec-2006_all_era5-mdp_ws100_stats.nc.
+INFO:root:Adding: attributes for each DataArray within output Dataset from calc_diff.
+INFO:root:Added: attributes to dataset output from calc_diff.
+INFO:root:Creating: file: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_ws100_stats.nc.
+INFO:root:CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_ws100_stats.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_stats_given_var_or_dvar for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Executing: calc_diff to obtain difference in outputs from calc_era5_mdp_clim_stats_given_var_or_dvar over Jan-1992 to Dec-1996 and Jan-2002 to Dec-2006 for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_stats_given_var_or_dvar for use in calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_stats_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_calc_wa_Jan-1992_Dec-1996_all_era5-mdp_wv10_stats.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_stats_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_calc_wa_Jan-2002_Dec-2006_all_era5-mdp_wv10_stats.nc.
+INFO:root:Adding: attributes for each DataArray within output Dataset from calc_diff.
+INFO:root:Added: attributes to dataset output from calc_diff.
+INFO:root:Creating: file: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_wv10_stats.nc.
+INFO:root:CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_wv10_stats.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_stats_given_var_or_dvar for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Executing: calc_diff to obtain difference in outputs from calc_era5_mdp_clim_stats_given_var_or_dvar over Jan-1992 to Dec-1996 and Jan-2002 to Dec-2006 for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_stats_given_var_or_dvar for use in calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_stats_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_calc_wa_Jan-1992_Dec-1996_all_era5-mdp_wv100_stats.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_stats_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_calc_wa_Jan-2002_Dec-2006_all_era5-mdp_wv100_stats.nc.
+INFO:root:Adding: attributes for each DataArray within output Dataset from calc_diff.
+INFO:root:Added: attributes to dataset output from calc_diff.
+INFO:root:Creating: file: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_wv100_stats.nc.
+INFO:root:CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_wv100_stats.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_stats_given_var_or_dvar for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Executing: calc_diff to obtain difference in outputs from calc_era5_mdp_clim_stats_given_var_or_dvar over Jan-1992 to Dec-1996 and Jan-2002 to Dec-2006 for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_stats_given_var_or_dvar for use in calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_stats_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_calc_wa_Jan-1992_Dec-1996_all_era5-mdp_mslp_stats.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_stats_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_calc_wa_Jan-2002_Dec-2006_all_era5-mdp_mslp_stats.nc.
+INFO:root:Adding: attributes for each DataArray within output Dataset from calc_diff.
+INFO:root:Added: attributes to dataset output from calc_diff.
+INFO:root:Creating: file: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_mslp_stats.nc.
+INFO:root:CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_mslp_stats.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_stats_given_var_or_dvar for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Executing: calc_diff to obtain difference in outputs from calc_era5_mdp_clim_stats_given_var_or_dvar over Jan-1992 to Dec-1996 and Jan-2002 to Dec-2006 for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_stats_given_var_or_dvar for use in calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_stats_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_calc_wa_Jan-1992_Dec-1996_all_era5-mdp_t2_stats.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_stats_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_calc_wa_Jan-2002_Dec-2006_all_era5-mdp_t2_stats.nc.
+INFO:root:Adding: attributes for each DataArray within output Dataset from calc_diff.
+INFO:root:Added: attributes to dataset output from calc_diff.
+INFO:root:Creating: file: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_t2_stats.nc.
+INFO:root:CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_t2_stats.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_stats_given_var_or_dvar for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Executing: calc_diff to obtain difference in outputs from calc_era5_mdp_clim_stats_given_var_or_dvar over Jan-1992 to Dec-1996 and Jan-2002 to Dec-2006 for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_stats_given_var_or_dvar for use in calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_stats_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_calc_wa_Jan-1992_Dec-1996_all_era5-mdp_slhf_stats.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_stats_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_calc_wa_Jan-2002_Dec-2006_all_era5-mdp_slhf_stats.nc.
+INFO:root:Adding: attributes for each DataArray within output Dataset from calc_diff.
+INFO:root:Added: attributes to dataset output from calc_diff.
+INFO:root:Creating: file: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_slhf_stats.nc.
+INFO:root:CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_slhf_stats.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_stats_given_var_or_dvar for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Executing: calc_diff to obtain difference in outputs from calc_era5_mdp_clim_stats_given_var_or_dvar over Jan-1992 to Dec-1996 and Jan-2002 to Dec-2006 for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_stats_given_var_or_dvar for use in calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_stats_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_calc_wa_Jan-1992_Dec-1996_all_era5-mdp_sshf_stats.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_stats_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_calc_wa_Jan-2002_Dec-2006_all_era5-mdp_sshf_stats.nc.
+INFO:root:Adding: attributes for each DataArray within output Dataset from calc_diff.
+INFO:root:Added: attributes to dataset output from calc_diff.
+INFO:root:Creating: file: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_sshf_stats.nc.
+INFO:root:CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_sshf_stats.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_stats_given_var_or_dvar for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Executing: calc_diff to obtain difference in outputs from calc_era5_mdp_clim_stats_given_var_or_dvar over Jan-1992 to Dec-1996 and Jan-2002 to Dec-2006 for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_stats_given_var_or_dvar for use in calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_stats_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_calc_wa_Jan-1992_Dec-1996_all_era5-mdp_viec_stats.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_stats_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_calc_wa_Jan-2002_Dec-2006_all_era5-mdp_viec_stats.nc.
+INFO:root:Adding: attributes for each DataArray within output Dataset from calc_diff.
+INFO:root:Added: attributes to dataset output from calc_diff.
+INFO:root:Creating: file: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_viec_stats.nc.
+INFO:root:CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_viec_stats.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_stats_given_var_or_dvar for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Executing: calc_diff to obtain difference in outputs from calc_era5_mdp_clim_stats_given_var_or_dvar over Jan-1992 to Dec-1996 and Jan-2002 to Dec-2006 for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_stats_given_var_or_dvar for use in calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_stats_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_calc_wa_Jan-1992_Dec-1996_all_era5-mdp_vipile_stats.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_stats_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_calc_wa_Jan-2002_Dec-2006_all_era5-mdp_vipile_stats.nc.
+INFO:root:Adding: attributes for each DataArray within output Dataset from calc_diff.
+INFO:root:Added: attributes to dataset output from calc_diff.
+INFO:root:Creating: file: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_vipile_stats.nc.
+INFO:root:CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_vipile_stats.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_stats_given_var_or_dvar for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Executing: calc_diff to obtain difference in outputs from calc_era5_mdp_clim_stats_given_var_or_dvar over Jan-1992 to Dec-1996 and Jan-2002 to Dec-2006 for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_stats_given_var_or_dvar for use in calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_stats_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_calc_wa_Jan-1992_Dec-1996_all_era5-mdp_vike_stats.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_stats_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_calc_wa_Jan-2002_Dec-2006_all_era5-mdp_vike_stats.nc.
+INFO:root:Adding: attributes for each DataArray within output Dataset from calc_diff.
+INFO:root:Added: attributes to dataset output from calc_diff.
+INFO:root:Creating: file: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_vike_stats.nc.
+INFO:root:CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_vike_stats.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_stats_given_var_or_dvar for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Executing: calc_diff to obtain difference in outputs from calc_era5_mdp_clim_stats_given_var_or_dvar over Jan-1992 to Dec-1996 and Jan-2002 to Dec-2006 for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_stats_given_var_or_dvar for use in calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_stats_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_calc_wa_Jan-1992_Dec-1996_all_era5-mdp_tcclw_stats.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_stats_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_calc_wa_Jan-2002_Dec-2006_all_era5-mdp_tcclw_stats.nc.
+INFO:root:Adding: attributes for each DataArray within output Dataset from calc_diff.
+INFO:root:Added: attributes to dataset output from calc_diff.
+INFO:root:Creating: file: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_tcclw_stats.nc.
+INFO:root:CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_tcclw_stats.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_stats_given_var_or_dvar for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Executing: calc_diff to obtain difference in outputs from calc_era5_mdp_clim_stats_given_var_or_dvar over Jan-1992 to Dec-1996 and Jan-2002 to Dec-2006 for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_stats_given_var_or_dvar for use in calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_stats_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_calc_wa_Jan-1992_Dec-1996_all_era5-mdp_tcwv_stats.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_stats_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_calc_wa_Jan-2002_Dec-2006_all_era5-mdp_tcwv_stats.nc.
+INFO:root:Adding: attributes for each DataArray within output Dataset from calc_diff.
+INFO:root:Added: attributes to dataset output from calc_diff.
+INFO:root:Creating: file: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_tcwv_stats.nc.
+INFO:root:CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_tcwv_stats.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_stats_given_var_or_dvar for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Executing: calc_diff to obtain difference in outputs from calc_era5_mdp_clim_stats_given_var_or_dvar over Jan-1992 to Dec-1996 and Jan-2002 to Dec-2006 for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_stats_given_var_or_dvar for use in calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_stats_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_calc_wa_Jan-1992_Dec-1996_all_era5-mdp_nac_stats.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_stats_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_calc_wa_Jan-2002_Dec-2006_all_era5-mdp_nac_stats.nc.
+INFO:root:Adding: attributes for each DataArray within output Dataset from calc_diff.
+INFO:root:Added: attributes to dataset output from calc_diff.
+INFO:root:Creating: file: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_nac_stats.nc.
+INFO:root:CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_nac_stats.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_stats_given_var_or_dvar for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Executing: calc_diff to obtain difference in outputs from calc_era5_mdp_clim_stats_given_var_or_dvar over Jan-1992 to Dec-1996 and Jan-2002 to Dec-2006 for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_stats_given_var_or_dvar for use in calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_stats_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_calc_wa_Jan-1992_Dec-1996_all_era5-mdp_dws10_stats.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_stats_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_calc_wa_Jan-2002_Dec-2006_all_era5-mdp_dws10_stats.nc.
+INFO:root:Adding: attributes for each DataArray within output Dataset from calc_diff.
+INFO:root:Added: attributes to dataset output from calc_diff.
+INFO:root:Creating: file: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dws10_stats.nc.
+INFO:root:CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dws10_stats.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_stats_given_var_or_dvar for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Executing: calc_diff to obtain difference in outputs from calc_era5_mdp_clim_stats_given_var_or_dvar over Jan-1992 to Dec-1996 and Jan-2002 to Dec-2006 for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_stats_given_var_or_dvar for use in calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_stats_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_calc_wa_Jan-1992_Dec-1996_all_era5-mdp_dws100_stats.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_stats_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_calc_wa_Jan-2002_Dec-2006_all_era5-mdp_dws100_stats.nc.
+INFO:root:Adding: attributes for each DataArray within output Dataset from calc_diff.
+INFO:root:Added: attributes to dataset output from calc_diff.
+INFO:root:Creating: file: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dws100_stats.nc.
+INFO:root:CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dws100_stats.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_stats_given_var_or_dvar for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Executing: calc_diff to obtain difference in outputs from calc_era5_mdp_clim_stats_given_var_or_dvar over Jan-1992 to Dec-1996 and Jan-2002 to Dec-2006 for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_stats_given_var_or_dvar for use in calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_stats_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_calc_wa_Jan-1992_Dec-1996_all_era5-mdp_dwv10_stats.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_stats_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_calc_wa_Jan-2002_Dec-2006_all_era5-mdp_dwv10_stats.nc.
+INFO:root:Adding: attributes for each DataArray within output Dataset from calc_diff.
+INFO:root:Added: attributes to dataset output from calc_diff.
+INFO:root:Creating: file: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dwv10_stats.nc.
+INFO:root:CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dwv10_stats.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_stats_given_var_or_dvar for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Executing: calc_diff to obtain difference in outputs from calc_era5_mdp_clim_stats_given_var_or_dvar over Jan-1992 to Dec-1996 and Jan-2002 to Dec-2006 for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_stats_given_var_or_dvar for use in calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_stats_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_calc_wa_Jan-1992_Dec-1996_all_era5-mdp_dwv100_stats.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_stats_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_calc_wa_Jan-2002_Dec-2006_all_era5-mdp_dwv100_stats.nc.
+INFO:root:Adding: attributes for each DataArray within output Dataset from calc_diff.
+INFO:root:Added: attributes to dataset output from calc_diff.
+INFO:root:Creating: file: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dwv100_stats.nc.
+INFO:root:CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dwv100_stats.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_stats_given_var_or_dvar for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Executing: calc_diff to obtain difference in outputs from calc_era5_mdp_clim_stats_given_var_or_dvar over Jan-1992 to Dec-1996 and Jan-2002 to Dec-2006 for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_stats_given_var_or_dvar for use in calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_stats_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_calc_wa_Jan-1992_Dec-1996_all_era5-mdp_dmslp_stats.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_stats_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_calc_wa_Jan-2002_Dec-2006_all_era5-mdp_dmslp_stats.nc.
+INFO:root:Adding: attributes for each DataArray within output Dataset from calc_diff.
+INFO:root:Added: attributes to dataset output from calc_diff.
+INFO:root:Creating: file: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dmslp_stats.nc.
+INFO:root:CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dmslp_stats.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_stats_given_var_or_dvar for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Executing: calc_diff to obtain difference in outputs from calc_era5_mdp_clim_stats_given_var_or_dvar over Jan-1992 to Dec-1996 and Jan-2002 to Dec-2006 for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_stats_given_var_or_dvar for use in calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_stats_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_calc_wa_Jan-1992_Dec-1996_all_era5-mdp_dt2_stats.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_stats_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_calc_wa_Jan-2002_Dec-2006_all_era5-mdp_dt2_stats.nc.
+INFO:root:Adding: attributes for each DataArray within output Dataset from calc_diff.
+INFO:root:Added: attributes to dataset output from calc_diff.
+INFO:root:Creating: file: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dt2_stats.nc.
+INFO:root:CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dt2_stats.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_stats_given_var_or_dvar for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Executing: calc_diff to obtain difference in outputs from calc_era5_mdp_clim_stats_given_var_or_dvar over Jan-1992 to Dec-1996 and Jan-2002 to Dec-2006 for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_stats_given_var_or_dvar for use in calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_stats_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_calc_wa_Jan-1992_Dec-1996_all_era5-mdp_dslhf_stats.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_stats_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_calc_wa_Jan-2002_Dec-2006_all_era5-mdp_dslhf_stats.nc.
+INFO:root:Adding: attributes for each DataArray within output Dataset from calc_diff.
+INFO:root:Added: attributes to dataset output from calc_diff.
+INFO:root:Creating: file: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dslhf_stats.nc.
+INFO:root:CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dslhf_stats.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_stats_given_var_or_dvar for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Executing: calc_diff to obtain difference in outputs from calc_era5_mdp_clim_stats_given_var_or_dvar over Jan-1992 to Dec-1996 and Jan-2002 to Dec-2006 for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_stats_given_var_or_dvar for use in calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_stats_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_calc_wa_Jan-1992_Dec-1996_all_era5-mdp_dsshf_stats.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_stats_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_calc_wa_Jan-2002_Dec-2006_all_era5-mdp_dsshf_stats.nc.
+INFO:root:Adding: attributes for each DataArray within output Dataset from calc_diff.
+INFO:root:Added: attributes to dataset output from calc_diff.
+INFO:root:Creating: file: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dsshf_stats.nc.
+INFO:root:CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dsshf_stats.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_stats_given_var_or_dvar for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Executing: calc_diff to obtain difference in outputs from calc_era5_mdp_clim_stats_given_var_or_dvar over Jan-1992 to Dec-1996 and Jan-2002 to Dec-2006 for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_stats_given_var_or_dvar for use in calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_stats_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_calc_wa_Jan-1992_Dec-1996_all_era5-mdp_dviec_stats.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_stats_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_calc_wa_Jan-2002_Dec-2006_all_era5-mdp_dviec_stats.nc.
+INFO:root:Adding: attributes for each DataArray within output Dataset from calc_diff.
+INFO:root:Added: attributes to dataset output from calc_diff.
+INFO:root:Creating: file: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dviec_stats.nc.
+INFO:root:CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dviec_stats.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_stats_given_var_or_dvar for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Executing: calc_diff to obtain difference in outputs from calc_era5_mdp_clim_stats_given_var_or_dvar over Jan-1992 to Dec-1996 and Jan-2002 to Dec-2006 for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_stats_given_var_or_dvar for use in calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_stats_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_calc_wa_Jan-1992_Dec-1996_all_era5-mdp_dvipile_stats.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_stats_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_calc_wa_Jan-2002_Dec-2006_all_era5-mdp_dvipile_stats.nc.
+INFO:root:Adding: attributes for each DataArray within output Dataset from calc_diff.
+INFO:root:Added: attributes to dataset output from calc_diff.
+INFO:root:Creating: file: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dvipile_stats.nc.
+INFO:root:CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dvipile_stats.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_stats_given_var_or_dvar for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Executing: calc_diff to obtain difference in outputs from calc_era5_mdp_clim_stats_given_var_or_dvar over Jan-1992 to Dec-1996 and Jan-2002 to Dec-2006 for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_stats_given_var_or_dvar for use in calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_stats_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_calc_wa_Jan-1992_Dec-1996_all_era5-mdp_dvike_stats.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_stats_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_calc_wa_Jan-2002_Dec-2006_all_era5-mdp_dvike_stats.nc.
+INFO:root:Adding: attributes for each DataArray within output Dataset from calc_diff.
+INFO:root:Added: attributes to dataset output from calc_diff.
+INFO:root:Creating: file: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dvike_stats.nc.
+INFO:root:CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dvike_stats.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_stats_given_var_or_dvar for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Executing: calc_diff to obtain difference in outputs from calc_era5_mdp_clim_stats_given_var_or_dvar over Jan-1992 to Dec-1996 and Jan-2002 to Dec-2006 for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_stats_given_var_or_dvar for use in calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_stats_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_calc_wa_Jan-1992_Dec-1996_all_era5-mdp_dtcclw_stats.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_stats_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_calc_wa_Jan-2002_Dec-2006_all_era5-mdp_dtcclw_stats.nc.
+INFO:root:Adding: attributes for each DataArray within output Dataset from calc_diff.
+INFO:root:Added: attributes to dataset output from calc_diff.
+INFO:root:Creating: file: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dtcclw_stats.nc.
+INFO:root:CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dtcclw_stats.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_stats_given_var_or_dvar for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Executing: calc_diff to obtain difference in outputs from calc_era5_mdp_clim_stats_given_var_or_dvar over Jan-1992 to Dec-1996 and Jan-2002 to Dec-2006 for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_stats_given_var_or_dvar for use in calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_stats_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_calc_wa_Jan-1992_Dec-1996_all_era5-mdp_dtcwv_stats.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_stats_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_calc_wa_Jan-2002_Dec-2006_all_era5-mdp_dtcwv_stats.nc.
+INFO:root:Adding: attributes for each DataArray within output Dataset from calc_diff.
+INFO:root:Added: attributes to dataset output from calc_diff.
+INFO:root:Creating: file: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dtcwv_stats.nc.
+INFO:root:CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dtcwv_stats.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_stats_given_var_or_dvar for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Executing: calc_diff to obtain difference in outputs from calc_era5_mdp_clim_stats_given_var_or_dvar over Jan-1992 to Dec-1996 and Jan-2002 to Dec-2006 for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_stats_given_var_or_dvar for use in calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_stats_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_calc_wa_Jan-1992_Dec-1996_all_era5-mdp_dnac_stats.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_stats_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_calc_wa_Jan-2002_Dec-2006_all_era5-mdp_dnac_stats.nc.
+INFO:root:Adding: attributes for each DataArray within output Dataset from calc_diff.
+INFO:root:Added: attributes to dataset output from calc_diff.
+INFO:root:Creating: file: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dnac_stats.nc.
+INFO:root:CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dnac_stats.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_wsd_clim for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Executing: calc_diff to obtain difference in outputs from calc_era5_wsd_clim over Jan-1992 to Dec-1996 and Jan-2002 to Dec-2006 for use in create_all_possible_diff_data_files.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_wsd_clim for use in calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_wsd_clim output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_wsd_clim/cfv1i_calc_wa_Jan-1992_Dec-1996_all_era5-wsd.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_wsd_clim output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_wsd_clim/cfv1i_calc_wa_Jan-2002_Dec-2006_all_era5-wsd.nc.
+INFO:root:Adding: attributes for each DataArray within output Dataset from calc_diff.
+INFO:root:Added: attributes to dataset output from calc_diff.
+INFO:root:Creating: file: ../data_processed/era5_wsd_clim/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-wsd.nc.
+INFO:root:CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_wsd_clim/cfv1i_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-wsd.nc.
