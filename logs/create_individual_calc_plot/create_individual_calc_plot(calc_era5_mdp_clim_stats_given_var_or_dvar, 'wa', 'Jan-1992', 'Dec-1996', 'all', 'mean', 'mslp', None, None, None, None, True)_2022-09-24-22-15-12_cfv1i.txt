@@ -1,0 +1,7 @@
+INFO:root:CREATED: log file for create_individual_calc_plot: ../logs/create_individual_calc_plot/create_individual_calc_plot(calc_era5_mdp_clim_stats_given_var_or_dvar, 'wa', 'Jan-1992', 'Dec-1996', 'all', 'mean', 'mslp', None, None, None, None, True)_2022-09-24-22-15-12_cfv1i.txt.
+INFO:root:Passed: validity check for input arguments into create_individual_calc_plot.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_stats_given_var_or_dvar output path for use in create_individual_calc_plot.
+INFO:root:Opening: existing file for use in create_individual_calc_plot: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1i_calc_wa_Jan-1992_Dec-1996_all_era5-mdp_mslp_stats.nc

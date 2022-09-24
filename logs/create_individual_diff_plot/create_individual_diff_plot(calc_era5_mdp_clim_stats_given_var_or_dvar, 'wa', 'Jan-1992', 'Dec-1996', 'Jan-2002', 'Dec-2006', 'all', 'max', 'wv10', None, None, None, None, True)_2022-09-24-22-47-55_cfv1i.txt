@@ -1,0 +1,3 @@
+INFO:root:CREATED: log file for create_individual_diff_plot: ../logs/create_individual_diff_plot/create_individual_diff_plot(calc_era5_mdp_clim_stats_given_var_or_dvar, 'wa', 'Jan-1992', 'Dec-1996', 'Jan-2002', 'Dec-2006', 'all', 'max', 'wv10', None, None, None, None, True)_2022-09-24-22-47-55_cfv1i.txt.
+INFO:root:Passed: validity check for input arguments into create_individual_diff_plot.
+INFO:root:Passed: validity check for input arguments into create_individual_diff_plot.

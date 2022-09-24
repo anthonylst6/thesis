@@ -1,0 +1,2 @@
+INFO:root:CREATED: log file for create_individual_calc_plot: ../logs/create_individual_calc_plot/create_individual_calc_plot(calc_era5_mdp_clim_stats_given_var_or_dvar, 'wa', 'Jan-1992', 'Dec-1996', 'all', 'mslp', None, None, None, None, None, False)_2022-09-24-20-46-55_cfv1i.txt.
+INFO:root:Passed: validity check for input arguments into create_individual_calc_plot.

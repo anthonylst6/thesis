@@ -153,7 +153,18 @@ vars_and_dvars_era5_all = vars_era5_all + dvars_era5_all
 
 # Parameters which are vectors
 vectors = ["wv10", "wv100", "dwv10", "dwv100"]
-            
+
+# Output parameters for calc_glass_mean_clim
+params_glass_mean = ["mlai", "mfapar"]
+
+# Output parameters for calc_era5_mdp_clim_stats_given_var_or_dvar
+stats_all = ["hour_max", "hour_min", "max", "max_u", "max_v", 
+             "min", "min_u", "min_v", "mean", "mean_u", "mean_v", "range"]
+
+# Output parameters for calc_era5_wsd_clim
+params_wsd = ["ws10_mean", "ws10_std", "c10", "k10", "ws100_mean", 
+              "ws100_std", "c100", "k100", "eroe100", "tgcf100"]
+
 # Mapping from ERA5 dataset variable names to own desired names, while
 # also accounting for any var_or_dvar variable dependencies
 vars_deps_and_rename = {"ws10": {"u10": "u10", "v10": "v10"},
@@ -235,7 +246,7 @@ da_attrs = {
             "full_name": "Zonal Component of Wind Velocity at 10 m Above Surface",
             "units": "$m s^{-1}$"},
     "v10": {"abbreviation": "V10",
-            "full_name": "Meriodional Component of Wind Velocity at 10 m Above Surface",
+            "full_name": "Meridional Component of Wind Velocity at 10 m Above Surface",
             "units": "$m s^{-1}$"},
     "ws10": {"abbreviation": "WS10",
              "full_name": "Wind Speed at 10 m Above Surface",
@@ -247,7 +258,7 @@ da_attrs = {
              "full_name": "Zonal Component of Wind Velocity at 100 m Above Surface",
              "units": "$m s^{-1}$"},
     "v100": {"abbreviation": "V100",
-             "full_name": "Meriodional Component of Wind Velocity at 100 m Above Surface",
+             "full_name": "Meridional Component of Wind Velocity at 100 m Above Surface",
              "units": "$m s^{-1}$"},
     "ws100": {"abbreviation": "WS100",
               "full_name": "Wind Speed at 100 m Above Surface",
@@ -636,10 +647,10 @@ def check_args(calc_func=None, region=None, period_start=None, period_end=None,
             Must be a str and one of: ["all", "djf", "mam", "jja", "son"], or a subset
             list of: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] with at least one item.
         var_or_dvar (str): Variable or value of change in variable to perform
-            calculation over. Must be one of: ['wv10', 'wv100', 'mslp', 't2',
-            'slhf', 'sshf', 'viec', 'vipile', 'vike', 'tcclw', 'tcwv', 'nac',
-            'dwv10', 'dwv100', 'dmslp', 'dt2', 'dslhf', 'dsshf', 'dviec',
-            'dvipile', 'dvike', 'dtcclw', 'dtcwv', 'dnac'].
+            calculation over. Must be one of: ['ws10', 'ws100', 'wv10', 'wv100', 
+            'mslp', 't2', 'slhf', 'sshf', 'viec', 'vipile', 'vike', 'tcclw', 'tcwv', 
+            'nac', 'dws10', 'dws100', 'dwv10', 'dwv100', 'dmslp', 'dt2', 'dslhf', 
+            'dsshf', 'dviec', 'dvipile', 'dvike', 'dtcclw', 'dtcwv', 'dnac'].
         hour (int): Hour of mean diurnal profile to compute value for.
             Must be one of: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
             13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23].
@@ -862,10 +873,10 @@ def get_param_layer_and_type(var_or_dvar):
     
     Arguments:
         var_or_dvar (str): Variable or value of change in variable to perform
-            calculation over. Must be one of: ['wv10', 'wv100', 'mslp', 't2',
-            'slhf', 'sshf', 'viec', 'vipile', 'vike', 'tcclw', 'tcwv', 'nac',
-            'dwv10', 'dwv100', 'dmslp', 'dt2', 'dslhf', 'dsshf', 'dviec',
-            'dvipile', 'dvike', 'dtcclw', 'dtcwv', 'dnac'].
+            calculation over. Must be one of: ['ws10', 'ws100', 'wv10', 'wv100', 
+            'mslp', 't2', 'slhf', 'sshf', 'viec', 'vipile', 'vike', 'tcclw', 'tcwv', 
+            'nac', 'dws10', 'dws100', 'dwv10', 'dwv100', 'dmslp', 'dt2', 'dslhf', 
+            'dsshf', 'dviec', 'dvipile', 'dvike', 'dtcclw', 'dtcwv', 'dnac'].
     
     Returns:
         param_layer (str): param_layer classification indicating which spatial layer
@@ -1300,10 +1311,10 @@ def get_da_range_for_vector_mdp_values(ds_era5_mdp, var_or_dvar):
         ds_era5_mdp (xarray.Dataset): xarray Dataset containing MDP values for
             the given var_or_dvar.
         var_or_dvar (str): Variable or value of change in variable to perform
-            calculation over. Must be one of: ['wv10', 'wv100', 'mslp', 't2',
-            'slhf', 'sshf', 'viec', 'vipile', 'vike', 'tcclw', 'tcwv', 'nac',
-            'dwv10', 'dwv100', 'dmslp', 'dt2', 'dslhf', 'dsshf', 'dviec',
-            'dvipile', 'dvike', 'dtcclw', 'dtcwv', 'dnac'].
+            calculation over. Must be one of: ['ws10', 'ws100', 'wv10', 'wv100', 
+            'mslp', 't2', 'slhf', 'sshf', 'viec', 'vipile', 'vike', 'tcclw', 'tcwv', 
+            'nac', 'dws10', 'dws100', 'dwv10', 'dwv100', 'dmslp', 'dt2', 'dslhf', 
+            'dsshf', 'dviec', 'dvipile', 'dvike', 'dtcclw', 'dtcwv', 'dnac'].
                         
     Returns:
         da_range (xarray.DataArray): Range of vector MDP values.
@@ -1489,7 +1500,7 @@ def get_weibull_eroe(da_c, da_k, ws_exc):
     assert str(type(da_k)) == "<class 'xarray.core.dataarray.DataArray'>", \
         "da_k must be an xarray.DataArray"
     assert (isinstance(ws_exc, float) | isinstance(ws_exc, int)), \
-        f"ws_exc must have data type float or int"
+        "ws_exc must have data type float or int"
     
     if (func_1up == "<cell line: 1>") | (func_1up == "<module>"):
         logging.debug(("Executing: {} to obtain {} m/s expected rate of exceedance " +
@@ -1735,10 +1746,10 @@ def get_path_for_calc_func(calc_func_name, region, period_start, period_end,
             Must be a str and one of: ["all", "djf", "mam", "jja", "son"], or a subset
             list of: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] with at least one item.
         var_or_dvar (str): Variable or value of change in variable to perform
-            calculation over. Must be one of: ['wv10', 'wv100', 'mslp', 't2',
-            'slhf', 'sshf', 'viec', 'vipile', 'vike', 'tcclw', 'tcwv', 'nac',
-            'dwv10', 'dwv100', 'dmslp', 'dt2', 'dslhf', 'dsshf', 'dviec',
-            'dvipile', 'dvike', 'dtcclw', 'dtcwv', 'dnac'].
+            calculation over. Must be one of: ['ws10', 'ws100', 'wv10', 'wv100', 
+            'mslp', 't2', 'slhf', 'sshf', 'viec', 'vipile', 'vike', 'tcclw', 'tcwv', 
+            'nac', 'dws10', 'dws100', 'dwv10', 'dwv100', 'dmslp', 'dt2', 'dslhf', 
+            'dsshf', 'dviec', 'dvipile', 'dvike', 'dtcclw', 'dtcwv', 'dnac'].
             
     Returns:
         path_output_calc_func (str): Output path for results from calc_func.
@@ -1832,10 +1843,10 @@ def get_path_for_calc_diff(calc_func_name, region, period1_start, period1_end,
             Must be a str and one of: ["all", "djf", "mam", "jja", "son"], or a subset
             list of: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] with at least one item.
         var_or_dvar (str): Variable or value of change in variable to perform
-            calculation over. Must be one of: ['wv10', 'wv100', 'mslp', 't2',
-            'slhf', 'sshf', 'viec', 'vipile', 'vike', 'tcclw', 'tcwv', 'nac',
-            'dwv10', 'dwv100', 'dmslp', 'dt2', 'dslhf', 'dsshf', 'dviec',
-            'dvipile', 'dvike', 'dtcclw', 'dtcwv', 'dnac'].
+            calculation over. Must be one of: ['ws10', 'ws100', 'wv10', 'wv100', 
+            'mslp', 't2', 'slhf', 'sshf', 'viec', 'vipile', 'vike', 'tcclw', 'tcwv', 
+            'nac', 'dws10', 'dws100', 'dwv10', 'dwv100', 'dmslp', 'dt2', 'dslhf', 
+            'dsshf', 'dviec', 'dvipile', 'dvike', 'dtcclw', 'dtcwv', 'dnac'].
             
     Returns:
         path_output_calc_diff (str): Output path for results from calc_diff.
@@ -2273,10 +2284,10 @@ def calc_era5_mdp_clim_given_var_or_dvar(region, period_start, period_end,
             Must be a str and one of: ["all", "djf", "mam", "jja", "son"], or a subset
             list of: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] with at least one item.
         var_or_dvar (str): Variable or value of change in variable to perform
-            calculation over. Must be one of: ['wv10', 'wv100', 'mslp', 't2',
-            'slhf', 'sshf', 'viec', 'vipile', 'vike', 'tcclw', 'tcwv', 'nac',
-            'dwv10', 'dwv100', 'dmslp', 'dt2', 'dslhf', 'dsshf', 'dviec',
-            'dvipile', 'dvike', 'dtcclw', 'dtcwv', 'dnac'].
+            calculation over. Must be one of: ['ws10', 'ws100', 'wv10', 'wv100', 
+            'mslp', 't2', 'slhf', 'sshf', 'viec', 'vipile', 'vike', 'tcclw', 'tcwv', 
+            'nac', 'dws10', 'dws100', 'dwv10', 'dwv100', 'dmslp', 'dt2', 'dslhf', 
+            'dsshf', 'dviec', 'dvipile', 'dvike', 'dtcclw', 'dtcwv', 'dnac'].
                         
     Returns:
         ../data_processed/era5_mdp_clim_given_var_or_dvar/{calc_funcs_ver}_calc_{region}_
@@ -2561,10 +2572,10 @@ def calc_era5_mdp_clim_stats_given_var_or_dvar(region, period_start, period_end,
             Must be a str and one of: ["all", "djf", "mam", "jja", "son"], or a subset
             list of: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] with at least one item.
         var_or_dvar (str): Variable or value of change in variable to perform
-            calculation over. Must be one of: ['wv10', 'wv100', 'mslp', 't2',
-            'slhf', 'sshf', 'viec', 'vipile', 'vike', 'tcclw', 'tcwv', 'nac',
-            'dwv10', 'dwv100', 'dmslp', 'dt2', 'dslhf', 'dsshf', 'dviec',
-            'dvipile', 'dvike', 'dtcclw', 'dtcwv', 'dnac'].
+            calculation over. Must be one of: ['ws10', 'ws100', 'wv10', 'wv100', 
+            'mslp', 't2', 'slhf', 'sshf', 'viec', 'vipile', 'vike', 'tcclw', 'tcwv', 
+            'nac', 'dws10', 'dws100', 'dwv10', 'dwv100', 'dmslp', 'dt2', 'dslhf', 
+            'dsshf', 'dviec', 'dvipile', 'dvike', 'dtcclw', 'dtcwv', 'dnac'].
                         
     Returns:
         ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/{calc_funcs_ver}_calc_
@@ -2965,10 +2976,10 @@ def calc_diff(calc_func, region, period1_start, period1_end,
             Must be a str and one of: ["all", "djf", "mam", "jja", "son"], or a subset
             list of: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] with at least one item.
         var_or_dvar (str): Variable or value of change in variable to perform
-            calculation over. Must be one of: ['wv10', 'wv100', 'mslp', 't2',
-            'slhf', 'sshf', 'viec', 'vipile', 'vike', 'tcclw', 'tcwv', 'nac',
-            'dwv10', 'dwv100', 'dmslp', 'dt2', 'dslhf', 'dsshf', 'dviec',
-            'dvipile', 'dvike', 'dtcclw', 'dtcwv', 'dnac'].
+            calculation over. Must be one of: ['ws10', 'ws100', 'wv10', 'wv100', 
+            'mslp', 't2', 'slhf', 'sshf', 'viec', 'vipile', 'vike', 'tcclw', 'tcwv', 
+            'nac', 'dws10', 'dws100', 'dwv10', 'dwv100', 'dmslp', 'dt2', 'dslhf', 
+            'dsshf', 'dviec', 'dvipile', 'dvike', 'dtcclw', 'dtcwv', 'dnac'].
     
     Returns:
         ../data_processed/glass_mean_clim/{calc_funcs_ver}_diff_{region}_{period1_start}_
