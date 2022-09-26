@@ -1,0 +1,49 @@
+INFO:root:CREATED: log file for create_glass_rolling_plot: ../logs/create_glass_rolling_plot/create_glass_rolling_plot('wa', 1983, 2019, 5, 'mlai', None, None, None, True)_2022-09-27-01-20-22_cfv1j.txt.
+INFO:root:Passed: validity check for input arguments into create_glass_rolling_plot.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_glass_rolling.
+INFO:root:Obtained: calc_glass_rolling_avg_of_annual_diff output path for use in create_glass_rolling_plot.
+INFO:root:Passed: validity check for input arguments into calc_glass_rolling_avg_of_annual_diff.
+INFO:root:Executing: calc_glass_rolling_avg_of_annual_diff to obtain the rolling average of the annual difference in MLAI AND MFAPAR for years 1983 to 2019 for use in create_glass_rolling_plot.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_glass_rolling.
+INFO:root:Obtained: calc_glass_rolling_avg_of_annual_diff output path for use in calc_glass_rolling_avg_of_annual_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into select_glass_data_source.
+INFO:root:Selected: avhrr glass data source for use between Jan-1981 and Dec-1981 in get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into select_glass_data_source.
+INFO:root:Selected: avhrr glass data source for use between Jan-1982 and Dec-1982 in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_glass_mean_clim for use in calc_glass_rolling_avg_of_annual_diff.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Executing: calc_diff to obtain difference in outputs from calc_glass_mean_clim over Jan-1981 to Dec-1981 and Jan-1982 to Dec-1982 for use in calc_glass_rolling_avg_of_annual_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into select_glass_data_source.
+INFO:root:Selected: avhrr glass data source for use between Jan-1981 and Dec-1981 in get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into select_glass_data_source.
+INFO:root:Selected: avhrr glass data source for use between Jan-1982 and Dec-1982 in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_glass_mean_clim for use in calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into select_glass_data_source.
+INFO:root:Selected: avhrr glass data source for use between Jan-1981 and Dec-1981 in get_path_for_calc_func.
+INFO:root:Obtained: calc_glass_mean_clim output path for use in calc_diff.
+INFO:root:Passed: validity check for input arguments into calc_glass_mean_clim.
+INFO:root:Passed: validity check for input arguments into select_glass_data_source.
+INFO:root:Selected: avhrr glass data source for use between Jan-1981 and Dec-1981 in calc_glass_mean_clim.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in calc_glass_mean_clim.
+INFO:root:Executing: calc_glass_mean_clim to obtain all climatology of MLAI and MFAPAR using avhrr data between Jan-1981 and Dec-1981 for use in calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into select_glass_data_source.
+INFO:root:Selected: avhrr glass data source for use between Jan-1981 and Dec-1981 in get_path_for_calc_func.
+INFO:root:Obtained: calc_glass_mean_clim output path for use in calc_glass_mean_clim.
+INFO:root:Passed: validity check for input arguments into convert_period_data_types.
+INFO:root:Obtained: converted period data types for use in calc_glass_mean_clim.

@@ -1,0 +1,9 @@
+INFO:root:CREATED: log file for calc_era5_oro_slope: ../logs/calc_era5_oro_slope/calc_era5_oro_slope()_2022-09-26-13-14-32_cfv00.txt.
+INFO:root:Executing: calc_era5_oro_slope to obtain global slope of sub-gridscale orography.
+INFO:root:Obtained: calc_era5_oro_slope output path for use in calc_era5_oro_slope.
+INFO:root:Opening: existing file for use in calc_era5_oro_slope: ../data_raw/global_era5-slv_static/global_era5-slv_static_slope-of-sub-gridscale-orography.nc.
+INFO:root:Opening: existing file for use in calc_era5_oro_slope: ../data_raw/global_era5-slv_static/global_era5-slv_static_land-sea-mask.nc.
+INFO:root:Adding: attributes for each DataArray within output Dataset from calc_era5_oro_slope.
+INFO:root:Added: attributes to dataset output from calc_era5_oro_slope.
+INFO:root:Creating: file: ../data_processed/era5_oro_slope/cfv00_calc_global_static_oro-slope.nc.
+INFO:root:CREATED: file: ../data_processed/era5_oro_slope/cfv00_calc_global_static_oro-slope.nc.
