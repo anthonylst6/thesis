@@ -1,1 +1,0 @@
-INFO:root:CREATED: log file for create_land_elev_plot: ../logs/create_land_elev_plot/create_land_elev_plot(None, None, None, None, None)_2022-09-25-01-02-16_cfv1i.txt.

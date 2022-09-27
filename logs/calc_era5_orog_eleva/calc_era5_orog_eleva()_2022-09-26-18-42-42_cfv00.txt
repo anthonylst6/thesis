@@ -1,9 +1,0 @@
-INFO:root:CREATED: log file for calc_era5_orog_eleva: ../logs/calc_era5_orog_eleva/calc_era5_orog_eleva()_2022-09-26-18-42-42_cfv00.txt.
-INFO:root:Executing: calc_era5_orog_eleva to obtain global land surface elevation.
-INFO:root:Obtained: calc_era5_orog_eleva output path for use in calc_era5_orog_eleva.
-INFO:root:Opening: existing file for use in calc_era5_orog_eleva: ../data_raw/global_era5-slv_static/global_era5-slv_static_geopotential.nc.
-INFO:root:Opening: existing file for use in calc_era5_orog_eleva: ../data_raw/global_era5-slv_static/global_era5-slv_static_land-sea-mask.nc.
-INFO:root:Adding: attributes for each DataArray within output Dataset from calc_era5_orog_eleva.
-INFO:root:Added: attributes to dataset output from calc_era5_orog_eleva.
-INFO:root:Creating: file: ../data_processed/era5_orog_eleva/cfv00_calc_global_static_land-elev.nc.
-INFO:root:CREATED: file: ../data_processed/era5_orog_eleva/cfv00_calc_global_static_land-elev.nc.

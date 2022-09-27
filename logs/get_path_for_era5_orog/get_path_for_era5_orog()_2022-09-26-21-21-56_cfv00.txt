@@ -1,2 +1,0 @@
-INFO:root:CREATED: log file for get_path_for_era5_orog: ../logs/get_path_for_era5_orog/get_path_for_era5_orog()_2022-09-26-21-21-56_cfv00.txt.
-INFO:root:Obtained: calc_era5_orog output path.

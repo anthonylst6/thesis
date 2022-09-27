@@ -1,3 +1,0 @@
-INFO:root:CREATED: log file for create_land_elev_plot: ../logs/create_land_elev_plot/create_land_elev_plot([113, 123, -35, -30], None, None, None, False)_2022-09-25-01-09-45_cfv1i.txt.
-INFO:root:Obtained: calc_era5_land_elev output path for use in create_land_elev_plot.
-INFO:root:Opening: existing file for use in create_land_elev_plot: ../data_processed/era5_land_elev/cfv1i_calc_global_static_land-elev.nc

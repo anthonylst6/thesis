@@ -1,4 +1,0 @@
-INFO:root:CREATED: log file for create_oro_static_plot: ../logs/create_oro_static_plot/create_oro_static_plot('ssgo', [113, 123, -35, -30], None, None, None, True)_2022-09-26-15-31-01_cfv1j.txt.
-INFO:root:Obtained: calc_era5_oro_slope output path for use in create_oro_static_plot.
-INFO:root:Opening: existing file for use in create_oro_static_plot: ../data_processed/era5_oro_slope/cfv1j_calc_global_static_oro-slope.nc
-WARNING:root:WARNING: plot file already exists (and was not overwritten): ../data_final/era5_oro_slope/pfv00_cfv1j_calc_global_static_oro-slope.png

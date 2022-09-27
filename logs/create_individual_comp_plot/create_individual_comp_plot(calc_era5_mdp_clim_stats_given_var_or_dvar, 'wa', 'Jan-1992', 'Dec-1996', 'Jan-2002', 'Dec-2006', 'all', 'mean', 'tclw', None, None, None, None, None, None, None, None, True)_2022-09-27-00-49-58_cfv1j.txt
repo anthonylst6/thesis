@@ -1,3 +1,0 @@
-INFO:root:CREATED: log file for create_individual_comp_plot: ../logs/create_individual_comp_plot/create_individual_comp_plot(calc_era5_mdp_clim_stats_given_var_or_dvar, 'wa', 'Jan-1992', 'Dec-1996', 'Jan-2002', 'Dec-2006', 'all', 'mean', 'tclw', None, None, None, None, None, None, None, None, True)_2022-09-27-00-49-58_cfv1j.txt.
-INFO:root:Passed: validity check for input arguments into create_individual_comp_plot.
-INFO:root:Passed: validity check for input arguments into create_individual_comp_plot.

@@ -1,0 +1,111 @@
+INFO:root:CREATED: log file for create_individual_diff_plot: ../logs/create_individual_diff_plot/create_individual_diff_plot(calc_era5_mdp_clim_stats_given_var_or_dvar, 'wa', 'Jan-1992', 'Dec-1996', 'Jan-2002', 'Dec-2006', 'jja', 'mean', 'ws100', None, None, None, None, True)_2022-09-27-14-28-28_cfv1k.txt.
+INFO:root:Passed: validity check for input arguments into create_individual_diff_plot.
+INFO:root:Passed: validity check for input arguments into create_individual_diff_plot.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of jja for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_stats_given_var_or_dvar output path for use in create_individual_diff_plot.
+INFO:root:Passed: validity check for input arguments into calc_era5_mdp_clim_stats_given_var_or_dvar.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of jja for use in calc_era5_mdp_clim_stats_given_var_or_dvar.
+INFO:root:Executing: calc_era5_mdp_clim_stats_given_var_or_dvar to obtain jja climatology of ws100 MDP stats between Jan-1992 and Dec-1996 for use in create_individual_diff_plot.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of jja for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_stats_given_var_or_dvar output path for use in calc_era5_mdp_clim_stats_given_var_or_dvar.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of jja for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in calc_era5_mdp_clim_stats_given_var_or_dvar.
+INFO:root:Passed: validity check for input arguments into calc_era5_mdp_clim_given_var_or_dvar.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of jja for use in calc_era5_mdp_clim_given_var_or_dvar.
+INFO:root:Executing: calc_era5_mdp_clim_given_var_or_dvar to obtain jja climatology of ws100 MDP between Jan-1992 and Dec-1996 for use in calc_era5_mdp_clim_stats_given_var_or_dvar.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of jja for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in calc_era5_mdp_clim_given_var_or_dvar.
+INFO:root:Passed: validity check for input arguments into convert_period_data_types.
+INFO:root:Obtained: converted period data types for use in calc_era5_mdp_clim_given_var_or_dvar.
+INFO:root:Passed: validity check for input arguments into get_param_layer_and_type.
+INFO:root:Obtained: ws100 classifications of ('sfc', 'vars') for use in calc_era5_mdp_clim_given_var_or_dvar.
+INFO:root:Obtained: vector magnitudes from u100 and v100 for use in calc_era5_mdp_clim_given_var_or_dvar.
+INFO:root:Adding: attributes for each DataArray within output Dataset from calc_era5_mdp_clim_given_var_or_dvar.
+INFO:root:Added: attributes to dataset output from calc_era5_mdp_clim_given_var_or_dvar.
+INFO:root:Creating: file: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1k_calc_wa_Jan-1992_Dec-1996_jja_era5-mdp_ws100.nc.
+INFO:root:CREATED: file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1k_calc_wa_Jan-1992_Dec-1996_jja_era5-mdp_ws100.nc.
+INFO:root:Passed: validity check for input arguments into convert_period_data_types.
+INFO:root:Obtained: converted period data types for use in calc_era5_mdp_clim_stats_given_var_or_dvar.
+INFO:root:Adding: attributes for each DataArray within output Dataset from calc_era5_mdp_clim_stats_given_var_or_dvar.
+INFO:root:Added: attributes to dataset output from calc_era5_mdp_clim_stats_given_var_or_dvar.
+INFO:root:Creating: file: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1k_calc_wa_Jan-1992_Dec-1996_jja_era5-mdp_ws100_stats.nc.
+INFO:root:CREATED: file for use in create_individual_diff_plot: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1k_calc_wa_Jan-1992_Dec-1996_jja_era5-mdp_ws100_stats.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of jja for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_stats_given_var_or_dvar output path for use in create_individual_diff_plot.
+INFO:root:Passed: validity check for input arguments into calc_era5_mdp_clim_stats_given_var_or_dvar.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of jja for use in calc_era5_mdp_clim_stats_given_var_or_dvar.
+INFO:root:Executing: calc_era5_mdp_clim_stats_given_var_or_dvar to obtain jja climatology of ws100 MDP stats between Jan-2002 and Dec-2006 for use in create_individual_diff_plot.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of jja for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_stats_given_var_or_dvar output path for use in calc_era5_mdp_clim_stats_given_var_or_dvar.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of jja for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in calc_era5_mdp_clim_stats_given_var_or_dvar.
+INFO:root:Passed: validity check for input arguments into calc_era5_mdp_clim_given_var_or_dvar.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of jja for use in calc_era5_mdp_clim_given_var_or_dvar.
+INFO:root:Executing: calc_era5_mdp_clim_given_var_or_dvar to obtain jja climatology of ws100 MDP between Jan-2002 and Dec-2006 for use in calc_era5_mdp_clim_stats_given_var_or_dvar.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of jja for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_given_var_or_dvar output path for use in calc_era5_mdp_clim_given_var_or_dvar.
+INFO:root:Passed: validity check for input arguments into convert_period_data_types.
+INFO:root:Obtained: converted period data types for use in calc_era5_mdp_clim_given_var_or_dvar.
+INFO:root:Passed: validity check for input arguments into get_param_layer_and_type.
+INFO:root:Obtained: ws100 classifications of ('sfc', 'vars') for use in calc_era5_mdp_clim_given_var_or_dvar.
+INFO:root:Obtained: vector magnitudes from u100 and v100 for use in calc_era5_mdp_clim_given_var_or_dvar.
+INFO:root:Adding: attributes for each DataArray within output Dataset from calc_era5_mdp_clim_given_var_or_dvar.
+INFO:root:Added: attributes to dataset output from calc_era5_mdp_clim_given_var_or_dvar.
+INFO:root:Creating: file: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1k_calc_wa_Jan-2002_Dec-2006_jja_era5-mdp_ws100.nc.
+INFO:root:CREATED: file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1k_calc_wa_Jan-2002_Dec-2006_jja_era5-mdp_ws100.nc.
+INFO:root:Passed: validity check for input arguments into convert_period_data_types.
+INFO:root:Obtained: converted period data types for use in calc_era5_mdp_clim_stats_given_var_or_dvar.
+INFO:root:Adding: attributes for each DataArray within output Dataset from calc_era5_mdp_clim_stats_given_var_or_dvar.
+INFO:root:Added: attributes to dataset output from calc_era5_mdp_clim_stats_given_var_or_dvar.
+INFO:root:Creating: file: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1k_calc_wa_Jan-2002_Dec-2006_jja_era5-mdp_ws100_stats.nc.
+INFO:root:CREATED: file for use in create_individual_diff_plot: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1k_calc_wa_Jan-2002_Dec-2006_jja_era5-mdp_ws100_stats.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of jja for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_stats_given_var_or_dvar for use in create_individual_diff_plot.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Passed: validity check for input arguments into calc_diff.
+INFO:root:Executing: calc_diff to obtain difference in outputs from calc_era5_mdp_clim_stats_given_var_or_dvar over Jan-1992 to Dec-1996 and Jan-2002 to Dec-2006 for use in create_individual_diff_plot.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_diff.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of jja for use in get_path_for_calc_diff.
+INFO:root:Obtained: calc_diff output path corresponding to calc_era5_mdp_clim_stats_given_var_or_dvar for use in calc_diff.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of jja for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_stats_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1k_calc_wa_Jan-1992_Dec-1996_jja_era5-mdp_ws100_stats.nc.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of jja for use in get_path_for_calc_func.
+INFO:root:Obtained: calc_era5_mdp_clim_stats_given_var_or_dvar output path for use in calc_diff.
+INFO:root:Opening: existing file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1k_calc_wa_Jan-2002_Dec-2006_jja_era5-mdp_ws100_stats.nc.
+INFO:root:Adding: attributes for each DataArray within output Dataset from calc_diff.
+INFO:root:Added: attributes to dataset output from calc_diff.
+INFO:root:Creating: file: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1k_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_jja_era5-mdp_ws100_stats.nc.
+INFO:root:CREATED: file for use in create_individual_diff_plot: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1k_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_jja_era5-mdp_ws100_stats.nc.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of jja for use in create_individual_diff_plot.
+INFO:root:CREATED: plot file: ../data_final/era5_mdp_clim_stats_given_var_or_dvar/pfv00_cfv1k_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_jja_era5-mdp_ws100_stats_mean.png

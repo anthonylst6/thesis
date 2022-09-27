@@ -1,6 +1,0 @@
-INFO:root:CREATED: log file for calc_glass_rolling_avg_of_annual_diff: ../logs/calc_glass_rolling_avg_of_annual_diff/calc_glass_rolling_avg_of_annual_diff('wa', 1983, 2019, 5)_2022-09-25-21-21-25_cfv1i.txt.
-INFO:root:Passed: validity check for input arguments into calc_glass_rolling_avg_of_annual_diff.
-INFO:root:Executing: calc_glass_rolling_avg_of_annual_diff to obtain the rolling average of the annual difference in MLAI AND MFAPAR for years 1983 to 2019.
-INFO:root:Passed: validity check for input arguments into get_path_for_calc_glass_rolling.
-INFO:root:Obtained: calc_glass_rolling_avg_of_annual_diff output path for use in calc_glass_rolling_avg_of_annual_diff.
-ERROR:root:TERMINATED: calc_glass_rolling_avg_of_annual_diff because file already exists: ../data_processed/glass_rolling_avg_of_annual_diff/cfv1i_calc_wa_1983_2019_5-year_glass-rolling-diff_pref-avhrr.nc.
