@@ -231,6 +231,12 @@ main_func_names = calc_func_names + extra_func_names
 # of annual difference which can be NaN DataArray's
 per_diff_nan_max = 25
 
+# Plot-specific arguments for use in the plot_funcs script which can take on None
+# values (these args are excepted from the check_args_for_none function below)
+args_plot = ["extents", "vmin", "vmax", "ax", "output", 
+             "vmin_periods", "vmax_periods", "vmin_diff", "vmax_diff", 
+             "ax_period1", "ax_period2", "ax_diff"]
+
 
 # In[ ]:
 
@@ -241,11 +247,13 @@ attrs_da = {
     # For calc_era5_glass_mean
     "mlai": {"abbreviation": "MLAI",
              "full_name": "Mean Leaf Area Index",
-             "units": "dimensionless"},
+             "units": "dimensionless", 
+             "source": ""},
     "mfapar": {"abbreviation": "MFAPAR",
                "full_name": ("Mean Fraction of Absorbed Photosynthetically " +
                              "Active Radiation"),
-               "units": "dimensionless"},
+               "units": "dimensionless",
+               "source": ""},
     
     # For calc_era5_mdp_clim_given_var_or_dvar
     "u10": {"abbreviation": "U10",
@@ -626,10 +634,9 @@ def check_args_for_none(func_name, args_1up=None, args_1up_values=None):
         assert args_1up_values["var_or_dvar"] == None, \
             f"var_or_dvar must be None if calc_func = {func_name}"
         args_1up.remove("var_or_dvar")
-        
-    for arg_plot in ["extents", "vmin", "vmax", "ax", "output", 
-                     "vmin_periods", "vmax_periods", "vmin_diff", "vmax_diff", 
-                     "ax_period1", "ax_period2", "ax_diff"]:
+    
+    # Make exceptions for args in plot_funcs script which can be None.
+    for arg_plot in args_plot:
         try:
             args_1up.remove(arg_plot)
         except:
@@ -2309,6 +2316,7 @@ def calc_glass_mean_clim(region, period_start, period_end, months_subset,
                  f"Dataset from {func_cur}.")
     for da_name in [*ds_glass_mean.keys()]:
             ds_glass_mean[da_name].attrs = copy.deepcopy(attrs_da[da_name])
+            ds_glass_mean[da_name].attrs["source"] = glass_source
             
     # Add attributes to Dataset.
     
@@ -3181,6 +3189,8 @@ def calc_diff(calc_func, region, period1_start, period1_end,
                                                ds_diff[da_name].attrs["full_name"])
         if (da_name == "hour_max") | (da_name == "hour_min"):
             ds_diff[da_name].attrs["units"] = "$h$"
+        if calc_func_name == "calc_glass_mean_clim":
+            ds_diff[da_name].attrs["source"] = path_output_diff[-8:-3]
     
     # Add attributes to Dataset.
     

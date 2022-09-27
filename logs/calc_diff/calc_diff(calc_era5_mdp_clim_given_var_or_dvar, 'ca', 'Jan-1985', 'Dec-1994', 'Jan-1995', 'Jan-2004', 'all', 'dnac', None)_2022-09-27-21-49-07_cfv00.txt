@@ -1,1 +1,0 @@
-INFO:root:CREATED: log file for calc_diff: ../logs/calc_diff/calc_diff(calc_era5_mdp_clim_given_var_or_dvar, 'ca', 'Jan-1985', 'Dec-1994', 'Jan-1995', 'Jan-2004', 'all', 'dnac', None)_2022-09-27-21-49-07_cfv00.txt.
