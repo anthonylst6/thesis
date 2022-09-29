@@ -1,6 +1,0 @@
-INFO:root:CREATED: log file for create_glass_rolling_plot: ../logs/create_glass_rolling_plot/create_glass_rolling_plot('wa', 1983, 2019, 5, 'mfapar', 'avhrr', None, None, None, True)_2022-09-28-02-01-13_cfv1m.txt.
-INFO:root:Passed: validity check for input arguments into create_glass_rolling_plot.
-INFO:root:Passed: validity check for input arguments into get_path_for_calc_glass_rolling.
-INFO:root:Obtained: calc_glass_rolling_avg_of_annual_diff output path for use in create_glass_rolling_plot.
-INFO:root:Opening: existing file for use in create_glass_rolling_plot: ../data_processed/glass_rolling_avg_of_annual_diff/cfv1m_calc_wa_1983_2019_5-year_glass-rolling-diff_pref-avhrr.nc
-INFO:root:CREATED: plot file: ../data_final/glass_rolling_avg_of_annual_diff/pfv00_cfv1m_calc_wa_1983_2019_5-year_glass-rolling-diff_pref-avhrr_mfapar.png

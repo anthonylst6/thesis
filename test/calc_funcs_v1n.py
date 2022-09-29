@@ -233,9 +233,9 @@ per_diff_nan_max = 25
 
 # Plot-specific arguments for use in the plot_funcs script which can take on None
 # values (these args are excepted from the check_args_for_none function below)
-args_plot = ["extents", "vmin", "vmax", "vmin_periods", "vmax_periods", 
-             "vmin_diff", "vmax_diff", "ax", "ax_period1", "ax_period2", "ax_diff",
-             "cfv_data", "output"]
+args_plot = ["extents", "mask_period1", "mask_period2", "vmin", "vmax", 
+             "vmin_periods", "vmax_periods", "vmin_diff", "vmax_diff", 
+             "ax", "ax_period1", "ax_period2", "ax_diff", "cfv_data", "output"]
 
 
 # In[ ]:
@@ -496,10 +496,11 @@ def create_log_if_directly_executed(time_exec_1up, func_1up=None, func_2up=None,
             args_1up_list.append(arg_str)
             
         args_1up_str = ", ".join(arg_input for arg_input in args_1up_list)
-        path_log = (f"../logs/{func_1up}/{func_1up}({args_1up_str})_" +
-                    f"{time_str}_{calc_funcs_ver}.txt")
+        path_log = (f"../logs/{func_1up}/({args_1up_str})_" +
+                    f"{time_str}_{calc_funcs_ver}")
         Path(f"../logs/{func_1up}").mkdir(parents=True, exist_ok=True)
-        logging.basicConfig(level=calc_log_level, filename=path_log, force=True)
+        # File names can only have maximum 255 characters.
+        logging.basicConfig(level=calc_log_level, filename=path_log[:255], force=True)
         
         msg_log = f"CREATED: log file for {func_1up}: {path_log}."
         logging.info(msg_log)

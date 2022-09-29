@@ -1,0 +1,4 @@
+INFO:root:CREATED: log file for create_orog_static_plot: ../logs/create_orog_static_plot/create_orog_static_plot('ssgo', [113, 123, -35, -30], None, None, None, None, True)_2022-09-28-19-27-02_cfv1n.txt.
+INFO:root:Obtained: calc_era5_orog output path for use in create_orog_static_plot.
+INFO:root:Opening: existing file for use in create_orog_static_plot: ../data_processed/era5_orog/cfv1n_calc_global_era5-orog.nc
+INFO:root:CREATED: plot file: ../data_final/era5_orog/pfv00_cfv1n_calc_global_era5-orog_ssgo.png
