@@ -71,6 +71,8 @@ regions = {
     "sa": {"extent": [-65, -30, -15, 0], "tz": -3},
     # Western Australia (mostly near the west coast)
     "wa": {"extent": [113, 123, -35, -30], "tz": +8}
+    # Global (requires a lot of memory)
+    "global": {"extent": [-180, 180, -90, 90], "tz": +0}
 }
 
 # Size of chunks
@@ -89,10 +91,6 @@ number_of_glass_files = {"lai": {"avhrr": 1748, "modis": 1005},
                         }
 number_of_era5_month_hour_files = 42
 number_of_era5_hour_files = 42
-
-# # GLASS preference of whether to use AVHRR or MODIS data for when both are available.
-# glass_source_pref = "avhrr"
-# assert glass_source_pref in ["avhrr", "modis"]
 
 # GLASS data sources
 glass_sources_all = ["avhrr", "modis"]
@@ -3520,7 +3518,7 @@ def calc_glass_rolling_avg_of_annual_diff(region, year_start, year_end, months_s
         if per_diff_nan > per_diff_nan_max:
             msg_nan = (f"WARNING: A DataArray with NaN's was returned for {year}'s " +
                        f"rolling avg MFAPAR since {per_diff_nan}% of necessary annual " +
-                       f"difference DataArray's were NaN's (max is {per_diff_nan_max}%.")
+                       f"difference DataArray's were NaN's (max is {per_diff_nan_max})%.")
             logging.warning(msg_nan)
             print(msg_nan)
         elif per_diff_nan > 0:

@@ -1,0 +1,28 @@
+#!/bin/bash
+
+### Below are directives which correspond to certain flags that are used by the PBS system
+### All are prefixed with #PBS followed by the flag and the variable value
+### An explanation of the use of the variables can be found 
+### on github under the HPC-Basics directory titled "pbs-variables.pbs"
+
+#PBS -N create-all-diff-data
+#PBS -l select=1:ncpus=4:mem=24gb
+#PBS -l walltime=4:00:00
+#PBS -j oe
+#PBS -k oed
+#PBS -M anthony.liu@student.unsw.edu.au
+#PBS -m ae
+
+###---------------------------------------------------------------------------
+
+### Below are the commands to set up the run environment for the program
+### as well as the execution command itself
+
+# Change to the directory the job was submitted from
+cd $PBS_O_WORKDIR
+
+# Load the desired python module and environment varables to be used 
+module load python/3.9.9
+
+# Command to run the job
+conda run -n thesis python create-all-diff-data.py

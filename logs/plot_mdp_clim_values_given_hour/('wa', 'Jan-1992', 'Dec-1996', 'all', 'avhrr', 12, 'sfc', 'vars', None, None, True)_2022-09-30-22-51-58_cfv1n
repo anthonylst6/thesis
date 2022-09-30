@@ -1,0 +1,28 @@
+INFO:root:CREATED: log file for plot_mdp_clim_values_given_hour: ../logs/plot_mdp_clim_values_given_hour/('wa', 'Jan-1992', 'Dec-1996', 'all', 'avhrr', 12, 'sfc', 'vars', None, None, True)_2022-09-30-22-51-58_cfv1n.
+INFO:root:Passed: validity check for input arguments into plot_mdp_clim_values_given_hour.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in plot_mdp_clim_values_given_hour.
+INFO:root:Obtained: calc_era5_orog output path for use in create_orog_static_plot.
+INFO:root:Opening: existing file for use in create_orog_static_plot: ../data_processed/era5_orog/cfv1n_calc_global_era5-orog.nc
+INFO:root:Obtained: calc_era5_orog output path for use in create_orog_static_plot.
+INFO:root:Opening: existing file for use in create_orog_static_plot: ../data_processed/era5_orog/cfv1n_calc_global_era5-orog.nc
+INFO:root:Passed: validity check for input arguments into create_individual_calc_plot.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in create_individual_calc_plot.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into select_glass_source.
+INFO:root:Selected: avhrr glass data source for use between Jan-1992 and Dec-1996 in get_path_for_calc_func.
+INFO:root:Obtained: calc_glass_mean_clim output path for use in create_individual_calc_plot.
+INFO:root:Opening: existing file for use in create_individual_calc_plot: ../data_processed/glass_mean_clim/cfv1n_calc_wa_Jan-1992_Dec-1996_all_glass-mean_avhrr.nc
+INFO:root:Passed: validity check for input arguments into create_individual_calc_plot.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in create_individual_calc_plot.
+INFO:root:Passed: validity check for input arguments into get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into get_months_subset_str.
+INFO:root:Obtained: string representation of all for use in get_path_for_calc_func.
+INFO:root:Passed: validity check for input arguments into select_glass_source.
+INFO:root:Selected: avhrr glass data source for use between Jan-1992 and Dec-1996 in get_path_for_calc_func.
+INFO:root:Obtained: calc_glass_mean_clim output path for use in create_individual_calc_plot.
+INFO:root:Opening: existing file for use in create_individual_calc_plot: ../data_processed/glass_mean_clim/cfv1n_calc_wa_Jan-1992_Dec-1996_all_glass-mean_avhrr.nc
