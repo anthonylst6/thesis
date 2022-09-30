@@ -1,0 +1,1127 @@
+CREATED: log file for create_all_possible_diff_data_files: ../logs/create_all_possible_diff_data_files/('wa', 'Jan-1992', 'Dec-1996', 'Jan-2002', 'Dec-2006', 'all')_2022-09-30-23-40-44_cfv1n.
+Skipped: file already exists: ../data_processed/glass_mean_clim/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_glass-mean_avhrr.nc.
+Skipped: file already exists: ../data_processed/glass_mean_clim/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_glass-mean_mixed.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_ws10.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_ws100.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_wv10.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_wv100.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_mslp.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_t2.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_slhf.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_sshf.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_viec.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_vipile.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_vike.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_tcclw.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_tcwv.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_nac.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dws10.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dws100.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dwv10.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dwv100.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dmslp.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dt2.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dslhf.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dsshf.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dviec.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dvipile.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dvike.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dtcclw.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dtcwv.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dnac.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_ws10_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_ws100_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_wv10_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_wv100_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_mslp_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_t2_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_slhf_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_sshf_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_viec_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_vipile_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_vike_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_tcclw_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_tcwv_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_nac_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dws10_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dws100_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dwv10_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dwv100_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dmslp_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dt2_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dslhf_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dsshf_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dviec_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dvipile_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dvike_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dtcclw_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dtcwv_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dnac_stats.nc.
+Skipped: file already exists: ../data_processed/era5_wsd_clim/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-wsd.nc.
+CREATED: log file for create_all_possible_diff_data_files: ../logs/create_all_possible_diff_data_files/('wa', 'Jan-1992', 'Dec-1996', 'Jan-2002', 'Dec-2006', 'djf')_2022-09-30-23-40-49_cfv1n.
+Skipped: file already exists: ../data_processed/glass_mean_clim/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_djf_glass-mean_avhrr.nc.
+Skipped: file already exists: ../data_processed/glass_mean_clim/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_djf_glass-mean_mixed.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_djf_era5-mdp_ws10.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_djf_era5-mdp_ws100.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_djf_era5-mdp_wv10.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_djf_era5-mdp_wv100.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_djf_era5-mdp_mslp.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_djf_era5-mdp_t2.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_djf_era5-mdp_slhf.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_djf_era5-mdp_sshf.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_djf_era5-mdp_viec.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_djf_era5-mdp_vipile.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_djf_era5-mdp_vike.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_djf_era5-mdp_tcclw.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_djf_era5-mdp_tcwv.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_djf_era5-mdp_nac.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_djf_era5-mdp_dws10.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_djf_era5-mdp_dws100.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_djf_era5-mdp_dwv10.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_djf_era5-mdp_dwv100.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_djf_era5-mdp_dmslp.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_djf_era5-mdp_dt2.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_djf_era5-mdp_dslhf.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_djf_era5-mdp_dsshf.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_djf_era5-mdp_dviec.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_djf_era5-mdp_dvipile.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_djf_era5-mdp_dvike.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_djf_era5-mdp_dtcclw.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_djf_era5-mdp_dtcwv.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_djf_era5-mdp_dnac.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_djf_era5-mdp_ws10_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_djf_era5-mdp_ws100_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_djf_era5-mdp_wv10_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_djf_era5-mdp_wv100_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_djf_era5-mdp_mslp_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_djf_era5-mdp_t2_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_djf_era5-mdp_slhf_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_djf_era5-mdp_sshf_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_djf_era5-mdp_viec_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_djf_era5-mdp_vipile_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_djf_era5-mdp_vike_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_djf_era5-mdp_tcclw_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_djf_era5-mdp_tcwv_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_djf_era5-mdp_nac_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_djf_era5-mdp_dws10_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_djf_era5-mdp_dws100_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_djf_era5-mdp_dwv10_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_djf_era5-mdp_dwv100_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_djf_era5-mdp_dmslp_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_djf_era5-mdp_dt2_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_djf_era5-mdp_dslhf_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_djf_era5-mdp_dsshf_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_djf_era5-mdp_dviec_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_djf_era5-mdp_dvipile_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_djf_era5-mdp_dvike_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_djf_era5-mdp_dtcclw_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_djf_era5-mdp_dtcwv_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_djf_era5-mdp_dnac_stats.nc.
+Skipped: file already exists: ../data_processed/era5_wsd_clim/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_djf_era5-wsd.nc.
+CREATED: log file for create_all_possible_diff_data_files: ../logs/create_all_possible_diff_data_files/('wa', 'Jan-1992', 'Dec-1996', 'Jan-2002', 'Dec-2006', 'mam')_2022-09-30-23-40-49_cfv1n.
+Skipped: file already exists: ../data_processed/glass_mean_clim/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_mam_glass-mean_avhrr.nc.
+Skipped: file already exists: ../data_processed/glass_mean_clim/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_mam_glass-mean_mixed.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_mam_era5-mdp_ws10.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_mam_era5-mdp_ws100.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_mam_era5-mdp_wv10.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_mam_era5-mdp_wv100.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_mam_era5-mdp_mslp.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_mam_era5-mdp_t2.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_mam_era5-mdp_slhf.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_mam_era5-mdp_sshf.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_mam_era5-mdp_viec.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_mam_era5-mdp_vipile.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_mam_era5-mdp_vike.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_mam_era5-mdp_tcclw.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_mam_era5-mdp_tcwv.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_mam_era5-mdp_nac.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_mam_era5-mdp_dws10.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_mam_era5-mdp_dws100.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_mam_era5-mdp_dwv10.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_mam_era5-mdp_dwv100.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_mam_era5-mdp_dmslp.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_mam_era5-mdp_dt2.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_mam_era5-mdp_dslhf.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_mam_era5-mdp_dsshf.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_mam_era5-mdp_dviec.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_mam_era5-mdp_dvipile.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_mam_era5-mdp_dvike.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_mam_era5-mdp_dtcclw.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_mam_era5-mdp_dtcwv.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_mam_era5-mdp_dnac.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_mam_era5-mdp_ws10_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_mam_era5-mdp_ws100_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_mam_era5-mdp_wv10_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_mam_era5-mdp_wv100_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_mam_era5-mdp_mslp_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_mam_era5-mdp_t2_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_mam_era5-mdp_slhf_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_mam_era5-mdp_sshf_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_mam_era5-mdp_viec_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_mam_era5-mdp_vipile_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_mam_era5-mdp_vike_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_mam_era5-mdp_tcclw_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_mam_era5-mdp_tcwv_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_mam_era5-mdp_nac_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_mam_era5-mdp_dws10_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_mam_era5-mdp_dws100_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_mam_era5-mdp_dwv10_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_mam_era5-mdp_dwv100_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_mam_era5-mdp_dmslp_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_mam_era5-mdp_dt2_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_mam_era5-mdp_dslhf_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_mam_era5-mdp_dsshf_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_mam_era5-mdp_dviec_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_mam_era5-mdp_dvipile_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_mam_era5-mdp_dvike_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_mam_era5-mdp_dtcclw_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_mam_era5-mdp_dtcwv_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_mam_era5-mdp_dnac_stats.nc.
+Skipped: file already exists: ../data_processed/era5_wsd_clim/cfv1n_diff_wa_Jan-1992_Dec-1996_Jan-2002_Dec-2006_mam_era5-wsd.nc.
+CREATED: log file for create_all_possible_diff_data_files: ../logs/create_all_possible_diff_data_files/('wa', 'Jan-2019', 'Dec-2019', 'Jan-2021', 'Dec-2021', 'all')_2022-09-30-23-40-50_cfv1n.
+Skipped: file already exists: ../data_processed/glass_mean_clim/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_all_glass-mean_modis.nc.
+Skipped: file already exists: ../data_processed/glass_mean_clim/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_all_glass-mean_modis.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_all_era5-mdp_ws10.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_all_era5-mdp_ws100.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_all_era5-mdp_wv10.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_all_era5-mdp_wv100.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_all_era5-mdp_mslp.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_all_era5-mdp_t2.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_all_era5-mdp_slhf.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_all_era5-mdp_sshf.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_all_era5-mdp_viec.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_all_era5-mdp_vipile.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_all_era5-mdp_vike.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_all_era5-mdp_tcclw.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_all_era5-mdp_tcwv.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_all_era5-mdp_nac.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_all_era5-mdp_dws10.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_all_era5-mdp_dws100.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_all_era5-mdp_dwv10.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_all_era5-mdp_dwv100.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_all_era5-mdp_dmslp.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_all_era5-mdp_dt2.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_all_era5-mdp_dslhf.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_all_era5-mdp_dsshf.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_all_era5-mdp_dviec.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_all_era5-mdp_dvipile.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_all_era5-mdp_dvike.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_all_era5-mdp_dtcclw.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_all_era5-mdp_dtcwv.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_all_era5-mdp_dnac.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_all_era5-mdp_ws10_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_all_era5-mdp_ws100_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_all_era5-mdp_wv10_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_all_era5-mdp_wv100_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_all_era5-mdp_mslp_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_all_era5-mdp_t2_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_all_era5-mdp_slhf_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_all_era5-mdp_sshf_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_all_era5-mdp_viec_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_all_era5-mdp_vipile_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_all_era5-mdp_vike_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_all_era5-mdp_tcclw_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_all_era5-mdp_tcwv_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_all_era5-mdp_nac_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_all_era5-mdp_dws10_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_all_era5-mdp_dws100_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_all_era5-mdp_dwv10_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_all_era5-mdp_dwv100_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_all_era5-mdp_dmslp_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_all_era5-mdp_dt2_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_all_era5-mdp_dslhf_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_all_era5-mdp_dsshf_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_all_era5-mdp_dviec_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_all_era5-mdp_dvipile_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_all_era5-mdp_dvike_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_all_era5-mdp_dtcclw_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_all_era5-mdp_dtcwv_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_all_era5-mdp_dnac_stats.nc.
+Skipped: file already exists: ../data_processed/era5_wsd_clim/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_all_era5-wsd.nc.
+CREATED: log file for create_all_possible_diff_data_files: ../logs/create_all_possible_diff_data_files/('wa', 'Jan-2019', 'Dec-2019', 'Jan-2021', 'Dec-2021', 'djf')_2022-09-30-23-40-50_cfv1n.
+Skipped: file already exists: ../data_processed/glass_mean_clim/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_djf_glass-mean_modis.nc.
+Skipped: file already exists: ../data_processed/glass_mean_clim/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_djf_glass-mean_modis.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_djf_era5-mdp_ws10.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_djf_era5-mdp_ws100.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_djf_era5-mdp_wv10.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_djf_era5-mdp_wv100.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_djf_era5-mdp_mslp.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_djf_era5-mdp_t2.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_djf_era5-mdp_slhf.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_djf_era5-mdp_sshf.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_djf_era5-mdp_viec.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_djf_era5-mdp_vipile.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_djf_era5-mdp_vike.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_djf_era5-mdp_tcclw.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_djf_era5-mdp_tcwv.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_djf_era5-mdp_nac.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_djf_era5-mdp_dws10.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_djf_era5-mdp_dws100.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_djf_era5-mdp_dwv10.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_djf_era5-mdp_dwv100.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_djf_era5-mdp_dmslp.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_djf_era5-mdp_dt2.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_djf_era5-mdp_dslhf.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_djf_era5-mdp_dsshf.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_djf_era5-mdp_dviec.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_djf_era5-mdp_dvipile.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_djf_era5-mdp_dvike.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_djf_era5-mdp_dtcclw.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_djf_era5-mdp_dtcwv.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_djf_era5-mdp_dnac.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_djf_era5-mdp_ws10_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_djf_era5-mdp_ws100_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_djf_era5-mdp_wv10_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_djf_era5-mdp_wv100_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_djf_era5-mdp_mslp_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_djf_era5-mdp_t2_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_djf_era5-mdp_slhf_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_djf_era5-mdp_sshf_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_djf_era5-mdp_viec_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_djf_era5-mdp_vipile_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_djf_era5-mdp_vike_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_djf_era5-mdp_tcclw_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_djf_era5-mdp_tcwv_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_djf_era5-mdp_nac_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_djf_era5-mdp_dws10_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_djf_era5-mdp_dws100_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_djf_era5-mdp_dwv10_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_djf_era5-mdp_dwv100_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_djf_era5-mdp_dmslp_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_djf_era5-mdp_dt2_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_djf_era5-mdp_dslhf_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_djf_era5-mdp_dsshf_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_djf_era5-mdp_dviec_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_djf_era5-mdp_dvipile_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_djf_era5-mdp_dvike_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_djf_era5-mdp_dtcclw_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_djf_era5-mdp_dtcwv_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_djf_era5-mdp_dnac_stats.nc.
+Skipped: file already exists: ../data_processed/era5_wsd_clim/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_djf_era5-wsd.nc.
+CREATED: log file for create_all_possible_diff_data_files: ../logs/create_all_possible_diff_data_files/('wa', 'Jan-2019', 'Dec-2019', 'Jan-2021', 'Dec-2021', 'mam')_2022-09-30-23-40-50_cfv1n.
+Skipped: file already exists: ../data_processed/glass_mean_clim/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_mam_glass-mean_modis.nc.
+Skipped: file already exists: ../data_processed/glass_mean_clim/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_mam_glass-mean_modis.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_mam_era5-mdp_ws10.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_mam_era5-mdp_ws100.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_mam_era5-mdp_wv10.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_mam_era5-mdp_wv100.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_mam_era5-mdp_mslp.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_mam_era5-mdp_t2.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_mam_era5-mdp_slhf.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_mam_era5-mdp_sshf.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_mam_era5-mdp_viec.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_mam_era5-mdp_vipile.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_mam_era5-mdp_vike.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_mam_era5-mdp_tcclw.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_mam_era5-mdp_tcwv.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_mam_era5-mdp_nac.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_mam_era5-mdp_dws10.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_mam_era5-mdp_dws100.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_mam_era5-mdp_dwv10.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_mam_era5-mdp_dwv100.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_mam_era5-mdp_dmslp.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_mam_era5-mdp_dt2.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_mam_era5-mdp_dslhf.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_mam_era5-mdp_dsshf.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_mam_era5-mdp_dviec.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_mam_era5-mdp_dvipile.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_mam_era5-mdp_dvike.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_mam_era5-mdp_dtcclw.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_mam_era5-mdp_dtcwv.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_mam_era5-mdp_dnac.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_mam_era5-mdp_ws10_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_mam_era5-mdp_ws100_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_mam_era5-mdp_wv10_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_mam_era5-mdp_wv100_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_mam_era5-mdp_mslp_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_mam_era5-mdp_t2_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_mam_era5-mdp_slhf_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_mam_era5-mdp_sshf_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_mam_era5-mdp_viec_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_mam_era5-mdp_vipile_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_mam_era5-mdp_vike_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_mam_era5-mdp_tcclw_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_mam_era5-mdp_tcwv_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_mam_era5-mdp_nac_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_mam_era5-mdp_dws10_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_mam_era5-mdp_dws100_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_mam_era5-mdp_dwv10_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_mam_era5-mdp_dwv100_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_mam_era5-mdp_dmslp_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_mam_era5-mdp_dt2_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_mam_era5-mdp_dslhf_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_mam_era5-mdp_dsshf_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_mam_era5-mdp_dviec_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_mam_era5-mdp_dvipile_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_mam_era5-mdp_dvike_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_mam_era5-mdp_dtcclw_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_mam_era5-mdp_dtcwv_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_mam_era5-mdp_dnac_stats.nc.
+Skipped: file already exists: ../data_processed/era5_wsd_clim/cfv1n_diff_wa_Jan-2019_Dec-2019_Jan-2021_Dec-2021_mam_era5-wsd.nc.
+CREATED: log file for create_all_possible_diff_data_files: ../logs/create_all_possible_diff_data_files/('ca', 'Jan-1992', 'Dec-1996', 'Jan-2002', 'Dec-2006', 'all')_2022-09-30-23-40-50_cfv1n.
+Skipped: file already exists: ../data_processed/glass_mean_clim/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_glass-mean_avhrr.nc.
+Skipped: file already exists: ../data_processed/glass_mean_clim/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_glass-mean_mixed.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_ws10.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_ws100.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_wv10.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_wv100.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_mslp.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_t2.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_slhf.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_sshf.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_viec.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_vipile.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_vike.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_tcclw.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_tcwv.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_nac.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dws10.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dws100.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dwv10.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dwv100.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dmslp.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dt2.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dslhf.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dsshf.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dviec.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dvipile.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dvike.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dtcclw.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dtcwv.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dnac.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_ws10_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_ws100_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_wv10_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_wv100_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_mslp_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_t2_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_slhf_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_sshf_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_viec_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_vipile_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_vike_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_tcclw_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_tcwv_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_nac_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dws10_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dws100_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dwv10_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dwv100_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dmslp_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dt2_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dslhf_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dsshf_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dviec_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dvipile_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dvike_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dtcclw_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dtcwv_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-mdp_dnac_stats.nc.
+Skipped: file already exists: ../data_processed/era5_wsd_clim/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_all_era5-wsd.nc.
+CREATED: log file for create_all_possible_diff_data_files: ../logs/create_all_possible_diff_data_files/('ca', 'Jan-1992', 'Dec-1996', 'Jan-2002', 'Dec-2006', [5, 6, 7, 8, 9, 10])_2022-09-30-23-40-51_cfv1n.
+Skipped: file already exists: ../data_processed/glass_mean_clim/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_5-6-7-8-9-10_glass-mean_avhrr.nc.
+Skipped: file already exists: ../data_processed/glass_mean_clim/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_5-6-7-8-9-10_glass-mean_mixed.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_5-6-7-8-9-10_era5-mdp_ws10.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_5-6-7-8-9-10_era5-mdp_ws100.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_5-6-7-8-9-10_era5-mdp_wv10.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_5-6-7-8-9-10_era5-mdp_wv100.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_5-6-7-8-9-10_era5-mdp_mslp.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_5-6-7-8-9-10_era5-mdp_t2.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_5-6-7-8-9-10_era5-mdp_slhf.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_5-6-7-8-9-10_era5-mdp_sshf.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_5-6-7-8-9-10_era5-mdp_viec.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_5-6-7-8-9-10_era5-mdp_vipile.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_5-6-7-8-9-10_era5-mdp_vike.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_5-6-7-8-9-10_era5-mdp_tcclw.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_5-6-7-8-9-10_era5-mdp_tcwv.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_5-6-7-8-9-10_era5-mdp_nac.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_5-6-7-8-9-10_era5-mdp_dws10.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_5-6-7-8-9-10_era5-mdp_dws100.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_5-6-7-8-9-10_era5-mdp_dwv10.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_5-6-7-8-9-10_era5-mdp_dwv100.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_5-6-7-8-9-10_era5-mdp_dmslp.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_5-6-7-8-9-10_era5-mdp_dt2.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_5-6-7-8-9-10_era5-mdp_dslhf.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_5-6-7-8-9-10_era5-mdp_dsshf.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_5-6-7-8-9-10_era5-mdp_dviec.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_5-6-7-8-9-10_era5-mdp_dvipile.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_5-6-7-8-9-10_era5-mdp_dvike.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_5-6-7-8-9-10_era5-mdp_dtcclw.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_5-6-7-8-9-10_era5-mdp_dtcwv.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_5-6-7-8-9-10_era5-mdp_dnac.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_5-6-7-8-9-10_era5-mdp_ws10_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_5-6-7-8-9-10_era5-mdp_ws100_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_5-6-7-8-9-10_era5-mdp_wv10_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_5-6-7-8-9-10_era5-mdp_wv100_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_5-6-7-8-9-10_era5-mdp_mslp_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_5-6-7-8-9-10_era5-mdp_t2_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_5-6-7-8-9-10_era5-mdp_slhf_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_5-6-7-8-9-10_era5-mdp_sshf_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_5-6-7-8-9-10_era5-mdp_viec_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_5-6-7-8-9-10_era5-mdp_vipile_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_5-6-7-8-9-10_era5-mdp_vike_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_5-6-7-8-9-10_era5-mdp_tcclw_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_5-6-7-8-9-10_era5-mdp_tcwv_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_5-6-7-8-9-10_era5-mdp_nac_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_5-6-7-8-9-10_era5-mdp_dws10_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_5-6-7-8-9-10_era5-mdp_dws100_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_5-6-7-8-9-10_era5-mdp_dwv10_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_5-6-7-8-9-10_era5-mdp_dwv100_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_5-6-7-8-9-10_era5-mdp_dmslp_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_5-6-7-8-9-10_era5-mdp_dt2_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_5-6-7-8-9-10_era5-mdp_dslhf_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_5-6-7-8-9-10_era5-mdp_dsshf_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_5-6-7-8-9-10_era5-mdp_dviec_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_5-6-7-8-9-10_era5-mdp_dvipile_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_5-6-7-8-9-10_era5-mdp_dvike_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_5-6-7-8-9-10_era5-mdp_dtcclw_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_5-6-7-8-9-10_era5-mdp_dtcwv_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_5-6-7-8-9-10_era5-mdp_dnac_stats.nc.
+Skipped: file already exists: ../data_processed/era5_wsd_clim/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_5-6-7-8-9-10_era5-wsd.nc.
+CREATED: log file for create_all_possible_diff_data_files: ../logs/create_all_possible_diff_data_files/('ca', 'Jan-1992', 'Dec-1996', 'Jan-2002', 'Dec-2006', [11, 12, 1, 2, 3, 4])_2022-09-30-23-40-51_cfv1n.
+Skipped: file already exists: ../data_processed/glass_mean_clim/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_1-2-3-4-11-12_glass-mean_avhrr.nc.
+Skipped: file already exists: ../data_processed/glass_mean_clim/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_1-2-3-4-11-12_glass-mean_mixed.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_1-2-3-4-11-12_era5-mdp_ws10.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_1-2-3-4-11-12_era5-mdp_ws100.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_1-2-3-4-11-12_era5-mdp_wv10.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_1-2-3-4-11-12_era5-mdp_wv100.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_1-2-3-4-11-12_era5-mdp_mslp.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_1-2-3-4-11-12_era5-mdp_t2.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_1-2-3-4-11-12_era5-mdp_slhf.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_1-2-3-4-11-12_era5-mdp_sshf.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_1-2-3-4-11-12_era5-mdp_viec.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_1-2-3-4-11-12_era5-mdp_vipile.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_1-2-3-4-11-12_era5-mdp_vike.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_1-2-3-4-11-12_era5-mdp_tcclw.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_1-2-3-4-11-12_era5-mdp_tcwv.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_1-2-3-4-11-12_era5-mdp_nac.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_1-2-3-4-11-12_era5-mdp_dws10.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_1-2-3-4-11-12_era5-mdp_dws100.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_1-2-3-4-11-12_era5-mdp_dwv10.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_1-2-3-4-11-12_era5-mdp_dwv100.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_1-2-3-4-11-12_era5-mdp_dmslp.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_1-2-3-4-11-12_era5-mdp_dt2.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_1-2-3-4-11-12_era5-mdp_dslhf.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_1-2-3-4-11-12_era5-mdp_dsshf.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_1-2-3-4-11-12_era5-mdp_dviec.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_1-2-3-4-11-12_era5-mdp_dvipile.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_1-2-3-4-11-12_era5-mdp_dvike.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_1-2-3-4-11-12_era5-mdp_dtcclw.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_1-2-3-4-11-12_era5-mdp_dtcwv.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_1-2-3-4-11-12_era5-mdp_dnac.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_1-2-3-4-11-12_era5-mdp_ws10_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_1-2-3-4-11-12_era5-mdp_ws100_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_1-2-3-4-11-12_era5-mdp_wv10_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_1-2-3-4-11-12_era5-mdp_wv100_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_1-2-3-4-11-12_era5-mdp_mslp_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_1-2-3-4-11-12_era5-mdp_t2_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_1-2-3-4-11-12_era5-mdp_slhf_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_1-2-3-4-11-12_era5-mdp_sshf_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_1-2-3-4-11-12_era5-mdp_viec_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_1-2-3-4-11-12_era5-mdp_vipile_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_1-2-3-4-11-12_era5-mdp_vike_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_1-2-3-4-11-12_era5-mdp_tcclw_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_1-2-3-4-11-12_era5-mdp_tcwv_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_1-2-3-4-11-12_era5-mdp_nac_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_1-2-3-4-11-12_era5-mdp_dws10_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_1-2-3-4-11-12_era5-mdp_dws100_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_1-2-3-4-11-12_era5-mdp_dwv10_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_1-2-3-4-11-12_era5-mdp_dwv100_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_1-2-3-4-11-12_era5-mdp_dmslp_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_1-2-3-4-11-12_era5-mdp_dt2_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_1-2-3-4-11-12_era5-mdp_dslhf_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_1-2-3-4-11-12_era5-mdp_dsshf_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_1-2-3-4-11-12_era5-mdp_dviec_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_1-2-3-4-11-12_era5-mdp_dvipile_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_1-2-3-4-11-12_era5-mdp_dvike_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_1-2-3-4-11-12_era5-mdp_dtcclw_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_1-2-3-4-11-12_era5-mdp_dtcwv_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_1-2-3-4-11-12_era5-mdp_dnac_stats.nc.
+Skipped: file already exists: ../data_processed/era5_wsd_clim/cfv1n_diff_ca_Jan-1992_Dec-1996_Jan-2002_Dec-2006_1-2-3-4-11-12_era5-wsd.nc.
+CREATED: log file for create_all_possible_diff_data_files: ../logs/create_all_possible_diff_data_files/('sa', 'Jan-2003', 'Dec-2008', 'Jan-2015', 'Dec-2020', 'all')_2022-09-30-23-40-51_cfv1n.
+Skipped: file already exists: ../data_processed/glass_mean_clim/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_all_glass-mean_mixed.nc.
+Skipped: file already exists: ../data_processed/glass_mean_clim/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_all_glass-mean_modis.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_all_era5-mdp_ws10.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_all_era5-mdp_ws100.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_all_era5-mdp_wv10.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_all_era5-mdp_wv100.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_all_era5-mdp_mslp.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_all_era5-mdp_t2.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_all_era5-mdp_slhf.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_all_era5-mdp_sshf.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_all_era5-mdp_viec.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_all_era5-mdp_vipile.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_all_era5-mdp_vike.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_all_era5-mdp_tcclw.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_all_era5-mdp_tcwv.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_all_era5-mdp_nac.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_all_era5-mdp_dws10.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_all_era5-mdp_dws100.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_all_era5-mdp_dwv10.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_all_era5-mdp_dwv100.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_all_era5-mdp_dmslp.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_all_era5-mdp_dt2.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_all_era5-mdp_dslhf.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_all_era5-mdp_dsshf.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_all_era5-mdp_dviec.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_all_era5-mdp_dvipile.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_all_era5-mdp_dvike.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_all_era5-mdp_dtcclw.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_all_era5-mdp_dtcwv.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_all_era5-mdp_dnac.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_all_era5-mdp_ws10_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_all_era5-mdp_ws100_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_all_era5-mdp_wv10_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_all_era5-mdp_wv100_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_all_era5-mdp_mslp_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_all_era5-mdp_t2_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_all_era5-mdp_slhf_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_all_era5-mdp_sshf_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_all_era5-mdp_viec_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_all_era5-mdp_vipile_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_all_era5-mdp_vike_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_all_era5-mdp_tcclw_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_all_era5-mdp_tcwv_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_all_era5-mdp_nac_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_all_era5-mdp_dws10_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_all_era5-mdp_dws100_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_all_era5-mdp_dwv10_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_all_era5-mdp_dwv100_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_all_era5-mdp_dmslp_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_all_era5-mdp_dt2_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_all_era5-mdp_dslhf_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_all_era5-mdp_dsshf_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_all_era5-mdp_dviec_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_all_era5-mdp_dvipile_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_all_era5-mdp_dvike_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_all_era5-mdp_dtcclw_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_all_era5-mdp_dtcwv_stats.nc.
+Skipped: file already exists: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_all_era5-mdp_dnac_stats.nc.
+Opening: existing file for use in calc_diff: ../data_processed/era5_wsd_clim/cfv1n_calc_sa_Jan-2003_Dec-2008_all_era5-wsd.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_wsd_clim/cfv1n_calc_sa_Jan-2015_Dec-2020_all_era5-wsd.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_wsd_clim/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_all_era5-wsd.nc.
+CREATED: log file for create_all_possible_diff_data_files: ../logs/create_all_possible_diff_data_files/('sa', 'Jan-2003', 'Dec-2008', 'Jan-2015', 'Dec-2020', [1, 2, 3, 4, 5, 6])_2022-09-30-23-41-42_cfv1n.
+CREATED: file for use in calc_diff: ../data_processed/glass_mean_clim/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_glass-mean_avhrr.nc.
+CREATED: file for use in calc_diff: ../data_processed/glass_mean_clim/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_glass-mean_modis.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/glass_mean_clim/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_1-2-3-4-5-6_glass-mean_mixed.nc.
+CREATED: file for use in calc_diff: ../data_processed/glass_mean_clim/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_glass-mean_modis.nc.
+Opening: existing file for use in calc_diff: ../data_processed/glass_mean_clim/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_glass-mean_modis.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/glass_mean_clim/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_1-2-3-4-5-6_glass-mean_modis.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_ws10.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_ws10.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_ws10.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_ws100.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_ws100.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_ws100.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_wv10.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_wv10.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_wv10.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_wv100.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_wv100.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_wv100.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_mslp.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_mslp.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_mslp.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_t2.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_t2.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_t2.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_slhf.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_slhf.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_slhf.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_sshf.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_sshf.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_sshf.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_viec.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_viec.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_viec.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_vipile.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_vipile.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_vipile.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_vike.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_vike.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_vike.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_tcclw.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_tcclw.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_tcclw.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_tcwv.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_tcwv.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_tcwv.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_nac.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_nac.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_nac.nc.
+Opening: existing file for use in calc_era5_mdp_clim_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_ws10.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_dws10.nc.
+Opening: existing file for use in calc_era5_mdp_clim_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_ws10.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dws10.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dws10.nc.
+Opening: existing file for use in calc_era5_mdp_clim_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_ws100.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_dws100.nc.
+Opening: existing file for use in calc_era5_mdp_clim_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_ws100.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dws100.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dws100.nc.
+Opening: existing file for use in calc_era5_mdp_clim_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_wv10.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_dwv10.nc.
+Opening: existing file for use in calc_era5_mdp_clim_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_wv10.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dwv10.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dwv10.nc.
+Opening: existing file for use in calc_era5_mdp_clim_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_wv100.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_dwv100.nc.
+Opening: existing file for use in calc_era5_mdp_clim_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_wv100.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dwv100.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dwv100.nc.
+Opening: existing file for use in calc_era5_mdp_clim_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_mslp.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_dmslp.nc.
+Opening: existing file for use in calc_era5_mdp_clim_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_mslp.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dmslp.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dmslp.nc.
+Opening: existing file for use in calc_era5_mdp_clim_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_t2.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_dt2.nc.
+Opening: existing file for use in calc_era5_mdp_clim_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_t2.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dt2.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dt2.nc.
+Opening: existing file for use in calc_era5_mdp_clim_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_slhf.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_dslhf.nc.
+Opening: existing file for use in calc_era5_mdp_clim_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_slhf.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dslhf.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dslhf.nc.
+Opening: existing file for use in calc_era5_mdp_clim_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_sshf.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_dsshf.nc.
+Opening: existing file for use in calc_era5_mdp_clim_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_sshf.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dsshf.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dsshf.nc.
+Opening: existing file for use in calc_era5_mdp_clim_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_viec.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_dviec.nc.
+Opening: existing file for use in calc_era5_mdp_clim_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_viec.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dviec.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dviec.nc.
+Opening: existing file for use in calc_era5_mdp_clim_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_vipile.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_dvipile.nc.
+Opening: existing file for use in calc_era5_mdp_clim_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_vipile.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dvipile.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dvipile.nc.
+Opening: existing file for use in calc_era5_mdp_clim_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_vike.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_dvike.nc.
+Opening: existing file for use in calc_era5_mdp_clim_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_vike.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dvike.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dvike.nc.
+Opening: existing file for use in calc_era5_mdp_clim_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_tcclw.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_dtcclw.nc.
+Opening: existing file for use in calc_era5_mdp_clim_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_tcclw.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dtcclw.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dtcclw.nc.
+Opening: existing file for use in calc_era5_mdp_clim_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_tcwv.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_dtcwv.nc.
+Opening: existing file for use in calc_era5_mdp_clim_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_tcwv.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dtcwv.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dtcwv.nc.
+Opening: existing file for use in calc_era5_mdp_clim_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_nac.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_dnac.nc.
+Opening: existing file for use in calc_era5_mdp_clim_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_nac.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dnac.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dnac.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_ws10.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_ws10_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_ws10.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_ws10_stats.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_ws10_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_ws100.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_ws100_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_ws100.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_ws100_stats.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_ws100_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_wv10.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_wv10_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_wv10.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_wv10_stats.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_wv10_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_wv100.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_wv100_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_wv100.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_wv100_stats.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_wv100_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_mslp.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_mslp_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_mslp.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_mslp_stats.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_mslp_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_t2.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_t2_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_t2.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_t2_stats.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_t2_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_slhf.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_slhf_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_slhf.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_slhf_stats.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_slhf_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_sshf.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_sshf_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_sshf.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_sshf_stats.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_sshf_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_viec.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_viec_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_viec.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_viec_stats.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_viec_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_vipile.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_vipile_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_vipile.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_vipile_stats.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_vipile_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_vike.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_vike_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_vike.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_vike_stats.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_vike_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_tcclw.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_tcclw_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_tcclw.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_tcclw_stats.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_tcclw_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_tcwv.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_tcwv_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_tcwv.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_tcwv_stats.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_tcwv_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_nac.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_nac_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_nac.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_nac_stats.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_nac_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_dws10.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_dws10_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dws10.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dws10_stats.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dws10_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_dws100.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_dws100_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dws100.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dws100_stats.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dws100_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_dwv10.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_dwv10_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dwv10.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dwv10_stats.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dwv10_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_dwv100.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_dwv100_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dwv100.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dwv100_stats.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dwv100_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_dmslp.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_dmslp_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dmslp.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dmslp_stats.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dmslp_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_dt2.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_dt2_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dt2.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dt2_stats.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dt2_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_dslhf.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_dslhf_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dslhf.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dslhf_stats.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dslhf_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_dsshf.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_dsshf_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dsshf.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dsshf_stats.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dsshf_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_dviec.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_dviec_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dviec.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dviec_stats.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dviec_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_dvipile.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_dvipile_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dvipile.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dvipile_stats.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dvipile_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_dvike.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_dvike_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dvike.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dvike_stats.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dvike_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_dtcclw.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_dtcclw_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dtcclw.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dtcclw_stats.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dtcclw_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_dtcwv.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_dtcwv_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dtcwv.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dtcwv_stats.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dtcwv_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_dnac.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-mdp_dnac_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dnac.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dnac_stats.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-mdp_dnac_stats.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_wsd_clim/cfv1n_calc_sa_Jan-2003_Dec-2008_1-2-3-4-5-6_era5-wsd.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_wsd_clim/cfv1n_calc_sa_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-wsd.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_wsd_clim/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_1-2-3-4-5-6_era5-wsd.nc.
+CREATED: log file for create_all_possible_diff_data_files: ../logs/create_all_possible_diff_data_files/('sa', 'Jan-2003', 'Dec-2008', 'Jan-2015', 'Dec-2020', [7, 8, 9, 10, 11, 12])_2022-09-30-23-49-15_cfv1n.
+CREATED: file for use in calc_diff: ../data_processed/glass_mean_clim/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_glass-mean_avhrr.nc.
+CREATED: file for use in calc_diff: ../data_processed/glass_mean_clim/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_glass-mean_modis.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/glass_mean_clim/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_7-8-9-10-11-12_glass-mean_mixed.nc.
+CREATED: file for use in calc_diff: ../data_processed/glass_mean_clim/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_glass-mean_modis.nc.
+Opening: existing file for use in calc_diff: ../data_processed/glass_mean_clim/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_glass-mean_modis.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/glass_mean_clim/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_7-8-9-10-11-12_glass-mean_modis.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_ws10.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_ws10.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_ws10.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_ws100.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_ws100.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_ws100.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_wv10.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_wv10.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_wv10.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_wv100.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_wv100.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_wv100.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_mslp.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_mslp.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_mslp.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_t2.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_t2.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_t2.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_slhf.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_slhf.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_slhf.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_sshf.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_sshf.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_sshf.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_viec.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_viec.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_viec.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_vipile.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_vipile.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_vipile.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_vike.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_vike.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_vike.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_tcclw.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_tcclw.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_tcclw.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_tcwv.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_tcwv.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_tcwv.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_nac.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_nac.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_nac.nc.
+Opening: existing file for use in calc_era5_mdp_clim_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_ws10.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_dws10.nc.
+Opening: existing file for use in calc_era5_mdp_clim_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_ws10.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dws10.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dws10.nc.
+Opening: existing file for use in calc_era5_mdp_clim_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_ws100.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_dws100.nc.
+Opening: existing file for use in calc_era5_mdp_clim_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_ws100.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dws100.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dws100.nc.
+Opening: existing file for use in calc_era5_mdp_clim_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_wv10.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_dwv10.nc.
+Opening: existing file for use in calc_era5_mdp_clim_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_wv10.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dwv10.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dwv10.nc.
+Opening: existing file for use in calc_era5_mdp_clim_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_wv100.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_dwv100.nc.
+Opening: existing file for use in calc_era5_mdp_clim_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_wv100.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dwv100.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dwv100.nc.
+Opening: existing file for use in calc_era5_mdp_clim_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_mslp.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_dmslp.nc.
+Opening: existing file for use in calc_era5_mdp_clim_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_mslp.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dmslp.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dmslp.nc.
+Opening: existing file for use in calc_era5_mdp_clim_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_t2.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_dt2.nc.
+Opening: existing file for use in calc_era5_mdp_clim_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_t2.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dt2.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dt2.nc.
+Opening: existing file for use in calc_era5_mdp_clim_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_slhf.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_dslhf.nc.
+Opening: existing file for use in calc_era5_mdp_clim_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_slhf.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dslhf.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dslhf.nc.
+Opening: existing file for use in calc_era5_mdp_clim_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_sshf.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_dsshf.nc.
+Opening: existing file for use in calc_era5_mdp_clim_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_sshf.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dsshf.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dsshf.nc.
+Opening: existing file for use in calc_era5_mdp_clim_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_viec.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_dviec.nc.
+Opening: existing file for use in calc_era5_mdp_clim_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_viec.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dviec.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dviec.nc.
+Opening: existing file for use in calc_era5_mdp_clim_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_vipile.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_dvipile.nc.
+Opening: existing file for use in calc_era5_mdp_clim_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_vipile.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dvipile.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dvipile.nc.
+Opening: existing file for use in calc_era5_mdp_clim_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_vike.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_dvike.nc.
+Opening: existing file for use in calc_era5_mdp_clim_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_vike.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dvike.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dvike.nc.
+Opening: existing file for use in calc_era5_mdp_clim_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_tcclw.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_dtcclw.nc.
+Opening: existing file for use in calc_era5_mdp_clim_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_tcclw.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dtcclw.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dtcclw.nc.
+Opening: existing file for use in calc_era5_mdp_clim_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_tcwv.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_dtcwv.nc.
+Opening: existing file for use in calc_era5_mdp_clim_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_tcwv.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dtcwv.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dtcwv.nc.
+Opening: existing file for use in calc_era5_mdp_clim_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_nac.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_dnac.nc.
+Opening: existing file for use in calc_era5_mdp_clim_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_nac.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dnac.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dnac.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_ws10.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_ws10_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_ws10.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_ws10_stats.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_ws10_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_ws100.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_ws100_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_ws100.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_ws100_stats.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_ws100_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_wv10.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_wv10_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_wv10.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_wv10_stats.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_wv10_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_wv100.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_wv100_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_wv100.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_wv100_stats.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_wv100_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_mslp.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_mslp_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_mslp.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_mslp_stats.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_mslp_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_t2.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_t2_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_t2.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_t2_stats.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_t2_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_slhf.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_slhf_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_slhf.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_slhf_stats.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_slhf_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_sshf.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_sshf_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_sshf.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_sshf_stats.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_sshf_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_viec.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_viec_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_viec.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_viec_stats.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_viec_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_vipile.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_vipile_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_vipile.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_vipile_stats.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_vipile_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_vike.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_vike_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_vike.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_vike_stats.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_vike_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_tcclw.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_tcclw_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_tcclw.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_tcclw_stats.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_tcclw_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_tcwv.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_tcwv_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_tcwv.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_tcwv_stats.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_tcwv_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_nac.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_nac_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_nac.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_nac_stats.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_nac_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_dws10.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_dws10_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dws10.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dws10_stats.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dws10_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_dws100.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_dws100_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dws100.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dws100_stats.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dws100_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_dwv10.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_dwv10_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dwv10.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dwv10_stats.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dwv10_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_dwv100.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_dwv100_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dwv100.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dwv100_stats.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dwv100_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_dmslp.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_dmslp_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dmslp.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dmslp_stats.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dmslp_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_dt2.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_dt2_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dt2.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dt2_stats.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dt2_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_dslhf.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_dslhf_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dslhf.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dslhf_stats.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dslhf_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_dsshf.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_dsshf_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dsshf.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dsshf_stats.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dsshf_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_dviec.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_dviec_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dviec.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dviec_stats.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dviec_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_dvipile.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_dvipile_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dvipile.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dvipile_stats.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dvipile_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_dvike.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_dvike_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dvike.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dvike_stats.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dvike_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_dtcclw.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_dtcclw_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dtcclw.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dtcclw_stats.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dtcclw_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_dtcwv.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_dtcwv_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dtcwv.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dtcwv_stats.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dtcwv_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_dnac.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-mdp_dnac_stats.nc.
+Opening: existing file for use in calc_era5_mdp_clim_stats_given_var_or_dvar: ../data_processed/era5_mdp_clim_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dnac.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dnac_stats.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-mdp_dnac_stats.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_wsd_clim/cfv1n_calc_sa_Jan-2003_Dec-2008_7-8-9-10-11-12_era5-wsd.nc.
+CREATED: file for use in calc_diff: ../data_processed/era5_wsd_clim/cfv1n_calc_sa_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-wsd.nc.
+CREATED: file for use in create_all_possible_diff_data_files: ../data_processed/era5_wsd_clim/cfv1n_diff_sa_Jan-2003_Dec-2008_Jan-2015_Dec-2020_7-8-9-10-11-12_era5-wsd.nc.
+
