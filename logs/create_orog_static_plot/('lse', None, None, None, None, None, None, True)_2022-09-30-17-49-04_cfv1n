@@ -1,0 +1,4 @@
+INFO:root:CREATED: log file for create_orog_static_plot: ../logs/create_orog_static_plot/('lse', None, None, None, None, None, None, True)_2022-09-30-17-49-04_cfv1n.
+INFO:root:Obtained: calc_era5_orog output path for use in create_orog_static_plot.
+INFO:root:Opening: existing file for use in create_orog_static_plot: ../data_processed/era5_orog/cfv1n_calc_global_era5-orog.nc
+WARNING:root:WARNING: plot file already exists (and was not overwritten): ../data_final/era5_orog/pfv00_cfv1n_calc_global_era5-orog_lse.png

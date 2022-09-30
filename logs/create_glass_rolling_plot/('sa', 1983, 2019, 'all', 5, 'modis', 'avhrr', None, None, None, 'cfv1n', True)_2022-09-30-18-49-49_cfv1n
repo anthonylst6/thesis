@@ -1,0 +1,2 @@
+INFO:root:CREATED: log file for create_glass_rolling_plot: ../logs/create_glass_rolling_plot/('sa', 1983, 2019, 'all', 5, 'modis', 'avhrr', None, None, None, 'cfv1n', True)_2022-09-30-18-49-49_cfv1n.
+INFO:root:Passed: validity check for input arguments into create_glass_rolling_plot.
