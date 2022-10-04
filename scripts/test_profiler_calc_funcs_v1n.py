@@ -3327,6 +3327,9 @@ def calc_era5_orog():
 # In[ ]:
 
 
+from memory_profiler import profile
+
+@profile
 def calc_glass_rolling_avg_of_annual_diff(region, year_start, year_end, months_subset,
                                           window_size, glass_source_pref):
     

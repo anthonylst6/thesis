@@ -1,6 +1,7 @@
 .ipynb_checkpoints
 data_archived/
 data_raw/
+data_processed/
 textbooks/
 scrap/
 UNSW-Data-Archive-master/

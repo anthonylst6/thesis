@@ -6,7 +6,7 @@
 ### on github under the HPC-Basics directory titled "pbs-variables.pbs"
 
 #PBS -N global-glass-rolling
-#PBS -l select=1:ncpus=2:mem=128gb
+#PBS -l select=1:ncpus=8:mem=750gb
 #PBS -l walltime=4:00:00
 #PBS -j oe
 #PBS -k oed

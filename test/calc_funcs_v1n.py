@@ -151,6 +151,14 @@ for _, dvar_list in vars_and_dvars_era5["dvars"].items():
 
 vars_and_dvars_era5_all = vars_era5_all + dvars_era5_all
 
+# Valid time strings to use as argument in plot_funcs script,
+times = {
+    "0-5": list(range(0, 6)), "6-11": list(range(6, 12)),
+    "12-17": list(range(12, 18)), "18-23": list(range(18, 24)),
+    "night": list(range(0, 6)), "morning": list(range(6, 12)),
+    "afternoon": list(range(12, 18)), "evening": list(range(18, 24))
+}
+
 # Parameters which are vectors
 params_vector = ["wv10", "wv100", "dwv10", "dwv100"]
 
@@ -652,7 +660,7 @@ def check_args_for_none(func_name, args_1up=None, args_1up_values=None):
 def check_args(calc_func=None, region=None, period_start=None, period_end=None,
                months_subset=None, glass_source_pref=None, var_or_dvar=None, 
                hour=None, year_start=None, year_end=None, window_size=None, 
-               var_or_dvar_layer=None, var_or_dvar_type=None):
+               var_or_dvar_layer=None, var_or_dvar_type=None, time=None):
     
     """
     Function to check whether input arguments are valid.
@@ -701,7 +709,10 @@ def check_args(calc_func=None, region=None, period_start=None, period_end=None,
         var_or_dvar_type (str): Whether to analyse the variables themselves or the 
             change in their mean diurnal profile values as compared with their values
             in the previous hour. This is used for the plot_func script.
-            Must be one of: ["vars", "dvars"].            
+            Must be one of: ["vars", "dvars"].
+        time (str): Which times of the day to display MDP values for. This
+            is used for the plot_func_script. Must be one of: 
+            ["0-5"/"night", "6-11"/"morning", "12-17"/"afternoon", "18-23"/"evening"].
     
     Returns:
         AssertionError if any of the input arguments are invalid.
@@ -811,6 +822,10 @@ def check_args(calc_func=None, region=None, period_start=None, period_end=None,
     if var_or_dvar_type:
         assert var_or_dvar_type in [*vars_and_dvars_era5], \
             f"var_or_dvar_type must be one of: {[*vars_and_dvars_era5]}"
+        
+    if time:
+        assert time in [*times], \
+            f"time must be one of: {[*times]}"
     
     if (func_1up == "<cell line: 1>") | (func_1up == "<module>"):
         logging.info("Passed: validity check for input arguments.")
@@ -3469,9 +3484,15 @@ def calc_glass_rolling_avg_of_annual_diff(region, year_start, year_end, months_s
             year_mixed = None
     
     logging.debug("Merging: datasets for annual difference in glass mean.")
-    ds_diff_merged = xr.merge(datasets)
+    
     if priority == "speed":
+        ds_diff_merged = xr.merge(datasets)
         ds_diff_merged = ds_diff_merged.persist()
+        
+    elif priority == "memory":
+        ds_diff_merged = datasets[0]
+        for i in range(1, len(datasets)):
+            ds_diff_merged = xr.merge([ds_diff_merged, datasets[i]])
     
     # The code below computes the rolling avg by using xarray's rolling window but a more
     # efficient way would have been to recognise that the average of consecutive annual
@@ -3791,3 +3812,4 @@ def create_all_possible_diff_data_files(region, period1_start, period1_end,
                     )
     
     remove_handlers_if_directly_executed(func_1up)
+
