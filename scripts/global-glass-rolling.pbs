@@ -5,9 +5,9 @@
 ### An explanation of the use of the variables can be found 
 ### on github under the HPC-Basics directory titled "pbs-variables.pbs"
 
-#PBS -N global-glass_rolling
-#PBS -l select=1:ncpus=16:mem=128gb
-#PBS -l walltime=12:00:00
+#PBS -N global-glass-rolling
+#PBS -l select=1:ncpus=2:mem=128gb
+#PBS -l walltime=4:00:00
 #PBS -j oe
 #PBS -k oed
 #PBS -M anthony.liu@student.unsw.edu.au

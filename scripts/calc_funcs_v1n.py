@@ -70,7 +70,7 @@ regions = {
     # South America (mostly central and eastern Brazil)
     "sa": {"extent": [-65, -30, -15, 0], "tz": -3},
     # Western Australia (mostly near the west coast)
-    "wa": {"extent": [113, 123, -35, -30], "tz": +8}
+    "wa": {"extent": [113, 123, -35, -30], "tz": +8},
     # Global (requires a lot of memory)
     "global": {"extent": [-180, 180, -90, 90], "tz": +0}
 }
