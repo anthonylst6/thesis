@@ -1,0 +1,5 @@
+Using: calc_funcs_v1n
+CREATED: log file for create_glass_rolling_plot: ../logs/create_glass_rolling_plot/('global', 1983, 2019, 'all', 5, 'mlai', 'avhrr', None, None, None, None, True)_2022-10-05-23-52-24_cfv1n.
+Opening: existing file for use in create_glass_rolling_plot: ../data_processed/glass_rolling_avg_of_annual_diff/cfv1n_calc_global_1983_2019_all_5-year_glass-rolling-diff_pref-avhrr.nc
+CREATED: plot file: ../data_final/glass_rolling_avg_of_annual_diff/pfv1d_cfv1n_calc_global_1983_2019_all_5-year_glass-rolling-diff_pref-avhrr_mlai.png
+

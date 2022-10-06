@@ -57,7 +57,7 @@ assert calc_log_level in log_levels, \
 # Set priority of code to one of: ["speed", "memory"]. "speed" sacrifices additional 
 # memory for faster processing while "memory" sacrifices faster processing for lower 
 # RAM consumption. 
-priority = "speed"
+priority = "memory"
 priorities = ["speed", "memory"]
 assert priority in priorities, \
     f"priority (global variable in settings section) must be one of: {priorities}"
@@ -3812,4 +3812,3 @@ def create_all_possible_diff_data_files(region, period1_start, period1_end,
                     )
     
     remove_handlers_if_directly_executed(func_1up)
-

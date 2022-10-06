@@ -1,4 +1,0 @@
-INFO:root:CREATED: log file for create_individual_calc_plot: ../logs/create_individual_calc_plot/create_individual_calc_plot(calc_era5_wsd_clim, 'wa', 'Jan-1992', 'Dec-1996', 'all', 'eroe1000', None, None, None, None, None, None, 'cfv1n', True)_2022-09-29-22-10-57_cfv1n.
-INFO:root:Passed: validity check for input arguments into create_individual_calc_plot.
-INFO:root:Passed: validity check for input arguments into get_months_subset_str.
-INFO:root:Obtained: string representation of all for use in create_individual_calc_plot.

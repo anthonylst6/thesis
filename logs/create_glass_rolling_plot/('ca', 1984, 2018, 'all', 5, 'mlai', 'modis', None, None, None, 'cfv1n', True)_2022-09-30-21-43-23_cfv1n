@@ -1,9 +1,0 @@
-INFO:root:CREATED: log file for create_glass_rolling_plot: ../logs/create_glass_rolling_plot/('ca', 1984, 2018, 'all', 5, 'mlai', 'modis', None, None, None, 'cfv1n', True)_2022-09-30-21-43-23_cfv1n.
-INFO:root:Passed: validity check for input arguments into create_glass_rolling_plot.
-INFO:root:Passed: validity check for input arguments into get_months_subset_str.
-INFO:root:Obtained: string representation of all for use in create_glass_rolling_plot.
-INFO:root:Passed: validity check for input arguments into get_path_for_calc_glass_rolling.
-INFO:root:Passed: validity check for input arguments into get_months_subset_str.
-INFO:root:Obtained: string representation of all for use in get_path_for_calc_glass_rolling.
-INFO:root:Obtained: calc_glass_rolling_avg_of_annual_diff output path for use in create_glass_rolling_plot.
-ERROR:root:TERMINATED: cfv_data = cfv1n was specified but could not find file: ../data_processed/glass_rolling_avg_of_annual_diff/cfv1n_calc_ca_1984_2018_all_5-year_glass-rolling-diff_pref-modis.nc

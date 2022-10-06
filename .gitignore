@@ -1,7 +1,10 @@
-.ipynb_checkpoints
 data_archived/
+# data_final/
+# data_processed/
 data_raw/
-data_processed/
-textbooks/
+# logs/
 scrap/
+scripts/__pycache__/
+scripts/.ipynb_checkpoints/
+textbooks/
 UNSW-Data-Archive-master/

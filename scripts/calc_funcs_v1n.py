@@ -57,7 +57,7 @@ assert calc_log_level in log_levels, \
 # Set priority of code to one of: ["speed", "memory"]. "speed" sacrifices additional 
 # memory for faster processing while "memory" sacrifices faster processing for lower 
 # RAM consumption. 
-priority = "speed"
+priority = "memory"
 priorities = ["speed", "memory"]
 assert priority in priorities, \
     f"priority (global variable in settings section) must be one of: {priorities}"
@@ -130,12 +130,14 @@ res_era5 = 0.25
 hours_all = list(range(0, 24))
 vars_and_dvars_era5 = {
     "vars": {
-        "sfc": ["ws10", "ws100", "wv10", "wv100", "mslp", "t2", "slhf", "sshf"],
-        "atm": ["viec", "vipile", "vike", "tcclw", "tcwv", "nac"]
+        "sfc": ["ws10", "wv10", "ws100", "wv100", "mslp", "t2", "slhf", "sshf"],
+        "atm": ["nse", "vidmf", "viec", "vipile", "vike", "tcclw", "tcwv", "nac"],
+        "cld": ["blh", "fa", "cbh", "tcc", "cape", "ci"]
     },
     "dvars": {
-        "sfc": ["dws10", "dws100", "dwv10", "dwv100", "dmslp", "dt2", "dslhf", "dsshf"],
-        "atm": ["dviec", "dvipile", "dvike", "dtcclw", "dtcwv", "dnac"]
+        "sfc": ["dws10", "dwv10", "dws100", "dwv100", "dmslp", "dt2", "dslhf", "dsshf"],
+        "atm": ["dnse", "dvidmf", "dviec", "dvipile", "dvike", "dtcclw", "dtcwv", "dnac"],
+        "cld": ["dblh", "dfa", "dcbh", "dtcc", "dcape", "dci"]
     }
 }
 
@@ -179,19 +181,27 @@ params_orog = ["lse", "ssgo"]
 # Mapping from ERA5 dataset variable names to own desired names, while
 # also accounting for any var_or_dvar variable dependencies
 vars_deps_and_rename = {"ws10": {"u10": "u10", "v10": "v10"},
-                        "ws100": {"u100": "u100", "v100": "v100"},
                         "wv10": {"u10": "u10", "v10": "v10"},
+                        "ws100": {"u100": "u100", "v100": "v100"},
                         "wv100": {"u100": "u100", "v100": "v100"},
                         "mslp": {"msl": "mslp"},
                         "t2": {"t2m": "t2"},
                         "slhf": {"slhf": "slhf"},
                         "sshf": {"sshf": "sshf"},
+                        "nse": {"e": "nse"},
+                        "vidmf": {"p84.162": "vidmf"},
                         "viec": {"p64.162": "viec"},
                         "vipile": {"p62.162": "vipile"},
                         "vike": {"p59.162": "vike"},
                         "tcclw": {"tclw": "tcclw"},
                         "tcwv": {"tcwv": "tcwv"},
-                        "nac": {"e": "nse", "p84.162": "vidmf", "tcwv": "tcwv"}
+                        "nac": {"e": "nse", "p84.162": "vidmf", "tcwv": "tcwv"},
+                        "blh": {"blh": "blh"},
+                        "fa": {"fal": "fa"},
+                        "cbh": {"cbh": "cbh"},
+                        "tcc": {"tcc": "tcc"},
+                        "cape": {"cape": "cape"},
+                        "ci": {"cin": "ci"}
                        }
 
 # Speed (in m/s) for expected rate of exceedance analysis at 100 m
@@ -328,6 +338,24 @@ attrs_da = {
     "nac": {"abbreviation": "NAC",
             "full_name": "Net Atmospheric Condensation",
             "units": "$kg m^{-2} s^{-1}$"},
+    "blh": {"abbreviation": "BLH",
+            "full_name": "Boundary Layer Height",
+            "units": "$m$"},
+    "fa": {"abbreviation": "FA",
+           "full_name": "Forecast Albedo",
+           "units": "dimensionless"},
+    "cbh": {"abbreviation": "CBH",
+            "full_name": "Cloud Base Height",
+            "units": "$m$"},
+    "tcc": {"abbreviation": "TCC",
+            "full_name": "Total Cloud Cover",
+            "units": "dimensionless"},
+    "cape": {"abbreviation": "CAPE",
+             "full_name": "Convective Available Potential Energy",
+             "units": "$J kg^{-1}$"},
+    "ci": {"abbreviation": "CI",
+           "full_name": "Convective Inhibition",
+           "units": "$J kg^{-1}$"},
     
     # For calc_era5_mdp_clim_stats_given_var_or_dvar
     "hour_max": {"abbreviation": "$hour_{{max}}$({})",
@@ -692,10 +720,12 @@ def check_args(calc_func=None, region=None, period_start=None, period_end=None,
             over a period which is completely contained within both the available
             AVHRR and MODIS datasets. Must be one of: ["avhrr", "modis"].
         var_or_dvar (str): Variable or value of change in variable to perform
-            calculation over. Must be one of: ['ws10', 'ws100', 'wv10', 'wv100', 
-            'mslp', 't2', 'slhf', 'sshf', 'viec', 'vipile', 'vike', 'tcclw', 'tcwv', 
-            'nac', 'dws10', 'dws100', 'dwv10', 'dwv100', 'dmslp', 'dt2', 'dslhf', 
-            'dsshf', 'dviec', 'dvipile', 'dvike', 'dtcclw', 'dtcwv', 'dnac'].
+            calculation over. Must be one of: ['ws10', 'wv10', 'ws100', 'wv100', 
+            'mslp', 't2', 'slhf', 'sshf', 'nse', 'vidmf' 'viec', 'vipile', 'vike', 
+            'tcclw', 'tcwv', 'nac', 'blh', 'fa', 'cbh', 'tcc', 'cape', 'ci', 
+            'dws10', 'dwv10', 'dws100', 'dwv100', 'dmslp', 'dt2', 'dslhf', 'dsshf', 
+            'dnse', 'dvidmf', 'dviec', 'dvipile', 'dvike', 'dtcclw', 'dtcwv', 'dnac', 
+            'dblh', 'dfa', 'dcbh', 'dtcc', 'dcape', 'dci'].
         hour (int): Hour of mean diurnal profile to compute value for.
             Must be one of: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
             13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23].
@@ -705,7 +735,7 @@ def check_args(calc_func=None, region=None, period_start=None, period_end=None,
             Must be an odd number and greater than or equal to 3.
         var_or_dvar_layer (str): Spatial layer from which to draw ERA5 parameters for 
             analysis. This is used for the plot_func script. Must be one of: 
-            ["sfc", "atm"].
+            ["sfc", "atm", "cld"].
         var_or_dvar_type (str): Whether to analyse the variables themselves or the 
             change in their mean diurnal profile values as compared with their values
             in the previous hour. This is used for the plot_func script.
@@ -936,14 +966,17 @@ def get_var_or_dvar_layer_and_type(var_or_dvar):
     
     Arguments:
         var_or_dvar (str): Variable or value of change in variable to perform
-            calculation over. Must be one of: ['ws10', 'ws100', 'wv10', 'wv100', 
-            'mslp', 't2', 'slhf', 'sshf', 'viec', 'vipile', 'vike', 'tcclw', 'tcwv', 
-            'nac', 'dws10', 'dws100', 'dwv10', 'dwv100', 'dmslp', 'dt2', 'dslhf', 
-            'dsshf', 'dviec', 'dvipile', 'dvike', 'dtcclw', 'dtcwv', 'dnac'].
+            calculation over. Must be one of: ['ws10', 'wv10', 'ws100', 'wv100', 
+            'mslp', 't2', 'slhf', 'sshf', 'nse', 'vidmf' 'viec', 'vipile', 'vike', 
+            'tcclw', 'tcwv', 'nac', 'blh', 'fa', 'cbh', 'tcc', 'cape', 'ci', 
+            'dws10', 'dwv10', 'dws100', 'dwv100', 'dmslp', 'dt2', 'dslhf', 'dsshf', 
+            'dnse', 'dvidmf', 'dviec', 'dvipile', 'dvike', 'dtcclw', 'dtcwv', 'dnac', 
+            'dblh', 'dfa', 'dcbh', 'dtcc', 'dcape', 'dci'].
     
     Returns:
         var_or_dvar_layer (str): var_or_dvar_layer classification indicating which 
-            spatial layer var_or_dvar primarily sits in. Can be either "sfc" or "atm".
+            spatial layer var_or_dvar primarily sits in. Can be one of: 
+            ["sfc", "atm", "cld"].
         var_or_dvar_type (str): var_or_dvar_type classification indicating whether 
             var_or_dvar is the variable itself ("vars") or the change in the value of a
             variable as compared with the previous hour ("dvars").
@@ -1365,11 +1398,9 @@ def get_da_range_for_vector_mdp_values(ds_era5_mdp, var_or_dvar):
     Arguments:
         ds_era5_mdp (xarray.Dataset): xarray Dataset containing MDP values for
             the given var_or_dvar.
-        var_or_dvar (str): Variable or value of change in variable to perform
-            calculation over. Must be one of: ['ws10', 'ws100', 'wv10', 'wv100', 
-            'mslp', 't2', 'slhf', 'sshf', 'viec', 'vipile', 'vike', 'tcclw', 'tcwv', 
-            'nac', 'dws10', 'dws100', 'dwv10', 'dwv100', 'dmslp', 'dt2', 'dslhf', 
-            'dsshf', 'dviec', 'dvipile', 'dvike', 'dtcclw', 'dtcwv', 'dnac'].
+        var_or_dvar (str): Vector variable or value of change in vector variable to 
+            perform calculation over. Must be one of: 
+            ['wv10', 'wv100', 'dwv10', 'dwv100'].
                         
     Returns:
         da_range (xarray.DataArray): Range of vector MDP values.
@@ -1805,10 +1836,12 @@ def get_path_for_calc_func(calc_func_name, region, period_start, period_end,
             over a period which is completely contained within both the available
             AVHRR and MODIS datasets. Must be one of: ["avhrr", "modis"].
         var_or_dvar (str): Variable or value of change in variable to perform
-            calculation over. Must be one of: ['ws10', 'ws100', 'wv10', 'wv100', 
-            'mslp', 't2', 'slhf', 'sshf', 'viec', 'vipile', 'vike', 'tcclw', 'tcwv', 
-            'nac', 'dws10', 'dws100', 'dwv10', 'dwv100', 'dmslp', 'dt2', 'dslhf', 
-            'dsshf', 'dviec', 'dvipile', 'dvike', 'dtcclw', 'dtcwv', 'dnac'].
+            calculation over. Must be one of: ['ws10', 'wv10', 'ws100', 'wv100', 
+            'mslp', 't2', 'slhf', 'sshf', 'nse', 'vidmf' 'viec', 'vipile', 'vike', 
+            'tcclw', 'tcwv', 'nac', 'blh', 'fa', 'cbh', 'tcc', 'cape', 'ci', 
+            'dws10', 'dwv10', 'dws100', 'dwv100', 'dmslp', 'dt2', 'dslhf', 'dsshf', 
+            'dnse', 'dvidmf', 'dviec', 'dvipile', 'dvike', 'dtcclw', 'dtcwv', 'dnac', 
+            'dblh', 'dfa', 'dcbh', 'dtcc', 'dcape', 'dci'].
             
     Returns:
         path_output_calc_func (str): Output path for results from calc_func.
@@ -1908,10 +1941,12 @@ def get_path_for_calc_diff(calc_func_name, region, period1_start, period1_end,
             over a period which is completely contained within both the available
             AVHRR and MODIS datasets. Must be one of: ["avhrr", "modis"].
         var_or_dvar (str): Variable or value of change in variable to perform
-            calculation over. Must be one of: ['ws10', 'ws100', 'wv10', 'wv100', 
-            'mslp', 't2', 'slhf', 'sshf', 'viec', 'vipile', 'vike', 'tcclw', 'tcwv', 
-            'nac', 'dws10', 'dws100', 'dwv10', 'dwv100', 'dmslp', 'dt2', 'dslhf', 
-            'dsshf', 'dviec', 'dvipile', 'dvike', 'dtcclw', 'dtcwv', 'dnac'].
+            calculation over. Must be one of: ['ws10', 'wv10', 'ws100', 'wv100', 
+            'mslp', 't2', 'slhf', 'sshf', 'nse', 'vidmf' 'viec', 'vipile', 'vike', 
+            'tcclw', 'tcwv', 'nac', 'blh', 'fa', 'cbh', 'tcc', 'cape', 'ci', 
+            'dws10', 'dwv10', 'dws100', 'dwv100', 'dmslp', 'dt2', 'dslhf', 'dsshf', 
+            'dnse', 'dvidmf', 'dviec', 'dvipile', 'dvike', 'dtcclw', 'dtcwv', 'dnac', 
+            'dblh', 'dfa', 'dcbh', 'dtcc', 'dcape', 'dci'].
             
     Returns:
         path_output_calc_diff (str): Output path for results from calc_diff.
@@ -2372,10 +2407,12 @@ def calc_era5_mdp_clim_given_var_or_dvar(region, period_start, period_end,
             Must be a str and one of: ["all", "djf", "mam", "jja", "son"], or a subset
             list of: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] with at least one item.
         var_or_dvar (str): Variable or value of change in variable to perform
-            calculation over. Must be one of: ['ws10', 'ws100', 'wv10', 'wv100', 
-            'mslp', 't2', 'slhf', 'sshf', 'viec', 'vipile', 'vike', 'tcclw', 'tcwv', 
-            'nac', 'dws10', 'dws100', 'dwv10', 'dwv100', 'dmslp', 'dt2', 'dslhf', 
-            'dsshf', 'dviec', 'dvipile', 'dvike', 'dtcclw', 'dtcwv', 'dnac'].
+            calculation over. Must be one of: ['ws10', 'wv10', 'ws100', 'wv100', 
+            'mslp', 't2', 'slhf', 'sshf', 'nse', 'vidmf' 'viec', 'vipile', 'vike', 
+            'tcclw', 'tcwv', 'nac', 'blh', 'fa', 'cbh', 'tcc', 'cape', 'ci', 
+            'dws10', 'dwv10', 'dws100', 'dwv100', 'dmslp', 'dt2', 'dslhf', 'dsshf', 
+            'dnse', 'dvidmf', 'dviec', 'dvipile', 'dvike', 'dtcclw', 'dtcwv', 'dnac', 
+            'dblh', 'dfa', 'dcbh', 'dtcc', 'dcape', 'dci'].
         glass_source_pref (None): This argument is not used for this analysis. It is used 
             for applying the calc_diff function over an arbitrary calc_func.
                         
@@ -2664,10 +2701,12 @@ def calc_era5_mdp_clim_stats_given_var_or_dvar(region, period_start, period_end,
             Must be a str and one of: ["all", "djf", "mam", "jja", "son"], or a subset
             list of: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] with at least one item.
         var_or_dvar (str): Variable or value of change in variable to perform
-            calculation over. Must be one of: ['ws10', 'ws100', 'wv10', 'wv100', 
-            'mslp', 't2', 'slhf', 'sshf', 'viec', 'vipile', 'vike', 'tcclw', 'tcwv', 
-            'nac', 'dws10', 'dws100', 'dwv10', 'dwv100', 'dmslp', 'dt2', 'dslhf', 
-            'dsshf', 'dviec', 'dvipile', 'dvike', 'dtcclw', 'dtcwv', 'dnac'].
+            calculation over. Must be one of: ['ws10', 'wv10', 'ws100', 'wv100', 
+            'mslp', 't2', 'slhf', 'sshf', 'nse', 'vidmf' 'viec', 'vipile', 'vike', 
+            'tcclw', 'tcwv', 'nac', 'blh', 'fa', 'cbh', 'tcc', 'cape', 'ci', 
+            'dws10', 'dwv10', 'dws100', 'dwv100', 'dmslp', 'dt2', 'dslhf', 'dsshf', 
+            'dnse', 'dvidmf', 'dviec', 'dvipile', 'dvike', 'dtcclw', 'dtcwv', 'dnac', 
+            'dblh', 'dfa', 'dcbh', 'dtcc', 'dcape', 'dci'].
         glass_source_pref (None): This argument is not used for this analysis. It is used 
             for applying the calc_diff function over an arbitrary calc_func.
                         
@@ -2763,9 +2802,9 @@ def calc_era5_mdp_clim_stats_given_var_or_dvar(region, period_start, period_end,
         da_u = ds_era5_mdp[var_or_dvar.replace("wv", "u")]
         da_v = ds_era5_mdp[var_or_dvar.replace("wv", "v")]
         da_mag = get_magnitude(da_u, da_v)
-        da_hour_max = xr.DataArray(da_mag.argmax("hour"), name = "hour_max")
+        da_hour_max = xr.DataArray(da_mag.idxmax("hour"), name = "hour_max")
         da_hour_max = (da_hour_max + regions[region]["tz"]) % 24
-        da_hour_min = xr.DataArray(da_mag.argmin("hour"), name = "hour_min")
+        da_hour_min = xr.DataArray(da_mag.idxmin("hour"), name = "hour_min")
         da_hour_min = (da_hour_min + regions[region]["tz"]) % 24
         da_max_u = xr.DataArray(da_u.sel(hour = da_hour_max, drop = True), name = "max_u")
         da_max_v = xr.DataArray(da_v.sel(hour = da_hour_max, drop = True), name = "max_v")
@@ -2783,9 +2822,9 @@ def calc_era5_mdp_clim_stats_given_var_or_dvar(region, period_start, period_end,
         var_or_dvar_attrs = copy.deepcopy(da_era5_mdp.attrs)
         if priority == "speed":
             da_era5_mdp = da_era5_mdp.persist()
-        da_hour_max = xr.DataArray(da_era5_mdp.argmax("hour"), name = "hour_max")
+        da_hour_max = xr.DataArray(da_era5_mdp.idxmax("hour"), name = "hour_max")
         da_hour_max = (da_hour_max + regions[region]["tz"]) % 24
-        da_hour_min = xr.DataArray(da_era5_mdp.argmin("hour"), name = "hour_min")
+        da_hour_min = xr.DataArray(da_era5_mdp.idxmin("hour"), name = "hour_min")
         da_hour_min = (da_hour_min + regions[region]["tz"]) % 24
         da_max = xr.DataArray(da_era5_mdp.max("hour"), name = "max")
         da_min = xr.DataArray(da_era5_mdp.min("hour"), name = "min")
@@ -3077,10 +3116,12 @@ def calc_diff(calc_func, region, period1_start, period1_end,
             over a period which is completely contained within both the available
             AVHRR and MODIS datasets. Must be one of: ["avhrr", "modis"].
         var_or_dvar (str): Variable or value of change in variable to perform
-            calculation over. Must be one of: ['ws10', 'ws100', 'wv10', 'wv100', 
-            'mslp', 't2', 'slhf', 'sshf', 'viec', 'vipile', 'vike', 'tcclw', 'tcwv', 
-            'nac', 'dws10', 'dws100', 'dwv10', 'dwv100', 'dmslp', 'dt2', 'dslhf', 
-            'dsshf', 'dviec', 'dvipile', 'dvike', 'dtcclw', 'dtcwv', 'dnac'].
+            calculation over. Must be one of: ['ws10', 'wv10', 'ws100', 'wv100', 
+            'mslp', 't2', 'slhf', 'sshf', 'nse', 'vidmf' 'viec', 'vipile', 'vike', 
+            'tcclw', 'tcwv', 'nac', 'blh', 'fa', 'cbh', 'tcc', 'cape', 'ci', 
+            'dws10', 'dwv10', 'dws100', 'dwv100', 'dmslp', 'dt2', 'dslhf', 'dsshf', 
+            'dnse', 'dvidmf', 'dviec', 'dvipile', 'dvike', 'dtcclw', 'dtcwv', 'dnac', 
+            'dblh', 'dfa', 'dcbh', 'dtcc', 'dcape', 'dci'].
     
     Returns:
         ../data_processed/glass_mean_clim/{calc_funcs_ver}_diff_{region}_{period1_start}_
@@ -3812,4 +3853,3 @@ def create_all_possible_diff_data_files(region, period1_start, period1_end,
                     )
     
     remove_handlers_if_directly_executed(func_1up)
-

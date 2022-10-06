@@ -1,8 +1,0 @@
-INFO:root:CREATED: log file for plot_mdp_clim_stats_given_var_or_dvar: ../logs/plot_mdp_clim_stats_given_var_or_dvar/('wa', 'Jan-1992', 'Dec-1996', 'all', 'avhrr', 'wv100', None, None, False)_2022-09-30-12-22-39_cfv1n.
-INFO:root:Passed: validity check for input arguments into plot_mdp_clim_stats_given_var_or_dvar.
-INFO:root:Passed: validity check for input arguments into get_months_subset_str.
-INFO:root:Obtained: string representation of all for use in plot_mdp_clim_stats_given_var_or_dvar.
-INFO:root:Obtained: calc_era5_orog output path for use in create_orog_static_plot.
-INFO:root:Opening: existing file for use in create_orog_static_plot: ../data_processed/era5_orog/cfv1n_calc_global_era5-orog.nc
-INFO:root:Obtained: calc_era5_orog output path for use in create_orog_static_plot.
-INFO:root:Opening: existing file for use in create_orog_static_plot: ../data_processed/era5_orog/cfv1n_calc_global_era5-orog.nc
