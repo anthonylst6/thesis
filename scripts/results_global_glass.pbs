@@ -5,9 +5,9 @@
 ### An explanation of the use of the variables can be found 
 ### on github under the HPC-Basics directory titled "pbs-variables.pbs"
 
-#PBS -N results_global
+#PBS -N results_global_glass
 #PBS -l select=1:ncpus=8:mem=100gb
-#PBS -l walltime=4:00:00
+#PBS -l walltime=2:00:00
 #PBS -j oe
 #PBS -k oed
 #PBS -M anthony.liu@student.unsw.edu.au
@@ -21,8 +21,8 @@
 # Change to the directory the job was submitted from
 cd $PBS_O_WORKDIR
 
-# Load the desired python module and environment varables to be used 
+# Load the desired python module and environment variables to be used 
 module load python/3.9.9
 
 # Command to run the job
-conda run -n thesis python results_global.py
+conda run -n thesis python results_global_glass.py

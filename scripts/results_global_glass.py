@@ -4,7 +4,8 @@
 # In[ ]:
 
 
-# The following code requires up to XXX GB of RAM over YYY hours if using ZZZ CPUs
+# The following code requires up to 100 GB of RAM over 2 hours if using 8 CPUs
+# Up to 45 GB of storage will be required for the outputs
 
 
 # In[ ]:
@@ -89,21 +90,5 @@ pf.create_glass_rolling_plot("global", 1983, 2019, "all", 5, "mlai", glass_sourc
 # In[ ]:
 
 
-# Create all possible diff data files for period of LAI loss (using AVHRR data)
-# Do this for year round only (since seasons are not well defined on global scale)
-cf.create_all_possible_diff_data_files("global", "Jan-1981", "Dec-1985", "Jan-1992", "Dec-1996", "all")
 
-
-# In[ ]:
-
-
-# Create all possible diff data files for period of LAI gain (using MODIS data)
-# Do this for year round only (since seasons are not well defined on global scale)
-cf.create_all_possible_diff_data_files("global", "Jan-2007", "Dec-2011", "Jan-2017", "Dec-2021", "all")
-
-
-# In[ ]:
-
-
-# Create the relevant ERA5 analysis plots
 

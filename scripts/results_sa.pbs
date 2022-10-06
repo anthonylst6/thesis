@@ -21,7 +21,7 @@
 # Change to the directory the job was submitted from
 cd $PBS_O_WORKDIR
 
-# Load the desired python module and environment varables to be used 
+# Load the desired python module and environment variables to be used 
 module load python/3.9.9
 
 # Command to run the job
