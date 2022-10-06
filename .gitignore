@@ -1,8 +1,8 @@
 data_archived/
-# data_final/
-# data_processed/
+data_final/
+data_processed/
 data_raw/
-# logs/
+logs/
 scrap/
 scripts/__pycache__/
 scripts/.ipynb_checkpoints/
