@@ -81,7 +81,7 @@ chunksize = "500MB"
 # Valid subset strings to use as argument in climatologies and
 # their mapping to month numbers for use in xarray time slicing
 months_subsets = {
-    "all": list(range(1, 13)),
+    "all": list(range(1, 12+1)),
     "djf": [12,1,2], "mam": [3,4,5], "jja": [6,7,8], "son": [9,10,11]
 }
 
@@ -127,15 +127,17 @@ fapar_latest_year = int(fapar_latest[-4:])
 res_era5 = 0.25
 
 # Valid ERA5/ERA5-derived parameters for use in analysis
-hours_all = list(range(0, 24))
+hours_all = list(range(0, 23+1))
 vars_and_dvars_era5 = {
     "vars": {
-        "sfc": ["ws10", "wv10", "ws100", "wv100", "mslp", "t2", "slhf", "sshf"],
+        "sfc": ["u10", "v10", "ws10", "wv10", "u100", "v100", "ws100", "wv100", 
+                "mslp", "t2", "slhf", "sshf"],
         "atm": ["nse", "vidmf", "viec", "vipile", "vike", "tcclw", "tcwv", "nac"],
         "cld": ["blh", "fa", "cbh", "tcc", "cape", "ci"]
     },
     "dvars": {
-        "sfc": ["dws10", "dwv10", "dws100", "dwv100", "dmslp", "dt2", "dslhf", "dsshf"],
+        "sfc": ["du10", "dv10", "dws10", "dwv10", "du100", "dv100", "dws100", "dwv100", 
+                "dmslp", "dt2", "dslhf", "dsshf"],
         "atm": ["dnse", "dvidmf", "dviec", "dvipile", "dvike", "dtcclw", "dtcwv", "dnac"],
         "cld": ["dblh", "dfa", "dcbh", "dtcc", "dcape", "dci"]
     }
@@ -155,10 +157,10 @@ vars_and_dvars_era5_all = vars_era5_all + dvars_era5_all
 
 # Valid time strings to use as argument in plot_funcs script,
 times = {
-    "0-5": list(range(0, 6)), "6-11": list(range(6, 12)),
-    "12-17": list(range(12, 18)), "18-23": list(range(18, 24)),
-    "night": list(range(0, 6)), "morning": list(range(6, 12)),
-    "afternoon": list(range(12, 18)), "evening": list(range(18, 24))
+    "0-5": list(range(0, 5+1)), "6-11": list(range(6, 11+1)),
+    "12-17": list(range(12, 17+1)), "18-23": list(range(18, 23+1)),
+    "night": list(range(0, 5+1)), "morning": list(range(6, 11+1)),
+    "afternoon": list(range(12, 17+1)), "evening": list(range(18, 23+1))
 }
 
 # Parameters which are vectors
@@ -180,8 +182,12 @@ params_orog = ["lse", "ssgo"]
 
 # Mapping from ERA5 dataset variable names to own desired names, while
 # also accounting for any var_or_dvar variable dependencies
-vars_deps_and_rename = {"ws10": {"u10": "u10", "v10": "v10"},
+vars_deps_and_rename = {"u10": {"u10": "u10"},
+                        "v10": {"v10": "v10"},
+                        "ws10": {"u10": "u10", "v10": "v10"},
                         "wv10": {"u10": "u10", "v10": "v10"},
+                        "u100": {"u100": "u100"},
+                        "v100": {"v100": "v100"},
                         "ws100": {"u100": "u100", "v100": "v100"},
                         "wv100": {"u100": "u100", "v100": "v100"},
                         "mslp": {"msl": "mslp"},
@@ -733,12 +739,27 @@ def check_args(calc_func=None, region=None, period_start=None, period_end=None,
         year_end (int): Latest year to compute the rolling average for.
         window_size (int): Rolling window size (in years) to compute average for.
             Must be an odd number and greater than or equal to 3.
+        calc_func_name (str): Name of calculation function to obtain results for.
+            This is used for the plot_funcs script. Must be one of: 
+            ["calc_glass_mean_clim",
+            "calc_era5_mdp_clim_given_var_or_dvar",
+            "calc_era5_mdp_clim_stats_given_var_or_dvar",
+            "calc_era5_wsd_clim"].
+        arg_extra (str or int): Extra plotting argument used to specify which GLASS 
+            parameter to plot, which hour for the mean diurnal profile of an ERA5 
+            parameter to plot, which statistic of the mean diurnal profile to plot, 
+            or which parameter of the wind speed distribution to plot. Must be one of:
+            ["mlai", "mfapar", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,
+            16, 17, 18, 19, 20, 21, 22, 23, "hour_max", "hour_min", "max", "max_u", 
+            "max_v", "min", "min_u", "min_v", "mean", "mean_u", "mean_v", "range", 
+            "ws10_mean", "ws10_std", "c10", "k10", "ws100_mean", "ws100_std", "c100", 
+            "k100", "eroe100", "tgcf100"].
         var_or_dvar_layer (str): Spatial layer from which to draw ERA5 parameters for 
-            analysis. This is used for the plot_func script. Must be one of: 
+            analysis. This is used for the plot_funcs script. Must be one of: 
             ["sfc", "atm", "cld"].
         var_or_dvar_type (str): Whether to analyse the variables themselves or the 
             change in their mean diurnal profile values as compared with their values
-            in the previous hour. This is used for the plot_func script.
+            in the previous hour. This is used for the plot_funcs script.
             Must be one of: ["vars", "dvars"].
         time (str): Which times of the day to display MDP values for. This
             is used for the plot_func_script. Must be one of: 
@@ -1442,8 +1463,8 @@ def get_da_range_for_vector_mdp_values(ds_era5_mdp, var_or_dvar):
         # the "iteration" dimension, compute magnitudes for each iteration, then find 
         # maximum magnitude along the iteration dimension.
         ds_subtract_list = []
-        for i in range(0, 24):
-            for j in range(0, 24):
+        for i in range(0, 23+1):
+            for j in range(0, 23+1):
                 ds_subtract_ij = (ds_era5_mdp.isel(hour = i, drop = True) - 
                                   ds_era5_mdp.isel(hour = j, drop = True))
                 ds_subtract_list.append(ds_subtract_ij)
@@ -1460,8 +1481,8 @@ def get_da_range_for_vector_mdp_values(ds_era5_mdp, var_or_dvar):
         # (latitude, longitude) coordinate if a following iteration has a larger
         # magnitude at that (latitude, longitude) coordinate.
         da_sub_mag_list = []
-        for i in range(0, 24):
-            for j in range(0, 24):
+        for i in range(0, 23+1):
+            for j in range(0, 23+1):
                 ds_sub_ij = (ds_era5_mdp.isel(hour = i, drop = True) - 
                              ds_era5_mdp.isel(hour = j, drop = True))
                 da_sub_mag_ij = get_magnitude(ds_sub_ij[var_or_dvar.replace("wv", "u")], 
@@ -3324,10 +3345,14 @@ def calc_era5_orog():
         remove_handlers_if_directly_executed(func_1up)
         return None
     
+    da_geop = ds_static["z"]
+    da_ssgo_raw = ds_static["slor"]
+    da_lsm = ds_static["lsm"]
+    
     if priority == "speed":
-        da_geop = ds_static["z"].persist()
-        da_ssgo_raw = ds_static["slor"].persist()
-        da_lsm = ds_static["lsm"].persist()
+        da_geop = da_geop.persist()
+        da_ssgo_raw = da_ssgo_raw.persist()
+        da_lsm = da_lsm.persist()
     
     logging.debug("Computing: land surface elevation.")
     da_era5_orog_eleva = (mpcalc.geopotential_to_height(da_geop)
