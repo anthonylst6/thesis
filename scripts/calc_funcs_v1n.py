@@ -180,6 +180,9 @@ params_wsd = ["ws10_mean", "ws10_std", "c10", "k10", "ws100_mean",
 # Output parameters for static orographic calculations
 params_orog = ["lse", "ssgo"]
 
+# Values which arg_extra in plot_funcs script can take on.
+arg_extra_all = params_glass_mean + hours_all + params_stat + params_wsd
+
 # Mapping from ERA5 dataset variable names to own desired names, while
 # also accounting for any var_or_dvar variable dependencies
 vars_deps_and_rename = {"u10": {"u10": "u10"},
@@ -255,9 +258,9 @@ per_diff_nan_max = 25
 
 # Plot-specific arguments for use in the plot_funcs script which can take on None
 # values (these args are excepted from the check_args_for_none function below)
-args_plot = ["extents", "mask_period1", "mask_period2", "vmin", "vmax", 
+args_plot = ["mask_period1", "mask_period2", "extents", "vmin", "vmax", 
              "vmin_periods", "vmax_periods", "vmin_diff", "vmax_diff", 
-             "ax", "ax_period1", "ax_period2", "ax_diff", "cfv_data", "output"]
+             "ax", "ax_period1", "ax_period2", "ax_diff", "cfv_data"]
 
 
 # In[ ]:
@@ -537,7 +540,7 @@ def create_log_if_directly_executed(time_exec_1up, func_1up=None, func_2up=None,
             
         args_1up_str = ", ".join(arg_input for arg_input in args_1up_list)
         path_log = (f"../logs/{func_1up}/({args_1up_str})_" +
-                    f"{time_str}_{calc_funcs_ver}")
+                    f"{calc_funcs_ver}_{time_str}")
         Path(f"../logs/{func_1up}").mkdir(parents=True, exist_ok=True)
         # File names can only have maximum 255 characters.
         logging.basicConfig(level=calc_log_level, filename=path_log[:255], force=True)
@@ -675,6 +678,9 @@ def check_args_for_none(func_name, args_1up=None, args_1up_values=None):
         assert args_1up_values["var_or_dvar"] == None, \
             f"var_or_dvar must be None if calc_func = {func_name}"
         args_1up.remove("var_or_dvar")
+        
+    if func_name == "create_orog_static_plot":
+        args_1up.remove("region")
     
     # Make exceptions for args in plot_funcs script which can be None.
     for arg_plot in args_plot:
@@ -691,22 +697,35 @@ def check_args_for_none(func_name, args_1up=None, args_1up_values=None):
 # In[ ]:
 
 
-def check_args(calc_func=None, region=None, period_start=None, period_end=None,
-               months_subset=None, glass_source_pref=None, var_or_dvar=None, 
-               hour=None, year_start=None, year_end=None, window_size=None, 
-               var_or_dvar_layer=None, var_or_dvar_type=None, time=None):
+def check_args(
+    calc_func=None, region=None, period_start=None, period_end=None, period1_start=None, 
+    period1_end=None, period2_start=None, period2_end=None, months_subset=None, 
+    glass_source_pref=None, var_or_dvar=None, year_start=None, year_end=None, 
+    window_size=None, arg_extra=None, hour=None, time=None, param_orog=None,
+    param_glass_mean=None, var_or_dvar_layer=None, var_or_dvar_type=None, perc=None, 
+    mask_perc_quantile=None, mask_period1=None, mask_period2=None, extents=None, 
+    vmin=None, vmax=None, vmin_periods=None, vmax_periods=None, vmin_diff=None, 
+    vmax_diff=None, ax=None, ax_period1=None, ax_period2=None, ax_diff=None, 
+    cfv_data=None, output=None
+):
     
     """
     Function to check whether input arguments are valid.
     
     Arguments:
-        calc_func (function): Calculation function to compute difference in
-            results from. Must be one of: [calc_glass_mean_clim,
+        calc_func (function): Calculation function to use in analysis. Must be one of: 
+            [calc_glass_mean_clim,
             calc_era5_mdp_clim_given_var_or_dvar,
             calc_era5_mdp_clim_stats_given_var_or_dvar,
             calc_era5_wsd_clim].
         region (str): Region to perform calculation over.
             Must be one of: ["ca", "sa", "wa"].
+        period_start (str): Start of period to perform calculation over.
+            Must be of form "%b-%Y" eg. "Jul-1990".
+            Must be between "Jan-1981" and "Dec-2021".
+        period_end (str): End of period to perform calculation over.
+            Must be of form "%b-%Y" eg. "Jul-1990".
+            Must be between "Jan-1981" and "Dec-2021".
         period1_start (str): Start of first period to perform calculation over.
             Must be of form "%b-%Y" eg. "Jul-1990".
             Must be between "Jan-1981" and "Dec-2021".
@@ -726,25 +745,17 @@ def check_args(calc_func=None, region=None, period_start=None, period_end=None,
             over a period which is completely contained within both the available
             AVHRR and MODIS datasets. Must be one of: ["avhrr", "modis"].
         var_or_dvar (str): Variable or value of change in variable to perform
-            calculation over. Must be one of: ['ws10', 'wv10', 'ws100', 'wv100', 
-            'mslp', 't2', 'slhf', 'sshf', 'nse', 'vidmf' 'viec', 'vipile', 'vike', 
-            'tcclw', 'tcwv', 'nac', 'blh', 'fa', 'cbh', 'tcc', 'cape', 'ci', 
-            'dws10', 'dwv10', 'dws100', 'dwv100', 'dmslp', 'dt2', 'dslhf', 'dsshf', 
-            'dnse', 'dvidmf', 'dviec', 'dvipile', 'dvike', 'dtcclw', 'dtcwv', 'dnac', 
-            'dblh', 'dfa', 'dcbh', 'dtcc', 'dcape', 'dci'].
-        hour (int): Hour of mean diurnal profile to compute value for.
-            Must be one of: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
-            13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23].
+            calculation over. Must be one of: ['u10', 'v10', 'ws10', 'wv10', 'u100', 
+            'v100', 'ws100', 'wv100', 'mslp', 't2', 'slhf', 'sshf', 'nse', 'vidmf', 
+            'viec', 'vipile', 'vike', 'tcclw', 'tcwv', 'nac', 'blh', 'fa', 'cbh', 'tcc', 
+            'cape', 'ci', 'du10', 'dv10', 'dws10', 'dwv10', 'du100', 'dv100', 'dws100', 
+            'dwv100', 'dmslp', 'dt2', 'dslhf', 'dsshf', 'dnse', 'dvidmf', 'dviec', 
+            'dvipile', 'dvike', 'dtcclw', 'dtcwv', 'dnac', 'dblh', 'dfa', 'dcbh', 
+            'dtcc', 'dcape', 'dci'].
         year_start (int): Earliest year to compute the rolling average for.
         year_end (int): Latest year to compute the rolling average for.
         window_size (int): Rolling window size (in years) to compute average for.
             Must be an odd number and greater than or equal to 3.
-        calc_func_name (str): Name of calculation function to obtain results for.
-            This is used for the plot_funcs script. Must be one of: 
-            ["calc_glass_mean_clim",
-            "calc_era5_mdp_clim_given_var_or_dvar",
-            "calc_era5_mdp_clim_stats_given_var_or_dvar",
-            "calc_era5_wsd_clim"].
         arg_extra (str or int): Extra plotting argument used to specify which GLASS 
             parameter to plot, which hour for the mean diurnal profile of an ERA5 
             parameter to plot, which statistic of the mean diurnal profile to plot, 
@@ -754,6 +765,14 @@ def check_args(calc_func=None, region=None, period_start=None, period_end=None,
             "max_v", "min", "min_u", "min_v", "mean", "mean_u", "mean_v", "range", 
             "ws10_mean", "ws10_std", "c10", "k10", "ws100_mean", "ws100_std", "c100", 
             "k100", "eroe100", "tgcf100"].
+        hour (int): Hour of mean diurnal profile to plot values for. This is used for
+            the plot_funcs script. Must be one of: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 
+            11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23].
+        time (str): Which times of the day to display MDP values for. This
+            is used for the plot_funcs script. Must be one of: 
+            ["0-5"/"night", "6-11"/"morning", "12-17"/"afternoon", "18-23"/"evening"].
+        param_orog (str): 
+        param_glass_mean (str): 
         var_or_dvar_layer (str): Spatial layer from which to draw ERA5 parameters for 
             analysis. This is used for the plot_funcs script. Must be one of: 
             ["sfc", "atm", "cld"].
@@ -761,9 +780,42 @@ def check_args(calc_func=None, region=None, period_start=None, period_end=None,
             change in their mean diurnal profile values as compared with their values
             in the previous hour. This is used for the plot_funcs script.
             Must be one of: ["vars", "dvars"].
-        time (str): Which times of the day to display MDP values for. This
-            is used for the plot_func_script. Must be one of: 
-            ["0-5"/"night", "6-11"/"morning", "12-17"/"afternoon", "18-23"/"evening"].
+        perc (bool): Whether to plot the difference in values as a percentage of the
+            value (magnitude if negative) in period1. This is used for the comp plots
+            in the plot_funcs script. Must be one of: [True, False].
+        mask_perc_quantile (int): If perc is True, specify the quantile of values
+            (magnitude if negative) from period1 to mask for the difference plot.
+            This is used because percentage differences may be particularly high
+            for values which had a low magnitude as a base in period 1.
+        mask_period1 (str): Whether to mask grid cells in a comp plot depending on
+            whether the value in period 1 was positive or negative. Must be one of:
+            ["pos", "neg"].
+        mask_period2 (str): Whether to mask grid cells in a comp plot depending on
+            whether the value in period 2 was positive or negative. Must be one of:
+            ["pos", "neg"].
+        extents (list): Longitudinal and latitudinal extents to display in plot.
+            Must be a 4 element list in [W, E, S, N] format with longitudes -180
+            to 180 and latitudes -90 to 90.
+        vmin (float or int): Minimum of colourbar extents for a calc plot.
+        vmax (float or int): Maximum of colourbar extents for a calc plot.
+        vmin_periods (float or int): Minimum of colourbar extents for a calc plot.
+            Used to set common colourbar extents for both periods in a comp plot.
+        vmax_periods (float or int): Maximum of colourbar extents for a calc plot.
+            Used to set common colourbar extents for both periods in a comp plot.
+        vmin_diff (float or int): Minimum of colourbar extents for a diff plot.
+            Used to set colourbar extents for the diff plot within a comp plot.
+        vmax_diff (float or int): Maximum of colourbar extents for a diff plot.
+            Used to set colourbar extents for the diff plot within a comp plot.
+        ax (cartopy.GeoAxesSubplot): Figure axis to create plot on.
+        ax_period1 (cartopy.GeoAxesSubplot): Figure axis to create calc plot on.
+            Used for period 1 plot within a comp plot.
+        ax_period2 (cartopy.GeoAxesSubplot): Figure axis to create calc plot on.
+            Used for period 2 plot within a comp plot.
+        ax_diff (cartopy.GeoAxesSubplot): Figure axis to create diff plot on.
+            Used for period2 - period1 diff plot within a comp plot.
+        cfv_data (str): calc_funcs_ver of pre-existing data to use in plotting.
+        output (bool): Whether to output the plot as a PNG file. Must be one of:
+            [True, False].
     
     Returns:
         AssertionError if any of the input arguments are invalid.
@@ -787,7 +839,8 @@ def check_args(calc_func=None, region=None, period_start=None, period_end=None,
     if calc_func:
         assert callable(calc_func), \
             f"calc_func must be a function and one of: {calc_func_names}"
-        assert calc_func.__name__ in calc_func_names, \
+        calc_func_name = calc_func.__name__
+        assert calc_func_name in calc_func_names, \
             f"calc_func must be a function and one of: {calc_func_names}"
         
     if region:
@@ -807,7 +860,35 @@ def check_args(calc_func=None, region=None, period_start=None, period_end=None,
     if (period_start is not None) & (period_end is not None):
         assert period_end >= period_start, \
             "period_end must be equal to or later than period_start"
+    
+    if period1_start:
+        period1_start = datetime.strptime(period1_start, "%b-%Y")
+        assert period1_start >= datetime.strptime(avhrr_earliest, "%b-%Y"), \
+            f"period1_start must be equal to or later than {avhrr_earliest}"
         
+    if period1_end:
+        period1_end = datetime.strptime(period1_end, "%b-%Y")
+        assert period1_end <= datetime.strptime(modis_latest, "%b-%Y"), \
+            f"period1_end must be equal to or earlier than {modis_latest}"
+        
+    if (period1_start is not None) & (period1_end is not None):
+        assert period1_end >= period1_start, \
+            "period1_end must be equal to or later than period1_start"
+        
+    if period2_start:
+        period2_start = datetime.strptime(period2_start, "%b-%Y")
+        assert period2_start >= datetime.strptime(avhrr_earliest, "%b-%Y"), \
+            f"period2_start must be equal to or later than {avhrr_earliest}"
+        
+    if period2_end:
+        period2_end = datetime.strptime(period2_end, "%b-%Y")
+        assert period2_end <= datetime.strptime(modis_latest, "%b-%Y"), \
+            f"period2_end must be equal to or earlier than {modis_latest}"
+        
+    if (period2_start is not None) & (period2_end is not None):
+        assert period2_end >= period2_start, \
+            "period2_end must be equal to or later than period2_start"
+    
     if months_subset:
         assert (isinstance(months_subset, list) & (months_subset != []) & 
                 all(month in months_subsets["all"] for month in months_subset)
@@ -821,8 +902,24 @@ def check_args(calc_func=None, region=None, period_start=None, period_end=None,
         if isinstance(months_subset, str):
             months_subset = months_subsets[months_subset]
         assert any(month in months_subset for month in months_in_period), \
-            "period(s) must contain at least one month within the given months_subset"
+            "period must contain at least one month within the given months_subset"
+    
+    if (period1_start is not None) & (period1_end is not None) & (months_subset is not None):
+        dates_in_period1 = pd.date_range(period1_start, period1_end, freq = "MS")
+        months_in_period1 = set(map(int, dates_in_period1.strftime("%-m")))
+        if isinstance(months_subset, str):
+            months_subset = months_subsets[months_subset]
+        assert any(month in months_subset for month in months_in_period1), \
+            "period1 must contain at least one month within the given months_subset"
         
+    if (period2_start is not None) & (period2_end is not None) & (months_subset is not None):
+        dates_in_period2 = pd.date_range(period2_start, period2_end, freq = "MS")
+        months_in_period2 = set(map(int, dates_in_period2.strftime("%-m")))
+        if isinstance(months_subset, str):
+            months_subset = months_subsets[months_subset]
+        assert any(month in months_subset for month in months_in_period2), \
+            "period2 must contain at least one month within the given months_subset"
+    
     if glass_source_pref:
         assert glass_source_pref in glass_sources_all, \
             f"glass_source_pref must be one of: {glass_sources_all}"
@@ -830,10 +927,6 @@ def check_args(calc_func=None, region=None, period_start=None, period_end=None,
     if var_or_dvar:
         assert var_or_dvar in vars_and_dvars_era5_all, \
             f"var_or_dvar must be one of: {vars_and_dvars_era5_all}"
-        
-    if hour:
-        assert hour in hours_all, \
-            f"hour must be one of: {hours_all}"
         
     if year_start:
         year_earliest = int(avhrr_earliest[-4:])
@@ -865,6 +958,49 @@ def check_args(calc_func=None, region=None, period_start=None, period_end=None,
             (f"year_end must be equal to or earlier than {year_latest_roll} " + 
              f"if window_size is {window_size}")
         
+    if arg_extra:
+        assert arg_extra in arg_extra_all, \
+            f"arg_extra must be one of: {arg_extra_all}"
+        
+    if (arg_extra is not None) & (calc_func is not None):
+        if calc_func_name == "calc_glass_mean_clim":
+            assert arg_extra in params_glass_mean, \
+                (f"arg_extra must be one of: {params_glass_mean} " +
+                 f"for calc_func = {calc_func_name}")
+        if calc_func_name == "calc_era5_mdp_clim_given_var_or_dvar":
+            assert arg_extra in hours_all, \
+                (f"arg_extra must be one of: {hours_all} " +
+                 f"for calc_func = {calc_func_name}")
+            if (arg_extra in ["max_u", "max_v", "min_u", "min_v", 
+                              "mean_u", "mean_v"]) & (var_or_dvar is not None):
+                assert var_or_dvar in params_vector, \
+                    (f"var_or_dvar must be one of: {params_vector} " +
+                     f"for arg_extra = {arg_extra}")
+        if calc_func_name == "calc_era5_mdp_clim_stats_given_var_or_dvar":
+            assert arg_extra in params_stat, \
+                (f"arg_extra must be one of: {params_stat} " +
+                 f"for calc_func = {calc_func_name}")
+        if calc_func_name == "calc_era5_wsd_clim":
+            assert arg_extra in params_wsd, \
+                (f"arg_extra must be one of: {params_wsd} " +
+                 f"for calc_func = {calc_func_name}")
+        
+    if hour:
+        assert hour in hours_all, \
+            f"hour must be one of: {hours_all}"
+    
+    if time:
+        assert time in [*times], \
+            f"time must be one of: {[*times]}"
+    
+    if param_orog:
+        assert param_orog in params_orog, \
+            f"param_orog must be one of {params_orog}"
+        
+    if param_glass_mean:
+        assert param_glass_mean in params_glass_mean, \
+            f"param_glass must be one of {params_glass_mean}"
+    
     if var_or_dvar_layer:
         assert var_or_dvar_layer in [*[*vars_and_dvars_era5.values()][0].keys()], \
             ("var_or_dvar_layer must be one of: "+
@@ -874,9 +1010,102 @@ def check_args(calc_func=None, region=None, period_start=None, period_end=None,
         assert var_or_dvar_type in [*vars_and_dvars_era5], \
             f"var_or_dvar_type must be one of: {[*vars_and_dvars_era5]}"
         
-    if time:
-        assert time in [*times], \
-            f"time must be one of: {[*times]}"
+    if perc:
+        assert perc in [True, False], \
+            "perc must be one of: [True, False]"
+        
+    if mask_perc_quantile:
+        assert mask_perc_quantile in range(0, 100+1), \
+            "mask_perc_quantile must be an integer between 0 and 100 (inclusive)"
+        
+    if mask_period1:
+        assert mask_period1 in ["pos", "neg"], \
+            "mask_period1 must be one of: ['pos', 'neg']"
+        
+    if mask_period2:
+        assert mask_period2 in ["pos", "neg"], \
+            "mask_period2 must be one of: ['pos', 'neg']"
+        
+    if extents:
+        assert (isinstance(extents, list) & (len(extents) == 4) & 
+                (extents[0] >= -180) & (extents[1] <= 180) &
+                (extents[2] >= -90) & (extents[3] <= 90) &
+                (extents[1] > extents[0]) & (extents[3] > extents[2])), \
+            ("extents must a 4 element list in [W, E, S, N] format " + 
+             "with longitudes -180 to 180 and latitudes -90 to 90")
+        if region:
+            extents_default = regions[region]["extent"]
+        else:
+            extents_default = [-180, 180, -90, 90]
+        assert ((extents[0] >= extents_default[0]) & 
+                (extents[1] <= extents_default[1]) & 
+                (extents[2] >= extents_default[2]) & 
+                (extents[3] <= extents_default[3])), \
+            ("extents must be completely contained within " +
+             f"{extents_default} for region = {region}")
+        
+    if vmin:
+        assert isinstance(vmin, float) | isinstance(vmin, int), \
+            "vmin must have data type float or int"
+    
+    if vmax:
+        assert isinstance(vmax, float) | isinstance(vmax, int), \
+            "vmax must have data type float or int"
+    
+    if (vmin is not None) & (vmax is not None):
+        assert vmax >= vmin, \
+            "vmax must be equal to or greater than vmin"
+        
+    if vmin_periods:
+        assert isinstance(vmin_periods, float) | isinstance(vmin_periods, int), \
+            "vmin_periods must have data type float or int"
+    
+    if vmax_periods:
+        assert isinstance(vmax_periods, float) | isinstance(vmax_periods, int), \
+            "vmax_periods must have data type float or int"
+    
+    if (vmin_periods is not None) & (vmax_periods is not None):
+        assert vmax_periods >= vmin_periods, \
+            "vmax_periods must be equal to or greater than vmin_periods"
+        
+    if vmin_diff:
+        assert isinstance(vmin_diff, float) | isinstance(vmin_diff, int), \
+            "vmin_diff must have data type float or int"
+    
+    if vmax_diff:
+        assert isinstance(vmax_diff, float) | isinstance(vmax_diff, int), \
+            "vmax_diff must have data type float or int"
+    
+    if (vmin_diff is not None) & (vmax_diff is not None):
+        assert vmax_diff >= vmin_diff, \
+            "vmax_diff must be equal to or greater than vmin_diff"
+        
+    if ax:
+        assert str(type(ax)) == "<class 'cartopy.mpl.geoaxes.GeoAxesSubplot'>", \
+            "ax must be a cartopy.GeoAxesSubplot"
+        
+    if ax_period1:
+        assert str(type(ax_period1)) == "<class 'cartopy.mpl.geoaxes.GeoAxesSubplot'>", \
+            "ax_period1 must be a cartopy.GeoAxesSubplot"
+        
+    if ax_period2:
+        assert str(type(ax_period2)) == "<class 'cartopy.mpl.geoaxes.GeoAxesSubplot'>", \
+            "ax_period2 must be a cartopy.GeoAxesSubplot"
+        
+    if ax_diff:
+        assert str(type(ax_diff)) == "<class 'cartopy.mpl.geoaxes.GeoAxesSubplot'>", \
+            "ax_diff must be a cartopy.GeoAxesSubplot"
+        
+    if cfv_data:
+        assert (isinstance(cfv_data, str) & (len(cfv_data) == 5) & 
+                (cfv_data[:3] == "cfv") & cfv_data[3].isnumeric() & 
+                cfv_data[4].isalpha() & cfv_data[4].islower()) | (cfv_data == "cfv00"), \
+            ("cfv_data must be 'cfv00' or of form 'cfvXY' where X is a single digit " +
+             "number and Y is a lowercase alphabet character. eg. cfv1n")
+    
+    if output:
+        assert output in [True, False], \
+            "output must be one of: [True, False]"
     
     if (func_1up == "<cell line: 1>") | (func_1up == "<module>"):
         logging.info("Passed: validity check for input arguments.")
@@ -987,12 +1216,13 @@ def get_var_or_dvar_layer_and_type(var_or_dvar):
     
     Arguments:
         var_or_dvar (str): Variable or value of change in variable to perform
-            calculation over. Must be one of: ['ws10', 'wv10', 'ws100', 'wv100', 
-            'mslp', 't2', 'slhf', 'sshf', 'nse', 'vidmf' 'viec', 'vipile', 'vike', 
-            'tcclw', 'tcwv', 'nac', 'blh', 'fa', 'cbh', 'tcc', 'cape', 'ci', 
-            'dws10', 'dwv10', 'dws100', 'dwv100', 'dmslp', 'dt2', 'dslhf', 'dsshf', 
-            'dnse', 'dvidmf', 'dviec', 'dvipile', 'dvike', 'dtcclw', 'dtcwv', 'dnac', 
-            'dblh', 'dfa', 'dcbh', 'dtcc', 'dcape', 'dci'].
+            calculation over. Must be one of: ['u10', 'v10', 'ws10', 'wv10', 'u100', 
+            'v100', 'ws100', 'wv100', 'mslp', 't2', 'slhf', 'sshf', 'nse', 'vidmf', 
+            'viec', 'vipile', 'vike', 'tcclw', 'tcwv', 'nac', 'blh', 'fa', 'cbh', 'tcc', 
+            'cape', 'ci', 'du10', 'dv10', 'dws10', 'dwv10', 'du100', 'dv100', 'dws100', 
+            'dwv100', 'dmslp', 'dt2', 'dslhf', 'dsshf', 'dnse', 'dvidmf', 'dviec', 
+            'dvipile', 'dvike', 'dtcclw', 'dtcwv', 'dnac', 'dblh', 'dfa', 'dcbh', 
+            'dtcc', 'dcape', 'dci'].
     
     Returns:
         var_or_dvar_layer (str): var_or_dvar_layer classification indicating which 
@@ -1857,12 +2087,13 @@ def get_path_for_calc_func(calc_func_name, region, period_start, period_end,
             over a period which is completely contained within both the available
             AVHRR and MODIS datasets. Must be one of: ["avhrr", "modis"].
         var_or_dvar (str): Variable or value of change in variable to perform
-            calculation over. Must be one of: ['ws10', 'wv10', 'ws100', 'wv100', 
-            'mslp', 't2', 'slhf', 'sshf', 'nse', 'vidmf' 'viec', 'vipile', 'vike', 
-            'tcclw', 'tcwv', 'nac', 'blh', 'fa', 'cbh', 'tcc', 'cape', 'ci', 
-            'dws10', 'dwv10', 'dws100', 'dwv100', 'dmslp', 'dt2', 'dslhf', 'dsshf', 
-            'dnse', 'dvidmf', 'dviec', 'dvipile', 'dvike', 'dtcclw', 'dtcwv', 'dnac', 
-            'dblh', 'dfa', 'dcbh', 'dtcc', 'dcape', 'dci'].
+            calculation over. Must be one of: ['u10', 'v10', 'ws10', 'wv10', 'u100', 
+            'v100', 'ws100', 'wv100', 'mslp', 't2', 'slhf', 'sshf', 'nse', 'vidmf', 
+            'viec', 'vipile', 'vike', 'tcclw', 'tcwv', 'nac', 'blh', 'fa', 'cbh', 'tcc', 
+            'cape', 'ci', 'du10', 'dv10', 'dws10', 'dwv10', 'du100', 'dv100', 'dws100', 
+            'dwv100', 'dmslp', 'dt2', 'dslhf', 'dsshf', 'dnse', 'dvidmf', 'dviec', 
+            'dvipile', 'dvike', 'dtcclw', 'dtcwv', 'dnac', 'dblh', 'dfa', 'dcbh', 
+            'dtcc', 'dcape', 'dci'].
             
     Returns:
         path_output_calc_func (str): Output path for results from calc_func.
@@ -1962,12 +2193,13 @@ def get_path_for_calc_diff(calc_func_name, region, period1_start, period1_end,
             over a period which is completely contained within both the available
             AVHRR and MODIS datasets. Must be one of: ["avhrr", "modis"].
         var_or_dvar (str): Variable or value of change in variable to perform
-            calculation over. Must be one of: ['ws10', 'wv10', 'ws100', 'wv100', 
-            'mslp', 't2', 'slhf', 'sshf', 'nse', 'vidmf' 'viec', 'vipile', 'vike', 
-            'tcclw', 'tcwv', 'nac', 'blh', 'fa', 'cbh', 'tcc', 'cape', 'ci', 
-            'dws10', 'dwv10', 'dws100', 'dwv100', 'dmslp', 'dt2', 'dslhf', 'dsshf', 
-            'dnse', 'dvidmf', 'dviec', 'dvipile', 'dvike', 'dtcclw', 'dtcwv', 'dnac', 
-            'dblh', 'dfa', 'dcbh', 'dtcc', 'dcape', 'dci'].
+            calculation over. Must be one of: ['u10', 'v10', 'ws10', 'wv10', 'u100', 
+            'v100', 'ws100', 'wv100', 'mslp', 't2', 'slhf', 'sshf', 'nse', 'vidmf', 
+            'viec', 'vipile', 'vike', 'tcclw', 'tcwv', 'nac', 'blh', 'fa', 'cbh', 'tcc', 
+            'cape', 'ci', 'du10', 'dv10', 'dws10', 'dwv10', 'du100', 'dv100', 'dws100', 
+            'dwv100', 'dmslp', 'dt2', 'dslhf', 'dsshf', 'dnse', 'dvidmf', 'dviec', 
+            'dvipile', 'dvike', 'dtcclw', 'dtcwv', 'dnac', 'dblh', 'dfa', 'dcbh', 
+            'dtcc', 'dcape', 'dci'].
             
     Returns:
         path_output_calc_diff (str): Output path for results from calc_diff.
@@ -1986,11 +2218,10 @@ def get_path_for_calc_diff(calc_func_name, region, period1_start, period1_end,
     assert calc_func_name in calc_func_names, \
         f"calc_func_name must be one of: {calc_func_names}"
     check_args_for_none(calc_func_name, args_cur, args_cur_values)
-    check_args(region=region, period_start=period1_start, period_end=period1_end,
+    check_args(region=region, period1_start=period1_start, period1_end=period1_end,
+               period2_start=period2_start, period2_end=period2_end,
                months_subset=months_subset, var_or_dvar=var_or_dvar, 
                glass_source_pref=glass_source_pref)
-    check_args(period_start=period2_start, period_end=period2_end, 
-               months_subset=months_subset)
     
     months_subset_str = get_months_subset_str(months_subset=months_subset)
     
@@ -2428,12 +2659,13 @@ def calc_era5_mdp_clim_given_var_or_dvar(region, period_start, period_end,
             Must be a str and one of: ["all", "djf", "mam", "jja", "son"], or a subset
             list of: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] with at least one item.
         var_or_dvar (str): Variable or value of change in variable to perform
-            calculation over. Must be one of: ['ws10', 'wv10', 'ws100', 'wv100', 
-            'mslp', 't2', 'slhf', 'sshf', 'nse', 'vidmf' 'viec', 'vipile', 'vike', 
-            'tcclw', 'tcwv', 'nac', 'blh', 'fa', 'cbh', 'tcc', 'cape', 'ci', 
-            'dws10', 'dwv10', 'dws100', 'dwv100', 'dmslp', 'dt2', 'dslhf', 'dsshf', 
-            'dnse', 'dvidmf', 'dviec', 'dvipile', 'dvike', 'dtcclw', 'dtcwv', 'dnac', 
-            'dblh', 'dfa', 'dcbh', 'dtcc', 'dcape', 'dci'].
+            calculation over. Must be one of: ['u10', 'v10', 'ws10', 'wv10', 'u100', 
+            'v100', 'ws100', 'wv100', 'mslp', 't2', 'slhf', 'sshf', 'nse', 'vidmf', 
+            'viec', 'vipile', 'vike', 'tcclw', 'tcwv', 'nac', 'blh', 'fa', 'cbh', 'tcc', 
+            'cape', 'ci', 'du10', 'dv10', 'dws10', 'dwv10', 'du100', 'dv100', 'dws100', 
+            'dwv100', 'dmslp', 'dt2', 'dslhf', 'dsshf', 'dnse', 'dvidmf', 'dviec', 
+            'dvipile', 'dvike', 'dtcclw', 'dtcwv', 'dnac', 'dblh', 'dfa', 'dcbh', 
+            'dtcc', 'dcape', 'dci'].
         glass_source_pref (None): This argument is not used for this analysis. It is used 
             for applying the calc_diff function over an arbitrary calc_func.
                         
@@ -2722,12 +2954,13 @@ def calc_era5_mdp_clim_stats_given_var_or_dvar(region, period_start, period_end,
             Must be a str and one of: ["all", "djf", "mam", "jja", "son"], or a subset
             list of: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] with at least one item.
         var_or_dvar (str): Variable or value of change in variable to perform
-            calculation over. Must be one of: ['ws10', 'wv10', 'ws100', 'wv100', 
-            'mslp', 't2', 'slhf', 'sshf', 'nse', 'vidmf' 'viec', 'vipile', 'vike', 
-            'tcclw', 'tcwv', 'nac', 'blh', 'fa', 'cbh', 'tcc', 'cape', 'ci', 
-            'dws10', 'dwv10', 'dws100', 'dwv100', 'dmslp', 'dt2', 'dslhf', 'dsshf', 
-            'dnse', 'dvidmf', 'dviec', 'dvipile', 'dvike', 'dtcclw', 'dtcwv', 'dnac', 
-            'dblh', 'dfa', 'dcbh', 'dtcc', 'dcape', 'dci'].
+            calculation over. Must be one of: ['u10', 'v10', 'ws10', 'wv10', 'u100', 
+            'v100', 'ws100', 'wv100', 'mslp', 't2', 'slhf', 'sshf', 'nse', 'vidmf', 
+            'viec', 'vipile', 'vike', 'tcclw', 'tcwv', 'nac', 'blh', 'fa', 'cbh', 'tcc', 
+            'cape', 'ci', 'du10', 'dv10', 'dws10', 'dwv10', 'du100', 'dv100', 'dws100', 
+            'dwv100', 'dmslp', 'dt2', 'dslhf', 'dsshf', 'dnse', 'dvidmf', 'dviec', 
+            'dvipile', 'dvike', 'dtcclw', 'dtcwv', 'dnac', 'dblh', 'dfa', 'dcbh', 
+            'dtcc', 'dcape', 'dci'].
         glass_source_pref (None): This argument is not used for this analysis. It is used 
             for applying the calc_diff function over an arbitrary calc_func.
                         
@@ -3111,8 +3344,8 @@ def calc_diff(calc_func, region, period1_start, period1_end,
     each been outputted by the same calculation function.
     
     Arguments:
-        calc_func (function): Calculation function to compute difference in
-            results from. Must be one of: [calc_glass_mean_clim,
+        calc_func (function): Calculation function to use in analysis. Must be one of: 
+            [calc_glass_mean_clim,
             calc_era5_mdp_clim_given_var_or_dvar,
             calc_era5_mdp_clim_stats_given_var_or_dvar,
             calc_era5_wsd_clim].
@@ -3137,12 +3370,13 @@ def calc_diff(calc_func, region, period1_start, period1_end,
             over a period which is completely contained within both the available
             AVHRR and MODIS datasets. Must be one of: ["avhrr", "modis"].
         var_or_dvar (str): Variable or value of change in variable to perform
-            calculation over. Must be one of: ['ws10', 'wv10', 'ws100', 'wv100', 
-            'mslp', 't2', 'slhf', 'sshf', 'nse', 'vidmf' 'viec', 'vipile', 'vike', 
-            'tcclw', 'tcwv', 'nac', 'blh', 'fa', 'cbh', 'tcc', 'cape', 'ci', 
-            'dws10', 'dwv10', 'dws100', 'dwv100', 'dmslp', 'dt2', 'dslhf', 'dsshf', 
-            'dnse', 'dvidmf', 'dviec', 'dvipile', 'dvike', 'dtcclw', 'dtcwv', 'dnac', 
-            'dblh', 'dfa', 'dcbh', 'dtcc', 'dcape', 'dci'].
+            calculation over. Must be one of: ['u10', 'v10', 'ws10', 'wv10', 'u100', 
+            'v100', 'ws100', 'wv100', 'mslp', 't2', 'slhf', 'sshf', 'nse', 'vidmf', 
+            'viec', 'vipile', 'vike', 'tcclw', 'tcwv', 'nac', 'blh', 'fa', 'cbh', 'tcc', 
+            'cape', 'ci', 'du10', 'dv10', 'dws10', 'dwv10', 'du100', 'dv100', 'dws100', 
+            'dwv100', 'dmslp', 'dt2', 'dslhf', 'dsshf', 'dnse', 'dvidmf', 'dviec', 
+            'dvipile', 'dvike', 'dtcclw', 'dtcwv', 'dnac', 'dblh', 'dfa', 'dcbh', 
+            'dtcc', 'dcape', 'dci'].
     
     Returns:
         ../data_processed/glass_mean_clim/{calc_funcs_ver}_diff_{region}_{period1_start}_
@@ -3182,11 +3416,10 @@ def calc_diff(calc_func, region, period1_start, period1_end,
     
     calc_func_name = calc_func.__name__
     check_args_for_none(calc_func_name, args_cur, args_cur_values)
-    check_args(calc_func=calc_func, region=region, period_start=period1_start,
-               period_end=period1_end, months_subset=months_subset, 
+    check_args(calc_func=calc_func, region=region, period1_start=period1_start,
+               period1_end=period1_end, period2_start=period2_start, 
+               period2_end=period2_end, months_subset=months_subset, 
                glass_source_pref=glass_source_pref, var_or_dvar=var_or_dvar)
-    check_args(period_start=period2_start, period_end=period2_end, 
-               months_subset=months_subset)
     
     if (func_1up == "<cell line: 1>") | (func_1up == "<module>"):
         logging.info(f"Executing: {func_cur} to obtain difference in outputs from " +
@@ -3800,9 +4033,8 @@ def create_all_possible_diff_data_files(region, period1_start, period1_end,
                                     args_cur, args_cur_values)
     
     check_args_for_none(func_cur, args_cur, args_cur_values)
-    check_args(region=region, period_start=period1_start, period_end=period1_end, 
-               months_subset=months_subset)
-    check_args(period_start=period2_start, period_end=period2_end, 
+    check_args(region=region, period1_start=period1_start, period1_end=period1_end, 
+               period2_start=period2_start, period2_end=period2_end,
                months_subset=months_subset)
     
     months_subset_str = get_months_subset_str(months_subset=months_subset)
