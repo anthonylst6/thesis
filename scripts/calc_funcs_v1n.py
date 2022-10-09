@@ -688,7 +688,8 @@ def check_args_for_none(func_name, args_1up=None, args_1up_values=None):
             args_1up.remove(arg_plot)
         except:
             pass
-        
+    
+    # Remaining arguments must not be None.
     for arg in args_1up:
         assert args_1up_values[arg] != None, \
             f"{arg} cannot be None"
@@ -971,15 +972,15 @@ def check_args(
             assert arg_extra in hours_all, \
                 (f"arg_extra must be one of: {hours_all} " +
                  f"for calc_func = {calc_func_name}")
+        if calc_func_name == "calc_era5_mdp_clim_stats_given_var_or_dvar":
+            assert arg_extra in params_stat, \
+                (f"arg_extra must be one of: {params_stat} " +
+                 f"for calc_func = {calc_func_name}")
             if (arg_extra in ["max_u", "max_v", "min_u", "min_v", 
                               "mean_u", "mean_v"]) & (var_or_dvar is not None):
                 assert var_or_dvar in params_vector, \
                     (f"var_or_dvar must be one of: {params_vector} " +
                      f"for arg_extra = {arg_extra}")
-        if calc_func_name == "calc_era5_mdp_clim_stats_given_var_or_dvar":
-            assert arg_extra in params_stat, \
-                (f"arg_extra must be one of: {params_stat} " +
-                 f"for calc_func = {calc_func_name}")
         if calc_func_name == "calc_era5_wsd_clim":
             assert arg_extra in params_wsd, \
                 (f"arg_extra must be one of: {params_wsd} " +
