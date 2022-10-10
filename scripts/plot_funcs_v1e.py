@@ -8,8 +8,6 @@ import numpy as np
 import xarray as xr
 import matplotlib.pyplot as plt
 import matplotlib.colors as colors
-import matplotlib.cbook as cbook
-from matplotlib import cm
 import cartopy.crs as ccrs
 import cartopy.feature as cfeature
 import cmocean
@@ -66,7 +64,7 @@ vars_viridis = ["ws10", "ws100", "mslp", "t2",
                 "blh", "fa", "cbh", "tcc", "ci"]
 figwidth_standard = 10
 title_width = 60
-perc_quantile_mask_default = 10
+mask_perc_quantile_default = 10
 eroe100_linthresh = 1e-20
 
 
@@ -158,15 +156,32 @@ def apply_mask(da, frame_comp):
         da_period1 = ds_period1[arg_extra]
         da_period2 = ds_period2[arg_extra]
     
-    if mask_period1 == "pos":
-        da_masked = da_masked.where(da_period1 < 0)
-    elif mask_period1 == "neg":
-        da_masked = da_masked.where(da_period1 >= 0)
-        
-    if mask_period2 == "pos":
-        da_masked = da_masked.where(da_period2 < 0)
-    elif mask_period2 == "neg":
-        da_masked = da_masked.where(da_period2 >= 0)
+    main_param = (da.attrs["abbreviation"]
+                  .split("(")[-1]
+                  .split(")")[0]
+                  .split("^")[0]
+                  .split("$")[0]
+                  .lower())
+    
+    if da.name in da_names_cyclic:
+        pass
+    elif da.name in da_names_viridis_with_vmin_0:
+        pass
+    elif da.name in da_names_viridis:
+        pass
+    elif main_param in vars_viridis_with_vmin_0:
+        pass
+    elif main_param in vars_viridis:
+        pass
+    else:
+        if mask_period1 == "pos":
+            da_masked = da_masked.where(da_period1 < 0)
+        elif mask_period1 == "neg":
+            da_masked = da_masked.where(da_period1 >= 0)
+        if mask_period2 == "pos":
+            da_masked = da_masked.where(da_period2 < 0)
+        elif mask_period2 == "neg":
+            da_masked = da_masked.where(da_period2 >= 0)
     
     return da_masked
 
@@ -192,46 +207,14 @@ def get_common_cbar_limits(
     calc_func_name = calc_func.__name__
     
     cf.check_args_for_none(calc_func_name, args_cur, args_cur_values)
-    cf.check_args(calc_func=calc_func, region=region, period_start=period1_start, 
-                  period_end=period1_end, months_subset=months_subset, 
-                  glass_source_pref=glass_source_pref, var_or_dvar=var_or_dvar)
-    cf.check_args(period_start=period2_start, period_end=period2_end, 
-                  months_subset=months_subset)
-    
-    if calc_func_name == "calc_glass_mean_clim":
-        assert arg_extra in cf.params_glass_mean, \
-            (f"arg_extra must be one of: {cf.params_glass_mean} " +
-             f"for calc_func = {calc_func_name}")
-    
-    if calc_func_name == "calc_era5_mdp_clim_given_var_or_dvar":
-        assert arg_extra in cf.hours_all, \
-            (f"arg_extra must be one of: {cf.hours_all} " +
-             f"for calc_func = {calc_func_name}")
+    cf.check_args(calc_func=calc_func, region=region, period1_start=period1_start, 
+                  period1_end=period1_end, period2_start=period2_start, 
+                  period2_end=period2_end, months_subset=months_subset, 
+                  glass_source_pref=glass_source_pref, var_or_dvar=var_or_dvar,
+                  arg_extra=arg_extra, extents=extents, cfv_data=cfv_data)
         
-    if calc_func_name == "calc_era5_mdp_clim_stats_given_var_or_dvar":
-        assert arg_extra in cf.params_stat, \
-            (f"arg_extra must be one of: {cf.params_stat} " +
-             f"for calc_func = {calc_func_name}")
-        
-    if calc_func_name == "calc_era5_wsd_clim":
-        assert arg_extra in cf.params_wsd, \
-            (f"arg_extra must be one of: {cf.params_wsd} " +
-             f"for calc_func = {calc_func_name}")
-        
-    extents_default = cf.regions[region]["extent"]
-    
-    if extents:
-        assert (isinstance(extents, list) & (len(extents) == 4) & 
-                (extents[1] > extents[0]) & (extents[3] > extents[2])), \
-            "extents must a 4 element list in [W, E, S, N] format or None"
-        assert ((extents[0] >= extents_default[0]) & 
-                (extents[1] <= extents_default[1]) & 
-                (extents[2] >= extents_default[2]) & 
-                (extents[3] <= extents_default[3])), \
-            ("extents must be completely contained within " +
-             f"{extents_default} for region = {region}")
-    else:
-        extents = extents_default
+    if extents == None:
+        extents = cf.regions[region]["extent"]
         
     path_period1 = cf.get_path_for_calc_func(
         calc_func_name=calc_func_name, region=region, period_start=period1_start, 
@@ -249,11 +232,6 @@ def get_common_cbar_limits(
     # set as "cfv00" to analyse test results output from a calc_funcs ipynb notebook.
     
     if cfv_data:
-        assert (isinstance(cfv_data, str) & (len(cfv_data) == 5) & 
-                (cfv_data[:3] == "cfv") & cfv_data[3].isnumeric() & 
-                cfv_data[4].isalpha() & cfv_data[4].islower()) | (cfv_data == "cfv00"), \
-            ("cfv_data must be 'cfv00' or of form 'cfvXY' where X is a single digit " +
-             "number and Y is a lowercase alphabet character. eg. cfv1n")
         for path in [path_period1, path_period2]:
             path = path.replace(cf.calc_funcs_ver, cfv_data)
             if Path(path).exists() == False:
@@ -300,7 +278,7 @@ def get_common_cbar_limits(
             da_v_period2 = ds_period2[var_or_dvar.replace("wv", "v")].sel(hour=arg_extra)
             da_mag_period1 = cf.get_magnitude(da_u_period1, da_v_period1)
             da_mag_period2 = cf.get_magnitude(da_u_period2, da_v_period2)
-            vmin = 0
+            vmin = float(min(da_mag_period1.min(), da_mag_period2.min()))
             vmax = float(max(da_mag_period1.max(), da_mag_period2.max()))
         else:
             da_period1 = ds_period1[var_or_dvar].sel(hour=arg_extra)
@@ -341,7 +319,7 @@ def get_common_cbar_limits(
         da_v_period2 = ds_period2[arg_extra + "_v"]
         da_mag_period1 = cf.get_magnitude(da_u_period1, da_v_period1)
         da_mag_period2 = cf.get_magnitude(da_u_period2, da_v_period2)
-        vmin = 0
+        vmin = float(min(da_mag_period1.min(), da_mag_period2.min()))
         vmax = float(max(da_mag_period1.max(), da_mag_period2.max()))
     else:
         da_period1 = ds_period1[arg_extra]
@@ -376,9 +354,12 @@ def get_common_cbar_limits(
             vmin = min(-abs(min_of_mins), -abs(max_of_maxs))
             vmax = -vmin
     
-    if math.isnan(vmin) & math.isnan(vmax):
-        raise Exception("Both vmin and vmax are nans. Make sure that any masks " +
-                        "applied don't cover the entire dataset.")
+    if vmin != None:
+        if math.isnan(vmin):
+            vmin = None
+    if vmax != None:
+        if math.isnan(vmax):
+            vmax = None
     
     cf.remove_handlers_if_directly_executed(func_1up)
     
@@ -390,46 +371,32 @@ def get_common_cbar_limits(
 
 def create_pcolormesh(da, extents=None, vmin=None, vmax=None, ax=None):
     
-    frame_2up = inspect.currentframe().f_back.f_back
-    func_2up = inspect.getframeinfo(frame_2up)[2]
-    
-    # Lowest level of plotting; notice that this function will work even for
-    # the MDPs of variable dependencies which are not used in the final analysis
-    # (eg. vidmf, etc.) as opposed to the higher level plotting functions.
+    time_exec = datetime.today()
+    func_cur = inspect.stack()[0][3]
+    func_1up = inspect.stack()[1][3]
+    frame_cur = inspect.currentframe()
+    args_cur, _, _, args_cur_values = inspect.getargvalues(frame_cur)
+    cf.create_log_if_directly_executed(time_exec, func_cur, func_1up, 
+                                       args_cur, args_cur_values)
     
     assert ((str(type(da)) == "<class 'xarray.core.dataarray.DataArray'>") & 
             (da.dims == da_dims_valid)), \
         f"da must be an xarray.DataArray with da.dims == {da_dims_valid}"
+    cf.check_args(extents=extents, vmin=vmin, vmax=vmax, ax=ax)
     
-    if extents:
-        assert (isinstance(extents, list) & (len(extents) == 4) & 
-                (extents[1] > extents[0]) & (extents[3] > extents[2])), \
-            "extents must a 4 element list in [W, E, S, N] format or None"
-    else:
+    frame_2up = frame_cur.f_back.f_back
+    func_2up = inspect.getframeinfo(frame_2up)[2]
+    
+    if extents == None:
         extents = []
         extents.append(da.longitude.min())
         extents.append(da.longitude.max())
         extents.append(da.latitude.min())
         extents.append(da.latitude.max())
     
-    if vmin:
-        assert isinstance(vmin, float) | isinstance(vmin, int), \
-            "vmin must have data type float or int"
-    
-    if vmax:
-        assert isinstance(vmax, float) | isinstance(vmax, int), \
-            "vmax must have data type float or int"
-        
-    if (vmin is not None) & (vmax is not None):
-        assert vmax >= vmin, \
-            "vmax must be equal to or greater than vmin"
-    
     ax_input = ax
     
-    if ax:
-        assert str(type(ax)) == "<class 'cartopy.mpl.geoaxes.GeoAxesSubplot'>", \
-            "ax must be a cartopy.GeoAxesSubplot or None"
-    else:
+    if ax == None:
         figrows = 1
         figcols = 1
         figwidth = figwidth_standard
@@ -461,7 +428,7 @@ def create_pcolormesh(da, extents=None, vmin=None, vmax=None, ax=None):
     elif da.attrs["full_name"].split(" ")[0] == "Difference":
         if da.name in da_names_cyclic:
             cmap = "twilight_shifted_r"
-            levels = np.arange(-12, 13)
+            levels = np.arange(-12, 12+1)
         else:
             if func_2up == "create_individual_comp_plot":
                 da = apply_mask(da, frame_2up)
@@ -476,7 +443,7 @@ def create_pcolormesh(da, extents=None, vmin=None, vmax=None, ax=None):
     else:
         if da.name in da_names_cyclic:
             cmap = cmocean.cm.phase
-            levels = np.arange(0, 25)
+            levels = np.arange(0, 24+1)
         elif da.name in da_names_viridis_with_vmin_0:
             cmap = "viridis"
             da_subset = da.sel(longitude=slice(extents[0], extents[1]), 
@@ -548,6 +515,8 @@ def create_pcolormesh(da, extents=None, vmin=None, vmax=None, ax=None):
         plt.show()
         fig.clear()
         plt.close(fig)
+        
+    cf.remove_handlers_if_directly_executed(func_1up)
 
 
 # In[ ]:
@@ -555,13 +524,21 @@ def create_pcolormesh(da, extents=None, vmin=None, vmax=None, ax=None):
 
 def create_quiver(da_u, da_v, extents=None, vmin=None, vmax=None, ax=None):
     
+    time_exec = datetime.today()
+    func_cur = inspect.stack()[0][3]
+    func_1up = inspect.stack()[1][3]
+    frame_cur = inspect.currentframe()
+    args_cur, _, _, args_cur_values = inspect.getargvalues(frame_cur)
+    cf.create_log_if_directly_executed(time_exec, func_cur, func_1up, 
+                                       args_cur, args_cur_values)
+    
     assert ((str(type(da_u)) == "<class 'xarray.core.dataarray.DataArray'>") & 
             (da_u.dims == da_dims_valid)), \
         f"da_u must be an xarray.DataArray with da_u.dims == {da_dims_valid}"
-    
     assert ((str(type(da_v)) == "<class 'xarray.core.dataarray.DataArray'>") & 
             (da_v.dims == da_dims_valid)), \
         f"da_v must be an xarray.DataArray with da_v.dims == {da_dims_valid}"
+    cf.check_args(extents=extents, vmin=vmin, vmax=vmax, ax=ax)
     
     attrs_u = copy.deepcopy(da_u.attrs)
     attrs_u["abbreviation"] = attrs_u["abbreviation"].replace("_u", "")
@@ -598,26 +575,9 @@ def create_quiver(da_u, da_v, extents=None, vmin=None, vmax=None, ax=None):
         extents.append(da_u.latitude.min())
         extents.append(da_u.latitude.max())
     
-    if vmin:
-        assert isinstance(vmin, float) | isinstance(vmin, int), \
-            "vmin must have data type float or int"
-    else:
-        vmin = 0
-    
-    if vmax:
-        assert isinstance(vmax, float) | isinstance(vmax, int), \
-            "vmax must have data type float or int"
-        
-    if (vmin is not None) & (vmax is not None):
-        assert vmax >= vmin, \
-            "vmax must be equal to or greater than vmin"
-    
     ax_input = ax
     
-    if ax:
-        assert str(type(ax)) == "<class 'cartopy.mpl.geoaxes.GeoAxesSubplot'>", \
-            "ax must be a cartopy.GeoAxesSubplot or None"
-    else:
+    if ax == None:
         figrows = 1
         figcols = 1
         figwidth = figwidth_standard
@@ -653,6 +613,8 @@ def create_quiver(da_u, da_v, extents=None, vmin=None, vmax=None, ax=None):
         plt.show()
         fig.clear()
         plt.close(fig)
+        
+    cf.remove_handlers_if_directly_executed(func_1up)
 
 
 # In[ ]:
@@ -677,64 +639,20 @@ def create_individual_calc_plot(
     cf.check_args_for_none(calc_func_name, args_cur, args_cur_values)
     cf.check_args(calc_func=calc_func, region=region, period_start=period_start, 
                   period_end=period_end, months_subset=months_subset, 
-                  glass_source_pref=glass_source_pref, var_or_dvar=var_or_dvar)
+                  arg_extra=arg_extra, glass_source_pref=glass_source_pref, 
+                  var_or_dvar=var_or_dvar, extents=extents, vmin=vmin, vmax=vmax,
+                  ax=ax, cfv_data=cfv_data, output=output)
     
     months_str = cf.get_months_subset_str(months_subset=months_subset).upper()
     
-    if calc_func_name == "calc_glass_mean_clim":
-        assert arg_extra in cf.params_glass_mean, \
-            (f"arg_extra must be one of: {cf.params_glass_mean} " +
-             f"for calc_func = {calc_func_name}")
-    
-    if calc_func_name == "calc_era5_mdp_clim_given_var_or_dvar":
-        assert arg_extra in cf.hours_all, \
-            (f"arg_extra must be one of: {cf.hours_all} " +
-             f"for calc_func = {calc_func_name}")
-        
-    if calc_func_name == "calc_era5_mdp_clim_stats_given_var_or_dvar":
-        assert arg_extra in cf.params_stat, \
-            (f"arg_extra must be one of: {cf.params_stat} " +
-             f"for calc_func = {calc_func_name}")
-        
-    if calc_func_name == "calc_era5_wsd_clim":
-        assert arg_extra in cf.params_wsd, \
-            (f"arg_extra must be one of: {cf.params_wsd} " +
-             f"for calc_func = {calc_func_name}")
-    
     extents_input = copy.deepcopy(extents)
-    extents_default = cf.regions[region]["extent"]
     
-    if extents:
-        assert (isinstance(extents, list) & (len(extents) == 4) & 
-                (extents[1] > extents[0]) & (extents[3] > extents[2])), \
-            "extents must a 4 element list in [W, E, S, N] format or None"
-        assert ((extents[0] >= extents_default[0]) & 
-                (extents[1] <= extents_default[1]) & 
-                (extents[2] >= extents_default[2]) & 
-                (extents[3] <= extents_default[3])), \
-            ("extents must be completely contained within " +
-             f"{extents_default} for region = {region}")
-    else:
-        extents = extents_default
-    
-    if vmin:
-        assert isinstance(vmin, float) | isinstance(vmin, int), \
-            "vmin must have data type float or int"
-    
-    if vmax:
-        assert isinstance(vmax, float) | isinstance(vmax, int), \
-            "vmax must have data type float or int"
-    
-    if (vmin is not None) & (vmax is not None):
-        assert vmax >= vmin, \
-            "vmax must be equal to or greater than vmin"
+    if extents == None:
+        extents = cf.regions[region]["extent"]
     
     ax_input = ax
     
-    if ax:
-        assert str(type(ax)) == "<class 'cartopy.mpl.geoaxes.GeoAxesSubplot'>", \
-            "ax must be a cartopy.GeoAxesSubplot or None"
-    else:
+    if ax == None:
         figrows = 1
         figcols = 1
         figwidth = figwidth_standard
@@ -744,9 +662,6 @@ def create_individual_calc_plot(
         fig, ax = plt.subplots(figrows, figcols, figsize=(figwidth, figheight), 
                                subplot_kw = {"projection": ccrs.PlateCarree()}
                               )
-        
-    assert output in [True, False], \
-        "output must be one of: [True, False]"
     
     path_calc = cf.get_path_for_calc_func(
         calc_func_name=calc_func_name, region=region, period_start=period_start, 
@@ -759,11 +674,6 @@ def create_individual_calc_plot(
     # set as "cfv00" to analyse test results output from a calc_funcs ipynb notebook.
     
     if cfv_data:
-        assert (isinstance(cfv_data, str) & (len(cfv_data) == 5) & 
-                (cfv_data[:3] == "cfv") & cfv_data[3].isnumeric() & 
-                cfv_data[4].isalpha() & cfv_data[4].islower()) | (cfv_data == "cfv00"), \
-            ("cfv_data must be 'cfv00' or of form 'cfvXY' where X is a single digit " +
-             "number and Y is a lowercase alphabet character. eg. cfv1n")
         path_calc = path_calc.replace(cf.calc_funcs_ver, cfv_data)
         if Path(path_calc).exists() == False:
             msg_cfv = (f"TERMINATED: cfv_data = {cfv_data} was specified " +
@@ -859,7 +769,7 @@ def create_individual_calc_plot(
         fig.clear()
         plt.close(fig)
         
-        cf.remove_handlers_if_directly_executed(func_1up)
+    cf.remove_handlers_if_directly_executed(func_1up)
 
 
 # In[ ]:
@@ -868,7 +778,7 @@ def create_individual_calc_plot(
 def create_individual_diff_plot(
     calc_func, region, period1_start, period1_end, period2_start, period2_end, 
     months_subset, arg_extra, glass_source_pref=None, var_or_dvar=None,
-    perc=False, perc_quantile_mask=perc_quantile_mask_default, extents=None, 
+    perc=False, mask_perc_quantile=mask_perc_quantile_default, extents=None, 
     vmin=None, vmax=None, ax=None, cfv_data=None, output=False
 ):
     
@@ -883,74 +793,24 @@ def create_individual_diff_plot(
     calc_func_name = calc_func.__name__
     
     cf.check_args_for_none(calc_func_name, args_cur, args_cur_values)
-    cf.check_args(calc_func=calc_func, region=region, period_start=period1_start, 
-                  period_end=period1_end, months_subset=months_subset, 
-                  glass_source_pref=glass_source_pref, var_or_dvar=var_or_dvar)
-    cf.check_args(period_start=period2_start, period_end=period2_end, 
-                  months_subset=months_subset)
+    cf.check_args(calc_func=calc_func, region=region, period1_start=period1_start, 
+                  period1_end=period1_end, period2_start=period2_start, 
+                  period2_end=period2_end, months_subset=months_subset, 
+                  arg_extra=arg_extra, glass_source_pref=glass_source_pref, 
+                  var_or_dvar=var_or_dvar, perc=perc, 
+                  mask_perc_quantile=mask_perc_quantile, extents=extents,
+                  vmin=vmin, vmax=vmax, ax=ax, cfv_data=cfv_data, output=output)
     
     months_str = cf.get_months_subset_str(months_subset=months_subset).upper()
     
-    if calc_func_name == "calc_glass_mean_clim":
-        assert arg_extra in cf.params_glass_mean, \
-            (f"arg_extra must be one of: {cf.params_glass_mean} " +
-             f"for calc_func = {calc_func_name}")
-    
-    if calc_func_name == "calc_era5_mdp_clim_given_var_or_dvar":
-        assert arg_extra in cf.hours_all, \
-            (f"arg_extra must be one of: {cf.hours_all} " +
-             f"for calc_func = {calc_func_name}")
-        
-    if calc_func_name == "calc_era5_mdp_clim_stats_given_var_or_dvar":
-        assert arg_extra in cf.params_stat, \
-            (f"arg_extra must be one of: {cf.params_stat} " +
-             f"for calc_func = {calc_func_name}")
-        
-    if calc_func_name == "calc_era5_wsd_clim":
-        assert arg_extra in cf.params_wsd, \
-            (f"arg_extra must be one of: {cf.params_wsd} " +
-             f"for calc_func = {calc_func_name}")
-    
-    assert perc in [True, False], \
-        "perc must be one of: [True, False]"
-    
-    assert perc_quantile_mask in range(0, 101), \
-        "perc_quantile_mask must be an integer between 0 and 100 (inclusive)"
-    
     extents_input = copy.deepcopy(extents)
-    extents_default = cf.regions[region]["extent"]
     
-    if extents:
-        assert (isinstance(extents, list) & (len(extents) == 4) & 
-                (extents[1] > extents[0]) & (extents[3] > extents[2])), \
-            "extents must a 4 element list in [W, E, S, N] format or None"
-        assert ((extents[0] >= extents_default[0]) & 
-                (extents[1] <= extents_default[1]) & 
-                (extents[2] >= extents_default[2]) & 
-                (extents[3] <= extents_default[3])), \
-            ("extents must be completely contained within " +
-             f"{extents_default} for region = {region}")
-    else:
-        extents = extents_default
-    
-    if vmin:
-        assert isinstance(vmin, float) | isinstance(vmin, int), \
-            "vmin must have data type float or int"
-    
-    if vmax:
-        assert isinstance(vmax, float) | isinstance(vmax, int), \
-            "vmax must have data type float or int"
-    
-    if (vmin is not None) & (vmax is not None):
-        assert vmax >= vmin, \
-            "vmax must be equal to or greater than vmin"
+    if extents == None:
+        extents = cf.regions[region]["extent"]
     
     ax_input = ax
     
-    if ax:
-        assert str(type(ax)) == "<class 'cartopy.mpl.geoaxes.GeoAxesSubplot'>", \
-            "ax must be a cartopy.GeoAxesSubplot or None"
-    else:
+    if ax == None:
         figrows = 1
         figcols = 1
         figwidth = figwidth_standard
@@ -960,9 +820,6 @@ def create_individual_diff_plot(
         fig, ax = plt.subplots(figrows, figcols, figsize=(figwidth, figheight), 
                                subplot_kw = {"projection": ccrs.PlateCarree()}
                               )
-        
-    assert output in [True, False], \
-        "output must be one of: [True, False]"
     
     path_period1 = cf.get_path_for_calc_func(
         calc_func_name=calc_func_name, region=region, period_start=period1_start, 
@@ -987,11 +844,6 @@ def create_individual_diff_plot(
     # set as "cfv00" to analyse test results output from a calc_funcs ipynb notebook.
     
     if cfv_data:
-        assert (isinstance(cfv_data, str) & (len(cfv_data) == 5) & 
-                (cfv_data[:3] == "cfv") & cfv_data[3].isnumeric() & 
-                cfv_data[4].isalpha() & cfv_data[4].islower()) | (cfv_data == "cfv00"), \
-            ("cfv_data must be 'cfv00' or of form 'cfvXY' where X is a single digit " +
-             "number and Y is a lowercase alphabet character. eg. cfv1n")
         for path in [path_period1, path_period2, path_diff]:
             path = path.replace(cf.calc_funcs_ver, cfv_data)
             if Path(path).exists() == False:
@@ -1049,7 +901,7 @@ def create_individual_diff_plot(
                 da_period1 = ds_period1[var_or_dvar].sel(hour=arg_extra)
                 da_period1_mag = cf.get_magnitude(da_period1, da_period1)
                 da_period1_mag = da_period1_mag.where(
-                    da_period1_mag > da_period1_mag.quantile(perc_quantile_mask / 100))
+                    da_period1_mag > da_period1_mag.quantile(mask_perc_quantile / 100))
                 da_diff_perc = da_diff / da_period1_mag * 100
                 da_diff_perc.attrs = copy.deepcopy(da_diff.attrs)
                 da_diff_perc.attrs["units"] = "\%"
@@ -1068,7 +920,7 @@ def create_individual_diff_plot(
             da_period1 = ds_period1[arg_extra]
             da_period1_mag = cf.get_magnitude(da_period1, da_period1)
             da_period1_mag = da_period1_mag.where(
-                da_period1_mag > da_period1_mag.quantile(perc_quantile_mask / 100))
+                da_period1_mag > da_period1_mag.quantile(mask_perc_quantile / 100))
             da_diff_perc = da_diff / da_period1_mag * 100
             da_diff_perc.attrs = copy.deepcopy(da_diff.attrs)
             da_diff_perc.attrs["units"] = "\% of period 1"
@@ -1114,7 +966,7 @@ def create_individual_diff_plot(
                 
             path_output = (path_diff
                            .replace("data_processed", "data_final")
-                           .replace(".nc", f"_{arg_extra}_perc-{perc_quantile_mask}.png")
+                           .replace(".nc", f"_{arg_extra}_perc-{mask_perc_quantile}.png")
                            .replace(f"{cfv_used}_diff_{region}", 
                                     f"{plot_funcs_ver}_{cfv_used}_diff_{extents_used}")
                           )
@@ -1138,7 +990,7 @@ def create_individual_diff_plot(
         fig.clear()
         plt.close(fig)
         
-        cf.remove_handlers_if_directly_executed(func_1up)
+    cf.remove_handlers_if_directly_executed(func_1up)
 
 
 # In[ ]:
@@ -1147,7 +999,7 @@ def create_individual_diff_plot(
 def create_individual_comp_plot(
     calc_func, region, period1_start, period1_end, period2_start, period2_end, 
     months_subset, arg_extra, glass_source_pref=None, var_or_dvar=None, perc=False, 
-    perc_quantile_mask=perc_quantile_mask_default, mask_period1=None, mask_period2=None, 
+    mask_perc_quantile=mask_perc_quantile_default, mask_period1=None, mask_period2=None, 
     extents=None, vmin_periods=None, vmax_periods=None, vmin_diff=None, vmax_diff=None, 
     ax_period1=None, ax_period2=None, ax_diff=None, cfv_data=None, output=False
 ):
@@ -1162,74 +1014,26 @@ def create_individual_comp_plot(
     
     calc_func_name = calc_func.__name__
     
+    axes_input = [ax_period1, ax_period2, ax_diff]
+    assert (all(ax_input == None for ax_input in axes_input) | 
+            all(ax_input != None for ax_input in axes_input)), \
+        "ax_period1, ax_period2, ax_diff must be either all None or all not None"
     cf.check_args_for_none(calc_func_name, args_cur, args_cur_values)
-    cf.check_args(calc_func=calc_func, region=region, period_start=period1_start, 
-                  period_end=period1_end, months_subset=months_subset, 
-                  glass_source_pref=glass_source_pref, var_or_dvar=var_or_dvar)
-    cf.check_args(period_start=period2_start, period_end=period2_end, 
-                  months_subset=months_subset)
-    
-    if calc_func_name == "calc_glass_mean_clim":
-        assert arg_extra in cf.params_glass_mean, \
-            (f"arg_extra must be one of: {cf.params_glass_mean} " +
-             f"for calc_func = {calc_func_name}")
-    
-    if calc_func_name == "calc_era5_mdp_clim_given_var_or_dvar":
-        assert arg_extra in cf.hours_all, \
-            (f"arg_extra must be one of: {cf.hours_all} " +
-             f"for calc_func = {calc_func_name}")
-        
-    if calc_func_name == "calc_era5_mdp_clim_stats_given_var_or_dvar":
-        assert arg_extra in cf.params_stat, \
-            (f"arg_extra must be one of: {cf.params_stat} " +
-             f"for calc_func = {calc_func_name}")
-        
-    if calc_func_name == "calc_era5_wsd_clim":
-        assert arg_extra in cf.params_wsd, \
-            (f"arg_extra must be one of: {cf.params_wsd} " +
-             f"for calc_func = {calc_func_name}")
-    
-    if mask_period1:
-        assert (mask_period1 == "pos") | (mask_period1 == "neg"), \
-            "mask_period1 must be one of: ['pos', 'neg']"
-        
-    if mask_period2:
-        assert (mask_period2 == "pos") | (mask_period2 == "neg"), \
-            "mask_period2 must be one of: ['pos', 'neg']"
-    
-    assert perc in [True, False], \
-        "perc must be one of: [True, False]"
-    
-    assert perc_quantile_mask in range(0, 101), \
-        "perc_quantile_mask must be an integer between 0 and 100 (inclusive)"
+    cf.check_args(calc_func=calc_func, region=region, period1_start=period1_start, 
+                  period1_end=period1_end, period2_start=period2_start, 
+                  period2_end=period2_end, months_subset=months_subset, 
+                  arg_extra=arg_extra, glass_source_pref=glass_source_pref, 
+                  var_or_dvar=var_or_dvar, perc=perc, 
+                  mask_perc_quantile=mask_perc_quantile, mask_period1=mask_period1,
+                  mask_period2=mask_period2, extents=extents, vmin_periods=vmin_periods,
+                  vmax_periods=vmax_periods, vmin_diff=vmin_diff, vmax_diff=vmax_diff,
+                  ax_period1=ax_period1, ax_period2=ax_period2, ax_diff=ax_diff, 
+                  cfv_data=cfv_data, output=output)
     
     extents_input = copy.deepcopy(extents)
-    extents_default = cf.regions[region]["extent"]
     
-    if extents:
-        assert (isinstance(extents, list) & (len(extents) == 4) & 
-                (extents[1] > extents[0]) & (extents[3] > extents[2])), \
-            "extents must a 4 element list in [W, E, S, N] format or None"
-        assert ((extents[0] >= extents_default[0]) & 
-                (extents[1] <= extents_default[1]) & 
-                (extents[2] >= extents_default[2]) & 
-                (extents[3] <= extents_default[3])), \
-            ("extents must be completely contained within " +
-             f"{extents_default} for region = {region}")
-    else:
-        extents = extents_default
-    
-    if vmin_periods:
-        assert isinstance(vmin_periods, float) | isinstance(vmin_periods, int), \
-            "vmin_periods must have data type float or int"
-    
-    if vmax_periods:
-        assert isinstance(vmax_periods, float) | isinstance(vmax_periods, int), \
-            "vmax_periods must have data type float or int"
-    
-    if (vmin_periods is not None) & (vmax_periods is not None):
-        assert vmax_periods >= vmin_periods, \
-            "vmax_periods must be equal to or greater than vmin_periods"
+    if extents == None:
+        extents = cf.regions[region]["extent"]
     
     if (vmin_periods == None) & (vmax_periods == None):
         vmin_periods, vmax_periods = get_common_cbar_limits(
@@ -1240,29 +1044,9 @@ def create_individual_comp_plot(
             var_or_dvar=var_or_dvar, extents=extents, cfv_data=cfv_data
         )
     
-    if vmin_diff:
-        assert isinstance(vmin_diff, float) | isinstance(vmin_diff, int), \
-            "vmin_diff must have data type float or int"
-    
-    if vmax_diff:
-        assert isinstance(vmax_diff, float) | isinstance(vmax_diff, int), \
-            "vmax_diff must have data type float or int"
-    
     ax_diff_input = ax_diff
-    axes_input = [ax_period1, ax_period2, ax_diff]
     
-    assert (all(ax_input == None for ax_input in axes_input) | 
-            all(ax_input != None for ax_input in axes_input)), \
-        "ax_period1, ax_period2, ax_diff must be either all None or all not None"
-    
-    if ax_diff:
-        assert str(type(ax_period1)) == "<class 'cartopy.mpl.geoaxes.GeoAxesSubplot'>", \
-            "ax_period1 must be a cartopy.GeoAxesSubplot or None"
-        assert str(type(ax_period2)) == "<class 'cartopy.mpl.geoaxes.GeoAxesSubplot'>", \
-            "ax_period2 must be a cartopy.GeoAxesSubplot or None"
-        assert str(type(ax_diff)) == "<class 'cartopy.mpl.geoaxes.GeoAxesSubplot'>", \
-            "ax_diff must be a cartopy.GeoAxesSubplot or None"
-    else:
+    if ax_diff == None:
         figrows = 1
         figcols = 3
         figwidth = figwidth_standard * 2
@@ -1275,9 +1059,6 @@ def create_individual_comp_plot(
         ax_period1 = axes[0]
         ax_period2 = axes[1]
         ax_diff = axes[2]
-        
-    assert output in [True, False], \
-        "output must be one of: [True, False]"
     
     path_diff = cf.get_path_for_calc_diff(
         calc_func_name=calc_func_name, region=region, 
@@ -1292,11 +1073,6 @@ def create_individual_comp_plot(
     # set as "cfv00" to analyse test results output from a calc_funcs ipynb notebook.
     
     if cfv_data:
-        assert (isinstance(cfv_data, str) & (len(cfv_data) == 5) & 
-                (cfv_data[:3] == "cfv") & cfv_data[3].isnumeric() & 
-                cfv_data[4].isalpha() & cfv_data[4].islower()) | (cfv_data == "cfv00"), \
-            ("cfv_data must be 'cfv00' or of form 'cfvXY' where X is a single digit " +
-             "number and Y is a lowercase alphabet character. eg. cfv1n")
         path_diff = path_diff.replace(cf.calc_funcs_ver, cfv_data)
         if Path(path_diff).exists() == False:
             msg_cfv = (f"TERMINATED: cfv_data = {cfv_data} was specified " +
@@ -1325,7 +1101,7 @@ def create_individual_comp_plot(
         period1_end=period1_end, period2_start=period2_start, period2_end=period2_end, 
         months_subset=months_subset, arg_extra=arg_extra, 
         glass_source_pref=glass_source_pref, var_or_dvar=var_or_dvar, 
-        perc=perc, perc_quantile_mask=perc_quantile_mask, extents=extents, 
+        perc=perc, mask_perc_quantile=mask_perc_quantile, extents=extents, 
         vmin=vmin_diff, vmax=vmax_diff, ax=ax_diff, cfv_data=cfv_data, output=False
     )
     
@@ -1346,7 +1122,7 @@ def create_individual_comp_plot(
             
             path_output = (path_diff
                            .replace("data_processed", "data_final")
-                           .replace(".nc", f"_{arg_extra}_perc-{perc_quantile_mask}_" +
+                           .replace(".nc", f"_{arg_extra}_perc-{mask_perc_quantile}_" +
                                     f"mask1-{mask_period1}_mask2-{mask_period2}.png")
                            .replace(f"{cfv_used}_diff_{region}", 
                                     f"{plot_funcs_ver}_{cfv_used}_comp_{extents_used}")
@@ -1371,7 +1147,7 @@ def create_individual_comp_plot(
         fig.clear()
         plt.close(fig)
         
-        cf.remove_handlers_if_directly_executed(func_1up)
+    cf.remove_handlers_if_directly_executed(func_1up)
 
 
 # In[ ]:
@@ -1386,51 +1162,24 @@ def create_orog_static_plot(param_orog, region=None, extents=None, vmin=None, vm
     frame_cur = inspect.currentframe()
     args_cur, _, _, args_cur_values = inspect.getargvalues(frame_cur)
     cf.create_log_if_directly_executed(time_exec, func_cur, func_1up, 
-                                    args_cur, args_cur_values)
+                                       args_cur, args_cur_values)
     
-    assert param_orog in cf.params_orog, \
-        f"param_orog must be one of: {cf.params_orog}"
-    
-    if region:
-        cf.check_args(region=region)
-        extents_default = cf.regions[region]["extent"]
-    else:
-        extents_default = [-180, 180, -90, 90]
-        region = "global"
+    cf.check_args_for_none(func_cur, args_cur, args_cur_values)
+    cf.check_args(param_orog=param_orog, region=region, extents=extents, vmin=vmin,
+                  vmax=vmax, ax=ax, cfv_data=cfv_data, output=output)
     
     extents_input = copy.deepcopy(extents)
-    
-    if extents:
-        assert (isinstance(extents, list) & (len(extents) == 4) & 
-                (extents[1] > extents[0]) & (extents[3] > extents[2])), \
-            "extents must a 4 element list in [W, E, S, N] format or None"
-        assert ((extents[0] >= extents_default[0]) & 
-                (extents[1] <= extents_default[1]) & 
-                (extents[2] >= extents_default[2]) & 
-                (extents[3] <= extents_default[3])), \
-            ("extents must be completely contained within " +
-             f"{extents_default} for region = {region}")
-    else:
-        extents = extents_default
-    
-    if vmin:
-        assert isinstance(vmin, float) | isinstance(vmin, int), \
-            "vmin must have data type float or int"
-    
-    if vmax:
-        assert isinstance(vmax, float) | isinstance(vmax, int), \
-            "vmax must have data type float or int"
         
-    if (vmin is not None) & (vmax is not None):
-        assert vmax >= vmin, \
-            "vmax must be equal to or greater than vmin"
+    if extents == None:
+        if region:
+            extents = cf.regions[region]["extent"]
+        else:
+            extents = [-180, 180, -90, 90]
+            region = "global"
     
     ax_input = ax
     
-    if ax:
-        assert str(type(ax)) == "<class 'cartopy.mpl.geoaxes.GeoAxesSubplot'>", \
-            "ax must be a cartopy.GeoAxesSubplot or None"
-    else:
+    if ax == None:
         figrows = 1
         figcols = 1
         figwidth = figwidth_standard
@@ -1441,9 +1190,6 @@ def create_orog_static_plot(param_orog, region=None, extents=None, vmin=None, vm
                                subplot_kw = {"projection": ccrs.PlateCarree()}
                               )
     
-    assert output in [True, False], \
-        "output must be one of: [True, False]"
-    
     path_orog = cf.get_path_for_era5_orog()
     
     # Use data outputted from an older version of the calc_funcs script. This is useful
@@ -1451,11 +1197,6 @@ def create_orog_static_plot(param_orog, region=None, extents=None, vmin=None, vm
     # set as "cfv00" to analyse test results output from a calc_funcs ipynb notebook.
     
     if cfv_data:
-        assert (isinstance(cfv_data, str) & (len(cfv_data) == 5) & 
-                (cfv_data[:3] == "cfv") & cfv_data[3].isnumeric() & 
-                cfv_data[4].isalpha() & cfv_data[4].islower()) | (cfv_data == "cfv00"), \
-            ("cfv_data must be 'cfv00' or of form 'cfvXY' where X is a single digit " +
-             "number and Y is a lowercase alphabet character. eg. cfv1n")
         path_orog = path_orog.replace(cf.calc_funcs_ver, cfv_data)
         if Path(path_orog).exists() == False:
             msg_cfv = (f"TERMINATED: cfv_data = {cfv_data} was specified " +
@@ -1517,7 +1258,7 @@ def create_orog_static_plot(param_orog, region=None, extents=None, vmin=None, vm
         fig.clear()
         plt.close(fig)
         
-        cf.remove_handlers_if_directly_executed(func_1up)
+    cf.remove_handlers_if_directly_executed(func_1up)
 
 
 # In[ ]:
@@ -1538,43 +1279,16 @@ def create_glass_rolling_plot(region, year_start, year_end, months_subset, windo
     cf.check_args_for_none(func_cur, args_cur, args_cur_values)
     cf.check_args(region=region, year_start=year_start, year_end=year_end, 
                   months_subset=months_subset, window_size=window_size, 
-                  glass_source_pref=glass_source_pref)
-    
-    assert param_glass_mean in cf.params_glass_mean, \
-        f"param_glass_mean must be one of: {cf.params_glass_mean}"
+                  param_glass_mean=param_glass_mean, 
+                  glass_source_pref=glass_source_pref, extents=extents, 
+                  vmin=vmin, vmax=vmax, cfv_data=cfv_data, output=output)
     
     months_str = cf.get_months_subset_str(months_subset=months_subset).upper()
     
     extents_input = copy.deepcopy(extents)
-    extents_default = cf.regions[region]["extent"]
     
-    if extents:
-        assert (isinstance(extents, list) & (len(extents) == 4) & 
-                (extents[1] > extents[0]) & (extents[3] > extents[2])), \
-            "extents must a 4 element list in [W, E, S, N] format or None"
-        assert ((extents[0] >= extents_default[0]) & 
-                (extents[1] <= extents_default[1]) & 
-                (extents[2] >= extents_default[2]) & 
-                (extents[3] <= extents_default[3])), \
-            ("extents must be completely contained within " +
-             f"{extents_default} for region = {region}")
-    else:
-        extents = extents_default
-    
-    if vmin:
-        assert isinstance(vmin, float) | isinstance(vmin, int), \
-            "vmin must have data type float or int"
-    
-    if vmax:
-        assert isinstance(vmax, float) | isinstance(vmax, int), \
-            "vmax must have data type float or int"
-    
-    if (vmin is not None) & (vmax is not None):
-        assert vmax >= vmin, \
-            "vmax must be equal to or greater than vmin"
-        
-    assert output in [True, False], \
-        "output must be one of: [True, False]"  
+    if extents == None:
+        extents = cf.regions[region]["extent"]
     
     path_roll = cf.get_path_for_calc_glass_rolling(
         region=region, year_start=year_start, year_end=year_end, 
@@ -1586,11 +1300,6 @@ def create_glass_rolling_plot(region, year_start, year_end, months_subset, windo
     # set as "cfv00" to analyse test results output from a calc_funcs ipynb notebook.
     
     if cfv_data:
-        assert (isinstance(cfv_data, str) & (len(cfv_data) == 5) & 
-                (cfv_data[:3] == "cfv") & cfv_data[3].isnumeric() & 
-                cfv_data[4].isalpha() & cfv_data[4].islower()) | (cfv_data == "cfv00"), \
-            ("cfv_data must be 'cfv00' or of form 'cfvXY' where X is a single digit " +
-             "number and Y is a lowercase alphabet character. eg. cfv1n")
         path_roll = path_roll.replace(cf.calc_funcs_ver, cfv_data)
         if Path(path_roll).exists() == False:
             msg_cfv = (f"TERMINATED: cfv_data = {cfv_data} was specified " +
@@ -1704,25 +1413,15 @@ def plot_mdp_clim_stats_given_var_or_dvar(
     cf.check_args_for_none(func_cur, args_cur, args_cur_values)
     cf.check_args(region=region, period_start=period_start, period_end=period_end, 
                   months_subset=months_subset, glass_source_pref=glass_source_pref,
-                  var_or_dvar=var_or_dvar)
+                  var_or_dvar=var_or_dvar, extents=extents, cfv_data=cfv_data, 
+                  output=output)
     
     months_subset_str = cf.get_months_subset_str(months_subset=months_subset)
     
     extents_input = copy.deepcopy(extents)
-    extents_default = cf.regions[region]["extent"]
     
-    if extents:
-        assert (isinstance(extents, list) & (len(extents) == 4) & 
-                (extents[1] > extents[0]) & (extents[3] > extents[2])), \
-            "extents must a 4 element list in [W, E, S, N] format or None"
-        assert ((extents[0] >= extents_default[0]) & 
-                (extents[1] <= extents_default[1]) & 
-                (extents[2] >= extents_default[2]) & 
-                (extents[3] <= extents_default[3])), \
-            ("extents must be completely contained within " +
-             f"{extents_default} for region = {region}")
-    else:
-        extents = extents_default
+    if extents == None:
+        extents = cf.regions[region]["extent"]
     
     figrows = 5
     figcols = 2
@@ -1734,8 +1433,10 @@ def plot_mdp_clim_stats_given_var_or_dvar(
                              subplot_kw = {"projection": ccrs.PlateCarree()}
                             )
     
-    create_orog_static_plot("lse", extents=extents, ax=axes[0][0], cfv_data=cfv_data)
-    create_orog_static_plot("ssgo", extents=extents, ax=axes[0][1], cfv_data=cfv_data)
+    create_orog_static_plot(param_orog="lse", region=region, extents=extents, 
+                            ax=axes[0][0], cfv_data=cfv_data)
+    create_orog_static_plot(param_orog="ssgo", region=region, extents=extents, 
+                            ax=axes[0][1], cfv_data=cfv_data)
     create_individual_calc_plot(
         calc_func=cf.calc_glass_mean_clim, region=region, period_start=period_start, 
         period_end=period_end, months_subset=months_subset, arg_extra="mlai", 
@@ -1837,25 +1538,15 @@ def plot_mdp_clim_values_given_hour(
     cf.check_args(region=region, period_start=period_start, period_end=period_end, 
                   months_subset=months_subset, glass_source_pref=glass_source_pref,
                   hour=hour, var_or_dvar_layer=var_or_dvar_layer, 
-                  var_or_dvar_type=var_or_dvar_type)
+                  var_or_dvar_type=var_or_dvar_type, extents=extents,
+                  cfv_data=cfv_data, output=output)
     
     months_subset_str = cf.get_months_subset_str(months_subset=months_subset)
     
     extents_input = copy.deepcopy(extents)
-    extents_default = cf.regions[region]["extent"]
     
-    if extents:
-        assert (isinstance(extents, list) & (len(extents) == 4) & 
-                (extents[1] > extents[0]) & (extents[3] > extents[2])), \
-            "extents must a 4 element list in [W, E, S, N] format or None"
-        assert ((extents[0] >= extents_default[0]) & 
-                (extents[1] <= extents_default[1]) & 
-                (extents[2] >= extents_default[2]) & 
-                (extents[3] <= extents_default[3])), \
-            ("extents must be completely contained within " +
-             f"{extents_default} for region = {region}")
-    else:
-        extents = extents_default
+    if extents == None:
+        extents = cf.regions[region]["extent"]
     
     figrows = 5
     figcols = 2
@@ -1867,8 +1558,10 @@ def plot_mdp_clim_values_given_hour(
                              subplot_kw = {"projection": ccrs.PlateCarree()}
                             )
     
-    create_orog_static_plot("lse", extents=extents, ax=axes[0][0], cfv_data=cfv_data)
-    create_orog_static_plot("ssgo", extents=extents, ax=axes[0][1], cfv_data=cfv_data)
+    create_orog_static_plot(param_orog="lse", region=region, extents=extents, 
+                            ax=axes[0][0], cfv_data=cfv_data)
+    create_orog_static_plot(param_orog="ssgo", region=region, extents=extents, 
+                            ax=axes[0][1], cfv_data=cfv_data)
     create_individual_calc_plot(
         calc_func=cf.calc_glass_mean_clim, region=region, period_start=period_start, 
         period_end=period_end, months_subset=months_subset, arg_extra="mlai", 
@@ -1884,7 +1577,8 @@ def plot_mdp_clim_values_given_hour(
     
     params_to_plot = cf.vars_and_dvars_era5[var_or_dvar_type][var_or_dvar_layer]
     
-    for param in ["ws10", "wv10", "nse", "vidmf", "dws10", "dwv10", "dnse", "dvidmf"]:
+    for param in ["u10", "v10", "ws10", "wv10", "u100", "v100", "nse", "vidmf", "du10", 
+                  "dv10", "dws10", "dwv10", "du100", "dv100", "dnse", "dvidmf"]:
         try:
             params_to_plot.remove(param)
         except:
@@ -1968,25 +1662,15 @@ def plot_mdp_clim_values_given_var_or_dvar(
     cf.check_args_for_none(func_cur, args_cur, args_cur_values)
     cf.check_args(region=region, period_start=period_start, period_end=period_end, 
                   months_subset=months_subset, glass_source_pref=glass_source_pref,
-                  var_or_dvar=var_or_dvar, time=time)
+                  var_or_dvar=var_or_dvar, time=time, extents=extents, 
+                  cfv_data=cfv_data, output=output)
     
     months_subset_str = cf.get_months_subset_str(months_subset=months_subset)
     
     extents_input = copy.deepcopy(extents)
-    extents_default = cf.regions[region]["extent"]
     
-    if extents:
-        assert (isinstance(extents, list) & (len(extents) == 4) & 
-                (extents[1] > extents[0]) & (extents[3] > extents[2])), \
-            "extents must a 4 element list in [W, E, S, N] format or None"
-        assert ((extents[0] >= extents_default[0]) & 
-                (extents[1] <= extents_default[1]) & 
-                (extents[2] >= extents_default[2]) & 
-                (extents[3] <= extents_default[3])), \
-            ("extents must be completely contained within " +
-             f"{extents_default} for region = {region}")
-    else:
-        extents = extents_default
+    if extents == None:
+        extents = cf.regions[region]["extent"]
     
     figrows = 5
     figcols = 2
@@ -1998,8 +1682,10 @@ def plot_mdp_clim_values_given_var_or_dvar(
                              subplot_kw = {"projection": ccrs.PlateCarree()}
                             )
     
-    create_orog_static_plot("lse", extents=extents, ax=axes[0][0], cfv_data=cfv_data)
-    create_orog_static_plot("ssgo", extents=extents, ax=axes[0][1], cfv_data=cfv_data)
+    create_orog_static_plot(param_orog="lse", region=region, extents=extents, 
+                            ax=axes[0][0], cfv_data=cfv_data)
+    create_orog_static_plot(param_orog="ssgo", region=region, extents=extents, 
+                            ax=axes[0][1], cfv_data=cfv_data)
     create_individual_calc_plot(
         calc_func=cf.calc_glass_mean_clim, region=region, period_start=period_start, 
         period_end=period_end, months_subset=months_subset, arg_extra="mlai", 
@@ -2026,11 +1712,6 @@ def plot_mdp_clim_values_given_var_or_dvar(
     # set as "cfv00" to analyse test results output from a calc_funcs ipynb notebook.
     
     if cfv_data:
-        assert (isinstance(cfv_data, str) & (len(cfv_data) == 5) & 
-                (cfv_data[:3] == "cfv") & cfv_data[3].isnumeric() & 
-                cfv_data[4].isalpha() & cfv_data[4].islower()) | (cfv_data == "cfv00"), \
-            ("cfv_data must be 'cfv00' or of form 'cfvXY' where X is a single digit " +
-             "number and Y is a lowercase alphabet character. eg. cfv1n")
         path_calc = path_calc.replace(cf.calc_funcs_ver, cfv_data)
         if Path(path_calc).exists() == False:
             msg_cfv = (f"TERMINATED: cfv_data = {cfv_data} was specified " +
@@ -2054,27 +1735,26 @@ def plot_mdp_clim_values_given_var_or_dvar(
     ds_time = (xr.open_dataset(path_calc, engine = "netcdf4")
                .sel(longitude=slice(extents[0], extents[1]), 
                     latitude=slice(extents[3], extents[2]))
-               .sel(hour=slice(hours_to_plot[0], hours_to_plot[-1]))
               )
     
     if var_or_dvar in cf.params_vector:
-        ds_time_u = ds_time[var_or_dvar.replace("wv", "u")]
-        ds_time_v = ds_time[var_or_dvar.replace("wv", "v")]
-        ds_time_mag = cf.get_magnitude(ds_time_u, ds_time_v)
-        vmin = 0
-        vmax = float(ds_time_mag.max())
+        da_time_u = ds_time[var_or_dvar.replace("wv", "u")]
+        da_time_v = ds_time[var_or_dvar.replace("wv", "v")]
+        da_time_mag = cf.get_magnitude(da_time_u, da_time_v)
+        vmin = float(da_time_mag.min())
+        vmax = float(da_time_mag.max())
     else:
-        ds_time = ds_time[var_or_dvar]
+        da_time = ds_time[var_or_dvar]
         if var_or_dvar in vars_viridis_with_vmin_0:
             vmin = 0
-            vmax = float(ds_time.max())
+            vmax = float(da_time.max())
         elif var_or_dvar in vars_viridis:
-            vmin = float(ds_time.min())
-            vmax = float(ds_time.max())
+            vmin = float(da_time.min())
+            vmax = float(da_time.max())
         else:
-            min_ds = float(ds_time.min())
-            max_ds = float(ds_time.max())
-            vmin = min(-abs(min_ds), -abs(max_ds))
+            min_da = float(da_time.min())
+            max_da = float(da_time.max())
+            vmin = min(-abs(min_da), -abs(max_da))
             vmax = -vmin
     
     rows_to_skip = 2
@@ -2155,25 +1835,15 @@ def plot_wsd_clim(
     
     cf.check_args_for_none(func_cur, args_cur, args_cur_values)
     cf.check_args(region=region, period_start=period_start, period_end=period_end, 
-                  months_subset=months_subset, glass_source_pref=glass_source_pref)
+                  months_subset=months_subset, glass_source_pref=glass_source_pref, 
+                  extents=extents, cfv_data=cfv_data, output=output)
     
     months_subset_str = cf.get_months_subset_str(months_subset=months_subset)
     
     extents_input = copy.deepcopy(extents)
-    extents_default = cf.regions[region]["extent"]
     
-    if extents:
-        assert (isinstance(extents, list) & (len(extents) == 4) & 
-                (extents[1] > extents[0]) & (extents[3] > extents[2])), \
-            "extents must a 4 element list in [W, E, S, N] format or None"
-        assert ((extents[0] >= extents_default[0]) & 
-                (extents[1] <= extents_default[1]) & 
-                (extents[2] >= extents_default[2]) & 
-                (extents[3] <= extents_default[3])), \
-            ("extents must be completely contained within " +
-             f"{extents_default} for region = {region}")
-    else:
-        extents = extents_default
+    if extents == None:
+        extents = cf.regions[region]["extent"]
     
     figrows = 5
     figcols = 2
@@ -2185,8 +1855,10 @@ def plot_wsd_clim(
                              subplot_kw = {"projection": ccrs.PlateCarree()}
                             )
     
-    create_orog_static_plot("lse", extents=extents, ax=axes[0][0], cfv_data=cfv_data)
-    create_orog_static_plot("ssgo", extents=extents, ax=axes[0][1], cfv_data=cfv_data)
+    create_orog_static_plot(param_orog="lse", region=region, extents=extents, 
+                            ax=axes[0][0], cfv_data=cfv_data)
+    create_orog_static_plot(param_orog="ssgo", region=region, extents=extents, 
+                            ax=axes[0][1], cfv_data=cfv_data)
     create_individual_calc_plot(
         calc_func=cf.calc_glass_mean_clim, region=region, period_start=period_start, 
         period_end=period_end, months_subset=months_subset, arg_extra="mlai", 
@@ -2272,7 +1944,7 @@ def plot_wsd_clim(
 def plot_diff_mdp_clim_stats_given_var_or_dvar(
     region, period1_start, period1_end, period2_start, period2_end, months_subset, 
     glass_source_pref, var_or_dvar, perc=False, 
-    perc_quantile_mask=perc_quantile_mask_default, 
+    mask_perc_quantile=mask_perc_quantile_default, 
     extents=None, cfv_data=None, output=False
 ):
     
@@ -2285,35 +1957,19 @@ def plot_diff_mdp_clim_stats_given_var_or_dvar(
                                        args_cur, args_cur_values)
     
     cf.check_args_for_none(func_cur, args_cur, args_cur_values)
-    cf.check_args(region=region, period_start=period1_start, period_end=period1_end, 
+    cf.check_args(region=region, period1_start=period1_start, period1_end=period1_end, 
+                  period2_start=period2_start, period2_end=period2_end,
                   months_subset=months_subset, glass_source_pref=glass_source_pref,
-                  var_or_dvar=var_or_dvar)
-    cf.check_args(period_start=period2_start, period_end=period2_end, 
-                  months_subset=months_subset)
+                  var_or_dvar=var_or_dvar, perc=perc, 
+                  mask_perc_quantile=mask_perc_quantile, extents=extents, 
+                  cfv_data=cfv_data, output=output)
     
     months_subset_str = cf.get_months_subset_str(months_subset=months_subset)
     
-    assert perc in [True, False], \
-        "perc must be one of: [True, False]"
-    
-    assert perc_quantile_mask in range(0, 101), \
-        "perc_quantile_mask must be an integer between 0 and 100 (inclusive)"
-    
     extents_input = copy.deepcopy(extents)
-    extents_default = cf.regions[region]["extent"]
     
-    if extents:
-        assert (isinstance(extents, list) & (len(extents) == 4) & 
-                (extents[1] > extents[0]) & (extents[3] > extents[2])), \
-            "extents must a 4 element list in [W, E, S, N] format or None"
-        assert ((extents[0] >= extents_default[0]) & 
-                (extents[1] <= extents_default[1]) & 
-                (extents[2] >= extents_default[2]) & 
-                (extents[3] <= extents_default[3])), \
-            ("extents must be completely contained within " +
-             f"{extents_default} for region = {region}")
-    else:
-        extents = extents_default
+    if extents == None:
+        extents = cf.regions[region]["extent"]
     
     figrows = 5
     figcols = 2
@@ -2325,14 +1981,16 @@ def plot_diff_mdp_clim_stats_given_var_or_dvar(
                              subplot_kw = {"projection": ccrs.PlateCarree()}
                             )
     
-    create_orog_static_plot("lse", extents=extents, ax=axes[0][0], cfv_data=cfv_data)
-    create_orog_static_plot("ssgo", extents=extents, ax=axes[0][1], cfv_data=cfv_data)
+    create_orog_static_plot(param_orog="lse", region=region, extents=extents, 
+                            ax=axes[0][0], cfv_data=cfv_data)
+    create_orog_static_plot(param_orog="ssgo", region=region, extents=extents, 
+                            ax=axes[0][1], cfv_data=cfv_data)
     create_individual_diff_plot(
         calc_func=cf.calc_glass_mean_clim, region=region, period1_start=period1_start, 
         period1_end=period1_end, period2_start=period2_start, period2_end=period2_end, 
         months_subset=months_subset, arg_extra="mlai", 
         glass_source_pref=glass_source_pref, var_or_dvar=None, perc=perc, 
-        perc_quantile_mask=perc_quantile_mask, extents=extents, 
+        mask_perc_quantile=mask_perc_quantile, extents=extents, 
         ax=axes[1][0], cfv_data=cfv_data
     )
     create_individual_diff_plot(
@@ -2340,7 +1998,7 @@ def plot_diff_mdp_clim_stats_given_var_or_dvar(
         period1_end=period1_end, period2_start=period2_start, period2_end=period2_end, 
         months_subset=months_subset, arg_extra="mfapar", 
         glass_source_pref=glass_source_pref, var_or_dvar=None, perc=perc, 
-        perc_quantile_mask=perc_quantile_mask, extents=extents, 
+        mask_perc_quantile=mask_perc_quantile, extents=extents, 
         ax=axes[1][1], cfv_data=cfv_data
     )
     
@@ -2362,7 +2020,7 @@ def plot_diff_mdp_clim_stats_given_var_or_dvar(
             period1_start=period1_start, period1_end=period1_end, 
             period2_start=period2_start, period2_end=period2_end, 
             months_subset=months_subset, arg_extra=stat, glass_source_pref=None, 
-            var_or_dvar=var_or_dvar, perc=perc, perc_quantile_mask=perc_quantile_mask,
+            var_or_dvar=var_or_dvar, perc=perc, mask_perc_quantile=mask_perc_quantile,
             extents=extents, ax=axes[row][col], cfv_data=cfv_data
         )
     
@@ -2390,6 +2048,1098 @@ def plot_diff_mdp_clim_stats_given_var_or_dvar(
                        f"{plot_funcs_ver}_{cfv_used}_diff_{extents_used}_" +
                        f"{period1_start}_{period1_end}_{period2_start}_" +
                        f"{period2_end}_{months_subset_str}_stats_{var_or_dvar}.png")
+        path_output_dir = "/".join(path_output.split("/")[:-1])
+        Path(path_output_dir).mkdir(parents=True, exist_ok=True)
+        
+        if Path(path_output).exists():
+            msg_exist = ("WARNING: plot file already exists (and was " +
+                         f"not overwritten): {path_output}")
+            logging.warning(msg_exist)
+            print(msg_exist)
+        else:
+            plt.savefig(path_output, metadata=get_plot_metadata(
+                time_exec, func_cur, args_cur, args_cur_values)
+                       )
+            msg_create = f"CREATED: plot file: {path_output}"
+            logging.info(msg_create)
+            print(msg_create)
+    
+    plt.show()
+    fig.clear()
+    plt.close(fig)
+    
+    cf.remove_handlers_if_directly_executed(func_1up)
+
+
+# In[ ]:
+
+
+def plot_diff_mdp_clim_values_given_hour(
+    region, period1_start, period1_end, period2_start, period2_end, months_subset, 
+    glass_source_pref, hour, var_or_dvar_layer, var_or_dvar_type, perc=False, 
+    mask_perc_quantile=mask_perc_quantile_default, extents=None, cfv_data=None, 
+    output=False
+):
+    
+    time_exec = datetime.today()
+    func_cur = inspect.stack()[0][3]
+    func_1up = inspect.stack()[1][3]
+    frame_cur = inspect.currentframe()
+    args_cur, _, _, args_cur_values = inspect.getargvalues(frame_cur)
+    cf.create_log_if_directly_executed(time_exec, func_cur, func_1up, 
+                                       args_cur, args_cur_values)
+    
+    cf.check_args_for_none(func_cur, args_cur, args_cur_values)
+    cf.check_args(region=region, period1_start=period1_start, period1_end=period1_end,
+                  period2_start=period2_start, period2_end=period2_end,
+                  months_subset=months_subset, glass_source_pref=glass_source_pref,
+                  hour=hour, var_or_dvar_layer=var_or_dvar_layer, 
+                  var_or_dvar_type=var_or_dvar_type, perc=perc,
+                  mask_perc_quantile=mask_perc_quantile, extents=extents,
+                  cfv_data=cfv_data, output=output)
+    
+    months_subset_str = cf.get_months_subset_str(months_subset=months_subset)
+    
+    extents_input = copy.deepcopy(extents)
+    
+    if extents == None:
+        extents = cf.regions[region]["extent"]
+    
+    figrows = 5
+    figcols = 2
+    figwidth = figwidth_standard * 2
+    figheight = (figwidth * figrows/figcols * 
+                 (extents[3]-extents[2])/(extents[1]-extents[0])
+                )
+    fig, axes = plt.subplots(figrows, figcols, figsize=(figwidth, figheight), 
+                             subplot_kw = {"projection": ccrs.PlateCarree()}
+                            )
+    
+    create_orog_static_plot(param_orog="lse", region=region, extents=extents, 
+                            ax=axes[0][0], cfv_data=cfv_data)
+    create_orog_static_plot(param_orog="ssgo", region=region, extents=extents, 
+                            ax=axes[0][1], cfv_data=cfv_data)
+    create_individual_diff_plot(
+        calc_func=cf.calc_glass_mean_clim, region=region, period1_start=period1_start, 
+        period1_end=period1_end, period2_start=period2_start, period2_end=period2_end, 
+        months_subset=months_subset, arg_extra="mlai", 
+        glass_source_pref=glass_source_pref, var_or_dvar=None, perc=perc, 
+        mask_perc_quantile=mask_perc_quantile, extents=extents, 
+        ax=axes[1][0], cfv_data=cfv_data
+    )
+    create_individual_diff_plot(
+        calc_func=cf.calc_glass_mean_clim, region=region, period1_start=period1_start, 
+        period1_end=period1_end, period2_start=period2_start, period2_end=period2_end, 
+        months_subset=months_subset, arg_extra="mfapar", 
+        glass_source_pref=glass_source_pref, var_or_dvar=None, perc=perc, 
+        mask_perc_quantile=mask_perc_quantile, extents=extents, 
+        ax=axes[1][1], cfv_data=cfv_data
+    )
+    
+    params_to_plot = cf.vars_and_dvars_era5[var_or_dvar_type][var_or_dvar_layer]
+    
+    for param in ["u10", "v10", "ws10", "wv10", "u100", "v100", "nse", "vidmf", "du10", 
+                  "dv10", "dws10", "dwv10", "du100", "dv100", "dnse", "dvidmf"]:
+        try:
+            params_to_plot.remove(param)
+        except:
+            pass
+    
+    rows_to_skip = 2
+    
+    for idx, param in enumerate(params_to_plot):
+        row = math.floor(idx / figcols) + rows_to_skip
+        col = idx % figcols
+        create_individual_diff_plot(
+            calc_func=cf.calc_era5_mdp_clim_given_var_or_dvar, region=region, 
+            period1_start=period1_start, period1_end=period1_end, 
+            period2_start=period2_start, period2_end=period2_end, 
+            months_subset=months_subset, arg_extra=hour, glass_source_pref=None, 
+            var_or_dvar=param, perc=perc, mask_perc_quantile=mask_perc_quantile,
+            extents=extents, ax=axes[row][col], cfv_data=cfv_data
+        )
+    
+    for idx in range(0, figrows * figcols):
+        row = math.floor(idx / figcols)
+        col = idx % figcols
+        ax_title = axes[row][col].get_title()
+        axes[row][col].set_title(chr(ord('`')+(idx+1)) + ") " + ax_title)
+    
+    fig.tight_layout()
+    
+    if output == True:
+        if cfv_data:
+            cfv_used = cfv_data
+        else:
+            cfv_used = cf.calc_funcs_ver
+            
+        if extents_input:
+            extents_used = "{}W{}E{}S{}N".format(extents[0], extents[1], 
+                                                 extents[2], extents[3])
+        else:
+            extents_used = region
+            
+        path_output = (f"../data_final/mdp_clim_values_given_hour/" +
+                       f"{plot_funcs_ver}_{cfv_used}_diff_{extents_used}_" +
+                       f"{period1_start}_{period1_end}_{period2_start}_" +
+                       f"{period2_end}_{months_subset_str}_values_" +
+                       f"{var_or_dvar_layer}_{var_or_dvar_type}_{hour}.png")
+        path_output_dir = "/".join(path_output.split("/")[:-1])
+        Path(path_output_dir).mkdir(parents=True, exist_ok=True)
+        
+        if Path(path_output).exists():
+            msg_exist = ("WARNING: plot file already exists (and was " +
+                         f"not overwritten): {path_output}")
+            logging.warning(msg_exist)
+            print(msg_exist)
+        else:
+            plt.savefig(path_output, metadata=get_plot_metadata(
+                time_exec, func_cur, args_cur, args_cur_values)
+                       )
+            msg_create = f"CREATED: plot file: {path_output}"
+            logging.info(msg_create)
+            print(msg_create)
+    
+    plt.show()
+    fig.clear()
+    plt.close(fig)
+    
+    cf.remove_handlers_if_directly_executed(func_1up)
+
+
+# In[ ]:
+
+
+def plot_diff_mdp_clim_values_given_var_or_dvar(
+    region, period1_start, period1_end, period2_start, period2_end, months_subset, 
+    glass_source_pref, var_or_dvar, time, perc=False, 
+    mask_perc_quantile=mask_perc_quantile_default, 
+    extents=None, cfv_data=None, output=False
+):
+    
+    time_exec = datetime.today()
+    func_cur = inspect.stack()[0][3]
+    func_1up = inspect.stack()[1][3]
+    frame_cur = inspect.currentframe()
+    args_cur, _, _, args_cur_values = inspect.getargvalues(frame_cur)
+    cf.create_log_if_directly_executed(time_exec, func_cur, func_1up, 
+                                       args_cur, args_cur_values)
+    
+    cf.check_args_for_none(func_cur, args_cur, args_cur_values)
+    cf.check_args(region=region, period1_start=period1_start, period1_end=period1_end,
+                  period2_start=period2_start, period2_end=period2_end,
+                  months_subset=months_subset, glass_source_pref=glass_source_pref,
+                  var_or_dvar=var_or_dvar, time=time, perc=perc,
+                  mask_perc_quantile=mask_perc_quantile, extents=extents, 
+                  cfv_data=cfv_data, output=output)
+    
+    months_subset_str = cf.get_months_subset_str(months_subset=months_subset)
+    
+    extents_input = copy.deepcopy(extents)
+    
+    if extents == None:
+        extents = cf.regions[region]["extent"]
+    
+    figrows = 5
+    figcols = 2
+    figwidth = figwidth_standard * 2
+    figheight = (figwidth * figrows/figcols * 
+                 (extents[3]-extents[2])/(extents[1]-extents[0])
+                )
+    fig, axes = plt.subplots(figrows, figcols, figsize=(figwidth, figheight), 
+                             subplot_kw = {"projection": ccrs.PlateCarree()}
+                            )
+    
+    create_orog_static_plot(param_orog="lse", region=region, extents=extents, 
+                            ax=axes[0][0], cfv_data=cfv_data)
+    create_orog_static_plot(param_orog="ssgo", region=region, extents=extents, 
+                            ax=axes[0][1], cfv_data=cfv_data)
+    create_individual_diff_plot(
+        calc_func=cf.calc_glass_mean_clim, region=region, period1_start=period1_start, 
+        period1_end=period1_end, period2_start=period2_start, period2_end=period2_end, 
+        months_subset=months_subset, arg_extra="mlai", 
+        glass_source_pref=glass_source_pref, var_or_dvar=None, perc=perc, 
+        mask_perc_quantile=mask_perc_quantile, extents=extents, 
+        ax=axes[1][0], cfv_data=cfv_data
+    )
+    create_individual_diff_plot(
+        calc_func=cf.calc_glass_mean_clim, region=region, period1_start=period1_start, 
+        period1_end=period1_end, period2_start=period2_start, period2_end=period2_end, 
+        months_subset=months_subset, arg_extra="mfapar", 
+        glass_source_pref=glass_source_pref, var_or_dvar=None, perc=perc, 
+        mask_perc_quantile=mask_perc_quantile, extents=extents, 
+        ax=axes[1][1], cfv_data=cfv_data
+    )
+    
+    hours_to_plot = cf.times[time]
+    
+    path_diff = cf.get_path_for_calc_diff(
+        calc_func_name="calc_era5_mdp_clim_given_var_or_dvar", region=region, 
+        period1_start=period1_start, period1_end=period1_end, 
+        period2_start=period2_start, period2_end=period2_end, 
+        months_subset=months_subset, glass_source_pref=None, var_or_dvar=var_or_dvar
+    )
+    
+    # Use data outputted from an older version of the calc_funcs script. This is useful
+    # for results which required computationally intensive processing. And can also be
+    # set as "cfv00" to analyse test results output from a calc_funcs ipynb notebook.
+    
+    if cfv_data:
+        path_diff = path_diff.replace(cf.calc_funcs_ver, cfv_data)
+        if Path(path_diff).exists() == False:
+            msg_cfv = (f"TERMINATED: cfv_data = {cfv_data} was specified " +
+                       f"but could not find file: {path_diff}")
+            logging.error(msg_cfv)
+            print(msg_cfv)
+            cf.remove_handlers_if_directly_executed(func_1up)
+            raise Exception(msg_cfv)
+    
+    if Path(path_diff).exists():
+        msg_open = f"Opening: existing file for use in {func_cur}: {path_diff}"
+        logging.info(msg_open)
+        print(msg_open)
+    else:
+        cf.calc_diff(
+            cf.calc_era5_mdp_clim_given_var_or_dvar, region=region,
+            period1_start=period1_start, period1_end=period1_end,
+            period2_start=period2_start, period2_end=period2_end,
+            months_subset=months_subset, glass_source_pref=None, 
+            var_or_dvar=var_or_dvar
+        )
+    
+    ds_time = (xr.open_dataset(path_diff, engine = "netcdf4")
+               .sel(longitude=slice(extents[0], extents[1]), 
+                    latitude=slice(extents[3], extents[2]))
+              )
+    
+    if var_or_dvar in cf.params_vector:
+        da_time_u = ds_time[var_or_dvar.replace("wv", "u")]
+        da_time_v = ds_time[var_or_dvar.replace("wv", "v")]
+        da_time_mag = cf.get_magnitude(da_time_u, da_time_v)
+        vmin = float(da_time_mag.min())
+        vmax = float(da_time_mag.max())
+    else:
+        da_time = ds_time[var_or_dvar]
+        min_da = float(da_time.min())
+        max_da = float(da_time.max())
+        vmin = min(-abs(min_da), -abs(max_da))
+        vmax = -vmin
+    
+    rows_to_skip = 2
+    
+    for idx, hour in enumerate(hours_to_plot):
+        row = math.floor(idx / figcols) + rows_to_skip
+        col = idx % figcols
+        create_individual_diff_plot(
+            calc_func=cf.calc_era5_mdp_clim_given_var_or_dvar, region=region, 
+            period1_start=period1_start, period1_end=period1_end, 
+            period2_start=period2_start, period2_end=period2_end, 
+            months_subset=months_subset, arg_extra=hour, glass_source_pref=None, 
+            var_or_dvar=var_or_dvar, perc=perc, 
+            mask_perc_quantile=mask_perc_quantile, extents=extents, 
+            vmin=vmin, vmax=vmax, ax=axes[row][col], cfv_data=cfv_data
+        )
+    
+    for idx in range(0, figrows * figcols):
+        row = math.floor(idx / figcols)
+        col = idx % figcols
+        ax_title = axes[row][col].get_title()
+        axes[row][col].set_title(chr(ord('`')+(idx+1)) + ") " + ax_title)
+    
+    fig.tight_layout()
+    
+    if output == True:
+        if cfv_data:
+            cfv_used = cfv_data
+        else:
+            cfv_used = cf.calc_funcs_ver
+            
+        if extents_input:
+            extents_used = "{}W{}E{}S{}N".format(extents[0], extents[1], 
+                                                 extents[2], extents[3])
+        else:
+            extents_used = region
+            
+        path_output = (f"../data_final/mdp_clim_values_given_var_or_dvar/" +
+                       f"{plot_funcs_ver}_{cfv_used}_diff_{extents_used}_" +
+                       f"{period1_start}_{period1_end}_{period2_start}_" +
+                       f"{period2_end}_{months_subset_str}_values_" +
+                       f"{var_or_dvar}_{time}.png")
+        path_output_dir = "/".join(path_output.split("/")[:-1])
+        Path(path_output_dir).mkdir(parents=True, exist_ok=True)
+        
+        if Path(path_output).exists():
+            msg_exist = ("WARNING: plot file already exists (and was " +
+                         f"not overwritten): {path_output}")
+            logging.warning(msg_exist)
+            print(msg_exist)
+        else:
+            plt.savefig(path_output, metadata=get_plot_metadata(
+                time_exec, func_cur, args_cur, args_cur_values)
+                       )
+            msg_create = f"CREATED: plot file: {path_output}"
+            logging.info(msg_create)
+            print(msg_create)
+    
+    plt.show()
+    fig.clear()
+    plt.close(fig)
+    
+    cf.remove_handlers_if_directly_executed(func_1up)
+
+
+# In[ ]:
+
+
+def plot_diff_wsd_clim(
+    region, period1_start, period1_end, period2_start, period2_end, months_subset, 
+    glass_source_pref, perc=False, mask_perc_quantile=mask_perc_quantile_default, 
+    extents=None, cfv_data=None, output=False
+):
+    
+    time_exec = datetime.today()
+    func_cur = inspect.stack()[0][3]
+    func_1up = inspect.stack()[1][3]
+    frame_cur = inspect.currentframe()
+    args_cur, _, _, args_cur_values = inspect.getargvalues(frame_cur)
+    cf.create_log_if_directly_executed(time_exec, func_cur, func_1up, 
+                                       args_cur, args_cur_values)
+    
+    cf.check_args_for_none(func_cur, args_cur, args_cur_values)
+    cf.check_args(region=region, period1_start=period1_start, period1_end=period1_end,
+                  period2_start=period2_start, period2_end=period2_end, 
+                  months_subset=months_subset, glass_source_pref=glass_source_pref, 
+                  perc=perc, mask_perc_quantile=mask_perc_quantile, extents=extents, 
+                  cfv_data=cfv_data, output=output)
+    
+    months_subset_str = cf.get_months_subset_str(months_subset=months_subset)
+    
+    extents_input = copy.deepcopy(extents)
+    
+    if extents == None:
+        extents = cf.regions[region]["extent"]
+    
+    figrows = 5
+    figcols = 2
+    figwidth = figwidth_standard * 2
+    figheight = (figwidth * figrows/figcols * 
+                 (extents[3]-extents[2])/(extents[1]-extents[0])
+                )
+    fig, axes = plt.subplots(figrows, figcols, figsize=(figwidth, figheight), 
+                             subplot_kw = {"projection": ccrs.PlateCarree()}
+                            )
+    
+    create_orog_static_plot(param_orog="lse", region=region, extents=extents, 
+                            ax=axes[0][0], cfv_data=cfv_data)
+    create_orog_static_plot(param_orog="ssgo", region=region, extents=extents, 
+                            ax=axes[0][1], cfv_data=cfv_data)
+    create_individual_diff_plot(
+        calc_func=cf.calc_glass_mean_clim, region=region, period1_start=period1_start, 
+        period1_end=period1_end, period2_start=period2_start, period2_end=period2_end, 
+        months_subset=months_subset, arg_extra="mlai", 
+        glass_source_pref=glass_source_pref, var_or_dvar=None, perc=perc, 
+        mask_perc_quantile=mask_perc_quantile, extents=extents, 
+        ax=axes[1][0], cfv_data=cfv_data
+    )
+    create_individual_diff_plot(
+        calc_func=cf.calc_glass_mean_clim, region=region, period1_start=period1_start, 
+        period1_end=period1_end, period2_start=period2_start, period2_end=period2_end, 
+        months_subset=months_subset, arg_extra="mfapar", 
+        glass_source_pref=glass_source_pref, var_or_dvar=None, perc=perc, 
+        mask_perc_quantile=mask_perc_quantile, extents=extents, 
+        ax=axes[1][1], cfv_data=cfv_data
+    )
+    
+    params_to_plot = cf.params_wsd
+    
+    for param in ["ws10_mean", "ws10_std", "c10", "k10"]:
+        try:
+            params_to_plot.remove(param)
+        except:
+            pass
+    
+    rows_to_skip = 2
+    
+    for idx, param in enumerate(params_to_plot):
+        row = math.floor(idx / figcols) + rows_to_skip
+        col = idx % figcols
+        create_individual_diff_plot(
+            calc_func=cf.calc_era5_wsd_clim, region=region, 
+            period1_start=period1_start, period1_end=period1_end, 
+            period2_start=period2_start, period2_end=period2_end, 
+            months_subset=months_subset, arg_extra=param, 
+            glass_source_pref=None, var_or_dvar=None, perc=perc,
+            mask_perc_quantile=mask_perc_quantile, extents=extents, 
+            ax=axes[row][col], cfv_data=cfv_data
+        )
+    
+    for idx in range(0, figrows * figcols):
+        row = math.floor(idx / figcols)
+        col = idx % figcols
+        ax_title = axes[row][col].get_title()
+        axes[row][col].set_title(chr(ord('`')+(idx+1)) + ") " + ax_title)
+    
+    fig.tight_layout()
+    
+    if output == True:
+        if cfv_data:
+            cfv_used = cfv_data
+        else:
+            cfv_used = cf.calc_funcs_ver
+            
+        if extents_input:
+            extents_used = "{}W{}E{}S{}N".format(extents[0], extents[1], 
+                                                 extents[2], extents[3])
+        else:
+            extents_used = region
+            
+        path_output = (f"../data_final/wsd_clim/{plot_funcs_ver}_{cfv_used}_" +
+                       f"diff_{extents_used}_{period1_start}_{period1_end}_" +
+                       f"{period2_start}_{period2_end}_{months_subset_str}_wsd.png")
+        path_output_dir = "/".join(path_output.split("/")[:-1])
+        Path(path_output_dir).mkdir(parents=True, exist_ok=True)
+        
+        if Path(path_output).exists():
+            msg_exist = ("WARNING: plot file already exists (and was " +
+                         f"not overwritten): {path_output}")
+            logging.warning(msg_exist)
+            print(msg_exist)
+        else:
+            plt.savefig(path_output, metadata=get_plot_metadata(
+                time_exec, func_cur, args_cur, args_cur_values)
+                       )
+            msg_create = f"CREATED: plot file: {path_output}"
+            logging.info(msg_create)
+            print(msg_create)
+    
+    plt.show()
+    fig.clear()
+    plt.close(fig)
+    
+    cf.remove_handlers_if_directly_executed(func_1up)
+
+
+# In[ ]:
+
+
+def plot_comp_mdp_clim_stats_given_var_or_dvar(
+    region, period1_start, period1_end, period2_start, period2_end, months_subset, 
+    glass_source_pref, var_or_dvar, perc=False, 
+    mask_perc_quantile=mask_perc_quantile_default, mask_period1=None, 
+    mask_period2=None, extents=None, cfv_data=None, output=False
+):
+    
+    time_exec = datetime.today()
+    func_cur = inspect.stack()[0][3]
+    func_1up = inspect.stack()[1][3]
+    frame_cur = inspect.currentframe()
+    args_cur, _, _, args_cur_values = inspect.getargvalues(frame_cur)
+    cf.create_log_if_directly_executed(time_exec, func_cur, func_1up, 
+                                       args_cur, args_cur_values)
+    
+    cf.check_args_for_none(func_cur, args_cur, args_cur_values)
+    cf.check_args(region=region, period1_start=period1_start, period1_end=period1_end, 
+                  period2_start=period2_start, period2_end=period2_end,
+                  months_subset=months_subset, glass_source_pref=glass_source_pref,
+                  var_or_dvar=var_or_dvar, perc=perc, 
+                  mask_perc_quantile=mask_perc_quantile, 
+                  mask_period1=mask_period1, mask_period2=mask_period2, 
+                  extents=extents, cfv_data=cfv_data, output=output)
+    
+    months_subset_str = cf.get_months_subset_str(months_subset=months_subset)
+    
+    extents_input = copy.deepcopy(extents)
+    
+    if extents == None:
+        extents = cf.regions[region]["extent"]
+    
+    figrows = 8
+    figcols = 3
+    figwidth = figwidth_standard * 2
+    figheight = (figwidth * figrows/figcols * 
+                 (extents[3]-extents[2])/(extents[1]-extents[0])
+                )
+    fig, axes = plt.subplots(figrows, figcols, figsize=(figwidth, figheight), 
+                             subplot_kw = {"projection": ccrs.PlateCarree()}
+                            )
+    
+    create_individual_comp_plot(
+        calc_func=cf.calc_glass_mean_clim, region=region, period1_start=period1_start, 
+        period1_end=period1_end, period2_start=period2_start, period2_end=period2_end, 
+        months_subset=months_subset, arg_extra="mlai", 
+        glass_source_pref=glass_source_pref, var_or_dvar=None, perc=perc, 
+        mask_perc_quantile=mask_perc_quantile, mask_period1=mask_period1, 
+        mask_period2=mask_period2, extents=extents, ax_period1=axes[0][0], 
+        ax_period2=axes[0][1], ax_diff=axes[0][2], cfv_data=cfv_data
+    )
+    create_individual_comp_plot(
+        calc_func=cf.calc_glass_mean_clim, region=region, period1_start=period1_start, 
+        period1_end=period1_end, period2_start=period2_start, period2_end=period2_end, 
+        months_subset=months_subset, arg_extra="mfapar", 
+        glass_source_pref=glass_source_pref, var_or_dvar=None, perc=perc, 
+        mask_perc_quantile=mask_perc_quantile, mask_period1=mask_period1, 
+        mask_period2=mask_period2, extents=extents, ax_period1=axes[1][0], 
+        ax_period2=axes[1][1], ax_diff=axes[1][2], cfv_data=cfv_data
+    )
+    
+    stats_to_plot = cf.params_stat
+    
+    for stat in ["max_u", "max_v", "min_u", "min_v", "mean_u", "mean_v"]:
+        try:
+            stats_to_plot.remove(stat)
+        except:
+            pass
+    
+    rows_to_skip = 2
+    
+    for idx, stat in enumerate(stats_to_plot):
+        row = idx + rows_to_skip
+        create_individual_comp_plot(
+            calc_func=cf.calc_era5_mdp_clim_stats_given_var_or_dvar, region=region, 
+            period1_start=period1_start, period1_end=period1_end, 
+            period2_start=period2_start, period2_end=period2_end, 
+            months_subset=months_subset, arg_extra=stat, glass_source_pref=None, 
+            var_or_dvar=var_or_dvar, perc=perc, mask_perc_quantile=mask_perc_quantile,
+            mask_period1=mask_period1, mask_period2=mask_period2, extents=extents, 
+            ax_period1=axes[row][0], ax_period2=axes[row][1], ax_diff=axes[row][2], 
+            cfv_data=cfv_data
+        )
+    
+    for idx in range(0, figrows * figcols):
+        row = math.floor(idx / figcols)
+        col = idx % figcols
+        ax_title = axes[row][col].get_title()
+        axes[row][col].set_title(chr(ord('`')+(idx+1)) + ") " + ax_title)
+    
+    fig.tight_layout()
+    
+    if output == True:
+        if cfv_data:
+            cfv_used = cfv_data
+        else:
+            cfv_used = cf.calc_funcs_ver
+            
+        if extents_input:
+            extents_used = "{}W{}E{}S{}N".format(extents[0], extents[1], 
+                                                 extents[2], extents[3])
+        else:
+            extents_used = region
+            
+        path_output = (f"../data_final/mdp_clim_stats_given_var_or_dvar/" +
+                       f"{plot_funcs_ver}_{cfv_used}_comp_{extents_used}_" +
+                       f"{period1_start}_{period1_end}_{period2_start}_" +
+                       f"{period2_end}_{months_subset_str}_stats_{var_or_dvar}_" +
+                       f"perc-{mask_perc_quantile}_mask1-{mask_period1}_" +
+                       f"mask2-{mask_period2}.png")
+        path_output_dir = "/".join(path_output.split("/")[:-1])
+        Path(path_output_dir).mkdir(parents=True, exist_ok=True)
+        
+        if Path(path_output).exists():
+            msg_exist = ("WARNING: plot file already exists (and was " +
+                         f"not overwritten): {path_output}")
+            logging.warning(msg_exist)
+            print(msg_exist)
+        else:
+            plt.savefig(path_output, metadata=get_plot_metadata(
+                time_exec, func_cur, args_cur, args_cur_values)
+                       )
+            msg_create = f"CREATED: plot file: {path_output}"
+            logging.info(msg_create)
+            print(msg_create)
+    
+    plt.show()
+    fig.clear()
+    plt.close(fig)
+    
+    cf.remove_handlers_if_directly_executed(func_1up)
+
+
+# In[ ]:
+
+
+def plot_comp_mdp_clim_values_given_hour(
+    region, period1_start, period1_end, period2_start, period2_end, months_subset, 
+    glass_source_pref, hour, var_or_dvar_layer, var_or_dvar_type, perc=False, 
+    mask_perc_quantile=mask_perc_quantile_default, mask_period1=None, 
+    mask_period2=None, extents=None, cfv_data=None, output=False
+):
+    
+    time_exec = datetime.today()
+    func_cur = inspect.stack()[0][3]
+    func_1up = inspect.stack()[1][3]
+    frame_cur = inspect.currentframe()
+    args_cur, _, _, args_cur_values = inspect.getargvalues(frame_cur)
+    cf.create_log_if_directly_executed(time_exec, func_cur, func_1up, 
+                                       args_cur, args_cur_values)
+    
+    cf.check_args_for_none(func_cur, args_cur, args_cur_values)
+    cf.check_args(region=region, period1_start=period1_start, period1_end=period1_end,
+                  period2_start=period2_start, period2_end=period2_end,
+                  months_subset=months_subset, glass_source_pref=glass_source_pref,
+                  hour=hour, var_or_dvar_layer=var_or_dvar_layer, 
+                  var_or_dvar_type=var_or_dvar_type, perc=perc,
+                  mask_perc_quantile=mask_perc_quantile, mask_period1=mask_period1,
+                  mask_period2=mask_period2, extents=extents, cfv_data=cfv_data, 
+                  output=output)
+    
+    months_subset_str = cf.get_months_subset_str(months_subset=months_subset)
+    
+    extents_input = copy.deepcopy(extents)
+    
+    if extents == None:
+        extents = cf.regions[region]["extent"]
+    
+    figrows = 8
+    figcols = 3
+    figwidth = figwidth_standard * 2
+    figheight = (figwidth * figrows/figcols * 
+                 (extents[3]-extents[2])/(extents[1]-extents[0])
+                )
+    fig, axes = plt.subplots(figrows, figcols, figsize=(figwidth, figheight), 
+                             subplot_kw = {"projection": ccrs.PlateCarree()}
+                            )
+    
+    create_individual_comp_plot(
+        calc_func=cf.calc_glass_mean_clim, region=region, period1_start=period1_start, 
+        period1_end=period1_end, period2_start=period2_start, period2_end=period2_end, 
+        months_subset=months_subset, arg_extra="mlai", 
+        glass_source_pref=glass_source_pref, var_or_dvar=None, perc=perc, 
+        mask_perc_quantile=mask_perc_quantile, mask_period1=mask_period1, 
+        mask_period2=mask_period2, extents=extents, ax_period1=axes[0][0], 
+        ax_period2=axes[0][1], ax_diff=axes[0][2], cfv_data=cfv_data
+    )
+    create_individual_comp_plot(
+        calc_func=cf.calc_glass_mean_clim, region=region, period1_start=period1_start, 
+        period1_end=period1_end, period2_start=period2_start, period2_end=period2_end, 
+        months_subset=months_subset, arg_extra="mfapar", 
+        glass_source_pref=glass_source_pref, var_or_dvar=None, perc=perc, 
+        mask_perc_quantile=mask_perc_quantile, mask_period1=mask_period1, 
+        mask_period2=mask_period2, extents=extents, ax_period1=axes[1][0], 
+        ax_period2=axes[1][1], ax_diff=axes[1][2], cfv_data=cfv_data
+    )
+    
+    params_to_plot = cf.vars_and_dvars_era5[var_or_dvar_type][var_or_dvar_layer]
+    
+    for param in ["u10", "v10", "ws10", "wv10", "u100", "v100", "nse", "vidmf", "du10", 
+                  "dv10", "dws10", "dwv10", "du100", "dv100", "dnse", "dvidmf"]:
+        try:
+            params_to_plot.remove(param)
+        except:
+            pass
+    
+    rows_to_skip = 2
+    
+    for idx, param in enumerate(params_to_plot):
+        row = idx + rows_to_skip
+        create_individual_comp_plot(
+            calc_func=cf.calc_era5_mdp_clim_given_var_or_dvar, region=region, 
+            period1_start=period1_start, period1_end=period1_end, 
+            period2_start=period2_start, period2_end=period2_end, 
+            months_subset=months_subset, arg_extra=hour, glass_source_pref=None, 
+            var_or_dvar=param, perc=perc, mask_perc_quantile=mask_perc_quantile,
+            mask_period1=mask_period1, mask_period2=mask_period2, extents=extents, 
+            ax_period1=axes[row][0], ax_period2=axes[row][1], ax_diff=axes[row][2], 
+            cfv_data=cfv_data
+        )
+    
+    for idx in range(0, figrows * figcols):
+        row = math.floor(idx / figcols)
+        col = idx % figcols
+        ax_title = axes[row][col].get_title()
+        axes[row][col].set_title(chr(ord('`')+(idx+1)) + ") " + ax_title)
+    
+    fig.tight_layout()
+    
+    if output == True:
+        if cfv_data:
+            cfv_used = cfv_data
+        else:
+            cfv_used = cf.calc_funcs_ver
+            
+        if extents_input:
+            extents_used = "{}W{}E{}S{}N".format(extents[0], extents[1], 
+                                                 extents[2], extents[3])
+        else:
+            extents_used = region
+            
+        path_output = (f"../data_final/mdp_clim_values_given_hour/" +
+                       f"{plot_funcs_ver}_{cfv_used}_comp_{extents_used}_" +
+                       f"{period1_start}_{period1_end}_{period2_start}_" +
+                       f"{period2_end}_{months_subset_str}_values_" +
+                       f"{var_or_dvar_layer}_{var_or_dvar_type}_{hour}_" +
+                       f"perc-{mask_perc_quantile}_mask1-{mask_period1}_" +
+                       f"mask2-{mask_period2}.png")
+        path_output_dir = "/".join(path_output.split("/")[:-1])
+        Path(path_output_dir).mkdir(parents=True, exist_ok=True)
+        
+        if Path(path_output).exists():
+            msg_exist = ("WARNING: plot file already exists (and was " +
+                         f"not overwritten): {path_output}")
+            logging.warning(msg_exist)
+            print(msg_exist)
+        else:
+            plt.savefig(path_output, metadata=get_plot_metadata(
+                time_exec, func_cur, args_cur, args_cur_values)
+                       )
+            msg_create = f"CREATED: plot file: {path_output}"
+            logging.info(msg_create)
+            print(msg_create)
+    
+    plt.show()
+    fig.clear()
+    plt.close(fig)
+    
+    cf.remove_handlers_if_directly_executed(func_1up)
+
+
+# In[ ]:
+
+
+def plot_comp_mdp_clim_values_given_var_or_dvar(
+    region, period1_start, period1_end, period2_start, period2_end, months_subset, 
+    glass_source_pref, var_or_dvar, time, perc=False, 
+    mask_perc_quantile=mask_perc_quantile_default, mask_period1=None,
+    mask_period2=None, extents=None, cfv_data=None, output=False
+):
+    
+    time_exec = datetime.today()
+    func_cur = inspect.stack()[0][3]
+    func_1up = inspect.stack()[1][3]
+    frame_cur = inspect.currentframe()
+    args_cur, _, _, args_cur_values = inspect.getargvalues(frame_cur)
+    cf.create_log_if_directly_executed(time_exec, func_cur, func_1up, 
+                                       args_cur, args_cur_values)
+    
+    cf.check_args_for_none(func_cur, args_cur, args_cur_values)
+    cf.check_args(region=region, period1_start=period1_start, period1_end=period1_end,
+                  period2_start=period2_start, period2_end=period2_end,
+                  months_subset=months_subset, glass_source_pref=glass_source_pref,
+                  var_or_dvar=var_or_dvar, time=time, perc=perc,
+                  mask_perc_quantile=mask_perc_quantile, mask_period1=mask_period1,
+                  mask_period2=mask_period2, extents=extents, cfv_data=cfv_data, 
+                  output=output)
+    
+    months_subset_str = cf.get_months_subset_str(months_subset=months_subset)
+    
+    extents_input = copy.deepcopy(extents)
+    
+    if extents == None:
+        extents = cf.regions[region]["extent"]
+    
+    figrows = 8
+    figcols = 3
+    figwidth = figwidth_standard * 2
+    figheight = (figwidth * figrows/figcols * 
+                 (extents[3]-extents[2])/(extents[1]-extents[0])
+                )
+    fig, axes = plt.subplots(figrows, figcols, figsize=(figwidth, figheight), 
+                             subplot_kw = {"projection": ccrs.PlateCarree()}
+                            )
+    
+    create_individual_comp_plot(
+        calc_func=cf.calc_glass_mean_clim, region=region, period1_start=period1_start, 
+        period1_end=period1_end, period2_start=period2_start, period2_end=period2_end, 
+        months_subset=months_subset, arg_extra="mlai", 
+        glass_source_pref=glass_source_pref, var_or_dvar=None, perc=perc, 
+        mask_perc_quantile=mask_perc_quantile, mask_period1=mask_period1, 
+        mask_period2=mask_period2, extents=extents, ax_period1=axes[0][0], 
+        ax_period2=axes[0][1], ax_diff=axes[0][2], cfv_data=cfv_data
+    )
+    create_individual_comp_plot(
+        calc_func=cf.calc_glass_mean_clim, region=region, period1_start=period1_start, 
+        period1_end=period1_end, period2_start=period2_start, period2_end=period2_end, 
+        months_subset=months_subset, arg_extra="mfapar", 
+        glass_source_pref=glass_source_pref, var_or_dvar=None, perc=perc, 
+        mask_perc_quantile=mask_perc_quantile, mask_period1=mask_period1, 
+        mask_period2=mask_period2, extents=extents, ax_period1=axes[1][0], 
+        ax_period2=axes[1][1], ax_diff=axes[1][2], cfv_data=cfv_data
+    )
+    
+    hours_to_plot = cf.times[time]
+    
+    path_period1 = cf.get_path_for_calc_func(
+        calc_func_name="calc_era5_mdp_clim_given_var_or_dvar", region=region, 
+        period_start=period1_start, period_end=period1_end, 
+        months_subset=months_subset, glass_source_pref=None, var_or_dvar=var_or_dvar
+    )
+    path_period2 = cf.get_path_for_calc_func(
+        calc_func_name="calc_era5_mdp_clim_given_var_or_dvar", region=region, 
+        period_start=period2_start, period_end=period2_end, 
+        months_subset=months_subset, glass_source_pref=None, var_or_dvar=var_or_dvar
+    )
+    path_diff = cf.get_path_for_calc_diff(
+        calc_func_name="calc_era5_mdp_clim_given_var_or_dvar", region=region, 
+        period1_start=period1_start, period1_end=period1_end, 
+        period2_start=period2_start, period2_end=period2_end, 
+        months_subset=months_subset, glass_source_pref=None, var_or_dvar=var_or_dvar
+    )
+    
+    # Use data outputted from an older version of the calc_funcs script. This is useful
+    # for results which required computationally intensive processing. And can also be
+    # set as "cfv00" to analyse test results output from a calc_funcs ipynb notebook.
+    
+    if cfv_data:
+        for path in [path_period1, path_period2, path_diff]:
+            path = path.replace(cf.calc_funcs_ver, cfv_data)
+            if Path(path).exists() == False:
+                msg_cfv = (f"TERMINATED: cfv_data = {cfv_data} was specified " +
+                           f"but could not find file: {path}")
+                logging.error(msg_cfv)
+                print(msg_cfv)
+                cf.remove_handlers_if_directly_executed(func_1up)
+                raise Exception(msg_cfv)
+    
+    if Path(path_period1).exists():
+        msg_open = f"Opening: existing file for use in {func_cur}: {path_period1}"
+        logging.info(msg_open)
+        print(msg_open)
+    else:
+        cf.calc_era5_mdp_clim_given_var_or_dvar(
+            region=region, period_start=period1_start, period_end=period1_end, 
+            months_subset=months_subset, glass_source_pref=None, 
+            var_or_dvar=var_or_dvar
+        )
+    
+    ds_period1 = xr.open_dataset(path_period1, engine = "netcdf4")
+    
+    if Path(path_period2).exists():
+        msg_open = f"Opening: existing file for use in {func_cur}: {path_period2}"
+        logging.info(msg_open)
+        print(msg_open)
+    else:
+        cf.calc_era5_mdp_clim_given_var_or_dvar(
+            region=region, period_start=period2_start, period_end=period2_end, 
+            months_subset=months_subset, glass_source_pref=None, 
+            var_or_dvar=var_or_dvar
+        )
+    
+    ds_period2 = xr.open_dataset(path_period2, engine = "netcdf4")
+    
+    if Path(path_diff).exists():
+        msg_open = f"Opening: existing file for use in {func_cur}: {path_diff}"
+        logging.info(msg_open)
+        print(msg_open)
+    else:
+        cf.calc_diff(calc_func=cf.calc_era5_mdp_clim_given_var_or_dvar, region=region, 
+                     period1_start=period1_start, period1_end=period1_end, 
+                     period2_start=period2_start, period2_end=period2_end, 
+                     months_subset=months_subset, glass_source_pref=None,
+                     var_or_dvar=var_or_dvar)
+    
+    ds_diff = (xr.open_dataset(path_diff, engine = "netcdf4")
+               .sel(longitude=slice(extents[0], extents[1]), 
+                    latitude=slice(extents[3], extents[2]))
+              )
+    
+    if var_or_dvar in cf.params_vector:
+        da_period1_u = ds_period1[var_or_dvar.replace("wv", "u")]
+        da_period1_v = ds_period1[var_or_dvar.replace("wv", "v")]
+        da_period1_mag = cf.get_magnitude(da_period1_u, da_period1_v)
+        da_period2_u = ds_period2[var_or_dvar.replace("wv", "u")]
+        da_period2_v = ds_period2[var_or_dvar.replace("wv", "v")]
+        da_period2_mag = cf.get_magnitude(da_period2_u, da_period2_v)
+        da_diff_u = ds_diff[var_or_dvar.replace("wv", "u")]
+        da_diff_v = ds_diff[var_or_dvar.replace("wv", "v")]
+        da_diff_mag = cf.get_magnitude(da_diff_u, da_diff_v)
+        vmin_periods = float(min(da_period1_mag.min(), da_period2_mag.min()))
+        vmax_periods = float(max(da_period1_mag.max(), da_period2_mag.max()))
+        vmin_diff = float(da_diff_mag.min())
+        vmax_diff = float(da_diff_mag.max())
+    else:
+        da_period1 = ds_period1[var_or_dvar]
+        da_period2 = ds_period2[var_or_dvar]
+        da_diff = ds_diff[var_or_dvar]
+        min_da_diff = float(da_diff.min())
+        max_da_diff = float(da_diff.max())
+        vmin_diff = min(-abs(min_da_diff), -abs(max_da_diff))
+        vmax_diff = -vmin_diff
+        if var_or_dvar in vars_viridis_with_vmin_0:
+            vmin_periods = 0
+            vmax_periods = float(max(da_period1.max(), da_period2.max()))
+        elif var_or_dvar in vars_viridis:
+            vmin_periods = float(min(da_period1.min(), da_period2.min()))
+            vmax_periods = float(max(da_period1.max(), da_period2.max()))
+        else:
+            min_da_periods = float(min(da_period1.min(), da_period2.min()))
+            max_da_periods = float(max(da_period1.max(), da_period2.max()))
+            vmin_periods = min(-abs(min_da_periods), -abs(max_da_periods))
+            vmax_periods = -vmin_periods
+            
+    rows_to_skip = 2
+    
+    for idx, hour in enumerate(hours_to_plot):
+        row = idx + rows_to_skip
+        create_individual_comp_plot(
+            calc_func=cf.calc_era5_mdp_clim_given_var_or_dvar, region=region, 
+            period1_start=period1_start, period1_end=period1_end, 
+            period2_start=period2_start, period2_end=period2_end, 
+            months_subset=months_subset, arg_extra=hour, glass_source_pref=None, 
+            var_or_dvar=var_or_dvar, perc=perc, 
+            mask_perc_quantile=mask_perc_quantile, mask_period1=mask_period1,
+            mask_period2=mask_period2, extents=extents, vmin_periods=vmin_periods, 
+            vmax_periods=vmax_periods, vmin_diff=vmin_diff, vmax_diff=vmax_diff,
+            ax_period1=axes[row][0], ax_period2=axes[row][1], ax_diff=axes[row][2], 
+            cfv_data=cfv_data
+        )
+    
+    for idx in range(0, figrows * figcols):
+        row = math.floor(idx / figcols)
+        col = idx % figcols
+        ax_title = axes[row][col].get_title()
+        axes[row][col].set_title(chr(ord('`')+(idx+1)) + ") " + ax_title)
+    
+    fig.tight_layout()
+    
+    if output == True:
+        if cfv_data:
+            cfv_used = cfv_data
+        else:
+            cfv_used = cf.calc_funcs_ver
+            
+        if extents_input:
+            extents_used = "{}W{}E{}S{}N".format(extents[0], extents[1], 
+                                                 extents[2], extents[3])
+        else:
+            extents_used = region
+            
+        path_output = (f"../data_final/mdp_clim_values_given_var_or_dvar/" +
+                       f"{plot_funcs_ver}_{cfv_used}_comp_{extents_used}_" +
+                       f"{period1_start}_{period1_end}_{period2_start}_" +
+                       f"{period2_end}_{months_subset_str}_values_" +
+                       f"{var_or_dvar}_{time}_perc-{mask_perc_quantile}_" +
+                       f"mask1-{mask_period1}_mask2-{mask_period2}.png")
+        path_output_dir = "/".join(path_output.split("/")[:-1])
+        Path(path_output_dir).mkdir(parents=True, exist_ok=True)
+        
+        if Path(path_output).exists():
+            msg_exist = ("WARNING: plot file already exists (and was " +
+                         f"not overwritten): {path_output}")
+            logging.warning(msg_exist)
+            print(msg_exist)
+        else:
+            plt.savefig(path_output, metadata=get_plot_metadata(
+                time_exec, func_cur, args_cur, args_cur_values)
+                       )
+            msg_create = f"CREATED: plot file: {path_output}"
+            logging.info(msg_create)
+            print(msg_create)
+    
+    plt.show()
+    fig.clear()
+    plt.close(fig)
+    
+    cf.remove_handlers_if_directly_executed(func_1up)
+
+
+# In[ ]:
+
+
+def plot_comp_wsd_clim(
+    region, period1_start, period1_end, period2_start, period2_end, months_subset, 
+    glass_source_pref, perc=False, mask_perc_quantile=mask_perc_quantile_default, 
+    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=False
+):
+    
+    time_exec = datetime.today()
+    func_cur = inspect.stack()[0][3]
+    func_1up = inspect.stack()[1][3]
+    frame_cur = inspect.currentframe()
+    args_cur, _, _, args_cur_values = inspect.getargvalues(frame_cur)
+    cf.create_log_if_directly_executed(time_exec, func_cur, func_1up, 
+                                       args_cur, args_cur_values)
+    
+    cf.check_args_for_none(func_cur, args_cur, args_cur_values)
+    cf.check_args(region=region, period1_start=period1_start, period1_end=period1_end,
+                  period2_start=period2_start, period2_end=period2_end, 
+                  months_subset=months_subset, glass_source_pref=glass_source_pref, 
+                  perc=perc, mask_perc_quantile=mask_perc_quantile,
+                  mask_period1=mask_period1, mask_period2=mask_period2,
+                  extents=extents, cfv_data=cfv_data, output=output)
+    
+    months_subset_str = cf.get_months_subset_str(months_subset=months_subset)
+    
+    extents_input = copy.deepcopy(extents)
+    
+    if extents == None:
+        extents = cf.regions[region]["extent"]
+    
+    figrows = 8
+    figcols = 3
+    figwidth = figwidth_standard * 2
+    figheight = (figwidth * figrows/figcols * 
+                 (extents[3]-extents[2])/(extents[1]-extents[0])
+                )
+    fig, axes = plt.subplots(figrows, figcols, figsize=(figwidth, figheight), 
+                             subplot_kw = {"projection": ccrs.PlateCarree()}
+                            )
+    
+    create_individual_comp_plot(
+        calc_func=cf.calc_glass_mean_clim, region=region, period1_start=period1_start, 
+        period1_end=period1_end, period2_start=period2_start, period2_end=period2_end, 
+        months_subset=months_subset, arg_extra="mlai", 
+        glass_source_pref=glass_source_pref, var_or_dvar=None, perc=perc, 
+        mask_perc_quantile=mask_perc_quantile, mask_period1=mask_period1, 
+        mask_period2=mask_period2, extents=extents, ax_period1=axes[0][0], 
+        ax_period2=axes[0][1], ax_diff=axes[0][2], cfv_data=cfv_data
+    )
+    create_individual_comp_plot(
+        calc_func=cf.calc_glass_mean_clim, region=region, period1_start=period1_start, 
+        period1_end=period1_end, period2_start=period2_start, period2_end=period2_end, 
+        months_subset=months_subset, arg_extra="mfapar", 
+        glass_source_pref=glass_source_pref, var_or_dvar=None, perc=perc, 
+        mask_perc_quantile=mask_perc_quantile, mask_period1=mask_period1, 
+        mask_period2=mask_period2, extents=extents, ax_period1=axes[1][0], 
+        ax_period2=axes[1][1], ax_diff=axes[1][2], cfv_data=cfv_data
+    )
+    
+    params_to_plot = cf.params_wsd
+    
+    for param in ["ws10_mean", "ws10_std", "c10", "k10"]:
+        try:
+            params_to_plot.remove(param)
+        except:
+            pass
+    
+    rows_to_skip = 2
+    
+    for idx, param in enumerate(params_to_plot):
+        row = idx + rows_to_skip
+        create_individual_comp_plot(
+            calc_func=cf.calc_era5_wsd_clim, region=region, 
+            period1_start=period1_start, period1_end=period1_end, 
+            period2_start=period2_start, period2_end=period2_end, 
+            months_subset=months_subset, arg_extra=param, 
+            glass_source_pref=None, var_or_dvar=None, perc=perc,
+            mask_perc_quantile=mask_perc_quantile, mask_period1=mask_period1,
+            mask_period2=mask_period2, extents=extents, ax_period1=axes[row][0],
+            ax_period2=axes[row][1], ax_diff=axes[row][2], cfv_data=cfv_data
+        )
+    
+    for idx in range(0, figrows * figcols):
+        row = math.floor(idx / figcols)
+        col = idx % figcols
+        ax_title = axes[row][col].get_title()
+        axes[row][col].set_title(chr(ord('`')+(idx+1)) + ") " + ax_title)
+    
+    fig.tight_layout()
+    
+    if output == True:
+        if cfv_data:
+            cfv_used = cfv_data
+        else:
+            cfv_used = cf.calc_funcs_ver
+            
+        if extents_input:
+            extents_used = "{}W{}E{}S{}N".format(extents[0], extents[1], 
+                                                 extents[2], extents[3])
+        else:
+            extents_used = region
+            
+        path_output = (f"../data_final/wsd_clim/{plot_funcs_ver}_{cfv_used}_" +
+                       f"comp_{extents_used}_{period1_start}_{period1_end}_" +
+                       f"{period2_start}_{period2_end}_{months_subset_str}_wsd_" +
+                       f"perc-{mask_perc_quantile}_mask1-{mask_period1}_" +
+                       f"mask2-{mask_period2}.png")
         path_output_dir = "/".join(path_output.split("/")[:-1])
         Path(path_output_dir).mkdir(parents=True, exist_ok=True)
         

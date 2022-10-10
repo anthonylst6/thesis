@@ -609,7 +609,7 @@ def terminate_if_file_exists(path_output, func_1up=None, func_2up=None):
 # In[ ]:
 
 
-def create_output_file(ds, path_output, func_2up=None):
+def create_output_data_file(ds, path_output, func_2up=None):
     
     """
     Output the dataset ds as a netcdf4 file into the given path_output.
@@ -2632,7 +2632,7 @@ def calc_glass_mean_clim(region, period_start, period_end, months_subset,
     
     # Create output file in data_processed folder.
     
-    create_output_file(ds_glass_mean, path_output_glass_mean, func_1up)
+    create_output_data_file(ds_glass_mean, path_output_glass_mean, func_1up)
     remove_handlers_if_directly_executed(func_1up)
 
 
@@ -2894,7 +2894,7 @@ def calc_era5_mdp_clim_given_var_or_dvar(region, period_start, period_end,
                 ds_era5_mdp.attrs["func_executed"]
                 .replace(var_or_dvar, var)
             )
-            create_output_file(ds_era5_mdp, path_output_var, func_1up)
+            create_output_data_file(ds_era5_mdp, path_output_var, func_1up)
     
     # If a dvar was specified for var_or_dvar, calculate the change in the value
     # of the variable as compared with its value in the previous hour.
@@ -2928,7 +2928,7 @@ def calc_era5_mdp_clim_given_var_or_dvar(region, period_start, period_end,
     
     # Create output file in data_processed folder.
     
-    create_output_file(ds_era5_mdp, path_output_mdp_clim, func_1up)
+    create_output_data_file(ds_era5_mdp, path_output_mdp_clim, func_1up)
     remove_handlers_if_directly_executed(func_1up)
 
 
@@ -3127,7 +3127,7 @@ def calc_era5_mdp_clim_stats_given_var_or_dvar(region, period_start, period_end,
     
     # Create output file in data_processed folder.
     
-    create_output_file(ds_era5_mdp_stats, path_output_mdp_clim_stats, func_1up)
+    create_output_data_file(ds_era5_mdp_stats, path_output_mdp_clim_stats, func_1up)
     remove_handlers_if_directly_executed(func_1up)
 
 
@@ -3327,7 +3327,7 @@ def calc_era5_wsd_clim(region, period_start, period_end, months_subset,
     
     # Create output file in data_processed folder.
     
-    create_output_file(ds_era5_wsd, path_output_wsd_clim, func_1up)
+    create_output_data_file(ds_era5_wsd, path_output_wsd_clim, func_1up)
     remove_handlers_if_directly_executed(func_1up)
 
 
@@ -3514,7 +3514,7 @@ def calc_diff(calc_func, region, period1_start, period1_end,
     
     # Create output file in data_processed folder.
     
-    create_output_file(ds_diff, path_output_diff, func_1up)
+    create_output_data_file(ds_diff, path_output_diff, func_1up)
     remove_handlers_if_directly_executed(func_1up)
 
 
@@ -3620,7 +3620,7 @@ def calc_era5_orog():
     
     # Create output file in data_processed folder.
     
-    create_output_file(ds_era5_orog, path_output_orog, func_1up)
+    create_output_data_file(ds_era5_orog, path_output_orog, func_1up)
     remove_handlers_if_directly_executed(func_1up)
 
 
@@ -3886,7 +3886,7 @@ def calc_glass_rolling_avg_of_annual_diff(region, year_start, year_end, months_s
     
     # Create output file in data_processed folder.
     
-    create_output_file(ds_roll_diff, path_output_glass_roll, func_1up)
+    create_output_data_file(ds_roll_diff, path_output_glass_roll, func_1up)
     remove_handlers_if_directly_executed(func_1up)
 
 
