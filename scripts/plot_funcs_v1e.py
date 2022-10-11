@@ -63,6 +63,7 @@ vars_viridis = ["ws10", "ws100", "mslp", "t2",
                 "vipile", "vike", "tcclw", "tcwv", 
                 "blh", "fa", "cbh", "tcc", "ci"]
 figwidth_standard = 10
+scale_quiver = 45
 title_width = 60
 mask_perc_quantile_default = 10
 eroe100_linthresh = 1e-20
@@ -587,15 +588,29 @@ def create_quiver(da_u, da_v, extents=None, vmin=None, vmax=None, ax=None):
         fig, ax = plt.subplots(figrows, figcols, figsize=(figwidth, figheight), 
                                subplot_kw = {"projection": ccrs.PlateCarree()}
                               )
-        
+    
+    coarsen_window_size = math.ceil((extents[1]-extents[0]) / 10)
+    da_u = (da_u
+            .coarsen(longitude = coarsen_window_size, boundary = "trim")
+            .mean()
+            .coarsen(latitude = coarsen_window_size, boundary = "trim")
+            .mean()
+           )
+    da_v = (da_v
+            .coarsen(longitude = coarsen_window_size, boundary = "trim")
+            .mean()
+            .coarsen(latitude = coarsen_window_size, boundary = "trim")
+            .mean()
+           )    
     da_mag = xr.DataArray(cf.get_magnitude(da_u, da_v), name = "mag")
     da_u_unit = xr.DataArray(da_u / da_mag, name = "u_unit")
     da_v_unit = xr.DataArray(da_v / da_mag, name = "v_unit")
     ds = xr.merge([da_mag, da_u_unit, da_v_unit])
+    
     ax.set_extent(extents=extents, crs=ccrs.PlateCarree())
     ds.plot.quiver(x = "longitude", y = "latitude", ax = ax, 
                    u = "u_unit", v = "v_unit", hue = "mag", 
-                   vmin = vmin, vmax = vmax, 
+                   vmin = vmin, vmax = vmax, scale = scale_quiver,
                    cmap = cmocean.cm.speed, transform = ccrs.PlateCarree(),
                    cbar_kwargs={"label": "{} [{}]"
                                 .format(attrs_u["abbreviation"], 
@@ -3161,3 +3176,4 @@ def plot_comp_wsd_clim(
     plt.close(fig)
     
     cf.remove_handlers_if_directly_executed(func_1up)
+

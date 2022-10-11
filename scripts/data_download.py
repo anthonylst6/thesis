@@ -198,84 +198,147 @@ def retrieve_era5_slv_month_hour(region, vars_type, year_start, year_end):
 
 
 # Retrieve monthly averaged by hour reanalysis data for surface analysis in Western Australia
-retrieve_era5_slv_month_hour("wa", "sfc", 1981, 2021)
+retrieve_era5_slv_month_hour("wa", "sfc", 1980, 2021)
 
 
 # In[ ]:
 
 
 # Retrieve monthly averaged by hour reanalysis data for atmospheric analysis in Western Australia
-retrieve_era5_slv_month_hour("wa", "atm", 1981, 2021)
+retrieve_era5_slv_month_hour("wa", "atm", 1980, 2021)
 
 
 # In[ ]:
 
 
 # Retrieve monthly averaged by hour reanalysis data for cloud analysis in Western Australia
-retrieve_era5_slv_month_hour("wa", "cld", 1981, 2021)
+retrieve_era5_slv_month_hour("wa", "cld", 1980, 2021)
 
 
 # In[ ]:
 
 
 # Retrieve monthly averaged by hour reanalysis data for surface analysis in Central America
-retrieve_era5_slv_month_hour("ca", "sfc", 1981, 2021)
+retrieve_era5_slv_month_hour("ca", "sfc", 1980, 2021)
 
 
 # In[ ]:
 
 
 # Retrieve monthly averaged by hour reanalysis data for atmospheric analysis in Central America
-retrieve_era5_slv_month_hour("ca", "atm", 1981, 2021)
+retrieve_era5_slv_month_hour("ca", "atm", 1980, 2021)
 
 
 # In[ ]:
 
 
 # Retrieve monthly averaged by hour reanalysis data for cloud analysis in Central America
-retrieve_era5_slv_month_hour("ca", "cld", 1981, 2021)
+retrieve_era5_slv_month_hour("ca", "cld", 1980, 2021)
 
 
 # In[ ]:
 
 
 # Retrieve monthly averaged by hour reanalysis data for surface analysis in South America
-retrieve_era5_slv_month_hour("sa", "sfc", 1981, 2021)
+retrieve_era5_slv_month_hour("sa", "sfc", 1980, 2021)
 
 
 # In[ ]:
 
 
 # Retrieve monthly averaged by hour reanalysis data for atmospheric analysis in South America
-retrieve_era5_slv_month_hour("sa", "atm", 1981, 2021)
+retrieve_era5_slv_month_hour("sa", "atm", 1980, 2021)
 
 
 # In[ ]:
 
 
 # Retrieve monthly averaged by hour reanalysis data for cloud analysis in South America
-retrieve_era5_slv_month_hour("sa", "cld", 1981, 2021)
+retrieve_era5_slv_month_hour("sa", "cld", 1980, 2021)
 
 
 # In[ ]:
 
 
 # Retrieve monthly averaged by hour reanalysis data for global surface analysis
-retrieve_era5_slv_month_hour("global", "sfc", 1981, 2021)
+retrieve_era5_slv_month_hour("global", "sfc", 1981, 1985)
 
 
 # In[ ]:
 
 
-# Retrieve monthly averaged by hour reanalysis data for global atmospheric analysis
-retrieve_era5_slv_month_hour("global", "atm", 1981, 2021)
+# Retrieve monthly averaged by hour reanalysis data for global surface analysis
+retrieve_era5_slv_month_hour("global", "sfc", 1992, 1996)
 
 
 # In[ ]:
 
 
-# Retrieve monthly averaged by hour reanalysis data for global cloud analysis
-retrieve_era5_slv_month_hour("global", "cld", 1981, 2021)
+# Retrieve monthly averaged by hour reanalysis data for global surface analysis
+retrieve_era5_slv_month_hour("global", "sfc", 2007, 2011)
+
+
+# In[ ]:
+
+
+# Retrieve monthly averaged by hour reanalysis data for global surface analysis
+retrieve_era5_slv_month_hour("global", "sfc", 2017, 2021)
+
+
+# In[ ]:
+
+
+# Retrieve monthly averaged by hour reanalysis data for global surface analysis
+retrieve_era5_slv_month_hour("global", "atm", 1981, 1985)
+
+
+# In[ ]:
+
+
+# Retrieve monthly averaged by hour reanalysis data for global surface analysis
+retrieve_era5_slv_month_hour("global", "atm", 1992, 1996)
+
+
+# In[ ]:
+
+
+# Retrieve monthly averaged by hour reanalysis data for global surface analysis
+retrieve_era5_slv_month_hour("global", "atm", 2007, 2011)
+
+
+# In[ ]:
+
+
+# Retrieve monthly averaged by hour reanalysis data for global surface analysis
+retrieve_era5_slv_month_hour("global", "atm", 2017, 2021)
+
+
+# In[ ]:
+
+
+# Retrieve monthly averaged by hour reanalysis data for global surface analysis
+retrieve_era5_slv_month_hour("global", "cld", 1981, 1985)
+
+
+# In[ ]:
+
+
+# Retrieve monthly averaged by hour reanalysis data for global surface analysis
+retrieve_era5_slv_month_hour("global", "cld", 1992, 1996)
+
+
+# In[ ]:
+
+
+# Retrieve monthly averaged by hour reanalysis data for global surface analysis
+retrieve_era5_slv_month_hour("global", "cld", 2007, 2011)
+
+
+# In[ ]:
+
+
+# Retrieve monthly averaged by hour reanalysis data for global surface analysis
+retrieve_era5_slv_month_hour("global", "cld", 2017, 2021)
 
 
 # ## Hourly reanalysis, on single levels
@@ -430,6 +493,61 @@ retrieve_glass_8_day("fapar", "avhrr", 2016, 2018, "2019358")
 
 
 # # Download other data
+
+# ## NOAA Climate Indices
+# 
+# Catalog of indices available here: https://psl.noaa.gov/data/climateindices/list/
+# 
+# Indices used in this analysis are:
+# - NAO: NOAA/CPC NAO Index (NAOI)
+# - NAM/AO: NOAA/CPC AO Index (AOI)
+# - SAM/AAO: NOAA/CPC AAO Index (AAOI)
+# - IOD: NOAA/PSL Dipole Mode Index (DMI)
+# - ENSO: NOAA/CPC Oceanic Nino Index (ONI)
+# - PDO: NOAA/PSL PDO Index (PDOI)
+# - AMO: NOAA/PSL AMO Index (AMOI)
+# 
+# Abbreviations:
+# - NOAA: National Oceanic and Atmospheric Administration
+# - CPC: Climate Prediction Center
+# - PSL: Physical Sciences Laboratory
+# - NAO: North Atlantic Oscillation
+# - NAM/AO: Northern Annular Mode/Arctic Oscillation
+# - SAM/AAO: Southern Annular Mode/Antarctic Oscillation
+# - IOD: Indian Ocean Dipole
+# - ENSO: El Nino-Southern Oscillation
+# - PDO: Pacific Decadal Oscillation
+# - AMO: Atlantic Multidecadal Oscillation
+
+# In[ ]:
+
+
+indices = {
+    "naoi": {"output": "noaa-cpc_naoi", "url": "https://psl.noaa.gov/data/correlation/nao.data"},
+    "aoi": {"output": "noaa-cpc_aoi", "url": "https://psl.noaa.gov/data/correlation/ao.data"},
+    "aaoi": {"output": "noaa-cpc_aaoi", "url": "https://psl.noaa.gov/data/correlation/aao.data"},
+    "dmi": {"output": "noaa-psl_dmi", "url": "https://psl.noaa.gov/gcos_wgsp/Timeseries/Data/dmi.had.long.data"},
+    "oni": {"output": "noaa-cpc_oni", "url": "https://psl.noaa.gov/data/correlation/oni.data"},
+    "pdo": {"output": "noaa-psl_pdoi", "url": "https://psl.noaa.gov/data/correlation/pdo.data"},
+    "amoi": {"output": "noaa-psl_amoi", "url": "https://psl.noaa.gov/data/correlation/amon.us.data"}
+}
+
+
+# In[ ]:
+
+
+Path("../data_raw/global_noaa-climate-indices").mkdir(parents=True, exist_ok=True)
+for index in [*indices]:
+    file_name = "../data_raw/global_noaa-climate-indices/" + indices[index]["output"]
+    if Path(file_name).exists():
+        print(file_name + " already exists")
+    else:
+        try:
+            wget.download(indices[index]["url"], file_name)
+            print("Retrieved " + file_name)
+        except:
+            print("Failed to retrieve " + file_name + "; check on catalog if url has changed.")
+
 
 # ## BoM hourly observation data
 # 
