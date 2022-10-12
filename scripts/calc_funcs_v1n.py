@@ -2736,7 +2736,7 @@ def calc_era5_mdp_clim_given_var_or_dvar(region, period_start, period_end,
     # computing using dask. Together they select out the relevant files to read
     # and persist in memory only the data which is necessary for the computation.
     
-    def filter_era5_month_hour_files(file_name):
+    def filter_era5_files(file_name):
         # This function is used as a mask in conjunction with the default python
         # filter function later, in order to select out the raw data files with
         # years within the input period. The following preprocess function also
@@ -2749,7 +2749,7 @@ def calc_era5_mdp_clim_given_var_or_dvar(region, period_start, period_end,
         else:
             return False
     
-    def preprocess_era5_month_hour(ds):
+    def preprocess_era5(ds):
         # This function is used for the preprocess argument in open_mfdataset.
         # It selects out only the subset months for persist scalability,
         # renames variables and sorts data in time order.
@@ -2778,14 +2778,20 @@ def calc_era5_mdp_clim_given_var_or_dvar(region, period_start, period_end,
     else:      
         # The following code opens the relevant monthy ERA5 files then computes
         # mean over each hour of the day.
-        files_era5_month_hour = glob(
-            f"../data_raw/{region}_era5-slv-{var_or_dvar_layer}_month-hour/*.nc")
-        files_era5_month_hour.sort()
-        if len(files_era5_month_hour) != number_of_era5_month_hour_files:
+        if var in ["ws10", "ws100"]:
+            files_era5 = glob(
+                f"../data_raw/{region}_era5-slv-{var_or_dvar_layer}_hour/*.nc")
+            number_of_era5_files = number_of_era5_hour_files
+        else:
+            files_era5 = glob(
+                f"../data_raw/{region}_era5-slv-{var_or_dvar_layer}_month-hour/*.nc")
+            number_of_era5_files = number_of_era5_month_hour_files
+        files_era5.sort()
+        if len(files_era5) != number_of_era5_files:
             msg_files = (
-                f"WARNING: Expected {number_of_era5_month_hour_files} files in " +
+                f"WARNING: Expected {number_of_era5_files} files in " +
                 f"../data_raw/{region}_era5-slv-{var_or_dvar_layer}_month-hour/ but " +
-                f"got {len(files_era5_month_hour)}. This could be because the " + 
+                f"got {len(files_era5)}. This could be because the " + 
                 "data_download.ipynb notebook was not run properly. Or it could " +
                 "be that the user has selected a different number of years to " +
                 "retrieve data for in the data_download.ipynb notebook as " +
@@ -2797,21 +2803,20 @@ def calc_era5_mdp_clim_given_var_or_dvar(region, period_start, period_end,
             
         logging.debug(f"Filtering: ERA5 {var_or_dvar_layer} files from data_raw " +
                       f"folder for use in {func_cur}.")
-        files_era5_month_hour_filtered = list(filter(filter_era5_month_hour_files, 
-                                                     files_era5_month_hour))
-        files_era5_month_hour_filtered.sort()
+        files_era5_filtered = list(filter(filter_era5_files, files_era5))
+        files_era5_filtered.sort()
         
         logging.debug(f"Opening: ERA5 {var_or_dvar_layer} files from data_raw " +
                       f"folder for use in {func_cur}.")
-        ds_era5_mdp = (xr.open_mfdataset(files_era5_month_hour_filtered,
-                                         preprocess=preprocess_era5_month_hour,
+        ds_era5_mdp = (xr.open_mfdataset(files_era5_filtered,
+                                         preprocess=preprocess_era5,
                                          engine = "netcdf4", parallel = True)
                        # We add an extra month to period_end here because period_end was
                        # specified as a month, and conversion into a datetime object
                        # defaults to the first (rather than last) day of that month. The
                        # -1 hr is to avoid selecting first hour of the following month.
                        .sel(time = slice(period_start, period_end +
-                                         relativedelta(months=1, hours = -1)))
+                                         relativedelta(months=1, hours=-1)))
                        # Rechunking after open_mfdataset here is actually bad practice
                        # since it requires extra computation, but the chunks argument
                        # for open_mfdataset doesn't seem to work here for some reason.
@@ -2819,15 +2824,11 @@ def calc_era5_mdp_clim_given_var_or_dvar(region, period_start, period_end,
                       )
         if priority == "speed":
             ds_era5_mdp = ds_era5_mdp.persist()
-        
-        if var == "ws10":
-            ds_era5_mdp = (get_magnitude(ds_era5_mdp["u10"], ds_era5_mdp["v10"])
-                           .to_dataset(name = "ws10")
-                          )
             
-        if var == "ws100":
-            ds_era5_mdp = (get_magnitude(ds_era5_mdp["u100"], ds_era5_mdp["v100"])
-                           .to_dataset(name = "ws100")
+        if var in ["ws10", "ws100"]:
+            ds_era5_mdp = (get_magnitude(ds_era5_mdp[var.replace("ws", "u")], 
+                                         ds_era5_mdp[var.replace("ws", "v")])
+                           .to_dataset(name = var)
                           )
         
         logging.debug(f"Computing: MDPs of {[*ds_era5_mdp.keys()]} for use in {func_cur}.")
@@ -4111,4 +4112,3 @@ def create_all_possible_diff_data_files(region, period1_start, period1_end,
                     )
     
     remove_handlers_if_directly_executed(func_1up)
-

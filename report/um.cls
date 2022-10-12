@@ -62,7 +62,7 @@
 \colorlet{DissertationColor}{UMRed}   
 
 % Setup choosen University of Malta crest/logo
-\def\logo{{\includegraphics[width=30mm]{umlogo_crest_red}}}
+\def\logo{{\includegraphics[width=30mm]{unswlogo_crest}}}
 
 % The year and term the thesis is submitted 
 \def\degreeDate#1{\gdef\@degreeDate{#1}}
@@ -212,7 +212,7 @@
 % The front page
 \renewcommand{\maketitle}
 {\begingroup
-\AlCentroPagina{umlogo_crest_gray}
+\AlCentroPagina{unswlogo_crest_grey}
 \parbox[b][0.95\textheight][t]{0.2\textwidth}{\raggedleft\logo} %% this 0.95 is important, otherwise page overflows in next page
 \hspace*{2ex}
 \textcolor{DissertationColor}{\rule{2pt}{0.95\textheight}}
@@ -230,10 +230,10 @@
     \@ifundefined{@cosupervisor}{\\[2ex]}{\\[2ex]\large Co-supervised by \@cosupervisor}\\[1cm]
     {\large \@department} \\[1ex]
     {\large \@faculty} \\[1ex]
-    {\large University of Malta} \\
+    {\large The University of New South Wales} \\
     \vfill
     {\bfseries \@degreeDate}\\[\baselineskip]
-	\parbox[t]{0.80\linewidth}{\footnotesize\textit{A \@doctype\ submitted in partial fulfilment of the requirements for the degree of \@degreeName}.}    
+	\parbox[t]{0.80\linewidth}{\footnotesize\textit{A thesis submitted in partial fulfilment of the requirements for the degree of \@degreeName}.}    
 }
 \thispagestyle{empty}
 \if@openright\cleardoublepage\else\clearpage\fi
@@ -302,7 +302,7 @@
 \newenvironment{originality}
 {\clearpage\thispagestyle{empty}
 \begin{figure}[h]
-	\includegraphics[width=2.5in]{umlogo_full_red}
+	\includegraphics[width=2.5in]{unswlogo_full}
 \end{figure}
 \vspace{3mm}
 {\noindent\Large\bfseries\sffamily\textcolor{DissertationColor}{Declaration by Postgraduate Students}}\\ %% FIXME this will have to change if not postgraduate ...
@@ -353,12 +353,12 @@ As a Master’s student, as per Regulation 58 of the General Regulations for Uni
 	\thispagestyle{empty}
 	
 	\begin{figure}[h]
-		\includegraphics[width=2.5in]{umlogo_full_red}
+		\includegraphics[width=2.5in]{unswlogo_full}
 	\end{figure}
 	
-	\noindent Copyright \textcopyright\the\year\ University of Malta\\ % Copyright notice
+	\noindent Copyright \textcopyright\the\year\ University of New South Wales\\ % Copyright notice
 	
-	\noindent \textsc{www.um.edu.mt}\\ % URL
+	\noindent \textsc{www.unsw.edu.au}\\ % URL
 	
 	\noindent \textit{First edition, \today} % Printing/edition date
 	

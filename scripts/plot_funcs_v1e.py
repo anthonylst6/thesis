@@ -56,12 +56,12 @@ except:
 plt.rcParams['text.usetex'] = True
 da_dims_valid = ("latitude", "longitude")
 da_names_cyclic = ["hour_max", "hour_min"]
-da_names_viridis_with_vmin_0 = ["lse", "ssgo"] + cf.params_glass_mean
-da_names_viridis = ["range"] + cf.params_wsd
-vars_viridis_with_vmin_0 = []
-vars_viridis = ["ws10", "ws100", "mslp", "t2", 
-                "vipile", "vike", "tcclw", "tcwv", 
-                "blh", "fa", "cbh", "tcc", "ci"]
+da_names_pos_with_vmin_0 = ["lse", "ssgo"] + cf.params_glass_mean
+da_names_pos = ["range"] + cf.params_wsd
+vars_pos_with_vmin_0 = []
+vars_pos = ["ws10", "ws100", "mslp", "t2", 
+            "vipile", "vike", "tcclw", "tcwv", 
+            "blh", "fa", "cbh", "tcc", "ci"]
 figwidth_standard = 10
 scale_quiver = 45
 title_width = 60
@@ -166,13 +166,13 @@ def apply_mask(da, frame_comp):
     
     if da.name in da_names_cyclic:
         pass
-    elif da.name in da_names_viridis_with_vmin_0:
+    elif da.name in da_names_pos_with_vmin_0:
         pass
-    elif da.name in da_names_viridis:
+    elif da.name in da_names_pos:
         pass
-    elif main_param in vars_viridis_with_vmin_0:
+    elif main_param in vars_pos_with_vmin_0:
         pass
-    elif main_param in vars_viridis:
+    elif main_param in vars_pos:
         pass
     else:
         if mask_period1 == "pos":
@@ -296,16 +296,16 @@ def get_common_cbar_limits(
             if da_period2.name in da_names_cyclic:
                 vmin = None
                 vmax = None
-            elif da_period2.name in da_names_viridis_with_vmin_0:
+            elif da_period2.name in da_names_pos_with_vmin_0:
                 vmin = 0
                 vmax = float(max(da_period1.max(), da_period2.max()))
-            elif da_period2.name in da_names_viridis:
+            elif da_period2.name in da_names_pos:
                 vmin = float(min(da_period1.min(), da_period2.min()))
                 vmax = float(max(da_period1.max(), da_period2.max()))
-            elif main_param_period2 in vars_viridis_with_vmin_0:
+            elif main_param_period2 in vars_pos_with_vmin_0:
                 vmin = 0
                 vmax = float(max(da_period1.max(), da_period2.max()))
-            elif main_param_period2 in vars_viridis:
+            elif main_param_period2 in vars_pos:
                 vmin = float(min(da_period1.min(), da_period2.min()))
                 vmax = float(max(da_period1.max(), da_period2.max()))
             else:
@@ -337,16 +337,16 @@ def get_common_cbar_limits(
         if da_period2.name in da_names_cyclic:
             vmin = None
             vmax = None
-        elif da_period2.name in da_names_viridis_with_vmin_0:
+        elif da_period2.name in da_names_pos_with_vmin_0:
             vmin = 0
             vmax = float(max(da_period1.max(), da_period2.max()))
-        elif da_period2.name in da_names_viridis:
+        elif da_period2.name in da_names_pos:
             vmin = float(min(da_period1.min(), da_period2.min()))
             vmax = float(max(da_period1.max(), da_period2.max()))
-        elif main_param_period2 in vars_viridis_with_vmin_0:
+        elif main_param_period2 in vars_pos_with_vmin_0:
             vmin = 0
             vmax = float(max(da_period1.max(), da_period2.max()))
-        elif main_param_period2 in vars_viridis:
+        elif main_param_period2 in vars_pos:
             vmin = float(min(da_period1.min(), da_period2.min()))
             vmax = float(max(da_period1.max(), da_period2.max()))
         else:
@@ -433,7 +433,10 @@ def create_pcolormesh(da, extents=None, vmin=None, vmax=None, ax=None):
         else:
             if func_2up == "create_individual_comp_plot":
                 da = apply_mask(da, frame_2up)
-            cmap = cmocean.cm.balance_r
+            if da.name in cf.params_glass_mean:
+                cmap = "PuOr"
+            else:
+                cmap = cmocean.cm.balance_r
             if (vmin == None) & (vmax == None):
                 da_subset = da.sel(longitude=slice(extents[0], extents[1]), 
                                    latitude=slice(extents[3], extents[2]))
@@ -445,25 +448,28 @@ def create_pcolormesh(da, extents=None, vmin=None, vmax=None, ax=None):
         if da.name in da_names_cyclic:
             cmap = cmocean.cm.phase
             levels = np.arange(0, 24+1)
-        elif da.name in da_names_viridis_with_vmin_0:
-            cmap = "viridis"
+        elif da.name in da_names_pos_with_vmin_0:
+            if da.name in cf.params_glass_mean:
+                cmap = cmocean.cm.algae
+            else:
+                cmap = "viridis"
             da_subset = da.sel(longitude=slice(extents[0], extents[1]), 
                                latitude=slice(extents[3], extents[2]))
             vmin = vmin if vmin else 0
             vmax = vmax if vmax else da_subset.max()
-        elif da.name in da_names_viridis:
+        elif da.name in da_names_pos:
             cmap = "viridis"
             da_subset = da.sel(longitude=slice(extents[0], extents[1]), 
                                latitude=slice(extents[3], extents[2]))
             vmin = vmin if vmin else da_subset.min()
             vmax = vmax if vmax else da_subset.max()
-        elif main_param in vars_viridis_with_vmin_0:
+        elif main_param in vars_pos_with_vmin_0:
             cmap = "viridis"
             da_subset = da.sel(longitude=slice(extents[0], extents[1]), 
                                latitude=slice(extents[3], extents[2]))
             vmin = vmin if vmin else 0
             vmax = vmax if vmax else da_subset.max()
-        elif main_param in vars_viridis:
+        elif main_param in vars_pos:
             cmap = "viridis"
             da_subset = da.sel(longitude=slice(extents[0], extents[1]), 
                                latitude=slice(extents[3], extents[2]))
@@ -1760,10 +1766,10 @@ def plot_mdp_clim_values_given_var_or_dvar(
         vmax = float(da_time_mag.max())
     else:
         da_time = ds_time[var_or_dvar]
-        if var_or_dvar in vars_viridis_with_vmin_0:
+        if var_or_dvar in vars_pos_with_vmin_0:
             vmin = 0
             vmax = float(da_time.max())
-        elif var_or_dvar in vars_viridis:
+        elif var_or_dvar in vars_pos:
             vmin = float(da_time.min())
             vmax = float(da_time.max())
         else:
@@ -2968,10 +2974,10 @@ def plot_comp_mdp_clim_values_given_var_or_dvar(
         max_da_diff = float(da_diff.max())
         vmin_diff = min(-abs(min_da_diff), -abs(max_da_diff))
         vmax_diff = -vmin_diff
-        if var_or_dvar in vars_viridis_with_vmin_0:
+        if var_or_dvar in vars_pos_with_vmin_0:
             vmin_periods = 0
             vmax_periods = float(max(da_period1.max(), da_period2.max()))
-        elif var_or_dvar in vars_viridis:
+        elif var_or_dvar in vars_pos:
             vmin_periods = float(min(da_period1.min(), da_period2.min()))
             vmax_periods = float(max(da_period1.max(), da_period2.max()))
         else:
@@ -3176,4 +3182,3 @@ def plot_comp_wsd_clim(
     plt.close(fig)
     
     cf.remove_handlers_if_directly_executed(func_1up)
-
