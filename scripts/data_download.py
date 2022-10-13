@@ -36,7 +36,7 @@ c = cdsapi.Client()
 area = {
     "ca": [17, -91, 7, -81],
     "sa": [0, -65, -15, -30],
-    "wa": [-30, 113, -35, 123],
+    "wa": [-26, 114, -36, 124],
     "global": [90, -180, -90, 180]
 }
 
@@ -390,21 +390,21 @@ def retrieve_era5_slv_hour(region, vars_type, year_start, year_end):
 
 
 # Retrieve hourly reanalysis data for surface analysis in Central America
-retrieve_era5_slv_hour("ca", "sfc", 1981, 2021)
+retrieve_era5_slv_hour("ca", "sfc", 1980, 2021)
 
 
 # In[ ]:
 
 
 # Retrieve hourly reanalysis data for surface analysis in South America
-retrieve_era5_slv_hour("sa", "sfc", 1981, 2021)
+retrieve_era5_slv_hour("sa", "sfc", 1980, 2021)
 
 
 # In[ ]:
 
 
 # Retrieve hourly reanalysis data for surface analysis in Western Australia
-retrieve_era5_slv_hour("wa", "sfc", 1981, 2021)
+retrieve_era5_slv_hour("wa", "sfc", 1980, 2021)
 
 
 # # Download GLASS data
@@ -493,6 +493,19 @@ retrieve_glass_8_day("fapar", "avhrr", 2016, 2018, "2019358")
 
 
 # # Download other data
+
+# ## Definition for the State Barrier Fence of Western Australia
+# 
+# - Download from https://data-downloads.slip.wa.gov.au/ExtractDownload/DownloadFile/187882
+# - Information on dataset available here: https://catalogue.data.wa.gov.au/dataset/state-barrier-fence-dafwa-030/resource/2b867d37-26d3-4be0-9cbd-6969dc30df4d?inner_span=True
+
+# In[ ]:
+
+
+# Create wa_sbf_static folder to download data into
+# (if it doesn't already exist)
+Path("../data_raw/wa_sbf_static").mkdir(parents=True, exist_ok=True)
+
 
 # ## NOAA Climate Indices
 # 

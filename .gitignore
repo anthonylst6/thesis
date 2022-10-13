@@ -2,6 +2,7 @@ data_archived/
 data_final/
 data_processed/
 data_raw/
+global_results/
 logs/
 scrap/
 scripts/__pycache__/

@@ -66,13 +66,13 @@ assert priority in priorities, \
 # as well as timezones in hour +- GMT
 regions = {
     # Central America (mostly Honduras-Nicaragua-Costa Rica)
-    "ca": {"extent": [-91, -81, 7, 17], "tz": -6},
+    "ca": {"extents": [-91, -81, 7, 17], "tz": -6},
     # South America (mostly central and eastern Brazil)
-    "sa": {"extent": [-65, -30, -15, 0], "tz": -3},
+    "sa": {"extents": [-65, -30, -15, 0], "tz": -3},
     # Western Australia (mostly near the west coast)
-    "wa": {"extent": [113, 123, -35, -30], "tz": +8},
+    "wa": {"extents": [114, 124, -36, -26], "tz": +8},
     # Global (requires a lot of memory)
-    "global": {"extent": [-180, 180, -90, 90], "tz": +0}
+    "global": {"extents": [-180, 180, -90, 90], "tz": +0}
 }
 
 # Size of chunks
@@ -154,6 +154,8 @@ for _, dvar_list in vars_and_dvars_era5["dvars"].items():
         dvars_era5_all.append(dvar)
 
 vars_and_dvars_era5_all = vars_era5_all + dvars_era5_all
+var_or_dvar_layers = [*[*vars_and_dvars_era5.values()][0].keys()]
+var_or_dvar_types = [*vars_and_dvars_era5]
 
 # Valid time strings to use as argument in plot_funcs script,
 times = {
@@ -162,6 +164,7 @@ times = {
     "night": list(range(0, 5+1)), "morning": list(range(6, 11+1)),
     "afternoon": list(range(12, 17+1)), "evening": list(range(18, 23+1))
 }
+times_all = [*times]
 
 # Parameters which are vectors
 params_vector = ["wv10", "wv100", "dwv10", "dwv100"]
@@ -991,8 +994,8 @@ def check_args(
             f"hour must be one of: {hours_all}"
     
     if time:
-        assert time in [*times], \
-            f"time must be one of: {[*times]}"
+        assert time in times_all, \
+            f"time must be one of: {times_all}"
     
     if param_orog:
         assert param_orog in params_orog, \
@@ -1003,13 +1006,12 @@ def check_args(
             f"param_glass must be one of {params_glass_mean}"
     
     if var_or_dvar_layer:
-        assert var_or_dvar_layer in [*[*vars_and_dvars_era5.values()][0].keys()], \
-            ("var_or_dvar_layer must be one of: "+
-             f"{[*[*vars_and_dvars_era5.values()][0].keys()]}")
+        assert var_or_dvar_layer in var_or_dvar_layers, \
+            f"var_or_dvar_layer must be one of: {var_or_dvar_layers}"
         
     if var_or_dvar_type:
-        assert var_or_dvar_type in [*vars_and_dvars_era5], \
-            f"var_or_dvar_type must be one of: {[*vars_and_dvars_era5]}"
+        assert var_or_dvar_type in var_or_dvar_types, \
+            f"var_or_dvar_type must be one of: {var_or_dvar_types}"
         
     if perc:
         assert perc in [True, False], \
@@ -1035,7 +1037,7 @@ def check_args(
             ("extents must a 4 element list in [W, E, S, N] format " + 
              "with longitudes -180 to 180 and latitudes -90 to 90")
         if region:
-            extents_default = regions[region]["extent"]
+            extents_default = regions[region]["extents"]
         else:
             extents_default = [-180, 180, -90, 90]
         assert ((extents[0] >= extents_default[0]) & 
@@ -2529,10 +2531,10 @@ def calc_glass_mean_clim(region, period_start, period_end, months_subset,
               .drop_vars("spatial_ref")
               .squeeze("band", drop=True)
               )
-        ds = ds.sel(longitude=slice(regions[region]["extent"][0],
-                                    regions[region]["extent"][1]),
-                    latitude=slice(regions[region]["extent"][3],
-                                   regions[region]["extent"][2])
+        ds = ds.sel(longitude=slice(regions[region]["extents"][0],
+                                    regions[region]["extents"][1]),
+                    latitude=slice(regions[region]["extents"][3],
+                                   regions[region]["extents"][2])
                    )
         return ds
     
@@ -2777,7 +2779,15 @@ def calc_era5_mdp_clim_given_var_or_dvar(region, period_start, period_end,
         ds_era5_mdp = xr.open_dataset(path_output_var, engine = "netcdf4")
     else:      
         # The following code opens the relevant monthy ERA5 files then computes
-        # mean over each hour of the day.
+        # mean over each hour of the day. Wind speeds have to be derived using
+        # hourly data rather than monthly averaged by hour of day data. This is because
+        # the ERA5 datasets for monthly averaged by hour of day don't directly provide
+        # the wind speed at 100 m (it provides the u100 and v100 components). Averaging 
+        # over the days of the month would then provide a VECTOR average, and computing 
+        # the magnitude froms from this would then significantly underestimate ws100.
+        # Unfortunately this limits the code's scalability since analysis upon larger
+        # extents (such as on a global scale) will also require downloading and running
+        # code on hourly datasets (which require more storage and RAM).
         if var in ["ws10", "ws100"]:
             files_era5 = glob(
                 f"../data_raw/{region}_era5-slv-{var_or_dvar_layer}_hour/*.nc")

@@ -54,6 +54,12 @@ try:
     plot_funcs_ver = "pf" + Path(__file__).stem[-3:]
 except:
     plot_funcs_ver = "pfv00"
+    
+plot_log_level = logging.INFO
+assert plot_log_level in cf.log_levels, \
+    f"[plot_log_level (global variable in settings) must be one of: {cf.log_levels}"
+cf.calc_log_level = plot_log_level
+
 plt.rcParams['text.usetex'] = True
 da_dims_valid = ("latitude", "longitude")
 da_names_cyclic = ["hour_max", "hour_min"]
@@ -68,6 +74,9 @@ scale_quiver = 45
 title_width = 60
 mask_perc_quantile_default = 10
 eroe100_linthresh = 1e-20
+funcs_create_all_plot = ["create_all_possible_calc_data_files", 
+                         "create_all_possible_diff_data_files", 
+                         "create_all_possible_comp_data_files"]
 
 
 # In[ ]:
@@ -513,8 +522,8 @@ def create_pcolormesh(da, extents=None, vmin=None, vmax=None, ax=None):
                            cbar_kwargs = {"label": ax_label}
                           )
     
-    sbf = gpd.read_file("../data_raw/wa_sbf_static/" +
-                        "State_Barrier_Fence_DPIRD_025_WA_GDA2020_Public.gpkg")
+    sbfwa = gpd.read_file("../data_raw/wa_sbf_static/" +
+                          "State_Barrier_Fence_DPIRD_025_WA_GDA2020_Public.gpkg")
     ax.add_geometries(sbf.geometry, crs=ccrs.PlateCarree(), facecolor='none', 
                       edgecolor='k')
     
@@ -1451,6 +1460,30 @@ def plot_mdp_clim_stats_given_var_or_dvar(
     if extents == None:
         extents = cf.regions[region]["extents"]
     
+    if cfv_data:
+        cfv_used = cfv_data
+    else:
+        cfv_used = cf.calc_funcs_ver
+            
+    if extents_input:
+        extents_used = "{}W{}E{}S{}N".format(extents[0], extents[1], 
+                                             extents[2], extents[3])
+    else:
+        extents_used = region
+            
+    path_output = (f"../data_final/mdp_clim_stats_given_var_or_dvar/" +
+                   f"{plot_funcs_ver}_{cfv_used}_calc_{extents_used}_" +
+                   f"{period_start}_{period_end}_{months_subset_str}_" +
+                   f"stats_{var_or_dvar}.png")
+    
+    if Path(path_output).exists():
+        msg_exist = ("WARNING: plot file already exists (and was " +
+                     f"not overwritten): {path_output}")
+        logging.warning(msg_exist)
+        print(msg_exist)
+        if func_1up in funcs_create_all_plot:
+            return None
+    
     figrows = 5
     figcols = 2
     figwidth = figwidth_standard * 2
@@ -1507,39 +1540,17 @@ def plot_mdp_clim_stats_given_var_or_dvar(
     
     fig.tight_layout()
     
-    if output == True:
-        if cfv_data:
-            cfv_used = cfv_data
-        else:
-            cfv_used = cf.calc_funcs_ver
-            
-        if extents_input:
-            extents_used = "{}W{}E{}S{}N".format(extents[0], extents[1], 
-                                                 extents[2], extents[3])
-        else:
-            extents_used = region
-            
-        path_output = (f"../data_final/mdp_clim_stats_given_var_or_dvar/" +
-                       f"{plot_funcs_ver}_{cfv_used}_calc_{extents_used}_" +
-                       f"{period_start}_{period_end}_{months_subset_str}_" +
-                       f"stats_{var_or_dvar}.png")
+    if (output == True) & (Path(path_output).exists() == False):
         path_output_dir = "/".join(path_output.split("/")[:-1])
         Path(path_output_dir).mkdir(parents=True, exist_ok=True)
-        
-        if Path(path_output).exists():
-            msg_exist = ("WARNING: plot file already exists (and was " +
-                         f"not overwritten): {path_output}")
-            logging.warning(msg_exist)
-            print(msg_exist)
-        else:
-            plt.savefig(path_output, metadata=get_plot_metadata(
-                time_exec, func_cur, args_cur, args_cur_values)
-                       )
-            msg_create = f"CREATED: plot file: {path_output}"
-            logging.info(msg_create)
-            print(msg_create)
+        plt.savefig(path_output, metadata=get_plot_metadata(time_exec, func_cur, 
+                                                            args_cur, args_cur_values))
+        msg_create = f"CREATED: plot file: {path_output}"
+        logging.info(msg_create)
+        print(msg_create)
     
-    plt.show()
+    if func_1up not in funcs_create_all_plot:
+        plt.show()
     fig.clear()
     plt.close(fig)
     
@@ -1575,6 +1586,30 @@ def plot_mdp_clim_values_given_hour(
     
     if extents == None:
         extents = cf.regions[region]["extents"]
+    
+    if cfv_data:
+        cfv_used = cfv_data
+    else:
+        cfv_used = cf.calc_funcs_ver
+            
+    if extents_input:
+        extents_used = "{}W{}E{}S{}N".format(extents[0], extents[1], 
+                                             extents[2], extents[3])
+    else:
+        extents_used = region
+
+    path_output = (f"../data_final/mdp_clim_values_given_hour/" +
+                   f"{plot_funcs_ver}_{cfv_used}_calc_{extents_used}_" +
+                   f"{period_start}_{period_end}_{months_subset_str}_" +
+                   f"values_{var_or_dvar_layer}_{var_or_dvar_type}_{hour}.png")
+    
+    if Path(path_output).exists():
+        msg_exist = ("WARNING: plot file already exists (and was " +
+                     f"not overwritten): {path_output}")
+        logging.warning(msg_exist)
+        print(msg_exist)
+        if func_1up in funcs_create_all_plot:
+            return None
     
     figrows = 5
     figcols = 2
@@ -1632,39 +1667,17 @@ def plot_mdp_clim_values_given_hour(
     
     fig.tight_layout()
     
-    if output == True:
-        if cfv_data:
-            cfv_used = cfv_data
-        else:
-            cfv_used = cf.calc_funcs_ver
-            
-        if extents_input:
-            extents_used = "{}W{}E{}S{}N".format(extents[0], extents[1], 
-                                                 extents[2], extents[3])
-        else:
-            extents_used = region
-            
-        path_output = (f"../data_final/mdp_clim_values_given_hour/" +
-                       f"{plot_funcs_ver}_{cfv_used}_calc_{extents_used}_" +
-                       f"{period_start}_{period_end}_{months_subset_str}_" +
-                       f"values_{var_or_dvar_layer}_{var_or_dvar_type}_{hour}.png")
+    if (output == True) & (Path(path_output).exists() == False):
         path_output_dir = "/".join(path_output.split("/")[:-1])
         Path(path_output_dir).mkdir(parents=True, exist_ok=True)
-        
-        if Path(path_output).exists():
-            msg_exist = ("WARNING: plot file already exists (and was " +
-                         f"not overwritten): {path_output}")
-            logging.warning(msg_exist)
-            print(msg_exist)
-        else:
-            plt.savefig(path_output, metadata=get_plot_metadata(
-                time_exec, func_cur, args_cur, args_cur_values)
-                       )
-            msg_create = f"CREATED: plot file: {path_output}"
-            logging.info(msg_create)
-            print(msg_create)
+        plt.savefig(path_output, metadata=get_plot_metadata(time_exec, func_cur, 
+                                                            args_cur, args_cur_values))
+        msg_create = f"CREATED: plot file: {path_output}"
+        logging.info(msg_create)
+        print(msg_create)
     
-    plt.show()
+    if func_1up not in funcs_create_all_plot:
+        plt.show()
     fig.clear()
     plt.close(fig)
     
@@ -1699,6 +1712,30 @@ def plot_mdp_clim_values_given_var_or_dvar(
     
     if extents == None:
         extents = cf.regions[region]["extents"]
+    
+    if cfv_data:
+        cfv_used = cfv_data
+    else:
+        cfv_used = cf.calc_funcs_ver
+            
+    if extents_input:
+        extents_used = "{}W{}E{}S{}N".format(extents[0], extents[1], 
+                                             extents[2], extents[3])
+    else:
+        extents_used = region
+
+    path_output = (f"../data_final/mdp_clim_values_given_var_or_dvar/" +
+                   f"{plot_funcs_ver}_{cfv_used}_calc_{extents_used}_" +
+                   f"{period_start}_{period_end}_{months_subset_str}_" +
+                   f"values_{var_or_dvar}_{time}.png")
+    
+    if Path(path_output).exists():
+        msg_exist = ("WARNING: plot file already exists (and was " +
+                     f"not overwritten): {path_output}")
+        logging.warning(msg_exist)
+        print(msg_exist)
+        if func_1up in funcs_create_all_plot:
+            return None
     
     figrows = 5
     figcols = 2
@@ -1806,39 +1843,17 @@ def plot_mdp_clim_values_given_var_or_dvar(
     
     fig.tight_layout()
     
-    if output == True:
-        if cfv_data:
-            cfv_used = cfv_data
-        else:
-            cfv_used = cf.calc_funcs_ver
-            
-        if extents_input:
-            extents_used = "{}W{}E{}S{}N".format(extents[0], extents[1], 
-                                                 extents[2], extents[3])
-        else:
-            extents_used = region
-            
-        path_output = (f"../data_final/mdp_clim_values_given_var_or_dvar/" +
-                       f"{plot_funcs_ver}_{cfv_used}_calc_{extents_used}_" +
-                       f"{period_start}_{period_end}_{months_subset_str}_" +
-                       f"values_{var_or_dvar}_{time}.png")
+    if (output == True) & (Path(path_output).exists() == False):
         path_output_dir = "/".join(path_output.split("/")[:-1])
         Path(path_output_dir).mkdir(parents=True, exist_ok=True)
-        
-        if Path(path_output).exists():
-            msg_exist = ("WARNING: plot file already exists (and was " +
-                         f"not overwritten): {path_output}")
-            logging.warning(msg_exist)
-            print(msg_exist)
-        else:
-            plt.savefig(path_output, metadata=get_plot_metadata(
-                time_exec, func_cur, args_cur, args_cur_values)
-                       )
-            msg_create = f"CREATED: plot file: {path_output}"
-            logging.info(msg_create)
-            print(msg_create)
+        plt.savefig(path_output, metadata=get_plot_metadata(time_exec, func_cur, 
+                                                            args_cur, args_cur_values))
+        msg_create = f"CREATED: plot file: {path_output}"
+        logging.info(msg_create)
+        print(msg_create)
     
-    plt.show()
+    if func_1up not in funcs_create_all_plot:
+        plt.show()
     fig.clear()
     plt.close(fig)
     
@@ -1872,6 +1887,29 @@ def plot_wsd_clim(
     
     if extents == None:
         extents = cf.regions[region]["extents"]
+    
+    if cfv_data:
+        cfv_used = cfv_data
+    else:
+        cfv_used = cf.calc_funcs_ver
+            
+    if extents_input:
+        extents_used = "{}W{}E{}S{}N".format(extents[0], extents[1], 
+                                             extents[2], extents[3])
+    else:
+        extents_used = region
+
+    path_output = (f"../data_final/wsd_clim/{plot_funcs_ver}_{cfv_used}_" +
+                   f"calc_{extents_used}_{period_start}_{period_end}_" +
+                   f"{months_subset_str}_wsd.png")
+    
+    if Path(path_output).exists():
+        msg_exist = ("WARNING: plot file already exists (and was " +
+                     f"not overwritten): {path_output}")
+        logging.warning(msg_exist)
+        print(msg_exist)
+        if func_1up in funcs_create_all_plot:
+            return None
     
     figrows = 5
     figcols = 2
@@ -1928,38 +1966,17 @@ def plot_wsd_clim(
     
     fig.tight_layout()
     
-    if output == True:
-        if cfv_data:
-            cfv_used = cfv_data
-        else:
-            cfv_used = cf.calc_funcs_ver
-            
-        if extents_input:
-            extents_used = "{}W{}E{}S{}N".format(extents[0], extents[1], 
-                                                 extents[2], extents[3])
-        else:
-            extents_used = region
-            
-        path_output = (f"../data_final/wsd_clim/{plot_funcs_ver}_{cfv_used}_" +
-                       f"calc_{extents_used}_{period_start}_{period_end}_" +
-                       f"{months_subset_str}_wsd.png")
+    if (output == True) & (Path(path_output).exists() == False):
         path_output_dir = "/".join(path_output.split("/")[:-1])
         Path(path_output_dir).mkdir(parents=True, exist_ok=True)
-        
-        if Path(path_output).exists():
-            msg_exist = ("WARNING: plot file already exists (and was " +
-                         f"not overwritten): {path_output}")
-            logging.warning(msg_exist)
-            print(msg_exist)
-        else:
-            plt.savefig(path_output, metadata=get_plot_metadata(
-                time_exec, func_cur, args_cur, args_cur_values)
-                       )
-            msg_create = f"CREATED: plot file: {path_output}"
-            logging.info(msg_create)
-            print(msg_create)
+        plt.savefig(path_output, metadata=get_plot_metadata(time_exec, func_cur, 
+                                                            args_cur, args_cur_values))
+        msg_create = f"CREATED: plot file: {path_output}"
+        logging.info(msg_create)
+        print(msg_create)
     
-    plt.show()
+    if func_1up not in funcs_create_all_plot:
+        plt.show()
     fig.clear()
     plt.close(fig)
     
@@ -1998,6 +2015,30 @@ def plot_diff_mdp_clim_stats_given_var_or_dvar(
     
     if extents == None:
         extents = cf.regions[region]["extents"]
+    
+    if cfv_data:
+        cfv_used = cfv_data
+    else:
+        cfv_used = cf.calc_funcs_ver
+            
+    if extents_input:
+        extents_used = "{}W{}E{}S{}N".format(extents[0], extents[1], 
+                                             extents[2], extents[3])
+    else:
+        extents_used = region
+
+    path_output = (f"../data_final/mdp_clim_stats_given_var_or_dvar/" +
+                   f"{plot_funcs_ver}_{cfv_used}_diff_{extents_used}_" +
+                   f"{period1_start}_{period1_end}_{period2_start}_" +
+                   f"{period2_end}_{months_subset_str}_stats_{var_or_dvar}.png")
+    
+    if Path(path_output).exists():
+        msg_exist = ("WARNING: plot file already exists (and was " +
+                     f"not overwritten): {path_output}")
+        logging.warning(msg_exist)
+        print(msg_exist)
+        if func_1up in funcs_create_all_plot:
+            return None
     
     figrows = 5
     figcols = 2
@@ -2060,39 +2101,17 @@ def plot_diff_mdp_clim_stats_given_var_or_dvar(
     
     fig.tight_layout()
     
-    if output == True:
-        if cfv_data:
-            cfv_used = cfv_data
-        else:
-            cfv_used = cf.calc_funcs_ver
-            
-        if extents_input:
-            extents_used = "{}W{}E{}S{}N".format(extents[0], extents[1], 
-                                                 extents[2], extents[3])
-        else:
-            extents_used = region
-            
-        path_output = (f"../data_final/mdp_clim_stats_given_var_or_dvar/" +
-                       f"{plot_funcs_ver}_{cfv_used}_diff_{extents_used}_" +
-                       f"{period1_start}_{period1_end}_{period2_start}_" +
-                       f"{period2_end}_{months_subset_str}_stats_{var_or_dvar}.png")
+    if (output == True) & (Path(path_output).exists() == False):
         path_output_dir = "/".join(path_output.split("/")[:-1])
         Path(path_output_dir).mkdir(parents=True, exist_ok=True)
-        
-        if Path(path_output).exists():
-            msg_exist = ("WARNING: plot file already exists (and was " +
-                         f"not overwritten): {path_output}")
-            logging.warning(msg_exist)
-            print(msg_exist)
-        else:
-            plt.savefig(path_output, metadata=get_plot_metadata(
-                time_exec, func_cur, args_cur, args_cur_values)
-                       )
-            msg_create = f"CREATED: plot file: {path_output}"
-            logging.info(msg_create)
-            print(msg_create)
+        plt.savefig(path_output, metadata=get_plot_metadata(time_exec, func_cur, 
+                                                            args_cur, args_cur_values))
+        msg_create = f"CREATED: plot file: {path_output}"
+        logging.info(msg_create)
+        print(msg_create)
     
-    plt.show()
+    if func_1up not in funcs_create_all_plot:
+        plt.show()
     fig.clear()
     plt.close(fig)
     
@@ -2132,6 +2151,31 @@ def plot_diff_mdp_clim_values_given_hour(
     
     if extents == None:
         extents = cf.regions[region]["extents"]
+    
+    if cfv_data:
+        cfv_used = cfv_data
+    else:
+        cfv_used = cf.calc_funcs_ver
+            
+    if extents_input:
+        extents_used = "{}W{}E{}S{}N".format(extents[0], extents[1], 
+                                             extents[2], extents[3])
+    else:
+        extents_used = region
+
+    path_output = (f"../data_final/mdp_clim_values_given_hour/" +
+                   f"{plot_funcs_ver}_{cfv_used}_diff_{extents_used}_" +
+                   f"{period1_start}_{period1_end}_{period2_start}_" +
+                   f"{period2_end}_{months_subset_str}_values_" +
+                   f"{var_or_dvar_layer}_{var_or_dvar_type}_{hour}.png")
+    
+    if Path(path_output).exists():
+        msg_exist = ("WARNING: plot file already exists (and was " +
+                     f"not overwritten): {path_output}")
+        logging.warning(msg_exist)
+        print(msg_exist)
+        if func_1up in funcs_create_all_plot:
+            return None
     
     figrows = 5
     figcols = 2
@@ -2195,40 +2239,17 @@ def plot_diff_mdp_clim_values_given_hour(
     
     fig.tight_layout()
     
-    if output == True:
-        if cfv_data:
-            cfv_used = cfv_data
-        else:
-            cfv_used = cf.calc_funcs_ver
-            
-        if extents_input:
-            extents_used = "{}W{}E{}S{}N".format(extents[0], extents[1], 
-                                                 extents[2], extents[3])
-        else:
-            extents_used = region
-            
-        path_output = (f"../data_final/mdp_clim_values_given_hour/" +
-                       f"{plot_funcs_ver}_{cfv_used}_diff_{extents_used}_" +
-                       f"{period1_start}_{period1_end}_{period2_start}_" +
-                       f"{period2_end}_{months_subset_str}_values_" +
-                       f"{var_or_dvar_layer}_{var_or_dvar_type}_{hour}.png")
+    if (output == True) & (Path(path_output).exists() == False):
         path_output_dir = "/".join(path_output.split("/")[:-1])
         Path(path_output_dir).mkdir(parents=True, exist_ok=True)
-        
-        if Path(path_output).exists():
-            msg_exist = ("WARNING: plot file already exists (and was " +
-                         f"not overwritten): {path_output}")
-            logging.warning(msg_exist)
-            print(msg_exist)
-        else:
-            plt.savefig(path_output, metadata=get_plot_metadata(
-                time_exec, func_cur, args_cur, args_cur_values)
-                       )
-            msg_create = f"CREATED: plot file: {path_output}"
-            logging.info(msg_create)
-            print(msg_create)
+        plt.savefig(path_output, metadata=get_plot_metadata(time_exec, func_cur, 
+                                                            args_cur, args_cur_values))
+        msg_create = f"CREATED: plot file: {path_output}"
+        logging.info(msg_create)
+        print(msg_create)
     
-    plt.show()
+    if func_1up not in funcs_create_all_plot:
+        plt.show()
     fig.clear()
     plt.close(fig)
     
@@ -2267,6 +2288,31 @@ def plot_diff_mdp_clim_values_given_var_or_dvar(
     
     if extents == None:
         extents = cf.regions[region]["extents"]
+    
+    if cfv_data:
+        cfv_used = cfv_data
+    else:
+        cfv_used = cf.calc_funcs_ver
+            
+    if extents_input:
+        extents_used = "{}W{}E{}S{}N".format(extents[0], extents[1], 
+                                             extents[2], extents[3])
+    else:
+        extents_used = region
+
+    path_output = (f"../data_final/mdp_clim_values_given_var_or_dvar/" +
+                   f"{plot_funcs_ver}_{cfv_used}_diff_{extents_used}_" +
+                   f"{period1_start}_{period1_end}_{period2_start}_" +
+                   f"{period2_end}_{months_subset_str}_values_" +
+                   f"{var_or_dvar}_{time}.png")
+    
+    if Path(path_output).exists():
+        msg_exist = ("WARNING: plot file already exists (and was " +
+                     f"not overwritten): {path_output}")
+        logging.warning(msg_exist)
+        print(msg_exist)
+        if func_1up in funcs_create_all_plot:
+            return None
     
     figrows = 5
     figcols = 2
@@ -2376,40 +2422,17 @@ def plot_diff_mdp_clim_values_given_var_or_dvar(
     
     fig.tight_layout()
     
-    if output == True:
-        if cfv_data:
-            cfv_used = cfv_data
-        else:
-            cfv_used = cf.calc_funcs_ver
-            
-        if extents_input:
-            extents_used = "{}W{}E{}S{}N".format(extents[0], extents[1], 
-                                                 extents[2], extents[3])
-        else:
-            extents_used = region
-            
-        path_output = (f"../data_final/mdp_clim_values_given_var_or_dvar/" +
-                       f"{plot_funcs_ver}_{cfv_used}_diff_{extents_used}_" +
-                       f"{period1_start}_{period1_end}_{period2_start}_" +
-                       f"{period2_end}_{months_subset_str}_values_" +
-                       f"{var_or_dvar}_{time}.png")
+    if (output == True) & (Path(path_output).exists() == False):
         path_output_dir = "/".join(path_output.split("/")[:-1])
         Path(path_output_dir).mkdir(parents=True, exist_ok=True)
-        
-        if Path(path_output).exists():
-            msg_exist = ("WARNING: plot file already exists (and was " +
-                         f"not overwritten): {path_output}")
-            logging.warning(msg_exist)
-            print(msg_exist)
-        else:
-            plt.savefig(path_output, metadata=get_plot_metadata(
-                time_exec, func_cur, args_cur, args_cur_values)
-                       )
-            msg_create = f"CREATED: plot file: {path_output}"
-            logging.info(msg_create)
-            print(msg_create)
+        plt.savefig(path_output, metadata=get_plot_metadata(time_exec, func_cur, 
+                                                            args_cur, args_cur_values))
+        msg_create = f"CREATED: plot file: {path_output}"
+        logging.info(msg_create)
+        print(msg_create)
     
-    plt.show()
+    if func_1up not in funcs_create_all_plot:
+        plt.show()
     fig.clear()
     plt.close(fig)
     
@@ -2446,6 +2469,29 @@ def plot_diff_wsd_clim(
     
     if extents == None:
         extents = cf.regions[region]["extents"]
+    
+    if cfv_data:
+        cfv_used = cfv_data
+    else:
+        cfv_used = cf.calc_funcs_ver
+            
+    if extents_input:
+        extents_used = "{}W{}E{}S{}N".format(extents[0], extents[1], 
+                                             extents[2], extents[3])
+    else:
+        extents_used = region
+
+    path_output = (f"../data_final/wsd_clim/{plot_funcs_ver}_{cfv_used}_" +
+                   f"diff_{extents_used}_{period1_start}_{period1_end}_" +
+                   f"{period2_start}_{period2_end}_{months_subset_str}_wsd.png")
+    
+    if Path(path_output).exists():
+        msg_exist = ("WARNING: plot file already exists (and was " +
+                     f"not overwritten): {path_output}")
+        logging.warning(msg_exist)
+        print(msg_exist)
+        if func_1up in funcs_create_all_plot:
+            return None
     
     figrows = 5
     figcols = 2
@@ -2509,38 +2555,17 @@ def plot_diff_wsd_clim(
     
     fig.tight_layout()
     
-    if output == True:
-        if cfv_data:
-            cfv_used = cfv_data
-        else:
-            cfv_used = cf.calc_funcs_ver
-            
-        if extents_input:
-            extents_used = "{}W{}E{}S{}N".format(extents[0], extents[1], 
-                                                 extents[2], extents[3])
-        else:
-            extents_used = region
-            
-        path_output = (f"../data_final/wsd_clim/{plot_funcs_ver}_{cfv_used}_" +
-                       f"diff_{extents_used}_{period1_start}_{period1_end}_" +
-                       f"{period2_start}_{period2_end}_{months_subset_str}_wsd.png")
+    if (output == True) & (Path(path_output).exists() == False):
         path_output_dir = "/".join(path_output.split("/")[:-1])
         Path(path_output_dir).mkdir(parents=True, exist_ok=True)
-        
-        if Path(path_output).exists():
-            msg_exist = ("WARNING: plot file already exists (and was " +
-                         f"not overwritten): {path_output}")
-            logging.warning(msg_exist)
-            print(msg_exist)
-        else:
-            plt.savefig(path_output, metadata=get_plot_metadata(
-                time_exec, func_cur, args_cur, args_cur_values)
-                       )
-            msg_create = f"CREATED: plot file: {path_output}"
-            logging.info(msg_create)
-            print(msg_create)
+        plt.savefig(path_output, metadata=get_plot_metadata(time_exec, func_cur, 
+                                                            args_cur, args_cur_values))
+        msg_create = f"CREATED: plot file: {path_output}"
+        logging.info(msg_create)
+        print(msg_create)
     
-    plt.show()
+    if func_1up not in funcs_create_all_plot:
+        plt.show()
     fig.clear()
     plt.close(fig)
     
@@ -2580,6 +2605,32 @@ def plot_comp_mdp_clim_stats_given_var_or_dvar(
     
     if extents == None:
         extents = cf.regions[region]["extents"]
+    
+    if cfv_data:
+        cfv_used = cfv_data
+    else:
+        cfv_used = cf.calc_funcs_ver
+            
+    if extents_input:
+        extents_used = "{}W{}E{}S{}N".format(extents[0], extents[1], 
+                                             extents[2], extents[3])
+    else:
+        extents_used = region
+
+    path_output = (f"../data_final/mdp_clim_stats_given_var_or_dvar/" +
+                   f"{plot_funcs_ver}_{cfv_used}_comp_{extents_used}_" +
+                   f"{period1_start}_{period1_end}_{period2_start}_" +
+                   f"{period2_end}_{months_subset_str}_stats_{var_or_dvar}_" +
+                   f"perc-{mask_perc_quantile}_mask1-{mask_period1}_" +
+                   f"mask2-{mask_period2}.png")
+    
+    if Path(path_output).exists():
+        msg_exist = ("WARNING: plot file already exists (and was " +
+                     f"not overwritten): {path_output}")
+        logging.warning(msg_exist)
+        print(msg_exist)
+        if func_1up in funcs_create_all_plot:
+            return None
     
     figrows = 8
     figcols = 3
@@ -2641,41 +2692,17 @@ def plot_comp_mdp_clim_stats_given_var_or_dvar(
     
     fig.tight_layout()
     
-    if output == True:
-        if cfv_data:
-            cfv_used = cfv_data
-        else:
-            cfv_used = cf.calc_funcs_ver
-            
-        if extents_input:
-            extents_used = "{}W{}E{}S{}N".format(extents[0], extents[1], 
-                                                 extents[2], extents[3])
-        else:
-            extents_used = region
-            
-        path_output = (f"../data_final/mdp_clim_stats_given_var_or_dvar/" +
-                       f"{plot_funcs_ver}_{cfv_used}_comp_{extents_used}_" +
-                       f"{period1_start}_{period1_end}_{period2_start}_" +
-                       f"{period2_end}_{months_subset_str}_stats_{var_or_dvar}_" +
-                       f"perc-{mask_perc_quantile}_mask1-{mask_period1}_" +
-                       f"mask2-{mask_period2}.png")
+    if (output == True) & (Path(path_output).exists() == False):
         path_output_dir = "/".join(path_output.split("/")[:-1])
         Path(path_output_dir).mkdir(parents=True, exist_ok=True)
-        
-        if Path(path_output).exists():
-            msg_exist = ("WARNING: plot file already exists (and was " +
-                         f"not overwritten): {path_output}")
-            logging.warning(msg_exist)
-            print(msg_exist)
-        else:
-            plt.savefig(path_output, metadata=get_plot_metadata(
-                time_exec, func_cur, args_cur, args_cur_values)
-                       )
-            msg_create = f"CREATED: plot file: {path_output}"
-            logging.info(msg_create)
-            print(msg_create)
+        plt.savefig(path_output, metadata=get_plot_metadata(time_exec, func_cur, 
+                                                            args_cur, args_cur_values))
+        msg_create = f"CREATED: plot file: {path_output}"
+        logging.info(msg_create)
+        print(msg_create)
     
-    plt.show()
+    if func_1up not in funcs_create_all_plot:
+        plt.show()
     fig.clear()
     plt.close(fig)
     
@@ -2716,6 +2743,33 @@ def plot_comp_mdp_clim_values_given_hour(
     
     if extents == None:
         extents = cf.regions[region]["extents"]
+    
+    if cfv_data:
+        cfv_used = cfv_data
+    else:
+        cfv_used = cf.calc_funcs_ver
+            
+    if extents_input:
+        extents_used = "{}W{}E{}S{}N".format(extents[0], extents[1], 
+                                             extents[2], extents[3])
+    else:
+        extents_used = region
+
+    path_output = (f"../data_final/mdp_clim_values_given_hour/" +
+                   f"{plot_funcs_ver}_{cfv_used}_comp_{extents_used}_" +
+                   f"{period1_start}_{period1_end}_{period2_start}_" +
+                   f"{period2_end}_{months_subset_str}_values_" +
+                   f"{var_or_dvar_layer}_{var_or_dvar_type}_{hour}_" +
+                   f"perc-{mask_perc_quantile}_mask1-{mask_period1}_" +
+                   f"mask2-{mask_period2}.png")
+    
+    if Path(path_output).exists():
+        msg_exist = ("WARNING: plot file already exists (and was " +
+                     f"not overwritten): {path_output}")
+        logging.warning(msg_exist)
+        print(msg_exist)
+        if func_1up in funcs_create_all_plot:
+            return None
     
     figrows = 8
     figcols = 3
@@ -2778,42 +2832,17 @@ def plot_comp_mdp_clim_values_given_hour(
     
     fig.tight_layout()
     
-    if output == True:
-        if cfv_data:
-            cfv_used = cfv_data
-        else:
-            cfv_used = cf.calc_funcs_ver
-            
-        if extents_input:
-            extents_used = "{}W{}E{}S{}N".format(extents[0], extents[1], 
-                                                 extents[2], extents[3])
-        else:
-            extents_used = region
-            
-        path_output = (f"../data_final/mdp_clim_values_given_hour/" +
-                       f"{plot_funcs_ver}_{cfv_used}_comp_{extents_used}_" +
-                       f"{period1_start}_{period1_end}_{period2_start}_" +
-                       f"{period2_end}_{months_subset_str}_values_" +
-                       f"{var_or_dvar_layer}_{var_or_dvar_type}_{hour}_" +
-                       f"perc-{mask_perc_quantile}_mask1-{mask_period1}_" +
-                       f"mask2-{mask_period2}.png")
+    if (output == True) & (Path(path_output).exists() == False):
         path_output_dir = "/".join(path_output.split("/")[:-1])
         Path(path_output_dir).mkdir(parents=True, exist_ok=True)
-        
-        if Path(path_output).exists():
-            msg_exist = ("WARNING: plot file already exists (and was " +
-                         f"not overwritten): {path_output}")
-            logging.warning(msg_exist)
-            print(msg_exist)
-        else:
-            plt.savefig(path_output, metadata=get_plot_metadata(
-                time_exec, func_cur, args_cur, args_cur_values)
-                       )
-            msg_create = f"CREATED: plot file: {path_output}"
-            logging.info(msg_create)
-            print(msg_create)
+        plt.savefig(path_output, metadata=get_plot_metadata(time_exec, func_cur, 
+                                                            args_cur, args_cur_values))
+        msg_create = f"CREATED: plot file: {path_output}"
+        logging.info(msg_create)
+        print(msg_create)
     
-    plt.show()
+    if func_1up not in funcs_create_all_plot:
+        plt.show()
     fig.clear()
     plt.close(fig)
     
@@ -2853,6 +2882,32 @@ def plot_comp_mdp_clim_values_given_var_or_dvar(
     
     if extents == None:
         extents = cf.regions[region]["extents"]
+    
+    if cfv_data:
+        cfv_used = cfv_data
+    else:
+        cfv_used = cf.calc_funcs_ver
+            
+    if extents_input:
+        extents_used = "{}W{}E{}S{}N".format(extents[0], extents[1], 
+                                             extents[2], extents[3])
+    else:
+        extents_used = region
+
+    path_output = (f"../data_final/mdp_clim_values_given_var_or_dvar/" +
+                   f"{plot_funcs_ver}_{cfv_used}_comp_{extents_used}_" +
+                   f"{period1_start}_{period1_end}_{period2_start}_" +
+                   f"{period2_end}_{months_subset_str}_values_" +
+                   f"{var_or_dvar}_{time}_perc-{mask_perc_quantile}_" +
+                   f"mask1-{mask_period1}_mask2-{mask_period2}.png")
+    
+    if Path(path_output).exists():
+        msg_exist = ("WARNING: plot file already exists (and was " +
+                     f"not overwritten): {path_output}")
+        logging.warning(msg_exist)
+        print(msg_exist)
+        if func_1up in funcs_create_all_plot:
+            return None
     
     figrows = 8
     figcols = 3
@@ -3018,41 +3073,17 @@ def plot_comp_mdp_clim_values_given_var_or_dvar(
     
     fig.tight_layout()
     
-    if output == True:
-        if cfv_data:
-            cfv_used = cfv_data
-        else:
-            cfv_used = cf.calc_funcs_ver
-            
-        if extents_input:
-            extents_used = "{}W{}E{}S{}N".format(extents[0], extents[1], 
-                                                 extents[2], extents[3])
-        else:
-            extents_used = region
-            
-        path_output = (f"../data_final/mdp_clim_values_given_var_or_dvar/" +
-                       f"{plot_funcs_ver}_{cfv_used}_comp_{extents_used}_" +
-                       f"{period1_start}_{period1_end}_{period2_start}_" +
-                       f"{period2_end}_{months_subset_str}_values_" +
-                       f"{var_or_dvar}_{time}_perc-{mask_perc_quantile}_" +
-                       f"mask1-{mask_period1}_mask2-{mask_period2}.png")
+    if (output == True) & (Path(path_output).exists() == False):
         path_output_dir = "/".join(path_output.split("/")[:-1])
         Path(path_output_dir).mkdir(parents=True, exist_ok=True)
-        
-        if Path(path_output).exists():
-            msg_exist = ("WARNING: plot file already exists (and was " +
-                         f"not overwritten): {path_output}")
-            logging.warning(msg_exist)
-            print(msg_exist)
-        else:
-            plt.savefig(path_output, metadata=get_plot_metadata(
-                time_exec, func_cur, args_cur, args_cur_values)
-                       )
-            msg_create = f"CREATED: plot file: {path_output}"
-            logging.info(msg_create)
-            print(msg_create)
+        plt.savefig(path_output, metadata=get_plot_metadata(time_exec, func_cur, 
+                                                            args_cur, args_cur_values))
+        msg_create = f"CREATED: plot file: {path_output}"
+        logging.info(msg_create)
+        print(msg_create)
     
-    plt.show()
+    if func_1up not in funcs_create_all_plot:
+        plt.show()
     fig.clear()
     plt.close(fig)
     
@@ -3090,6 +3121,31 @@ def plot_comp_wsd_clim(
     
     if extents == None:
         extents = cf.regions[region]["extents"]
+    
+    if cfv_data:
+        cfv_used = cfv_data
+    else:
+        cfv_used = cf.calc_funcs_ver
+            
+    if extents_input:
+        extents_used = "{}W{}E{}S{}N".format(extents[0], extents[1], 
+                                             extents[2], extents[3])
+    else:
+        extents_used = region
+
+    path_output = (f"../data_final/wsd_clim/{plot_funcs_ver}_{cfv_used}_" +
+                   f"comp_{extents_used}_{period1_start}_{period1_end}_" +
+                   f"{period2_start}_{period2_end}_{months_subset_str}_wsd_" +
+                   f"perc-{mask_perc_quantile}_mask1-{mask_period1}_" +
+                   f"mask2-{mask_period2}.png")
+    
+    if Path(path_output).exists():
+        msg_exist = ("WARNING: plot file already exists (and was " +
+                     f"not overwritten): {path_output}")
+        logging.warning(msg_exist)
+        print(msg_exist)
+        if func_1up in funcs_create_all_plot:
+            return None
     
     figrows = 8
     figcols = 3
@@ -3151,41 +3207,215 @@ def plot_comp_wsd_clim(
     
     fig.tight_layout()
     
-    if output == True:
-        if cfv_data:
-            cfv_used = cfv_data
-        else:
-            cfv_used = cf.calc_funcs_ver
-            
-        if extents_input:
-            extents_used = "{}W{}E{}S{}N".format(extents[0], extents[1], 
-                                                 extents[2], extents[3])
-        else:
-            extents_used = region
-            
-        path_output = (f"../data_final/wsd_clim/{plot_funcs_ver}_{cfv_used}_" +
-                       f"comp_{extents_used}_{period1_start}_{period1_end}_" +
-                       f"{period2_start}_{period2_end}_{months_subset_str}_wsd_" +
-                       f"perc-{mask_perc_quantile}_mask1-{mask_period1}_" +
-                       f"mask2-{mask_period2}.png")
+    if (output == True) & (Path(path_output).exists() == False):
         path_output_dir = "/".join(path_output.split("/")[:-1])
         Path(path_output_dir).mkdir(parents=True, exist_ok=True)
-        
-        if Path(path_output).exists():
-            msg_exist = ("WARNING: plot file already exists (and was " +
-                         f"not overwritten): {path_output}")
-            logging.warning(msg_exist)
-            print(msg_exist)
-        else:
-            plt.savefig(path_output, metadata=get_plot_metadata(
-                time_exec, func_cur, args_cur, args_cur_values)
-                       )
-            msg_create = f"CREATED: plot file: {path_output}"
-            logging.info(msg_create)
-            print(msg_create)
+        plt.savefig(path_output, metadata=get_plot_metadata(time_exec, func_cur, 
+                                                            args_cur, args_cur_values))
+        msg_create = f"CREATED: plot file: {path_output}"
+        logging.info(msg_create)
+        print(msg_create)
     
-    plt.show()
+    if func_1up not in funcs_create_all_plot:
+        plt.show()
     fig.clear()
     plt.close(fig)
+    
+    cf.remove_handlers_if_directly_executed(func_1up)
+
+
+# In[ ]:
+
+
+def create_all_possible_calc_data_files(
+    region, period_start, period_end, months_subset, glass_source_pref,  
+    extents=None, cfv_data=None
+):
+    
+    time_exec = datetime.today()
+    func_cur = inspect.stack()[0][3]
+    func_1up = inspect.stack()[1][3]
+    frame_cur = inspect.currentframe()
+    args_cur, _, _, args_cur_values = inspect.getargvalues(frame_cur)
+    cf.create_log_if_directly_executed(time_exec, func_cur, func_1up, 
+                                       args_cur, args_cur_values)
+    
+    cf.check_args_for_none(func_cur, args_cur, args_cur_values)
+    cf.check_args(region=region, period_start=period_start, period_end=period_end, 
+                  months_subset=months_subset, glass_source_pref=glass_source_pref, 
+                  extents=extents, cfv_data=cfv_data)
+    
+    for var_or_dvar in cf.vars_and_dvars_era5_all:
+        plot_mdp_clim_stats_given_var_or_dvar(
+            region=region, period_start=period_start, period_end=period_end, 
+            months_subset=months_subset, glass_source_pref=glass_source_pref, 
+            var_or_dvar=var_or_dvar, extents=extents, cfv_data=cfv_data, output=True
+        )
+    
+    for hour in cf.hours_all:
+        for var_or_dvar_layer in cf.var_or_dvar_layers:
+            for var_or_dvar_type in cf.var_or_dvar_types:
+                plot_mdp_clim_values_given_hour(
+                    region=region, period_start=period_start, period_end=period_end, 
+                    months_subset=months_subset, glass_source_pref=glass_source_pref, 
+                    hour=hour, var_or_dvar_layer=var_or_dvar_layer, 
+                    var_or_dvar_type=var_or_dvar_type, extents=extents, 
+                    cfv_data=cfv_data, output=True
+                )
+    
+    for var_or_dvar in cf.vars_and_dvars_era5_all:
+        for time in cf.times_all[:4]:
+            plot_mdp_clim_values_given_var_or_dvar(
+                region=region, period_start=period_start, period_end=period_end, 
+                months_subset=months_subset, glass_source_pref=glass_source_pref, 
+                var_or_dvar=var_or_dvar, time=time, extents=extents, 
+                cfv_data=cfv_data, output=True
+            )
+    
+    plot_wsd_clim(
+        region=region, period_start=period_start, period_end=period_end, 
+        months_subset=months_subset, glass_source_pref=glass_source_pref,  
+        extents=extents, cfv_data=cfv_data, output=True
+    )
+    
+    cf.remove_handlers_if_directly_executed(func_1up)
+
+
+# In[ ]:
+
+
+def create_all_possible_diff_data_files(
+    region, period1_start, period1_end, period2_start, period2_end, months_subset, 
+    glass_source_pref, perc=False, mask_perc_quantile=mask_perc_quantile_default, 
+    extents=None, cfv_data=None
+):
+    
+    time_exec = datetime.today()
+    func_cur = inspect.stack()[0][3]
+    func_1up = inspect.stack()[1][3]
+    frame_cur = inspect.currentframe()
+    args_cur, _, _, args_cur_values = inspect.getargvalues(frame_cur)
+    cf.create_log_if_directly_executed(time_exec, func_cur, func_1up, 
+                                       args_cur, args_cur_values)
+    
+    cf.check_args_for_none(func_cur, args_cur, args_cur_values)
+    cf.check_args(region=region, period1_start=period1_start, period1_end=period1_end,
+                  period2_start=period2_start, period2_end=period2_end, 
+                  months_subset=months_subset, glass_source_pref=glass_source_pref, 
+                  perc=perc, mask_perc_quantile=mask_perc_quantile, extents=extents, 
+                  cfv_data=cfv_data)
+    
+    for var_or_dvar in cf.vars_and_dvars_era5_all:
+        plot_diff_mdp_clim_stats_given_var_or_dvar(
+            region=region, period1_start=period1_start, period1_end=period1_end, 
+            period2_start=period2_start, period2_end=period2_end,
+            months_subset=months_subset, glass_source_pref=glass_source_pref, 
+            var_or_dvar=var_or_dvar, perc=perc, mask_perc_quantile=mask_perc_quantile, 
+            extents=extents, cfv_data=cfv_data, output=True
+        )
+    
+    for hour in cf.hours_all:
+        for var_or_dvar_layer in cf.var_or_dvar_layers:
+            for var_or_dvar_type in cf.var_or_dvar_types:
+                plot_diff_mdp_clim_values_given_hour(
+                    region=region, period1_start=period1_start, period1_end=period1_end, 
+                    period2_start=period2_start, period2_end=period2_end,
+                    months_subset=months_subset, glass_source_pref=glass_source_pref, 
+                    hour=hour, var_or_dvar_layer=var_or_dvar_layer, 
+                    var_or_dvar_type=var_or_dvar_type, perc=perc, 
+                    mask_perc_quantile=mask_perc_quantile, extents=extents, 
+                    cfv_data=cfv_data, output=True
+                )
+    
+    for var_or_dvar in cf.vars_and_dvars_era5_all:
+        for time in cf.times_all[:4]:
+            plot_diff_mdp_clim_values_given_var_or_dvar(
+                region=region, period1_start=period1_start, period1_end=period1_end, 
+                period2_start=period2_start, period2_end=period2_end,
+                months_subset=months_subset, glass_source_pref=glass_source_pref, 
+                var_or_dvar=var_or_dvar, time=time, perc=perc, 
+                mask_perc_quantile=mask_perc_quantile, extents=extents,
+                cfv_data=cfv_data, output=True
+            )
+    
+    plot_diff_wsd_clim(
+        region=region, period1_start=period1_start, period1_end=period1_end, 
+        period2_start=period2_start, period2_end=period2_end, 
+        months_subset=months_subset, glass_source_pref=glass_source_pref,  
+        perc=perc, mask_perc_quantile=mask_perc_quantile, extents=extents, 
+        cfv_data=cfv_data, output=True
+    )
+    
+    cf.remove_handlers_if_directly_executed(func_1up)
+
+
+# In[ ]:
+
+
+def create_all_possible_comp_data_files(
+    region, period1_start, period1_end, period2_start, period2_end, months_subset, 
+    glass_source_pref, perc=False, mask_perc_quantile=mask_perc_quantile_default, 
+    mask_period1=None, mask_period2=None, extents=None, cfv_data=None
+):
+    
+    time_exec = datetime.today()
+    func_cur = inspect.stack()[0][3]
+    func_1up = inspect.stack()[1][3]
+    frame_cur = inspect.currentframe()
+    args_cur, _, _, args_cur_values = inspect.getargvalues(frame_cur)
+    cf.create_log_if_directly_executed(time_exec, func_cur, func_1up, 
+                                       args_cur, args_cur_values)
+    
+    cf.check_args_for_none(func_cur, args_cur, args_cur_values)
+    cf.check_args(region=region, period1_start=period1_start, period1_end=period1_end,
+                  period2_start=period2_start, period2_end=period2_end, 
+                  months_subset=months_subset, glass_source_pref=glass_source_pref, 
+                  perc=perc, mask_perc_quantile=mask_perc_quantile,
+                  mask_period1=mask_period1, mask_period2=mask_period2,
+                  extents=extents, cfv_data=cfv_data, output=output)
+    
+    for var_or_dvar in cf.vars_and_dvars_era5_all:
+        plot_comp_mdp_clim_stats_given_var_or_dvar(
+            region=region, period1_start=period1_start, period1_end=period1_end, 
+            period2_start=period2_start, period2_end=period2_end,
+            months_subset=months_subset, glass_source_pref=glass_source_pref, 
+            var_or_dvar=var_or_dvar, perc=perc, mask_perc_quantile=mask_perc_quantile, 
+            mask_period1=mask_period1, mask_period2=mask_period2, extents=extents, 
+            cfv_data=cfv_data, output=True
+        )
+    
+    for hour in cf.hours_all:
+        for var_or_dvar_layer in cf.var_or_dvar_layers:
+            for var_or_dvar_type in cf.var_or_dvar_types:
+                plot_comp_mdp_clim_values_given_hour(
+                    region=region, period1_start=period1_start, period1_end=period1_end, 
+                    period2_start=period2_start, period2_end=period2_end,
+                    months_subset=months_subset, glass_source_pref=glass_source_pref, 
+                    hour=hour, var_or_dvar_layer=var_or_dvar_layer, 
+                    var_or_dvar_type=var_or_dvar_type, perc=perc, 
+                    mask_perc_quantile=mask_perc_quantile, mask_period1=mask_period1, 
+                    mask_period2=mask_period2, extents=extents, cfv_data=cfv_data, 
+                    output=True
+                )
+    
+    for var_or_dvar in cf.vars_and_dvars_era5_all:
+        for time in cf.times_all[:4]:
+            plot_comp_mdp_clim_values_given_var_or_dvar(
+                region=region, period1_start=period1_start, period1_end=period1_end, 
+                period2_start=period2_start, period2_end=period2_end,
+                months_subset=months_subset, glass_source_pref=glass_source_pref, 
+                var_or_dvar=var_or_dvar, time=time, perc=perc, 
+                mask_perc_quantile=mask_perc_quantile, mask_period1=mask_period1, 
+                mask_period2=mask_period2, extents=extents, cfv_data=cfv_data, 
+                output=True
+            )
+    
+    plot_comp_wsd_clim(
+        region=region, period1_start=period1_start, period1_end=period1_end, 
+        period2_start=period2_start, period2_end=period2_end, 
+        months_subset=months_subset, glass_source_pref=glass_source_pref,  
+        perc=perc, mask_perc_quantile=mask_perc_quantile, mask_period1=mask_period1, 
+        mask_period2=mask_period2, extents=extents, cfv_data=cfv_data, output=True
+    )
     
     cf.remove_handlers_if_directly_executed(func_1up)
