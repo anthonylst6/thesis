@@ -11,6 +11,7 @@ import inspect
 import copy
 import math
 import pandas as pd
+import geopandas as gpd
 import numpy as np
 import xarray as xr
 import metpy.calc as mpcalc
@@ -2392,6 +2393,46 @@ def get_path_for_calc_glass_rolling(region, year_start, year_end, months_subset,
 # In[ ]:
 
 
+def get_path_for_sbfwa_def():
+    
+    """
+    Obtain output path for proc_sbfwa_def function.
+            
+    Returns:
+        path_output_sbfwa (str): Output path for results from proc_sbfwa_def.
+    """
+    
+    time_exec = datetime.today()
+    func_cur = inspect.stack()[0][3]
+    func_1up = inspect.stack()[1][3]
+    frame_cur = inspect.currentframe()
+    args_cur, _, _, args_cur_values = inspect.getargvalues(frame_cur)
+    create_log_if_directly_executed(time_exec, func_cur, func_1up, 
+                                    args_cur, args_cur_values)
+    
+    if (func_1up == "<cell line: 1>") | (func_1up == "<module>"):
+        logging.debug(f"Executing: {func_cur} to obtain proc_sbfwa_def output path.")
+    else:
+        logging.debug(f"Executing: {func_cur} to obtain proc_sbfwa_def output path " +
+                      f"for use in {func_1up}.")
+        
+    # Obtain output path.
+    
+    path_output_sbfwa = (f"../data_processed/sbfwa_def/{calc_funcs_ver}_" +
+                         "proc_wa_sbfwa-def.gpkg")
+    
+    if (func_1up == "<cell line: 1>") | (func_1up == "<module>"):
+        logging.info(f"Obtained: proc_sbfwa_def output path.")
+    else:
+        logging.info(f"Obtained: proc_sbfwa_def output path for use in {func_1up}.")
+    
+    remove_handlers_if_directly_executed(func_1up)
+    return path_output_sbfwa
+
+
+# In[ ]:
+
+
 ## Main calculation functions
 
 def calc_glass_mean_clim(region, period_start, period_end, months_subset, 
@@ -3258,6 +3299,9 @@ def calc_era5_wsd_clim(region, period_start, period_end, months_subset,
         logging.debug(f"Preprocessing: file for use in {func_cur}: {file_name}.")
         ds = (regrid_era5(ds=ds)[["u10", "v10", "u100", "v100"]]
               .sel(time = ds.time.dt.month.isin(months_subset))
+              # The downloaded ERA5 dataset is not sorted in time order (which
+              # is a necessity for open_mfdataset, so we sort first over here.
+              .sortby("time")
              )
         return ds
     
@@ -3539,8 +3583,7 @@ def calc_era5_orog():
     land surface using ERA5 data.
                         
     Returns:
-        ../data_processed/era5_orog_slope/{calc_funcs_ver}_calc_
-        global_static_orog.nc:
+        ../data_processed/era5_orog/{calc_funcs_ver}_calc_global_static_orog.nc:
             Output netcdf4 file in data_processed folder containing the elevation and 
             slope of sub-gridscale orography for the global land surface. 
             {calc_funcs_ver} is the version of the calc_funcs script being used.
@@ -3898,6 +3941,86 @@ def calc_glass_rolling_avg_of_annual_diff(region, year_start, year_end, months_s
     # Create output file in data_processed folder.
     
     create_output_data_file(ds_roll_diff, path_output_glass_roll, func_1up)
+    remove_handlers_if_directly_executed(func_1up)
+
+
+# In[ ]:
+
+
+def proc_sbfwa_def():
+    
+    """
+    Process the geopackage file which outlines the definition for the
+    State Boundary Fence of Western Australia (SBFWA).
+                        
+    Returns:
+        ../data_processed/sbfwa_def/{calc_funcs_ver}_proc_wa_sbfwa-def.gpkg
+            Output geopackage file in data_processed folder containing the processed 
+            geospatial data which defines the SBFWA. {calc_funcs_ver} is the version 
+            of the calc_funcs script being used.
+    
+    This function merely rearranges the columns of the raw geopackage data file by 
+    setting the index to be the object_id parameter. This does not change any content in 
+    itself but is done so as to retain consistency in the design choice that functions 
+    from the plot_funcs script should only use data from the data_processed folder. The 
+    processing uses geopackage data from the data_raw folder as input, then outputs the 
+    result also as a geopackage data file into the data_processed folder.
+    """
+    
+    time_exec = datetime.today()
+    func_cur = inspect.stack()[0][3]
+    func_1up = inspect.stack()[1][3]
+    frame_cur = inspect.currentframe()
+    args_cur, _, _, args_cur_values = inspect.getargvalues(frame_cur)
+    create_log_if_directly_executed(time_exec, func_cur, func_1up, 
+                                    args_cur, args_cur_values)
+    
+    if (func_1up == "<cell line: 1>") | (func_1up == "<module>"):
+        logging.info(f"Executing: {func_cur} to obtain the State Boundary Fence of " +
+                     "Western Australia's geospatial definitions.")
+    else:
+        logging.info(f"Executing: {func_cur} to obtain the State Boundary Fence of " +
+                     f"Western Australia's geospatial definitions for use in {func_1up}.")
+    
+    # Create paths, open raw datasets, process data.
+    
+    path_output = get_path_for_sbfwa_def()
+    terminate_if_file_exists(path_output, func_cur, func_1up)
+    
+    path_static = ("../data_raw/wa_sbfwa_static/" +
+                   "State_Barrier_Fence_DPIRD_025_WA_GDA2020_Public.gpkg")
+    if Path(path_static).exists():
+        msg_exist = f"Opening: existing file for use in {func_cur}: {path_static}."
+        logging.info(msg_exist)
+        print(msg_exist)
+        gdf_sbfwa = gpd.read_file(path_static)
+    else:
+        msg_miss = (f"TERMINATED: file could not be found: {path_static}. This could " +
+                    "be because the data_download.ipynb notebook was not run properly. " +
+                    "Alternatively, the user may have changed some files in this folder.")
+        logging.error(msg_miss)
+        print(msg_miss)
+        remove_handlers_if_directly_executed(func_1up)
+        return None
+    
+    gdf_sbfwa = gdf_sbfwa.set_index("object_id")
+    
+    # Create output file in data_processed folder.
+    
+    logging.info(f"Creating: file: {path_output}.")
+    path_output_dir = "/".join(path_output.split("/")[:-1])
+    Path(path_output_dir).mkdir(parents=True, exist_ok=True)
+    gdf_sbfwa.to_file(path_output, driver="GPKG")
+    
+    if (func_1up == "<cell line: 1>") | (func_1up == "<module>"):
+        msg_cre_cur = f"CREATED: file: {path_output}."
+        logging.info(msg_cre_cur)
+        print(msg_cre_cur)
+    else:
+        msg_cre_1up = f"CREATED: file for use in {func_1up}: {path_output}."
+        logging.info(msg_cre_1up)
+        print(msg_cre_1up)
+    
     remove_handlers_if_directly_executed(func_1up)
 
 

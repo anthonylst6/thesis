@@ -4,9 +4,9 @@
 # # Setup
 # 
 # ## Note:
-# - Download of ERA5 data below will require around 70 GB of storage, and may take several days due to queueing in the ECMWF Climate Data Store (CDS)
+# - Download of ERA5 data below will require around 80 GB of storage (plus another 330 GB if global analysis is desired), and may take several days due to queueing in the ECMWF Climate Data Store (CDS)
 # - Download of GLASS data will require around 30 GB of storage
-# - So a total of around 100 GB of storage will be required
+# - So a total of around 100 GB of storage will be required (plus another 330 GB if global analysis is desired)
 
 # In[ ]:
 
@@ -504,7 +504,7 @@ retrieve_glass_8_day("fapar", "avhrr", 2016, 2018, "2019358")
 
 # Create wa_sbf_static folder to download data into
 # (if it doesn't already exist)
-Path("../data_raw/wa_sbf_static").mkdir(parents=True, exist_ok=True)
+Path("../data_raw/wa_sbfwa_static").mkdir(parents=True, exist_ok=True)
 
 
 # ## NOAA Climate Indices

@@ -74,9 +74,9 @@ scale_quiver = 45
 title_width = 60
 mask_perc_quantile_default = 10
 eroe100_linthresh = 1e-20
-funcs_create_all_plot = ["create_all_possible_calc_data_files", 
-                         "create_all_possible_diff_data_files", 
-                         "create_all_possible_comp_data_files"]
+funcs_create_all_plot = ["create_all_possible_calc_plot_files", 
+                         "create_all_possible_diff_plot_files", 
+                         "create_all_possible_comp_plot_files"]
 
 
 # In[ ]:
@@ -522,10 +522,12 @@ def create_pcolormesh(da, extents=None, vmin=None, vmax=None, ax=None):
                            cbar_kwargs = {"label": ax_label}
                           )
     
-    sbfwa = gpd.read_file("../data_raw/wa_sbf_static/" +
-                          "State_Barrier_Fence_DPIRD_025_WA_GDA2020_Public.gpkg")
-    ax.add_geometries(sbf.geometry, crs=ccrs.PlateCarree(), facecolor='none', 
-                      edgecolor='k')
+    path_sbfwa = cf.get_path_for_sbfwa_def()
+    if Path(path_sbfwa).exists() == False:
+        cf.proc_sbfwa_def()
+    gdf_sbfwa = gpd.read_file(path_sbfwa)
+    ax.add_geometries(gdf_sbfwa.geometry, crs=ccrs.PlateCarree(), 
+                      facecolor='none', edgecolor='k')
     
     ax.set_title(da.attrs["full_name"])
     ax.add_feature(cfeature.COASTLINE)
@@ -639,6 +641,14 @@ def create_quiver(da_u, da_v, extents=None, vmin=None, vmax=None, ax=None):
                                         attrs_u["units"])
                                }
                   )
+    
+    path_sbfwa = cf.get_path_for_sbfwa_def()
+    if Path(path_sbfwa).exists() == False:
+        cf.proc_sbfwa_def()
+    gdf_sbfwa = gpd.read_file(path_sbfwa)
+    ax.add_geometries(gdf_sbfwa.geometry, crs=ccrs.PlateCarree(), 
+                      facecolor='none', edgecolor='k')
+    
     ax.set_title(attrs_u["full_name"])
     ax.add_feature(cfeature.COASTLINE)
     grid = ax.gridlines(draw_labels=True, x_inline=False, y_inline=False)
@@ -3227,7 +3237,7 @@ def plot_comp_wsd_clim(
 # In[ ]:
 
 
-def create_all_possible_calc_data_files(
+def create_all_possible_calc_plot_files(
     region, period_start, period_end, months_subset, glass_source_pref,  
     extents=None, cfv_data=None
 ):
@@ -3245,7 +3255,12 @@ def create_all_possible_calc_data_files(
                   months_subset=months_subset, glass_source_pref=glass_source_pref, 
                   extents=extents, cfv_data=cfv_data)
     
-    for var_or_dvar in cf.vars_and_dvars_era5_all:
+    vars_and_dvars = copy.deepcopy(cf.vars_and_dvars_era5_all)
+    if region == "global":
+        for var_or_dvar in ["ws10", "ws100", "dws10", "dws100"]:
+            vars_and_dvars.remove(var_or_dvar)
+    
+    for var_or_dvar in vars_and_dvars:
         plot_mdp_clim_stats_given_var_or_dvar(
             region=region, period_start=period_start, period_end=period_end, 
             months_subset=months_subset, glass_source_pref=glass_source_pref, 
@@ -3263,7 +3278,7 @@ def create_all_possible_calc_data_files(
                     cfv_data=cfv_data, output=True
                 )
     
-    for var_or_dvar in cf.vars_and_dvars_era5_all:
+    for var_or_dvar in vars_and_dvars:
         for time in cf.times_all[:4]:
             plot_mdp_clim_values_given_var_or_dvar(
                 region=region, period_start=period_start, period_end=period_end, 
@@ -3271,6 +3286,10 @@ def create_all_possible_calc_data_files(
                 var_or_dvar=var_or_dvar, time=time, extents=extents, 
                 cfv_data=cfv_data, output=True
             )
+    
+    if region == "global":
+        cf.remove_handlers_if_directly_executed(func_1up)
+        return None
     
     plot_wsd_clim(
         region=region, period_start=period_start, period_end=period_end, 
@@ -3284,7 +3303,7 @@ def create_all_possible_calc_data_files(
 # In[ ]:
 
 
-def create_all_possible_diff_data_files(
+def create_all_possible_diff_plot_files(
     region, period1_start, period1_end, period2_start, period2_end, months_subset, 
     glass_source_pref, perc=False, mask_perc_quantile=mask_perc_quantile_default, 
     extents=None, cfv_data=None
@@ -3305,7 +3324,12 @@ def create_all_possible_diff_data_files(
                   perc=perc, mask_perc_quantile=mask_perc_quantile, extents=extents, 
                   cfv_data=cfv_data)
     
-    for var_or_dvar in cf.vars_and_dvars_era5_all:
+    vars_and_dvars = copy.deepcopy(cf.vars_and_dvars_era5_all)
+    if region == "global":
+        for var_or_dvar in ["ws10", "ws100", "dws10", "dws100"]:
+            vars_and_dvars.remove(var_or_dvar)
+    
+    for var_or_dvar in vars_and_dvars:
         plot_diff_mdp_clim_stats_given_var_or_dvar(
             region=region, period1_start=period1_start, period1_end=period1_end, 
             period2_start=period2_start, period2_end=period2_end,
@@ -3327,7 +3351,7 @@ def create_all_possible_diff_data_files(
                     cfv_data=cfv_data, output=True
                 )
     
-    for var_or_dvar in cf.vars_and_dvars_era5_all:
+    for var_or_dvar in vars_and_dvars:
         for time in cf.times_all[:4]:
             plot_diff_mdp_clim_values_given_var_or_dvar(
                 region=region, period1_start=period1_start, period1_end=period1_end, 
@@ -3337,6 +3361,10 @@ def create_all_possible_diff_data_files(
                 mask_perc_quantile=mask_perc_quantile, extents=extents,
                 cfv_data=cfv_data, output=True
             )
+    
+    if region == "global":
+        cf.remove_handlers_if_directly_executed(func_1up)
+        return None
     
     plot_diff_wsd_clim(
         region=region, period1_start=period1_start, period1_end=period1_end, 
@@ -3352,7 +3380,7 @@ def create_all_possible_diff_data_files(
 # In[ ]:
 
 
-def create_all_possible_comp_data_files(
+def create_all_possible_comp_plot_files(
     region, period1_start, period1_end, period2_start, period2_end, months_subset, 
     glass_source_pref, perc=False, mask_perc_quantile=mask_perc_quantile_default, 
     mask_period1=None, mask_period2=None, extents=None, cfv_data=None
@@ -3372,9 +3400,14 @@ def create_all_possible_comp_data_files(
                   months_subset=months_subset, glass_source_pref=glass_source_pref, 
                   perc=perc, mask_perc_quantile=mask_perc_quantile,
                   mask_period1=mask_period1, mask_period2=mask_period2,
-                  extents=extents, cfv_data=cfv_data, output=output)
+                  extents=extents, cfv_data=cfv_data)
     
-    for var_or_dvar in cf.vars_and_dvars_era5_all:
+    vars_and_dvars = copy.deepcopy(cf.vars_and_dvars_era5_all)
+    if region == "global":
+        for var_or_dvar in ["ws10", "ws100", "dws10", "dws100"]:
+            vars_and_dvars.remove(var_or_dvar)
+    
+    for var_or_dvar in vars_and_dvars:
         plot_comp_mdp_clim_stats_given_var_or_dvar(
             region=region, period1_start=period1_start, period1_end=period1_end, 
             period2_start=period2_start, period2_end=period2_end,
@@ -3398,7 +3431,7 @@ def create_all_possible_comp_data_files(
                     output=True
                 )
     
-    for var_or_dvar in cf.vars_and_dvars_era5_all:
+    for var_or_dvar in vars_and_dvars:
         for time in cf.times_all[:4]:
             plot_comp_mdp_clim_values_given_var_or_dvar(
                 region=region, period1_start=period1_start, period1_end=period1_end, 
@@ -3409,6 +3442,10 @@ def create_all_possible_comp_data_files(
                 mask_period2=mask_period2, extents=extents, cfv_data=cfv_data, 
                 output=True
             )
+    
+    if region == "global":
+        cf.remove_handlers_if_directly_executed(func_1up)
+        return None
     
     plot_comp_wsd_clim(
         region=region, period1_start=period1_start, period1_end=period1_end, 
