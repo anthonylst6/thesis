@@ -513,6 +513,7 @@ Path("../data_raw/wa_sbfwa_static").mkdir(parents=True, exist_ok=True)
 # 
 # Indices used in this analysis are:
 # - NAO: NOAA/CPC NAO Index (NAOI)
+# - EPO: NOAA/CPC EPO Index (EPOI)
 # - NAM/AO: NOAA/CPC AO Index (AOI)
 # - SAM/AAO: NOAA/CPC AAO Index (AAOI)
 # - IOD: NOAA/PSL Dipole Mode Index (DMI)
@@ -525,6 +526,7 @@ Path("../data_raw/wa_sbfwa_static").mkdir(parents=True, exist_ok=True)
 # - CPC: Climate Prediction Center
 # - PSL: Physical Sciences Laboratory
 # - NAO: North Atlantic Oscillation
+# - EPO: Eastern Pacific Oscillation
 # - NAM/AO: Northern Annular Mode/Arctic Oscillation
 # - SAM/AAO: Southern Annular Mode/Antarctic Oscillation
 # - IOD: Indian Ocean Dipole
@@ -537,11 +539,12 @@ Path("../data_raw/wa_sbfwa_static").mkdir(parents=True, exist_ok=True)
 
 indices = {
     "naoi": {"output": "noaa-cpc_naoi", "url": "https://psl.noaa.gov/data/correlation/nao.data"},
+    "epoi": {"output": "noaa-cpc_epoi", "url": "https://psl.noaa.gov/data/correlation/epo.data"},
     "aoi": {"output": "noaa-cpc_aoi", "url": "https://psl.noaa.gov/data/correlation/ao.data"},
     "aaoi": {"output": "noaa-cpc_aaoi", "url": "https://psl.noaa.gov/data/correlation/aao.data"},
     "dmi": {"output": "noaa-psl_dmi", "url": "https://psl.noaa.gov/gcos_wgsp/Timeseries/Data/dmi.had.long.data"},
     "oni": {"output": "noaa-cpc_oni", "url": "https://psl.noaa.gov/data/correlation/oni.data"},
-    "pdo": {"output": "noaa-psl_pdoi", "url": "https://psl.noaa.gov/data/correlation/pdo.data"},
+    "pdoi": {"output": "noaa-psl_pdoi", "url": "https://psl.noaa.gov/data/correlation/pdo.data"},
     "amoi": {"output": "noaa-psl_amoi", "url": "https://psl.noaa.gov/data/correlation/amon.us.data"}
 }
 

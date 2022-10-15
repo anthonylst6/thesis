@@ -92,6 +92,7 @@ number_of_glass_files = {"lai": {"avhrr": 1748, "modis": 1005},
                         }
 number_of_era5_month_hour_files = 42
 number_of_era5_hour_files = 42
+number_of_noaa_static_files = 8
 
 # GLASS data sources
 glass_sources_all = ["avhrr", "modis"]
@@ -453,8 +454,42 @@ attrs_da = {
             "units": "$m$"},
     "ssgo": {"abbreviation": "SSGO",
              "full_name": "Slope of Sub-Gridscale Orography",
-             "units": "dimensionless"}
-
+             "units": "dimensionless"},
+    
+    # For proc_noaa_ind
+    "naoi": {"abbreviation": "NAOI",
+             "full_name": "North Atlantic Oscillation Index",
+             "units": "dimensionless",
+             "source": "NOAA-CPC"},
+    "epoi": {"abbreviation": "EPOI",
+             "full_name": "Eastern Pacific Oscillation Index",
+             "units": "dimensionless",
+             "source": "NOAA-CPC"},
+    "aoi": {"abbreviation": "AOI",
+            "full_name": "Arctic Oscillation Index",
+            "units": "dimensionless",
+            "source": "NOAA-CPC"},
+    "aaoi": {"abbreviation": "AAOI",
+             "full_name": "Antarctic Oscillation Index",
+             "units": "dimensionless",
+             "source": "NOAA-CPC"},
+    "dmi": {"abbreviation": "DMI",
+            "full_name": "Dipole Mode Index",
+            "units": "dimensionless",
+            "source": "NOAA-PSL"},
+    "oni": {"abbreviation": "ONI",
+            "full_name": "Oceanic Nino Index",
+            "units": "dimensionless",
+            "source": "NOAA-CPC"},
+    "pdoi": {"abbreviation": "PDOI",
+            "full_name": "Pacific Decadal Oscillation Index",
+            "units": "dimensionless",
+            "source": "NOAA-PSL"},
+    "amoi": {"abbreviation": "AMOI",
+            "full_name": "Atlantic Multidecadal Oscillation Index",
+            "units": "dimensionless",
+            "source": "NOAA-PSL"}
+    
 }
 
 # Attributes for coordinates within output datasets.
@@ -2393,6 +2428,46 @@ def get_path_for_calc_glass_rolling(region, year_start, year_end, months_subset,
 # In[ ]:
 
 
+def get_path_for_noaa_ind():
+    
+    """
+    Obtain output path for proc_noaa_ind function.
+            
+    Returns:
+        path_output_noaa (str): Output path for results from proc_noaa_ind.
+    """
+    
+    time_exec = datetime.today()
+    func_cur = inspect.stack()[0][3]
+    func_1up = inspect.stack()[1][3]
+    frame_cur = inspect.currentframe()
+    args_cur, _, _, args_cur_values = inspect.getargvalues(frame_cur)
+    create_log_if_directly_executed(time_exec, func_cur, func_1up, 
+                                    args_cur, args_cur_values)
+    
+    if (func_1up == "<cell line: 1>") | (func_1up == "<module>"):
+        logging.debug(f"Executing: {func_cur} to obtain proc_noaa_ind output path.")
+    else:
+        logging.debug(f"Executing: {func_cur} to obtain proc_noaa_ind output path " +
+                      f"for use in {func_1up}.")
+        
+    # Obtain output path.
+    
+    path_output_noaa = (f"../data_processed/noaa_ind/{calc_funcs_ver}_" +
+                         "proc_global_noaa-ind.nc")
+    
+    if (func_1up == "<cell line: 1>") | (func_1up == "<module>"):
+        logging.info(f"Obtained: proc_noaa_ind output path.")
+    else:
+        logging.info(f"Obtained: proc_noaa_ind output path for use in {func_1up}.")
+    
+    remove_handlers_if_directly_executed(func_1up)
+    return path_output_noaa
+
+
+# In[ ]:
+
+
 def get_path_for_sbfwa_def():
     
     """
@@ -3329,7 +3404,7 @@ def calc_era5_wsd_clim(region, period_start, period_end, months_subset,
     
     logging.debug(f"Opening: ERA5 atm files from data_raw folder for use in {func_cur}.")
     ds_era5_hour = (xr.open_mfdataset(files_era5_hour_filtered, engine = "netcdf4",
-                                     preprocess=preprocess_era5_hour, parallel = True)
+                                      preprocess=preprocess_era5_hour, parallel = True)
                     # We add an extra month to period_end here because period_end was
                     # specified as a month, and conversion into a datetime object
                     # defaults to the first (rather than last) day of that month. The
@@ -3947,6 +4022,96 @@ def calc_glass_rolling_avg_of_annual_diff(region, year_start, year_end, months_s
 # In[ ]:
 
 
+def proc_noaa_ind():
+    
+    """
+    Process the NOAA climate index files.
+                        
+    Returns:
+        ../data_processed/noaa_ind/{calc_funcs_ver}_proc_global_noaa-ind.nc:
+            Output netcdf4 file in data_processed folder containing the processed
+            NOAA climate indices. {calc_funcs_ver} is the version of the 
+            calc_funcs script being used.
+    
+    This function reads in the raw climate index files then processes them into a 
+    netcdf4file containing monthly values for all the indices. The processing uses 
+    text data from the data_raw folder as input, then outputs the result as a 
+    netcdf4 file into the data_processed folder.
+    """
+    
+    time_exec = datetime.today()
+    func_cur = inspect.stack()[0][3]
+    func_1up = inspect.stack()[1][3]
+    frame_cur = inspect.currentframe()
+    args_cur, _, _, args_cur_values = inspect.getargvalues(frame_cur)
+    create_log_if_directly_executed(time_exec, func_cur, func_1up, 
+                                    args_cur, args_cur_values)
+    
+    if (func_1up == "<cell line: 1>") | (func_1up == "<module>"):
+        logging.info(f"Executing: {func_cur} to process the raw NOAA climate index " +
+                     "files.")
+    else:
+        logging.info(f"Executing: {func_cur} to process the raw NOAA climate index " +
+                     f"files for use in {func_1up}.")
+    
+    # Create output path, open raw datasets, process data.
+    
+    path_output_noaa = get_path_for_noaa_ind()
+    terminate_if_file_exists(path_output_noaa, func_cur, func_1up)
+    
+    files_noaa = glob("../data_raw/global_noaa-climate-indices/*")
+    if len(files_noaa) != number_of_noaa_static_files:
+        msg_files = (
+            f"WARNING: Expected {number_of_noaa_static_files} files in " +
+            f"../data_raw/global_noaa-climate-indices/ but " +
+            f"got {len(files_noaa)}. This could be because the " + 
+            "data_download.ipynb notebook was not run properly. Or it could " +
+            "be that the user has selected a different number of indices to " +
+            "retrieve data for in the data_download.ipynb notebook as " +
+            "compared with the original analysis. Or it may be that the " +
+            "user has changed some files in this folder."
+        )
+        logging.warning(msg_files)
+        print(msg_files)
+        
+    datasets = []
+    for file in files_noaa:
+        index = file.split("_")[-1]
+        ds_index = (pd.read_csv(file, skiprows = 1, delim_whitespace = True, 
+                                header = None, names = 
+                                ["year", "Jan", "Feb", "Mar", "Apr", "May", 
+                                 "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"])
+                    .dropna()
+                    .melt(id_vars = "year", var_name = "month", value_name = index)
+                    .assign(time = lambda x: pd.to_datetime(x.month + "-" + x.year, 
+                                                            format = "%b-%Y"))
+                    .drop(columns = ["year", "month"])
+                    .astype({index: "float"})
+                    .replace([-9.9, -9.90, -99.9, -99.90, -99.99, -99.990, 
+                              -999, -999.000, -9999.000], np.nan)
+                    .set_index("time")
+                    .sort_index()
+                    .to_xarray()
+                   )
+        datasets.append(ds_index)
+    ds_noaa_ind = xr.merge(datasets)
+    
+    # Add attributes to each DataArray within Dataset.
+        
+    logging.info("Adding: attributes for each DataArray within output "+
+                 f"Dataset from {func_cur}.")
+    for da_name in [*ds_noaa_ind.keys()]:
+        ds_noaa_ind[da_name].attrs = copy.deepcopy(attrs_da[da_name])
+    
+    # Create output file in data_processed folder.
+    
+    create_output_data_file(ds_noaa_ind, path_output_noaa, func_1up)
+    remove_handlers_if_directly_executed(func_1up)
+
+
+# In[ ]:
+
+
 def proc_sbfwa_def():
     
     """
@@ -3954,7 +4119,7 @@ def proc_sbfwa_def():
     State Boundary Fence of Western Australia (SBFWA).
                         
     Returns:
-        ../data_processed/sbfwa_def/{calc_funcs_ver}_proc_wa_sbfwa-def.gpkg
+        ../data_processed/sbfwa_def/{calc_funcs_ver}_proc_wa_sbfwa-def.gpkg:
             Output geopackage file in data_processed folder containing the processed 
             geospatial data which defines the SBFWA. {calc_funcs_ver} is the version 
             of the calc_funcs script being used.
@@ -3984,8 +4149,8 @@ def proc_sbfwa_def():
     
     # Create paths, open raw datasets, process data.
     
-    path_output = get_path_for_sbfwa_def()
-    terminate_if_file_exists(path_output, func_cur, func_1up)
+    path_output_sbfwa = get_path_for_sbfwa_def()
+    terminate_if_file_exists(path_output_sbfwa, func_cur, func_1up)
     
     path_static = ("../data_raw/wa_sbfwa_static/" +
                    "State_Barrier_Fence_DPIRD_025_WA_GDA2020_Public.gpkg")
@@ -4007,17 +4172,17 @@ def proc_sbfwa_def():
     
     # Create output file in data_processed folder.
     
-    logging.info(f"Creating: file: {path_output}.")
-    path_output_dir = "/".join(path_output.split("/")[:-1])
-    Path(path_output_dir).mkdir(parents=True, exist_ok=True)
-    gdf_sbfwa.to_file(path_output, driver="GPKG")
+    logging.info(f"Creating: file: {path_output_sbfwa}.")
+    path_output_sbfwa_dir = "/".join(path_output_sbfwa.split("/")[:-1])
+    Path(path_output_sbfwa_dir).mkdir(parents=True, exist_ok=True)
+    gdf_sbfwa.to_file(path_output_sbfwa, driver="GPKG")
     
     if (func_1up == "<cell line: 1>") | (func_1up == "<module>"):
-        msg_cre_cur = f"CREATED: file: {path_output}."
+        msg_cre_cur = f"CREATED: file: {path_output_sbfwa}."
         logging.info(msg_cre_cur)
         print(msg_cre_cur)
     else:
-        msg_cre_1up = f"CREATED: file for use in {func_1up}: {path_output}."
+        msg_cre_1up = f"CREATED: file for use in {func_1up}: {path_output_sbfwa}."
         logging.info(msg_cre_1up)
         print(msg_cre_1up)
     
