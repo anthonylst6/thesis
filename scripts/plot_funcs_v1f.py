@@ -9,6 +9,7 @@ import xarray as xr
 import geopandas as gpd
 import matplotlib.pyplot as plt
 import matplotlib.colors as colors
+import matplotlib.dates as mdates
 import cartopy.crs as ccrs
 import cartopy.feature as cfeature
 import cmocean
@@ -20,6 +21,7 @@ import math
 from glob import glob
 from pathlib import Path
 from datetime import datetime
+from dateutil.relativedelta import relativedelta
 from textwrap import wrap
 
 
@@ -71,12 +73,107 @@ vars_pos = ["ws10", "ws100", "mslp", "t2",
             "blh", "fa", "cbh", "tcc", "ci"]
 figwidth_standard = 10
 scale_quiver = 45
-title_width = 60
+bar_width = 31
+title_width = figwidth_standard * 6
 mask_perc_quantile_default = 10
 eroe100_linthresh = 1e-20
 funcs_create_all_plot = ["create_all_possible_calc_plot_files", 
                          "create_all_possible_diff_plot_files", 
                          "create_all_possible_comp_plot_files"]
+
+
+# In[ ]:
+
+
+# Dates for Negative and Positive Indian Ocean Dipole (IOD) according
+# to historical data by the Japanese Meteorological Agency (JMA). Note
+# that events are defined differently across meteorological agencies.
+# JMA data is selected here since it was the only source of monthly
+# data which the author could easily access and was up to date.
+# https://ds.data.jma.go.jp/tcc/tcc/products/elnino/iodevents.html
+
+dates_neg_iod = [
+    ["Jul-1952", "Sep-1952"],
+    ["Aug-1954", "Oct-1954"],
+    ["Jun-1956", "Aug-1956"],
+    ["Jun-1958", "Oct-1958"],
+    ["Sep-1975", "Nov-1975"],
+    ["Jul-1981", "Sep-1981"],
+    ["Jun-1984", "Nov-1984"],
+    ["Jun-1985", "Aug-1985"],
+    ["Jul-1989", "Oct-1989"],
+    ["Aug-1996", "Nov-1996"],
+    ["Aug-1998", "Nov-1998"],
+    ["Aug-2010", "Nov-2010"],
+    ["Jun-2013", "Sep-2013"],
+    ["Jun-2016", "Nov-2016"],
+    ["Aug-2020", "Oct-2020"],
+    ["Jun-2021", "Nov-2021"],
+    # Positive IOD still in progress at time of writing
+    ["Jun-2022", "Oct-2022"],
+]
+
+dates_pos_iod = [
+    ["Jun-1961", "Nov-1961"],
+    ["Jul-1963", "Nov-1963"],
+    ["Jun-1967", "Nov-1967"],
+    ["Jun-1972", "Nov-1972"],
+    ["Aug-1982", "Nov-1982"],
+    ["Jun-1994", "Nov-1994"],
+    ["Jul-1997", "Nov-1997"],
+    ["Aug-2006", "Nov-2006"],
+    ["Jun-2007", "Sep-2007"],
+    ["Jun-2008", "Aug-2008"],
+    ["Aug-2011", "Oct-2011"],
+    ["Jul-2012", "Oct-2012"],
+    ["Aug-2015", "Nov-2015"],
+    ["Jun-2019", "Nov-2019"],
+]
+
+# Dates for La Nina and El Nino according to historical data ny the
+# Japanese Meteorological Agency (JMA). Note that La Nina and El Nino
+# events are defined differently across meteorological agencies.
+# JMA data is selected here for consistency with choice of IOD data.
+# https://ds.data.jma.go.jp/tcc/tcc/products/elnino/ensoevents.html
+
+dates_la_nina = [
+    ["Apr-1954", "Feb-1956"],
+    ["Apr-1964", "Jan-1965"],
+    ["Sep-1967", "Apr-1968"],
+    ["May-1970", "Dec-1971"],
+    ["Jun-1973", "Mar-1974"],
+    ["Apr-1975", "Mar-1976"],
+    ["Jul-1984", "Sep-1985"],
+    ["Apr-1988", "May-1989"],
+    ["Jul-1995", "Feb-1996"],
+    ["Aug-1998", "Apr-2000"],
+    ["Oct-2005", "Mar-2006"],
+    ["Apr-2007", "Apr-2008"],
+    ["Jul-2010", "Mar-2011"],
+    ["Sep-2017", "Mar-2018"],
+    ["Jul-2020", "Apr-2021"],
+    # La Nina still in progress at time of writing
+    ["Sep-2021", "Oct-2022"],
+]
+
+dates_el_nino = [
+    ["May-1951", "Feb-1952"],
+    ["Apr-1953", "Nov-1953"],
+    ["Apr-1957", "Apr-1958"],
+    ["Jun-1963", "Jan-1964"],
+    ["May-1965", "Feb-1966"],
+    ["Sep-1968", "Feb-1970"],
+    ["May-1972", "Mar-1973"],
+    ["Jun-1976", "Mar-1977"],
+    ["Apr-1982", "Aug-1983"],
+    ["Sep-1986", "Jan-1988"],
+    ["Apr-1991", "Jul-1992"],
+    ["Apr-1997", "May-1998"],
+    ["Jun-2002", "Feb-2003"],
+    ["Jun-2009", "Mar-2010"],
+    ["Jun-2014", "Apr-2016"],
+    ["Sep-2018", "May-2019"],
+]
 
 
 # In[ ]:
@@ -1417,6 +1514,218 @@ def create_glass_rolling_plot(region, year_start, year_end, months_subset, windo
                        .replace(".nc", f"_{param_glass_mean}.png")
                        .replace(f"{cfv_used}_calc_{region}", 
                                 f"{plot_funcs_ver}_{cfv_used}_calc_{extents_used}")
+                      )
+        path_output_dir = "/".join(path_output.split("/")[:-1])
+        Path(path_output_dir).mkdir(parents=True, exist_ok=True)
+            
+        if Path(path_output).exists():
+            msg_exist = ("WARNING: plot file already exists (and was " +
+                         f"not overwritten): {path_output}")
+            logging.warning(msg_exist)
+            print(msg_exist)
+        else:
+            plt.savefig(path_output, metadata=get_plot_metadata(
+                time_exec, func_cur, args_cur, args_cur_values)
+                       )
+            msg_create = f"CREATED: plot file: {path_output}"
+            logging.info(msg_create)
+            print(msg_create)
+                
+    plt.show()
+    fig.clear()
+    plt.close(fig)
+        
+    cf.remove_handlers_if_directly_executed(func_1up)
+
+
+# In[ ]:
+
+
+def create_climate_indices_plot(
+    year_start, year_end, window_size, period1_mid=None, period2_mid=None, 
+    cfv_data=None, output=False
+):
+    
+    time_exec = datetime.today()
+    func_cur = inspect.stack()[0][3]
+    func_1up = inspect.stack()[1][3]
+    frame_cur = inspect.currentframe()
+    args_cur, _, _, args_cur_values = inspect.getargvalues(frame_cur)
+    cf.create_log_if_directly_executed(time_exec, func_cur, func_1up, 
+                                       args_cur, args_cur_values)
+    
+    cf.check_args_for_none(func_cur, args_cur, args_cur_values)
+    cf.check_args(year_start=year_start, year_end=year_end, window_size=window_size, 
+                  period1_mid=period1_mid, period2_mid=period2_mid, 
+                  cfv_data=cfv_data, output=output)
+    
+    path_noaa = cf.get_path_for_noaa_ind()
+    
+    # Use data outputted from an older version of the calc_funcs script. This is useful
+    # for results which required computationally intensive processing. And can also be
+    # set as "cfv00" to analyse test results output from a calc_funcs ipynb notebook.
+    
+    if cfv_data:
+        path_noaa = path_noaa.replace(cf.calc_funcs_ver, cfv_data)
+        if Path(path_noaa).exists() == False:
+            msg_cfv = (f"TERMINATED: cfv_data = {cfv_data} was specified " +
+                       f"but could not find file: {path_noaa}")
+            logging.error(msg_cfv)
+            print(msg_cfv)
+            cf.remove_handlers_if_directly_executed(func_1up)
+            raise Exception(msg_cfv)
+    
+    if Path(path_noaa).exists():
+        msg_open = f"Opening: existing file for use in {func_cur}: {path_noaa}"
+        logging.info(msg_open)
+        print(msg_open)
+    else:
+        cf.proc_noaa_ind()
+    ds_noaa = xr.open_dataset(path_noaa, engine = "netcdf4")
+    
+    if cf.priority == "speed":
+        ds_noaa = ds_noaa.persist()
+    
+    year_start = datetime.strptime(str(year_start), "%Y")
+    year_end = datetime.strptime(str(year_end), "%Y")
+    time_start = year_start + relativedelta(years=-(window_size-1)/2)
+    time_end = year_end + relativedelta(years=(window_size-1)/2+1, hours=-1)
+    period1_mid_str = str(period1_mid)
+    period2_mid_str = str(period2_mid)
+    
+    if period1_mid:
+        period1_mid = datetime.strptime(period1_mid, "%b-%Y")
+        period1_start = period1_mid + relativedelta(years=-(window_size-1)/2, months=-6)
+        period1_end = period1_mid + relativedelta(years=(window_size-1)/2, months=6, hours=-1)
+        period1_start_str = period1_start.strftime("%b-%Y")
+        period1_end_str = period1_end.strftime("%b-%Y")
+        
+    if period2_mid:
+        period2_mid = datetime.strptime(period2_mid, "%b-%Y")
+        period2_start = period2_mid + relativedelta(years=-(window_size-1)/2, months=-6)
+        period2_end = period2_mid + relativedelta(years=(window_size-1)/2, months=6, hours=-1)
+        period2_start_str = period2_start.strftime("%b-%Y")
+        period2_end_str = period2_end.strftime("%b-%Y")
+
+    def filter_dates_event(dates):
+        if (datetime.strptime(dates[1], "%b-%Y") + relativedelta(months=1, hours=-1) < 
+            time_start):
+            return False
+        elif datetime.strptime(dates[0], "%b-%Y") > time_end:
+            return False
+        else:
+            return True
+        
+    def process_dates_event(dates):
+        dates_processed = list(filter(filter_dates_event, copy.deepcopy(dates)))
+        for idx in range(0, len(dates_processed)):
+            dates_processed[idx][0] = datetime.strptime(dates_processed[idx][0], "%b-%Y")
+            dates_processed[idx][1] = (datetime.strptime(dates_processed[idx][1], 
+                                                         "%b-%Y") + 
+                                       relativedelta(months=1, hours=-1))
+        if dates_processed[0][0] < time_start:
+            dates_processed[0][0] = time_start
+        if dates_processed[-1][1] > time_end:
+            dates_processed[-1][1] = time_end
+        return dates_processed
+
+    dates_la_nina_processed = process_dates_event(dates_la_nina)
+    dates_el_nino_processed = process_dates_event(dates_el_nino)
+    dates_neg_iod_processed = process_dates_event(dates_neg_iod)
+    dates_pos_iod_processed = process_dates_event(dates_pos_iod)
+        
+    ds_noaa_roll = (ds_noaa
+                    # The use of min_periods and skipna below is to get around problem
+                    # with EPOI data having missing values for December.
+                    .rolling(time = 12 * window_size, center = True, 
+                             min_periods = 11 * window_size)
+                    .mean(skipna = True)
+                    .sel(time = slice(year_start, year_end + 
+                                      relativedelta(years=1, hours=-1)))
+                   )
+    df_noaa = (ds_noaa
+               .sel(time = slice(time_start, time_end))
+               .to_dataframe()
+              )
+
+    xticks_minor = df_noaa.index[::12]
+    xticks_major = xticks_minor[::window_size]
+    
+    figcols = 1
+    figrows = len(ds_noaa.keys())
+    figwidth = figwidth_standard * 2
+    figheight = figwidth / 3 * figrows
+    fig, axes = plt.subplots(figrows, figcols, figsize=(figwidth, figheight))
+
+    for row, index in enumerate(ds_noaa.keys()):
+        ax = axes[row]
+        index_attrs = ds_noaa[index].attrs
+
+        ax.bar(df_noaa.index, df_noaa[index], width=bar_width, color="gray", alpha=0.5, 
+               label="Monthly Values")
+        ds_noaa_roll[index].plot(ax=ax, color="k", 
+                                 label=f"{window_size}-Year Rolling Average (centred)")
+
+        ax.set_xticks(xticks_minor, minor = True)
+        ax.set_xticks(xticks_major)
+        ax.xaxis.set_major_formatter(mdates.DateFormatter('%b-%Y'))
+        ax.set_xlabel(None)
+        ax.set_ylabel("{} [{}]"
+              .format(index_attrs["abbreviation"], index_attrs["units"]))
+        ax.set_title(chr(ord('`')+(row+1)) + ") {} ({} data)"
+             .format(index_attrs["full_name"], index_attrs["source"]))
+        
+        if index == "oni":
+            for idx, dates_list in enumerate(dates_la_nina_processed):
+                ax.axvspan(dates_list[0], dates_list[1], color="blue", alpha=0.2, 
+                           label="_"*idx+"La Nina (JMA data)")
+            for idx, dates_list in enumerate(dates_el_nino_processed):
+                ax.axvspan(dates_list[0], dates_list[1], color="red", alpha=0.2, 
+                           label="_"*idx+"El Nino (JMA data)")
+        
+        if index == "dmi":
+            for idx, dates_list in enumerate(dates_neg_iod_processed):
+                ax.axvspan(dates_list[0], dates_list[1], color="blue", alpha=0.2, 
+                           label="_"*idx+"Negative IOD (JMA data)")
+            for idx, dates_list in enumerate(dates_pos_iod_processed):
+                ax.axvspan(dates_list[0], dates_list[1], color="red", alpha=0.2, 
+                           label="_"*idx+"Positive IOD (JMA data)")
+                
+        if period1_mid:
+            period1_avg = float(ds_noaa_roll[index].sel(time=period1_mid).data)
+            ax.axvspan(period1_start, period1_end, color="green", alpha=0.1, 
+                       label=f"Period 1: {period1_start_str} to " +
+                       f"{period1_end_str} (inclusive)")
+            ax.plot(period1_mid, period1_avg, marker="X", markersize=10, color = "green",
+                    label = "Period 1 average: {}".format(round(period1_avg, 3)))
+            
+        if period2_mid:
+            period2_avg = float(ds_noaa_roll[index].sel(time=period2_mid).data)
+            ax.axvspan(period2_start, period2_end, color="green", alpha=0.1, 
+                       label=f"Period 2: {period2_start_str} to " +
+                       f"{period2_end_str} (inclusive)")
+            ax.plot(period2_mid, period2_avg, marker="X", markersize=10, color = "green",
+                    label = "Period 2 average: {}".format(round(period2_avg, 3)))
+
+        ax.legend(loc="upper right")
+            
+    fig.tight_layout()
+        
+    if output == True:
+        if cfv_data:
+            cfv_used = cfv_data
+        else:
+            cfv_used = cf.calc_funcs_ver
+        
+        path_output = (path_noaa
+                       .replace("data_processed", "data_final")
+                       .replace(".nc", "_{}_{}_{}_period1-{}_period2-{}.png"
+                                .format(year_start.strftime("%Y"), 
+                                        year_end.strftime("%Y"), window_size, 
+                                        period1_mid_str, period2_mid_str)
+                               )
+                       .replace(f"{cfv_used}_proc_", 
+                                f"{plot_funcs_ver}_{cfv_used}_proc_")
                       )
         path_output_dir = "/".join(path_output.split("/")[:-1])
         Path(path_output_dir).mkdir(parents=True, exist_ok=True)

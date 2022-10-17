@@ -512,40 +512,40 @@ Path("../data_raw/wa_sbfwa_static").mkdir(parents=True, exist_ok=True)
 # Catalog of indices available here: https://psl.noaa.gov/data/climateindices/list/
 # 
 # Indices used in this analysis are:
+# - AMO: NOAA/PSL AMO Index (AMOI)
+# - PDO: NOAA/PSL PDO Index (PDOI)
+# - ENSO: NOAA/CPC Oceanic Nino Index (ONI)
+# - IOD: NOAA/PSL Dipole Mode Index (DMI)
+# - AAO/SAM: NOAA/CPC AAO Index (AAOI)
+# - AO/NAM: NOAA/CPC AO Index (AOI)
 # - NAO: NOAA/CPC NAO Index (NAOI)
 # - EPO: NOAA/CPC EPO Index (EPOI)
-# - NAM/AO: NOAA/CPC AO Index (AOI)
-# - SAM/AAO: NOAA/CPC AAO Index (AAOI)
-# - IOD: NOAA/PSL Dipole Mode Index (DMI)
-# - ENSO: NOAA/CPC Oceanic Nino Index (ONI)
-# - PDO: NOAA/PSL PDO Index (PDOI)
-# - AMO: NOAA/PSL AMO Index (AMOI)
 # 
 # Abbreviations:
 # - NOAA: National Oceanic and Atmospheric Administration
-# - CPC: Climate Prediction Center
 # - PSL: Physical Sciences Laboratory
+# - CPC: Climate Prediction Center
+# - AMO: Atlantic Multidecadal Oscillation
+# - PDO: Pacific Decadal Oscillation
+# - ENSO: El Nino-Southern Oscillation
+# - IOD: Indian Ocean Dipole
+# - AAO/SAM: Antarctic Oscillation/Southern Annular Mode
+# - AO/NAM: Arctic Oscillation/Northern Annular Mode
 # - NAO: North Atlantic Oscillation
 # - EPO: Eastern Pacific Oscillation
-# - NAM/AO: Northern Annular Mode/Arctic Oscillation
-# - SAM/AAO: Southern Annular Mode/Antarctic Oscillation
-# - IOD: Indian Ocean Dipole
-# - ENSO: El Nino-Southern Oscillation
-# - PDO: Pacific Decadal Oscillation
-# - AMO: Atlantic Multidecadal Oscillation
 
 # In[ ]:
 
 
 indices = {
+    "amoi": {"output": "noaa-psl_amoi", "url": "https://psl.noaa.gov/data/correlation/amon.us.data"},
+    "pdoi": {"output": "noaa-psl_pdoi", "url": "https://psl.noaa.gov/data/correlation/pdo.data"},
+    "oni": {"output": "noaa-cpc_oni", "url": "https://psl.noaa.gov/data/correlation/oni.data"},
+    "dmi": {"output": "noaa-psl_dmi", "url": "https://psl.noaa.gov/gcos_wgsp/Timeseries/Data/dmi.had.long.data"},
+    "aaoi": {"output": "noaa-cpc_aaoi", "url": "https://psl.noaa.gov/data/correlation/aao.data"},
+    "aoi": {"output": "noaa-cpc_aoi", "url": "https://psl.noaa.gov/data/correlation/ao.data"},
     "naoi": {"output": "noaa-cpc_naoi", "url": "https://psl.noaa.gov/data/correlation/nao.data"},
     "epoi": {"output": "noaa-cpc_epoi", "url": "https://psl.noaa.gov/data/correlation/epo.data"},
-    "aoi": {"output": "noaa-cpc_aoi", "url": "https://psl.noaa.gov/data/correlation/ao.data"},
-    "aaoi": {"output": "noaa-cpc_aaoi", "url": "https://psl.noaa.gov/data/correlation/aao.data"},
-    "dmi": {"output": "noaa-psl_dmi", "url": "https://psl.noaa.gov/gcos_wgsp/Timeseries/Data/dmi.had.long.data"},
-    "oni": {"output": "noaa-cpc_oni", "url": "https://psl.noaa.gov/data/correlation/oni.data"},
-    "pdoi": {"output": "noaa-psl_pdoi", "url": "https://psl.noaa.gov/data/correlation/pdo.data"},
-    "amoi": {"output": "noaa-psl_amoi", "url": "https://psl.noaa.gov/data/correlation/amon.us.data"}
 }
 
 

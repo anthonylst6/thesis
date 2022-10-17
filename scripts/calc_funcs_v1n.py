@@ -15,6 +15,7 @@ import geopandas as gpd
 import numpy as np
 import xarray as xr
 import metpy.calc as mpcalc
+import os
 from glob import glob
 from pathlib import Path
 from datetime import datetime
@@ -265,7 +266,8 @@ per_diff_nan_max = 25
 # values (these args are excepted from the check_args_for_none function below)
 args_plot = ["mask_period1", "mask_period2", "extents", "vmin", "vmax", 
              "vmin_periods", "vmax_periods", "vmin_diff", "vmax_diff", 
-             "ax", "ax_period1", "ax_period2", "ax_diff", "cfv_data"]
+             "ax", "ax_period1", "ax_period2", "ax_diff",  
+             "period1_mid", "period2_mid", "cfv_data"]
 
 
 # In[ ]:
@@ -457,6 +459,30 @@ attrs_da = {
              "units": "dimensionless"},
     
     # For proc_noaa_ind
+    "amoi": {"abbreviation": "AMOI",
+            "full_name": "Atlantic Multidecadal Oscillation Index",
+            "units": "dimensionless",
+            "source": "NOAA-PSL"},
+    "pdoi": {"abbreviation": "PDOI",
+            "full_name": "Pacific Decadal Oscillation Index",
+            "units": "dimensionless",
+            "source": "NOAA-PSL"},
+    "oni": {"abbreviation": "ONI",
+            "full_name": "Oceanic Nino Index",
+            "units": "dimensionless",
+            "source": "NOAA-CPC"},
+    "dmi": {"abbreviation": "DMI",
+            "full_name": "Dipole Mode Index",
+            "units": "dimensionless",
+            "source": "NOAA-PSL"},
+    "aaoi": {"abbreviation": "AAOI",
+             "full_name": "Antarctic Oscillation Index",
+             "units": "dimensionless",
+             "source": "NOAA-CPC"},
+    "aoi": {"abbreviation": "AOI",
+            "full_name": "Arctic Oscillation Index",
+            "units": "dimensionless",
+            "source": "NOAA-CPC"},
     "naoi": {"abbreviation": "NAOI",
              "full_name": "North Atlantic Oscillation Index",
              "units": "dimensionless",
@@ -465,30 +491,6 @@ attrs_da = {
              "full_name": "Eastern Pacific Oscillation Index",
              "units": "dimensionless",
              "source": "NOAA-CPC"},
-    "aoi": {"abbreviation": "AOI",
-            "full_name": "Arctic Oscillation Index",
-            "units": "dimensionless",
-            "source": "NOAA-CPC"},
-    "aaoi": {"abbreviation": "AAOI",
-             "full_name": "Antarctic Oscillation Index",
-             "units": "dimensionless",
-             "source": "NOAA-CPC"},
-    "dmi": {"abbreviation": "DMI",
-            "full_name": "Dipole Mode Index",
-            "units": "dimensionless",
-            "source": "NOAA-PSL"},
-    "oni": {"abbreviation": "ONI",
-            "full_name": "Oceanic Nino Index",
-            "units": "dimensionless",
-            "source": "NOAA-CPC"},
-    "pdoi": {"abbreviation": "PDOI",
-            "full_name": "Pacific Decadal Oscillation Index",
-            "units": "dimensionless",
-            "source": "NOAA-PSL"},
-    "amoi": {"abbreviation": "AMOI",
-            "full_name": "Atlantic Multidecadal Oscillation Index",
-            "units": "dimensionless",
-            "source": "NOAA-PSL"}
     
 }
 
@@ -746,7 +748,7 @@ def check_args(
     mask_perc_quantile=None, mask_period1=None, mask_period2=None, extents=None, 
     vmin=None, vmax=None, vmin_periods=None, vmax_periods=None, vmin_diff=None, 
     vmax_diff=None, ax=None, ax_period1=None, ax_period2=None, ax_diff=None, 
-    cfv_data=None, output=None
+    period1_mid=None, period2_mid=None, cfv_data=None, output=None
 ):
     
     """
@@ -853,10 +855,14 @@ def check_args(
             Used for period 2 plot within a comp plot.
         ax_diff (cartopy.GeoAxesSubplot): Figure axis to create diff plot on.
             Used for period2 - period1 diff plot within a comp plot.
+        period1_mid (str): Middle of first period to plot rolling average for.
+            Must be of form "%b-%Y" eg. "Jul-1990".
+        period2_mid (str): Middle of second period to plot rolling average for.
+            Must be of form "%b-%Y" eg. "Jul-1990".
         cfv_data (str): calc_funcs_ver of pre-existing data to use in plotting.
         output (bool): Whether to output the plot as a PNG file. Must be one of:
             [True, False].
-    
+        
     Returns:
         AssertionError if any of the input arguments are invalid.
     """
@@ -1134,6 +1140,49 @@ def check_args(
     if ax_diff:
         assert str(type(ax_diff)) == "<class 'cartopy.mpl.geoaxes.GeoAxesSubplot'>", \
             "ax_diff must be a cartopy.GeoAxesSubplot"
+    
+    if period1_mid:
+        period1_mid = datetime.strptime(period1_mid, "%b-%Y")
+        if (year_start is not None) & (year_end is not None) & (window_size is not None):
+            period1_mid_earliest = (datetime.strptime("Jan-"+str(year_start), "%b-%Y") + 
+                                    relativedelta(years=-(window_size-1)/2, months=-5))
+            period1_mid_latest = (datetime.strptime("Dec-"+str(year_end), "%b-%Y") + 
+                                  relativedelta(years=(window_size-1)/2, months=6))
+        else:
+            period1_mid_earliest = (datetime.strptime(avhrr_earliest, "%b-%Y") + 
+                                    relativedelta(years=-1, months=-5))
+            period1_mid_latest = (datetime.strptime(modis_latest, "%b-%Y") + 
+                                  relativedelta(years=1, months=6))
+                                  
+        assert period1_mid >= period1_mid_earliest, \
+            ("period1_mid must be equal to or later than " + 
+             "{} for year_start = {} and window_size = {}"
+             .format(period1_mid_earliest.strftime("%b-%Y"), year_start, window_size))
+        assert period1_mid <= period1_mid_latest, \
+            ("period1_mid must be equal to or earlier than " +
+             "{} for year_end = {} and window_size = {}"
+             .format(period1_mid_latest.strftime("%b-%Y"), year_end, window_size))
+        
+    if period2_mid:
+        period2_mid = datetime.strptime(period2_mid, "%b-%Y")
+        if (year_start is not None) & (year_end is not None) & (window_size is not None):
+            period2_mid_earliest = (datetime.strptime("Jan-"+str(year_start), "%b-%Y") + 
+                                    relativedelta(years=-(window_size-1)/2, months=-5))
+            period2_mid_latest = (datetime.strptime("Dec-"+str(year_end), "%b-%Y") + 
+                                  relativedelta(years=(window_size-1)/2, months=6))
+        else:
+            period2_mid_earliest = (datetime.strptime(avhrr_earliest, "%b-%Y") + 
+                                    relativedelta(years=-1, months=-5))
+            period2_mid_latest = (datetime.strptime(modis_latest, "%b-%Y") + 
+                                  relativedelta(years=1, months=6))
+        assert period2_mid >= period2_mid_earliest, \
+            ("period2_mid must be equal to or later than " + 
+             "{} for year_start = {} and window_size = {}"
+             .format(period2_mid_earliest.strftime("%b-%Y"), year_start, window_size))
+        assert period2_mid <= period2_mid_latest, \
+            ("period2_mid must be equal to or earlier than " +
+             "{} for year_end = {} and window_size = {}"
+             .format(period2_mid_latest.strftime("%b-%Y"), year_end, window_size))
         
     if cfv_data:
         assert (isinstance(cfv_data, str) & (len(cfv_data) == 5) & 
@@ -4059,7 +4108,8 @@ def proc_noaa_ind():
     path_output_noaa = get_path_for_noaa_ind()
     terminate_if_file_exists(path_output_noaa, func_cur, func_1up)
     
-    files_noaa = glob("../data_raw/global_noaa-climate-indices/*")
+    files_noaa = sorted(glob("../data_raw/global_noaa-climate-indices/*"), 
+                        key=os.path.getmtime)
     if len(files_noaa) != number_of_noaa_static_files:
         msg_files = (
             f"WARNING: Expected {number_of_noaa_static_files} files in " +
