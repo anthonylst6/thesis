@@ -1,10 +1,12 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+# # Setup
+
+# ## Import libraries for calculations
+
 # In[ ]:
 
-
-## Import libraries for calculations
 
 import logging
 import inspect
@@ -24,10 +26,10 @@ from scipy.special import gamma
 from scipy.interpolate import interp1d
 
 
+# ## Settings and global variables for calculations
+
 # In[ ]:
 
-
-## Settings and global variables for calculations
 
 # This is to get the version number of the calc_funcs script being used so that it
 # can be appended to the file name of any outputs. The reason this is done is because
@@ -266,9 +268,11 @@ per_diff_nan_max = 25
 # values (these args are excepted from the check_args_for_none function below)
 args_plot = ["mask_period1", "mask_period2", "extents", "vmin", "vmax", 
              "vmin_periods", "vmax_periods", "vmin_diff", "vmax_diff", 
-             "ax", "ax_period1", "ax_period2", "ax_diff",  
-             "period1_mid", "period2_mid", "cfv_data"]
+             "ax", "ax_period1", "ax_period2", "ax_diff",  "period1_mid", 
+             "period2_mid", "month1_mark", "month2_mark", "cfv_data"]
 
+
+# ## Metadata to be appended onto output datasets
 
 # In[ ]:
 
@@ -511,10 +515,12 @@ coord_attrs = {
 }
 
 
+# # Functions
+
+# ## Supplementary functions for calculations
+
 # In[ ]:
 
-
-## Supplementary functions for calculations
 
 def create_log_if_directly_executed(time_exec_1up, func_1up=None, func_2up=None, 
                                     args_1up=None, args_1up_values=None):
@@ -748,7 +754,8 @@ def check_args(
     mask_perc_quantile=None, mask_period1=None, mask_period2=None, extents=None, 
     vmin=None, vmax=None, vmin_periods=None, vmax_periods=None, vmin_diff=None, 
     vmax_diff=None, ax=None, ax_period1=None, ax_period2=None, ax_diff=None, 
-    period1_mid=None, period2_mid=None, cfv_data=None, output=None
+    period1_mid=None, period2_mid=None, month1_mark=None, month2_mark=None, 
+    cfv_data=None, output=None
 ):
     
     """
@@ -855,10 +862,14 @@ def check_args(
             Used for period 2 plot within a comp plot.
         ax_diff (cartopy.GeoAxesSubplot): Figure axis to create diff plot on.
             Used for period2 - period1 diff plot within a comp plot.
-        period1_mid (str): Middle of first period to plot rolling average for.
-            Must be of form "%b-%Y" eg. "Jul-1990".
-        period2_mid (str): Middle of second period to plot rolling average for.
-            Must be of form "%b-%Y" eg. "Jul-1990".
+        period1_mid (str): Month in middle of first period to plot rolling average 
+            of climate indices for. Must be of form "%b-%Y" eg. "Jul-1990".
+        period2_mid (str): Month in middle of second period to plot rolling average 
+            of climate indices for. Must be of form "%b-%Y" eg. "Jul-1990".
+        month1_mark (str): First month to plot monthly value for in the climate 
+            indices plot. Must be of form "%b-%Y" eg. "Jul-1990".
+        month2_mark (str): Second month to plot monthly value for in the climate 
+            indices plot. Must be of form "%b-%Y" eg. "Jul-1990".
         cfv_data (str): calc_funcs_ver of pre-existing data to use in plotting.
         output (bool): Whether to output the plot as a PNG file. Must be one of:
             [True, False].
@@ -1143,46 +1154,75 @@ def check_args(
     
     if period1_mid:
         period1_mid = datetime.strptime(period1_mid, "%b-%Y")
-        if (year_start is not None) & (year_end is not None) & (window_size is not None):
-            period1_mid_earliest = (datetime.strptime("Jan-"+str(year_start), "%b-%Y") + 
-                                    relativedelta(years=-(window_size-1)/2, months=-5))
-            period1_mid_latest = (datetime.strptime("Dec-"+str(year_end), "%b-%Y") + 
-                                  relativedelta(years=(window_size-1)/2, months=6))
+        if (year_start is not None) & (year_end is not None):
+            period1_mid_earliest = datetime.strptime("Jul-"+str(year_start), "%b-%Y")
+            period1_mid_latest = datetime.strptime("Jul-"+str(year_end), "%b-%Y")
         else:
             period1_mid_earliest = (datetime.strptime(avhrr_earliest, "%b-%Y") + 
-                                    relativedelta(years=-1, months=-5))
+                                    relativedelta(years=1, months=6))
             period1_mid_latest = (datetime.strptime(modis_latest, "%b-%Y") + 
-                                  relativedelta(years=1, months=6))
-                                  
+                                  relativedelta(years=-1, months=-5))
         assert period1_mid >= period1_mid_earliest, \
-            ("period1_mid must be equal to or later than " + 
-             "{} for year_start = {} and window_size = {}"
-             .format(period1_mid_earliest.strftime("%b-%Y"), year_start, window_size))
+            ("period1_mid must be equal to or later than {} for year_start = {}"
+             .format(period1_mid_earliest.strftime("%b-%Y"), year_start))
         assert period1_mid <= period1_mid_latest, \
-            ("period1_mid must be equal to or earlier than " +
-             "{} for year_end = {} and window_size = {}"
-             .format(period1_mid_latest.strftime("%b-%Y"), year_end, window_size))
+            ("period1_mid must be equal to or earlier than {} for year_end = {}"
+             .format(period1_mid_latest.strftime("%b-%Y"), year_end))
         
     if period2_mid:
         period2_mid = datetime.strptime(period2_mid, "%b-%Y")
-        if (year_start is not None) & (year_end is not None) & (window_size is not None):
-            period2_mid_earliest = (datetime.strptime("Jan-"+str(year_start), "%b-%Y") + 
-                                    relativedelta(years=-(window_size-1)/2, months=-5))
-            period2_mid_latest = (datetime.strptime("Dec-"+str(year_end), "%b-%Y") + 
-                                  relativedelta(years=(window_size-1)/2, months=6))
+        if (year_start is not None) & (year_end is not None):
+            period2_mid_earliest = datetime.strptime("Jul-"+str(year_start), "%b-%Y")
+            period2_mid_latest = datetime.strptime("Jul-"+str(year_end), "%b-%Y")
         else:
             period2_mid_earliest = (datetime.strptime(avhrr_earliest, "%b-%Y") + 
-                                    relativedelta(years=-1, months=-5))
+                                    relativedelta(years=1, months=6))
             period2_mid_latest = (datetime.strptime(modis_latest, "%b-%Y") + 
-                                  relativedelta(years=1, months=6))
+                                  relativedelta(years=-1, months=-5))
         assert period2_mid >= period2_mid_earliest, \
-            ("period2_mid must be equal to or later than " + 
-             "{} for year_start = {} and window_size = {}"
-             .format(period2_mid_earliest.strftime("%b-%Y"), year_start, window_size))
+            ("period2_mid must be equal to or later than {} for year_start = {}"
+             .format(period2_mid_earliest.strftime("%b-%Y"), year_start))
         assert period2_mid <= period2_mid_latest, \
-            ("period2_mid must be equal to or earlier than " +
+            ("period2_mid must be equal to or earlier than {} for year_end = {}"
+             .format(period2_mid_latest.strftime("%b-%Y"), year_end))
+        
+    if month1_mark:
+        month1_mark = datetime.strptime(month1_mark, "%b-%Y")
+        if (year_start is not None) & (year_end is not None) & (window_size is not None):
+            month1_mark_earliest = datetime.strptime(
+                "Jan-"+str(year_start-(window_size-1)/2), "%b-%Y")
+            month1_mark_latest = datetime.strptime(
+                "Dec-"+str(year_end+(window_size-1)/2), "%b-%Y")
+        else:
+            month1_mark_earliest = datetime.strptime(avhrr_earliest, "%b-%Y")
+            month1_mark_latest = datetime.strptime(modis_latest, "%b-%Y")
+        assert month1_mark >= month1_mark_earliest, \
+            ("month1_mark must be equal to or later than " +
+             "{} for year_start = {} and window_size = {}"
+             .format(month1_mark_earliest.strftime("%b-%Y"), year_start, window_size))
+        assert month1_mark <= month1_mark_latest, \
+            ("month1_mark must be equal to or earlier than " +
              "{} for year_end = {} and window_size = {}"
-             .format(period2_mid_latest.strftime("%b-%Y"), year_end, window_size))
+             .format(month1_mark_latest.strftime("%b-%Y"), year_end, window_size))
+        
+    if month2_mark:
+        month2_mark = datetime.strptime(month2_mark, "%b-%Y")
+        if (year_start is not None) & (year_end is not None) & (window_size is not None):
+            month2_mark_earliest = datetime.strptime(
+                "Jan-"+str(year_start-(window_size-1)/2), "%b-%Y")
+            month2_mark_latest = datetime.strptime(
+                "Dec-"+str(year_end+(window_size-1)/2), "%b-%Y")
+        else:
+            month2_mark_earliest = datetime.strptime(avhrr_earliest, "%b-%Y")
+            month2_mark_latest = datetime.strptime(modis_latest, "%b-%Y")
+        assert month2_mark >= month2_mark_earliest, \
+            ("month2_mark must be equal to or later than " +
+             "{} for year_start = {} and window_size = {}"
+             .format(month2_mark_earliest.strftime("%b-%Y"), year_start, window_size))
+        assert month2_mark <= month2_mark_latest, \
+            ("month2_mark must be equal to or earlier than " +
+             "{} for year_end = {} and window_size = {}"
+             .format(month2_mark_latest.strftime("%b-%Y"), year_end, window_size))
         
     if cfv_data:
         assert (isinstance(cfv_data, str) & (len(cfv_data) == 5) & 
@@ -2554,10 +2594,10 @@ def get_path_for_sbfwa_def():
     return path_output_sbfwa
 
 
+# ## Main calculation functions
+
 # In[ ]:
 
-
-## Main calculation functions
 
 def calc_glass_mean_clim(region, period_start, period_end, months_subset, 
                          glass_source_pref, var_or_dvar=None):
@@ -3017,6 +3057,13 @@ def calc_era5_mdp_clim_given_var_or_dvar(region, period_start, period_end,
                        .mean("time")
                       )
         
+        # Change to hours to local timezone.
+        ds_era5_mdp = (ds_era5_mdp
+                       .assign_coords(
+                           {"hour": (ds_era5_mdp.hour + regions[region]["tz"]) % 24})
+                       .sortby("hour")
+                      )
+        
         # For slhf, sshf and nse: average values from hour before and hour after.
         # This is because these variables are hourly accumulations ending at each hour.
         # The average then provides an estimate of the instantaneous value at the 
@@ -3234,9 +3281,7 @@ def calc_era5_mdp_clim_stats_given_var_or_dvar(region, period_start, period_end,
         da_v = ds_era5_mdp[var_or_dvar.replace("wv", "v")]
         da_mag = get_magnitude(da_u, da_v)
         da_hour_max = xr.DataArray(da_mag.idxmax("hour"), name = "hour_max")
-        da_hour_max = (da_hour_max + regions[region]["tz"]) % 24
         da_hour_min = xr.DataArray(da_mag.idxmin("hour"), name = "hour_min")
-        da_hour_min = (da_hour_min + regions[region]["tz"]) % 24
         da_max_u = xr.DataArray(da_u.sel(hour = da_hour_max, drop = True), name = "max_u")
         da_max_v = xr.DataArray(da_v.sel(hour = da_hour_max, drop = True), name = "max_v")
         da_min_u = xr.DataArray(da_u.sel(hour = da_hour_min, drop = True), name = "min_u")
@@ -3254,9 +3299,7 @@ def calc_era5_mdp_clim_stats_given_var_or_dvar(region, period_start, period_end,
         if priority == "speed":
             da_era5_mdp = da_era5_mdp.persist()
         da_hour_max = xr.DataArray(da_era5_mdp.idxmax("hour"), name = "hour_max")
-        da_hour_max = (da_hour_max + regions[region]["tz"]) % 24
         da_hour_min = xr.DataArray(da_era5_mdp.idxmin("hour"), name = "hour_min")
-        da_hour_min = (da_hour_min + regions[region]["tz"]) % 24
         da_max = xr.DataArray(da_era5_mdp.max("hour"), name = "max")
         da_min = xr.DataArray(da_era5_mdp.min("hour"), name = "min")
         da_mean = xr.DataArray(da_era5_mdp.mean("hour"), name = "mean")
@@ -3510,10 +3553,10 @@ def calc_era5_wsd_clim(region, period_start, period_end, months_subset,
     remove_handlers_if_directly_executed(func_1up)
 
 
+# ## Main extra functions
+
 # In[ ]:
 
-
-## Main extra functions
 
 def calc_diff(calc_func, region, period1_start, period1_end,
               period2_start, period2_end, months_subset, 
@@ -4068,6 +4111,8 @@ def calc_glass_rolling_avg_of_annual_diff(region, year_start, year_end, months_s
     remove_handlers_if_directly_executed(func_1up)
 
 
+# ## Processing functions
+
 # In[ ]:
 
 
@@ -4239,10 +4284,10 @@ def proc_sbfwa_def():
     remove_handlers_if_directly_executed(func_1up)
 
 
+# ## Top-level calculation functions to create all possible data files
+
 # In[ ]:
 
-
-## High level calculation functions to create all possible data files.
 
 def create_all_possible_calc_data_files(region, period_start, period_end, months_subset):
     

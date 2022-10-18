@@ -538,12 +538,9 @@ def create_pcolormesh(da, extents=None, vmin=None, vmax=None, ax=None):
             cmap = "twilight_shifted_r"
             levels = np.arange(-12, 12+1)
         else:
+            cmap = cmocean.cm.tarn
             if func_2up == "create_individual_comp_plot":
                 da = apply_mask(da, frame_2up)
-            if da.name in cf.params_glass_mean:
-                cmap = "PuOr"
-            else:
-                cmap = cmocean.cm.balance_r
             if (vmin == None) & (vmax == None):
                 da_subset = da.sel(longitude=slice(extents[0], extents[1]), 
                                    latitude=slice(extents[3], extents[2]))
@@ -556,14 +553,17 @@ def create_pcolormesh(da, extents=None, vmin=None, vmax=None, ax=None):
             cmap = cmocean.cm.phase
             levels = np.arange(0, 24+1)
         elif da.name in da_names_pos_with_vmin_0:
-            if da.name in cf.params_glass_mean:
-                cmap = cmocean.cm.algae
-            else:
-                cmap = "viridis"
             da_subset = da.sel(longitude=slice(extents[0], extents[1]), 
                                latitude=slice(extents[3], extents[2]))
             vmin = vmin if vmin else 0
             vmax = vmax if vmax else da_subset.max()
+            if da.name  == "mlai":
+                cmap = cmocean.cm.algae
+            elif da.name == "lse":
+                cmap = cmocean.cm.topo
+                cmap = cmocean.tools.crop(cmap, vmin, vmax, 0)
+            else:
+                cmap = "viridis"
         elif da.name in da_names_pos:
             cmap = "viridis"
             da_subset = da.sel(longitude=slice(extents[0], extents[1]), 
@@ -583,9 +583,9 @@ def create_pcolormesh(da, extents=None, vmin=None, vmax=None, ax=None):
             vmin = vmin if vmin else da_subset.min()
             vmax = vmax if vmax else da_subset.max()
         else:
+            cmap = cmocean.cm.balance_r
             if func_2up == "create_individual_comp_plot":
                 da = apply_mask(da, frame_2up)
-            cmap = cmocean.cm.balance_r
             if (vmin == None) & (vmax == None):
                 da_subset = da.sel(longitude=slice(extents[0], extents[1]), 
                                    latitude=slice(extents[3], extents[2]))
@@ -1586,24 +1586,28 @@ def create_climate_indices_plot(
     if cf.priority == "speed":
         ds_noaa = ds_noaa.persist()
     
-    year_start = datetime.strptime(str(year_start), "%Y")
-    year_end = datetime.strptime(str(year_end), "%Y")
-    time_start = year_start + relativedelta(years=-(window_size-1)/2)
-    time_end = year_end + relativedelta(years=(window_size-1)/2+1, hours=-1)
+    time_start = (datetime.strptime(str(year_start), "%Y") + 
+                  relativedelta(years=-(window_size-1)/2))
+    time_end = (datetime.strptime(str(year_end), "%Y") + 
+                relativedelta(years=(window_size-1)/2+1, months=-1))
     period1_mid_str = str(period1_mid)
     period2_mid_str = str(period2_mid)
     
     if period1_mid:
         period1_mid = datetime.strptime(period1_mid, "%b-%Y")
-        period1_start = period1_mid + relativedelta(years=-(window_size-1)/2, months=-6)
-        period1_end = period1_mid + relativedelta(years=(window_size-1)/2, months=6, hours=-1)
+        period1_start = period1_mid + relativedelta(years=-(window_size-1)/2, 
+                                                    months=-6)
+        period1_end = period1_mid + relativedelta(years=(window_size-1)/2, 
+                                                  months=5)
         period1_start_str = period1_start.strftime("%b-%Y")
         period1_end_str = period1_end.strftime("%b-%Y")
         
     if period2_mid:
         period2_mid = datetime.strptime(period2_mid, "%b-%Y")
-        period2_start = period2_mid + relativedelta(years=-(window_size-1)/2, months=-6)
-        period2_end = period2_mid + relativedelta(years=(window_size-1)/2, months=6, hours=-1)
+        period2_start = period2_mid + relativedelta(years=-(window_size-1)/2, 
+                                                    months=-6)
+        period2_end = period2_mid + relativedelta(years=(window_size-1)/2, 
+                                                  months=5)
         period2_start_str = period2_start.strftime("%b-%Y")
         period2_end_str = period2_end.strftime("%b-%Y")
 
@@ -1618,11 +1622,12 @@ def create_climate_indices_plot(
         
     def process_dates_event(dates):
         dates_processed = list(filter(filter_dates_event, copy.deepcopy(dates)))
+        if len(dates_processed) == 0:
+            return dates_processed
         for idx in range(0, len(dates_processed)):
             dates_processed[idx][0] = datetime.strptime(dates_processed[idx][0], "%b-%Y")
             dates_processed[idx][1] = (datetime.strptime(dates_processed[idx][1], 
-                                                         "%b-%Y") + 
-                                       relativedelta(months=1, hours=-1))
+                                                         "%b-%Y"))
         if dates_processed[0][0] < time_start:
             dates_processed[0][0] = time_start
         if dates_processed[-1][1] > time_end:
@@ -1640,8 +1645,7 @@ def create_climate_indices_plot(
                     .rolling(time = 12 * window_size, center = True, 
                              min_periods = 11 * window_size)
                     .mean(skipna = True)
-                    .sel(time = slice(year_start, year_end + 
-                                      relativedelta(years=1, hours=-1)))
+                    .sel(time = slice(time_start, time_end))
                    )
     df_noaa = (ds_noaa
                .sel(time = slice(time_start, time_end))
@@ -1649,7 +1653,7 @@ def create_climate_indices_plot(
               )
 
     xticks_minor = df_noaa.index[::12]
-    xticks_major = xticks_minor[::window_size]
+    xticks_major = xticks_minor[::math.ceil((year_end - year_start) / 20)]
     
     figcols = 1
     figrows = len(ds_noaa.keys())
@@ -1677,35 +1681,37 @@ def create_climate_indices_plot(
         
         if index == "oni":
             for idx, dates_list in enumerate(dates_la_nina_processed):
-                ax.axvspan(dates_list[0], dates_list[1], color="blue", alpha=0.2, 
+                ax.axvspan(dates_list[0], dates_list[1], color="blue", alpha=0.05, 
                            label="_"*idx+"La Nina (JMA data)")
             for idx, dates_list in enumerate(dates_el_nino_processed):
-                ax.axvspan(dates_list[0], dates_list[1], color="red", alpha=0.2, 
+                ax.axvspan(dates_list[0], dates_list[1], color="red", alpha=0.05, 
                            label="_"*idx+"El Nino (JMA data)")
         
         if index == "dmi":
             for idx, dates_list in enumerate(dates_neg_iod_processed):
-                ax.axvspan(dates_list[0], dates_list[1], color="blue", alpha=0.2, 
+                ax.axvspan(dates_list[0], dates_list[1], color="blue", alpha=0.05, 
                            label="_"*idx+"Negative IOD (JMA data)")
             for idx, dates_list in enumerate(dates_pos_iod_processed):
-                ax.axvspan(dates_list[0], dates_list[1], color="red", alpha=0.2, 
+                ax.axvspan(dates_list[0], dates_list[1], color="red", alpha=0.05, 
                            label="_"*idx+"Positive IOD (JMA data)")
                 
         if period1_mid:
             period1_avg = float(ds_noaa_roll[index].sel(time=period1_mid).data)
-            ax.axvspan(period1_start, period1_end, color="green", alpha=0.1, 
+            ax.axvspan(period1_start, period1_end, color="green", alpha=0.15, 
                        label=f"Period 1: {period1_start_str} to " +
                        f"{period1_end_str} (inclusive)")
-            ax.plot(period1_mid, period1_avg, marker="X", markersize=10, color = "green",
-                    label = "Period 1 average: {}".format(round(period1_avg, 3)))
+            ax.plot(period1_mid, period1_avg, marker="X", markersize=10, color="green",
+                    label="{}-Year Average over Period 1 = {}"
+                    .format(window_size, round(period1_avg, 3)))
             
         if period2_mid:
             period2_avg = float(ds_noaa_roll[index].sel(time=period2_mid).data)
-            ax.axvspan(period2_start, period2_end, color="green", alpha=0.1, 
+            ax.axvspan(period2_start, period2_end, color="green", alpha=0.15, 
                        label=f"Period 2: {period2_start_str} to " +
                        f"{period2_end_str} (inclusive)")
-            ax.plot(period2_mid, period2_avg, marker="X", markersize=10, color = "green",
-                    label = "Period 2 average: {}".format(round(period2_avg, 3)))
+            ax.plot(period2_mid, period2_avg, marker="X", markersize=10, color="green",
+                    label="{}-Year Average over Period 2 = {}"
+                    .format(window_size, round(period2_avg, 3)))
 
         ax.legend(loc="upper right")
             
@@ -1719,11 +1725,9 @@ def create_climate_indices_plot(
         
         path_output = (path_noaa
                        .replace("data_processed", "data_final")
-                       .replace(".nc", "_{}_{}_{}_period1-{}_period2-{}.png"
-                                .format(year_start.strftime("%Y"), 
-                                        year_end.strftime("%Y"), window_size, 
-                                        period1_mid_str, period2_mid_str)
-                               )
+                       .replace(".nc", f"_{year_start}_{year_end}_{window_size}_" +
+                                f"period1-{period1_mid_str}_" +
+                                f"period2-{period2_mid_str}.png")
                        .replace(f"{cfv_used}_proc_", 
                                 f"{plot_funcs_ver}_{cfv_used}_proc_")
                       )
