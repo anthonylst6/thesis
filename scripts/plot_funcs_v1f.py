@@ -1,6 +1,10 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+# # Setup
+
+# ## Import libraries for plotting
+
 # In[ ]:
 
 
@@ -24,6 +28,8 @@ from datetime import datetime
 from dateutil.relativedelta import relativedelta
 from textwrap import wrap
 
+
+# ## Import calc_funcs module for use in plotting
 
 # In[ ]:
 
@@ -49,6 +55,8 @@ cf = importlib.import_module(calc_funcs_module)
 print(f"Using: {calc_funcs_module}")
 
 
+# ## Settings and global variables for plotting
+
 # In[ ]:
 
 
@@ -62,7 +70,6 @@ assert plot_log_level in cf.log_levels, \
     f"[plot_log_level (global variable in settings) must be one of: {cf.log_levels}"
 cf.calc_log_level = plot_log_level
 
-plt.rcParams['text.usetex'] = True
 da_dims_valid = ("latitude", "longitude")
 da_names_cyclic = ["hour_max", "hour_min"]
 da_names_pos_with_vmin_0 = ["lse", "ssgo"] + cf.params_glass_mean
@@ -71,16 +78,35 @@ vars_pos_with_vmin_0 = []
 vars_pos = ["ws10", "ws100", "mslp", "t2", 
             "vipile", "vike", "tcclw", "tcwv", 
             "blh", "fa", "cbh", "tcc", "ci"]
-figwidth_standard = 10
-scale_quiver = 45
-bar_width = 31
-title_width = figwidth_standard * 6
-mask_perc_quantile_default = 10
-eroe100_linthresh = 1e-20
 funcs_create_all_plot = ["create_all_possible_calc_plot_files", 
                          "create_all_possible_diff_plot_files", 
                          "create_all_possible_comp_plot_files"]
 
+figwidth_standard = 10
+title_width = figwidth_standard * 5
+quiver_scale_multiplier = 10
+quiver_headwidth = 4.5
+bar_width = 31
+eroe100_linthresh = 1e-20
+mask_perc_quantile_default = 10
+
+plt.rcParams['text.usetex'] = True
+plt.rcParams['savefig.dpi'] = 300
+
+# SMALL_SIZE = 14
+# MEDIUM_SIZE = 16
+# BIGGER_SIZE = 18
+
+# plt.rc('font', size=SMALL_SIZE)          # controls default text sizes
+# plt.rc('axes', titlesize=BIGGER_SIZE)     # fontsize of the axes title
+# plt.rc('axes', labelsize=MEDIUM_SIZE)    # fontsize of the x and y labels
+# plt.rc('xtick', labelsize=MEDIUM_SIZE)    # fontsize of the tick labels
+# plt.rc('ytick', labelsize=MEDIUM_SIZE)    # fontsize of the tick labels
+# plt.rc('legend', fontsize=MEDIUM_SIZE)    # legend fontsize
+# plt.rc('figure', titlesize=BIGGER_SIZE)  # fontsize of the figure title
+
+
+# ## Dates for meteorological events
 
 # In[ ]:
 
@@ -175,6 +201,10 @@ dates_el_nino = [
     ["Sep-2018", "May-2019"],
 ]
 
+
+# # Functions
+
+# ## Supplementary functions for plotting
 
 # In[ ]:
 
@@ -477,6 +507,46 @@ def get_common_cbar_limits(
 # In[ ]:
 
 
+def round_down_first_sig(value_to_be_rounded):
+    
+    # The goal here is to select out the decimal place and value for the first
+    # significant figure, round the input value by that decimal place, then
+    # divide by the decimal value. For example, for 0.0647, the decimal place
+    # and value for the first sig fig is 2 and 6 respectively. Rounding 0.647
+    # to 2nd decimal place then gives 0.6, and dividing this by 5 gives 0.1.
+    
+    # If the value for the second sig fig is greater than or equal to 5, then
+    # we divide by the decimal value + 1 instead. Eg. for 0.0657, rounding gives 
+    # 0.07, so we would need to divide by 7 rather 6 to obtain 0.01.
+    
+    dec_place_of_first_sig = -int(math.floor(math.log10(abs(value_to_be_rounded))))
+    
+    # We use the format function to express the input value as a string then
+    # extract the value given the decimal place. However, this strategy fails
+    # if all the sig figs happen to be 9 and the last digit is greater than or
+    # equal to 5 (because the format function would round it up). Therefore,
+    # we extend out the string to 40 sig figs, as the chances of 39 consecutive
+    # 9's are negligible.
+    
+    str_with_40_sig = format(value_to_be_rounded, f".{dec_place_of_first_sig+39}f")
+    dec_value_of_first_sig = int(str_with_40_sig[-40])
+    dec_value_of_second_sig = int(str_with_40_sig[-39])
+
+    if dec_value_of_second_sig >= 5:
+        value_rounded = (round(value_to_be_rounded, dec_place_of_first_sig) / 
+                         (dec_value_of_first_sig + 1))
+    else:
+        value_rounded = (round(value_to_be_rounded, dec_place_of_first_sig) / 
+                         dec_value_of_first_sig)
+        
+    return value_rounded
+
+
+# ## Low-level plotting functions
+
+# In[ ]:
+
+
 def create_pcolormesh(da, extents=None, vmin=None, vmax=None, ax=None):
     
     time_exec = datetime.today()
@@ -538,7 +608,7 @@ def create_pcolormesh(da, extents=None, vmin=None, vmax=None, ax=None):
             cmap = "twilight_shifted_r"
             levels = np.arange(-12, 12+1)
         else:
-            cmap = cmocean.cm.tarn
+            cmap = cmocean.cm.balance_r
             if func_2up == "create_individual_comp_plot":
                 da = apply_mask(da, frame_2up)
             if (vmin == None) & (vmax == None):
@@ -560,8 +630,7 @@ def create_pcolormesh(da, extents=None, vmin=None, vmax=None, ax=None):
             if da.name  == "mlai":
                 cmap = cmocean.cm.algae
             elif da.name == "lse":
-                cmap = cmocean.cm.topo
-                cmap = cmocean.tools.crop(cmap, vmin, vmax, 0)
+                cmap = cmocean.tools.crop(cmocean.cm.topo, vmin, vmax, 0)
             else:
                 cmap = "viridis"
         elif da.name in da_names_pos:
@@ -583,7 +652,7 @@ def create_pcolormesh(da, extents=None, vmin=None, vmax=None, ax=None):
             vmin = vmin if vmin else da_subset.min()
             vmax = vmax if vmax else da_subset.max()
         else:
-            cmap = cmocean.cm.balance_r
+            cmap = "PuOr"
             if func_2up == "create_individual_comp_plot":
                 da = apply_mask(da, frame_2up)
             if (vmin == None) & (vmax == None):
@@ -597,26 +666,35 @@ def create_pcolormesh(da, extents=None, vmin=None, vmax=None, ax=None):
     ax.set_extent(extents=extents, crs=ccrs.PlateCarree())
     
     if da.attrs["full_name"].split(" ")[1] == "Rolling":
-        ax_label = "{}".format(da.attrs["abbreviation"])
+        cbar_label = "{}".format(da.attrs["abbreviation"])
     else:
-        ax_label = "{} [{}]".format(da.attrs["abbreviation"], da.attrs["units"])
+        cbar_label = "{} [{}]".format(da.attrs["abbreviation"], da.attrs["units"])
         
+    # The units = dimensionless condition is used so that this line is invoked only if
+    # perc = False in the mid and high-level plotting function arguments.
     if (da.name == "eroe100") & (da.attrs["units"] == "dimensionless"):
         if da.attrs["full_name"].split(" ")[0] == "Difference":
+            # The conditional reassignment of vmin and vmax below is to avoid cbar
+            # extents falling within the linear range and producing ugly graphs.
+            # vmin = -eroe100_linthresh/10 if -vmin < eroe100_linthresh else vmin
+            # vmax = eroe100_linthresh/10 if vmax < eroe100_linthresh else vmax
+            if vmax < eroe100_linthresh:
+                vmin = round_down_first_sig(vmin)
+                vmax = round_down_first_sig(vmax)
             da.plot.pcolormesh(ax = ax, cmap = cmap, transform = ccrs.PlateCarree(),
                                norm = colors.SymLogNorm(linthresh=eroe100_linthresh, 
                                                         vmin=vmin, vmax=vmax),
-                               cbar_kwargs = {"label": ax_label}
+                               extend = "both", cbar_kwargs = {"label": cbar_label}
                               )
         else:
             da.plot.pcolormesh(ax = ax, cmap = cmap, transform = ccrs.PlateCarree(),
                                norm = colors.LogNorm(vmin=eroe100_linthresh, vmax=vmax),
-                               cbar_kwargs = {"label": ax_label}
+                               cbar_kwargs = {"label": cbar_label}
                               )
     else:
         da.plot.pcolormesh(ax = ax, cmap = cmap, transform = ccrs.PlateCarree(),
                            vmin = vmin, vmax = vmax, levels = levels, 
-                           cbar_kwargs = {"label": ax_label}
+                           cbar_kwargs = {"label": cbar_label}
                           )
     
     path_sbfwa = cf.get_path_for_sbfwa_def()
@@ -710,7 +788,7 @@ def create_quiver(da_u, da_v, extents=None, vmin=None, vmax=None, ax=None):
                                subplot_kw = {"projection": ccrs.PlateCarree()}
                               )
     
-    coarsen_window_size = math.ceil((extents[1]-extents[0]) / 10)
+    coarsen_window_size = math.ceil((extents[1]-extents[0]) / figwidth_standard)
     da_u = (da_u
             .coarsen(longitude = coarsen_window_size, boundary = "trim")
             .mean()
@@ -724,19 +802,27 @@ def create_quiver(da_u, da_v, extents=None, vmin=None, vmax=None, ax=None):
             .mean()
            )    
     da_mag = xr.DataArray(cf.get_magnitude(da_u, da_v), name = "mag")
-    da_u_unit = xr.DataArray(da_u / da_mag, name = "u_unit")
-    da_v_unit = xr.DataArray(da_v / da_mag, name = "v_unit")
-    ds = xr.merge([da_mag, da_u_unit, da_v_unit])
+    ds = xr.merge([da_u, da_v])   
+    
+    if attrs_u["full_name"].split(" ")[0] == "Difference":
+        cmap = cmocean.cm.speed
+    else:
+        cmap = cmocean.cm.tempo
+    da_mag_subset = da_mag.sel(longitude=slice(extents[0], extents[1]), 
+                               latitude=slice(extents[3], extents[2]))
+    vmin = vmin if vmin else da_mag_subset.min()
+    vmax = vmax if vmax else da_mag_subset.max()
+    cbar_label = "{} [{}]".format(attrs_u["abbreviation"], attrs_u["units"])
+    scale = float(vmax) * quiver_scale_multiplier
     
     ax.set_extent(extents=extents, crs=ccrs.PlateCarree())
+    da_mag.plot.pcolormesh(ax = ax, cmap = cmap, transform = ccrs.PlateCarree(),
+                           vmin = vmin, vmax = vmax, cbar_kwargs = {"label": cbar_label}
+                          )
     ds.plot.quiver(x = "longitude", y = "latitude", ax = ax, 
-                   u = "u_unit", v = "v_unit", hue = "mag", 
-                   vmin = vmin, vmax = vmax, scale = scale_quiver,
-                   cmap = cmocean.cm.speed, transform = ccrs.PlateCarree(),
-                   cbar_kwargs={"label": "{} [{}]"
-                                .format(attrs_u["abbreviation"], 
-                                        attrs_u["units"])
-                               }
+                   u = da_u.name, v = da_v.name, vmin = vmin, vmax = vmax, 
+                   scale = scale, headwidth = quiver_headwidth, 
+                   transform = ccrs.PlateCarree(), add_guide = False
                   )
     
     path_sbfwa = cf.get_path_for_sbfwa_def()
@@ -760,6 +846,8 @@ def create_quiver(da_u, da_v, extents=None, vmin=None, vmax=None, ax=None):
         
     cf.remove_handlers_if_directly_executed(func_1up)
 
+
+# ## Main mid-level plotting functions
 
 # In[ ]:
 
@@ -1294,6 +1382,8 @@ def create_individual_comp_plot(
     cf.remove_handlers_if_directly_executed(func_1up)
 
 
+# ## Extra mid-level plotting functions
+
 # In[ ]:
 
 
@@ -1543,7 +1633,7 @@ def create_glass_rolling_plot(region, year_start, year_end, months_subset, windo
 
 def create_climate_indices_plot(
     year_start, year_end, window_size, period1_mid=None, period2_mid=None, 
-    cfv_data=None, output=False
+    month1_mark=None, month2_mark=None, cfv_data=None, output=False
 ):
     
     time_exec = datetime.today()
@@ -1557,6 +1647,7 @@ def create_climate_indices_plot(
     cf.check_args_for_none(func_cur, args_cur, args_cur_values)
     cf.check_args(year_start=year_start, year_end=year_end, window_size=window_size, 
                   period1_mid=period1_mid, period2_mid=period2_mid, 
+                  month1_mark=month1_mark, month2_mark=month2_mark,
                   cfv_data=cfv_data, output=output)
     
     path_noaa = cf.get_path_for_noaa_ind()
@@ -1592,6 +1683,8 @@ def create_climate_indices_plot(
                 relativedelta(years=(window_size-1)/2+1, months=-1))
     period1_mid_str = str(period1_mid)
     period2_mid_str = str(period2_mid)
+    month1_mark_str = str(month1_mark)
+    month2_mark_str = str(month2_mark)
     
     if period1_mid:
         period1_mid = datetime.strptime(period1_mid, "%b-%Y")
@@ -1610,6 +1703,12 @@ def create_climate_indices_plot(
                                                   months=5)
         period2_start_str = period2_start.strftime("%b-%Y")
         period2_end_str = period2_end.strftime("%b-%Y")
+        
+    if month1_mark:
+        month1_mark = datetime.strptime(month1_mark, "%b-%Y")
+        
+    if month2_mark:
+        month2_mark = datetime.strptime(month2_mark, "%b-%Y")
 
     def filter_dates_event(dates):
         if (datetime.strptime(dates[1], "%b-%Y") + relativedelta(months=1, hours=-1) < 
@@ -1712,6 +1811,18 @@ def create_climate_indices_plot(
             ax.plot(period2_mid, period2_avg, marker="X", markersize=10, color="green",
                     label="{}-Year Average over Period 2 = {}"
                     .format(window_size, round(period2_avg, 3)))
+            
+        if month1_mark:
+            month1_value = float(ds_noaa[index].sel(time=month1_mark).data)
+            ax.plot(month1_mark, month1_value, marker="P", markersize=10, color="purple", 
+                    label="Value for {} = {}"
+                    .format(month1_mark_str, round(month1_value, 3)))
+            
+        if month2_mark:
+            month2_value = float(ds_noaa[index].sel(time=month2_mark).data)
+            ax.plot(month2_mark, month2_value, marker="P", markersize=10, color="purple", 
+                    label="Value for {} = {}"
+                    .format(month2_mark_str, round(month2_value, 3)))
 
         ax.legend(loc="upper right")
             
@@ -1726,8 +1837,8 @@ def create_climate_indices_plot(
         path_output = (path_noaa
                        .replace("data_processed", "data_final")
                        .replace(".nc", f"_{year_start}_{year_end}_{window_size}_" +
-                                f"period1-{period1_mid_str}_" +
-                                f"period2-{period2_mid_str}.png")
+                                f"mid1-{period1_mid_str}_mid2-{period2_mid_str}_" +
+                                f"mark1-{month1_mark_str}_mark2-{month2_mark_str}.png")
                        .replace(f"{cfv_used}_proc_", 
                                 f"{plot_funcs_ver}_{cfv_used}_proc_")
                       )
@@ -1753,6 +1864,8 @@ def create_climate_indices_plot(
         
     cf.remove_handlers_if_directly_executed(func_1up)
 
+
+# ## High-level plotting functions
 
 # In[ ]:
 
@@ -3546,6 +3659,8 @@ def plot_comp_wsd_clim(
     
     cf.remove_handlers_if_directly_executed(func_1up)
 
+
+# ## Top-level plotting functions to create all possible plot files
 
 # In[ ]:
 

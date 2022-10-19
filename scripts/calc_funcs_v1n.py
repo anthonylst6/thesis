@@ -1190,9 +1190,9 @@ def check_args(
         month1_mark = datetime.strptime(month1_mark, "%b-%Y")
         if (year_start is not None) & (year_end is not None) & (window_size is not None):
             month1_mark_earliest = datetime.strptime(
-                "Jan-"+str(year_start-(window_size-1)/2), "%b-%Y")
+                "Jan-"+str(int(year_start-(window_size-1)/2)), "%b-%Y")
             month1_mark_latest = datetime.strptime(
-                "Dec-"+str(year_end+(window_size-1)/2), "%b-%Y")
+                "Dec-"+str(int(year_end+(window_size-1)/2)), "%b-%Y")
         else:
             month1_mark_earliest = datetime.strptime(avhrr_earliest, "%b-%Y")
             month1_mark_latest = datetime.strptime(modis_latest, "%b-%Y")
@@ -1209,9 +1209,9 @@ def check_args(
         month2_mark = datetime.strptime(month2_mark, "%b-%Y")
         if (year_start is not None) & (year_end is not None) & (window_size is not None):
             month2_mark_earliest = datetime.strptime(
-                "Jan-"+str(year_start-(window_size-1)/2), "%b-%Y")
+                "Jan-"+str(int(year_start-(window_size-1)/2)), "%b-%Y")
             month2_mark_latest = datetime.strptime(
-                "Dec-"+str(year_end+(window_size-1)/2), "%b-%Y")
+                "Dec-"+str(int(year_end+(window_size-1)/2)), "%b-%Y")
         else:
             month2_mark_earliest = datetime.strptime(avhrr_earliest, "%b-%Y")
             month2_mark_latest = datetime.strptime(modis_latest, "%b-%Y")
