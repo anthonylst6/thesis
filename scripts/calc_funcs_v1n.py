@@ -3435,7 +3435,7 @@ def calc_era5_wsd_clim(region, period_start, period_end, months_subset,
     
     period_start, period_end, months_subset = convert_period_data_types(
         period_start=period_start, period_end=period_end, months_subset=months_subset)
-    if period_start + relativedelta(years=5) > period_end:
+    if period_start + relativedelta(years=5, months=-1) > period_end:
         msg_years = ("WARNING: It is recommended to use at least 5 years of data " +
                      "for the wind speed distribution analysis.")
         logging.warning(msg_years)
