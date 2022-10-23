@@ -10,6 +10,7 @@
 
 import logging
 import inspect
+import os
 import copy
 import math
 import pandas as pd
@@ -17,7 +18,6 @@ import geopandas as gpd
 import numpy as np
 import xarray as xr
 import metpy.calc as mpcalc
-import os
 from glob import glob
 from pathlib import Path
 from datetime import datetime
@@ -84,7 +84,7 @@ chunksize = "500MB"
 
 # Valid subset strings to use as argument in climatologies and
 # their mapping to month numbers for use in xarray time slicing
-months_subsets = {
+seasons = {
     "all": list(range(1, 12+1)),
     "djf": [12,1,2], "mam": [3,4,5], "jja": [6,7,8], "son": [9,10,11]
 }
@@ -747,7 +747,8 @@ def check_args_for_none(func_name, args_1up=None, args_1up_values=None):
 
 def check_args(
     calc_func=None, region=None, period_start=None, period_end=None, period1_start=None, 
-    period1_end=None, period2_start=None, period2_end=None, months_subset=None, 
+    period1_end=None, period2_start=None, period2_end=None, period_months=None, 
+    period1_months=None, period2_months=None, 
     glass_source_pref=None, var_or_dvar=None, year_start=None, year_end=None, 
     window_size=None, arg_extra=None, hour=None, time=None, param_orog=None,
     param_glass_mean=None, var_or_dvar_layer=None, var_or_dvar_type=None, perc=None, 
@@ -787,9 +788,15 @@ def check_args(
         period2_end (str): End of second period to perform calculation over.
             Must be of form "%b-%Y" eg. "Jul-1990".
             Must be between "Jan-1981" and "Dec-2021".
-        months_subset (str or list): Subset of period to perform calculation over.
+        period_months (str or list): Months subset of period to perform calculation over.
             Must be a str and one of: ["all", "djf", "mam", "jja", "son"], or a subset
             list of: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] with at least one item.
+        period1_months (str or list): Month subset of first period to perform calculation 
+            over. Must be a str and one of: ["all", "djf", "mam", "jja", "son"], or a 
+            subset list of: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] with at least one item.
+        period2_months (str or list): Month subset of second period to perform calculation 
+            over. Must be a str and one of: ["all", "djf", "mam", "jja", "son"], or a 
+            subset list of: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] with at least one item.
         glass_source_pref (str): Preferred glass data source to use when analysis is 
             over a period which is completely contained within both the available
             AVHRR and MODIS datasets. Must be one of: ["avhrr", "modis"].
@@ -946,36 +953,50 @@ def check_args(
         assert period2_end >= period2_start, \
             "period2_end must be equal to or later than period2_start"
     
-    if months_subset:
-        assert (isinstance(months_subset, list) & (months_subset != []) & 
-                all(month in months_subsets["all"] for month in months_subset)
-               ) | (months_subset in [*months_subsets]), \
-            (f"months_subset must be type str and one of: {[*months_subsets]}, or type " +
-             "list and subset of: {} with at least one item".format(months_subsets["all"]))
+    if period_months:
+        assert (isinstance(period_months, list) & (period_months != []) & 
+                all(month in seasons["all"] for month in period_months)
+               ) | (period_months in [*seasons]), \
+            (f"period_months must be type str and one of: {[*seasons]}, or type " +
+             "list and subset of: {} with at least one item".format(seasons["all"]))
         
-    if (period_start is not None) & (period_end is not None) & (months_subset is not None):
+    if period1_months:
+        assert (isinstance(period1_months, list) & (period1_months != []) & 
+                all(month in seasons["all"] for month in period1_months)
+               ) | (period1_months in [*seasons]), \
+            (f"period1_months must be type str and one of: {[*seasons]}, or type " +
+             "list and subset of: {} with at least one item".format(seasons["all"]))
+        
+    if period2_months:
+        assert (isinstance(period2_months, list) & (period2_months != []) & 
+                all(month in seasons["all"] for month in period2_months)
+               ) | (period2_months in [*seasons]), \
+            (f"period2_months must be type str and one of: {[*seasons]}, or type " +
+             "list and subset of: {} with at least one item".format(seasons["all"]))
+        
+    if (period_start is not None) & (period_end is not None) & (period_months is not None):
         dates_in_period = pd.date_range(period_start, period_end, freq = "MS")
         months_in_period = set(map(int, dates_in_period.strftime("%-m")))
-        if isinstance(months_subset, str):
-            months_subset = months_subsets[months_subset]
-        assert any(month in months_subset for month in months_in_period), \
-            "period must contain at least one month within the given months_subset"
+        if isinstance(period_months, str):
+            period_months = seasons[period_months]
+        assert any(month in period_months for month in months_in_period), \
+            "period must contain at least one month within the given period_months"
     
-    if (period1_start is not None) & (period1_end is not None) & (months_subset is not None):
+    if (period1_start is not None) & (period1_end is not None) & (period1_months is not None):
         dates_in_period1 = pd.date_range(period1_start, period1_end, freq = "MS")
         months_in_period1 = set(map(int, dates_in_period1.strftime("%-m")))
-        if isinstance(months_subset, str):
-            months_subset = months_subsets[months_subset]
-        assert any(month in months_subset for month in months_in_period1), \
-            "period1 must contain at least one month within the given months_subset"
+        if isinstance(period1_months, str):
+            period1_months = seasons[period1_months]
+        assert any(month in period1_months for month in months_in_period1), \
+            "period1 must contain at least one month within the given period1_months"
         
-    if (period2_start is not None) & (period2_end is not None) & (months_subset is not None):
+    if (period2_start is not None) & (period2_end is not None) & (period2_months is not None):
         dates_in_period2 = pd.date_range(period2_start, period2_end, freq = "MS")
         months_in_period2 = set(map(int, dates_in_period2.strftime("%-m")))
-        if isinstance(months_subset, str):
-            months_subset = months_subsets[months_subset]
-        assert any(month in months_subset for month in months_in_period2), \
-            "period2 must contain at least one month within the given months_subset"
+        if isinstance(period2_months, str):
+            period2_months = seasons[period2_months]
+        assert any(month in period2_months for month in months_in_period2), \
+            "period2 must contain at least one month within the given period2_months"
     
     if glass_source_pref:
         assert glass_source_pref in glass_sources_all, \
@@ -2069,21 +2090,21 @@ def get_gcf(da_ws, speeds, powers, power_max):
 # In[ ]:
 
 
-def get_months_subset_str(months_subset):
+def get_period_months_str(period_months):
     
     """
-    Obtain the string representation of months_subset for use in output paths.
+    Obtain the string representation of period_months for use in output paths.
     
     Arguments:
-        months_subset (str or list): Subset of period to perform calculation over.
+        period_months (str or list): Months subset of period to perform calculation over.
             Must be a str and one of: ["all", "djf", "mam", "jja", "son"], or a subset
             list of: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] with at least one item.
             
     Returns:
-        months_subset_str (str): String representation of months_subset.
+        period_months_str (str): String representation of period_months.
         
-    If months_subset is one of the string inputs then this function does nothing. But
-    if months_subset is a list input, this function concatenates the elements of the
+    If period_months is one of the string inputs then this function does nothing. But
+    if period_months is a list input, this function concatenates the elements of the
     list into a string joined by "-" and in ascending numerical order.
     """
     
@@ -2096,39 +2117,39 @@ def get_months_subset_str(months_subset):
                                     args_cur, args_cur_values)
     
     check_args_for_none(func_cur, args_cur, args_cur_values)
-    check_args(months_subset=months_subset)
+    check_args(period_months=period_months)
     
     if (func_1up == "<cell line: 1>") | (func_1up == "<module>"):
         logging.debug(f"Executing: {func_cur} to obtain string representation of " +
-                      f"{months_subset}.")
+                      f"{period_months}.")
     else:
         logging.debug(f"Executing: {func_cur} to obtain string representation of " +
-                      f"{months_subset} for use in {func_1up}.")
+                      f"{period_months} for use in {func_1up}.")
     
-    if isinstance(months_subset, str):
-        months_subset_str = months_subset
+    if isinstance(period_months, str):
+        period_months_str = period_months
     
-    if isinstance(months_subset, list):
-        months_subset.sort()
-        months_subset_str = "-".join(str(month) for month in months_subset)
+    if isinstance(period_months, list):
+        period_months.sort()
+        period_months_str = "-".join(str(month) for month in period_months)
         
     if (func_1up == "<cell line: 1>") | (func_1up == "<module>"):
-        logging.info(f"Obtained: string representation of {months_subset}.")
+        logging.info(f"Obtained: string representation of {period_months}.")
     else:
-        logging.info(f"Obtained: string representation of {months_subset} " +
+        logging.info(f"Obtained: string representation of {period_months} " +
                      f"for use in {func_1up}.")
     
     remove_handlers_if_directly_executed(func_1up)
-    return months_subset_str
+    return period_months_str
 
 
 # In[ ]:
 
 
-def convert_period_data_types(period_start, period_end, months_subset):
+def convert_period_data_types(period_start, period_end, period_months):
     
     """
-    Convert period_start, period_end and months_subset to appropriate data
+    Convert period_start, period_end and period_months to appropriate data
     types for use within calculation functions.
     
     Arguments:
@@ -2138,16 +2159,16 @@ def convert_period_data_types(period_start, period_end, months_subset):
         period_end (str): End of period to perform calculation over.
             Must be of form "%b-%Y" eg. "Jul-1990".
             Must be between "Jan-1981" and "Dec-2021".
-        months_subset (str or list): Subset of period to perform calculation over.
+        period_months (str or list): Months subset of period to perform calculation over.
             Must be a str and one of: ["all", "djf", "mam", "jja", "son"], or a subset
             list of: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] with at least one item.
             
     Returns:
         period_start (datetime.datetime): Start of period to perform calculation over.
         period_end (datetime.datetime): End of period to perform calculation over.
-        months_subset (list): Subset of period to perform calculation over.
+        period_months (list): Months subset of period to perform calculation over.
         
-    Converts period_start to period_end to datetime.datetime objects. If months_subset
+    Converts period_start to period_end to datetime.datetime objects. If period_months
     is a list then there is no conversion but if it is a string specifying "all" or a 
     season then it will be converted to a list with the months in that subset.
     """
@@ -2162,7 +2183,7 @@ def convert_period_data_types(period_start, period_end, months_subset):
     
     check_args_for_none(func_cur, args_cur, args_cur_values)
     check_args(period_start=period_start, period_end=period_end, 
-               months_subset=months_subset)
+               period_months=period_months)
     
     if (func_1up == "<cell line: 1>") | (func_1up == "<module>"):
         logging.debug(f"Executing: {func_cur} to convert period data types.")
@@ -2172,8 +2193,8 @@ def convert_period_data_types(period_start, period_end, months_subset):
     
     period_start = datetime.strptime(period_start, "%b-%Y")
     period_end = datetime.strptime(period_end, "%b-%Y")
-    if isinstance(months_subset, str):
-        months_subset = months_subsets[months_subset]
+    if isinstance(period_months, str):
+        period_months = seasons[period_months]
     
     if (func_1up == "<cell line: 1>") | (func_1up == "<module>"):
         logging.info(f"Obtained: converted period data types.")
@@ -2181,14 +2202,14 @@ def convert_period_data_types(period_start, period_end, months_subset):
         logging.info(f"Obtained: converted period data types for use in {func_1up}.")
     
     remove_handlers_if_directly_executed(func_1up)
-    return period_start, period_end, months_subset
+    return period_start, period_end, period_months
 
 
 # In[ ]:
 
 
 def get_path_for_calc_func(calc_func_name, region, period_start, period_end, 
-                           months_subset, glass_source_pref=None,
+                           period_months, glass_source_pref=None,
                            var_or_dvar=None):
     
     """
@@ -2208,7 +2229,7 @@ def get_path_for_calc_func(calc_func_name, region, period_start, period_end,
         period_end (str): End of period to perform calculation over.
             Must be of form "%b-%Y" eg. "Jul-1990".
             Must be between "Jan-1981" and "Dec-2021".
-        months_subset (str or list): Subset of period to perform calculation over.
+        period_months (str or list): Months subset of period to perform calculation over.
             Must be a str and one of: ["all", "djf", "mam", "jja", "son"], or a subset
             list of: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] with at least one item.
         glass_source_pref (str): Preferred glass data source to use when analysis is 
@@ -2235,16 +2256,16 @@ def get_path_for_calc_func(calc_func_name, region, period_start, period_end,
     create_log_if_directly_executed(time_exec, func_cur, func_1up, 
                                     args_cur, args_cur_values)
     
-    # Assert that input arguments are valid, and create path for months_subset.
+    # Assert that input arguments are valid, and create path for period_months.
     
     assert calc_func_name in calc_func_names, \
         f"calc_func_name must be one of: {calc_func_names}"
     check_args_for_none(calc_func_name, args_cur, args_cur_values)
     check_args(region=region, period_start=period_start, period_end=period_end, 
-               months_subset=months_subset, glass_source_pref=glass_source_pref,
+               period_months=period_months, glass_source_pref=glass_source_pref,
                var_or_dvar=var_or_dvar)
     
-    months_subset_str = get_months_subset_str(months_subset=months_subset)
+    period_months_str = get_period_months_str(period_months=period_months)
     
     if (func_1up == "<cell line: 1>") | (func_1up == "<module>"):
         logging.debug(f"Executing: {func_cur} to obtain {calc_func_name} output path.")
@@ -2256,7 +2277,7 @@ def get_path_for_calc_func(calc_func_name, region, period_start, period_end,
     
     path_output_calc_func = (f"../data_processed/{calc_func_name[5:None]}/" +
                              f"{calc_funcs_ver}_calc_{region}_{period_start}_" + 
-                             f"{period_end}_{months_subset_str}_")
+                             f"{period_end}_{period_months_str}_")
     
     # Append path endings.
     
@@ -2288,7 +2309,7 @@ def get_path_for_calc_func(calc_func_name, region, period_start, period_end,
 
 
 def get_path_for_calc_diff(calc_func_name, region, period1_start, period1_end,
-                           period2_start, period2_end, months_subset,
+                           period2_start, period2_end, period1_months, period2_months,
                            glass_source_pref=None, var_or_dvar=None):
     
     """
@@ -2314,9 +2335,12 @@ def get_path_for_calc_diff(calc_func_name, region, period1_start, period1_end,
         period2_end (str): End of second period to perform calculation over.
             Must be of form "%b-%Y" eg. "Jul-1990".
             Must be between "Jan-1981" and "Dec-2021".
-        months_subset (str or list): Subset of period to perform calculation over.
-            Must be a str and one of: ["all", "djf", "mam", "jja", "son"], or a subset
-            list of: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] with at least one item.
+        period1_months (str or list): Month subset of first period to perform calculation 
+            over. Must be a str and one of: ["all", "djf", "mam", "jja", "son"], or a 
+            subset list of: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] with at least one item.
+        period2_months (str or list): Month subset of second period to perform calculation 
+            over. Must be a str and one of: ["all", "djf", "mam", "jja", "son"], or a 
+            subset list of: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] with at least one item.
         glass_source_pref (str): Preferred glass data source to use when analysis is 
             over a period which is completely contained within both the available
             AVHRR and MODIS datasets. Must be one of: ["avhrr", "modis"].
@@ -2341,17 +2365,18 @@ def get_path_for_calc_diff(calc_func_name, region, period1_start, period1_end,
     create_log_if_directly_executed(time_exec, func_cur, func_1up, 
                                     args_cur, args_cur_values)
     
-    # Assert that input arguments are valid, and create path for months_subset.
+    # Assert that input arguments are valid, and create path for period_months.
     
     assert calc_func_name in calc_func_names, \
         f"calc_func_name must be one of: {calc_func_names}"
     check_args_for_none(calc_func_name, args_cur, args_cur_values)
     check_args(region=region, period1_start=period1_start, period1_end=period1_end,
                period2_start=period2_start, period2_end=period2_end,
-               months_subset=months_subset, var_or_dvar=var_or_dvar, 
-               glass_source_pref=glass_source_pref)
+               period1_months=period1_months, period2_months=period2_months, 
+               var_or_dvar=var_or_dvar, glass_source_pref=glass_source_pref)
     
-    months_subset_str = get_months_subset_str(months_subset=months_subset)
+    period1_months_str = get_period_months_str(period_months=period1_months)
+    period2_months_str = get_period_months_str(period_months=period2_months)
     
     if (func_1up == "<cell line: 1>") | (func_1up == "<module>"):
         logging.debug(f"Executing: {func_cur} to obtain calc_diff output path " +
@@ -2365,7 +2390,7 @@ def get_path_for_calc_diff(calc_func_name, region, period1_start, period1_end,
     path_output_calc_diff = (f"../data_processed/{calc_func_name[5:None]}/" + 
                              f"{calc_funcs_ver}_diff_{region}_{period1_start}_" +
                              f"{period1_end}_{period2_start}_{period2_end}_" +
-                             f"{months_subset_str}_")
+                             f"{period1_months_str}_{period2_months_str}_")
     
     # Append path endings.
     
@@ -2447,7 +2472,7 @@ def get_path_for_era5_orog():
 # In[ ]:
 
 
-def get_path_for_calc_glass_rolling(region, year_start, year_end, months_subset, 
+def get_path_for_calc_glass_rolling(region, year_start, year_end, period_months, 
                                     window_size, glass_source_pref):
     
     """
@@ -2458,7 +2483,7 @@ def get_path_for_calc_glass_rolling(region, year_start, year_end, months_subset,
             Must be one of ["ca", "sa", "wa"].
         year_start (int): Earliest year to compute the rolling average for.
         year_end (int): Latest year to compute the rolling average for.
-        months_subset (str or list): Subset of period to perform calculation over.
+        period_months (str or list): Months subset of period to perform calculation over.
             Must be a str and one of: ["all", "djf", "mam", "jja", "son"], or a subset
             list of: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] with at least one item.
         window_size (int): Rolling window size (in years) to compute average for.
@@ -2480,14 +2505,14 @@ def get_path_for_calc_glass_rolling(region, year_start, year_end, months_subset,
     create_log_if_directly_executed(time_exec, func_cur, func_1up, 
                                     args_cur, args_cur_values)
     
-    # Assert that input arguments are valid, and create path for months_subset.
+    # Assert that input arguments are valid, and create path for period_months.
     
     check_args_for_none(func_cur, args_cur, args_cur_values)
     check_args(region=region, year_start=year_start, year_end=year_end, 
-               months_subset=months_subset, window_size=window_size, 
+               period_months=period_months, window_size=window_size, 
                glass_source_pref=glass_source_pref)
     
-    months_subset_str = get_months_subset_str(months_subset=months_subset)
+    period_months_str = get_period_months_str(period_months=period_months)
     
     if (func_1up == "<cell line: 1>") | (func_1up == "<module>"):
         logging.debug(f"Executing: {func_cur} to obtain " 
@@ -2501,7 +2526,7 @@ def get_path_for_calc_glass_rolling(region, year_start, year_end, months_subset,
     
     path_output_glass_roll = ("../data_processed/glass_rolling_avg_of_annual_diff/" +
                               f"{calc_funcs_ver}_calc_{region}_{year_start}_" +
-                              f"{year_end}_{months_subset_str}_{window_size}-year_" +
+                              f"{year_end}_{period_months_str}_{window_size}-year_" +
                               f"glass-rolling-diff_pref-{glass_source_pref}.nc")
         
     if (func_1up == "<cell line: 1>") | (func_1up == "<module>"):
@@ -2599,7 +2624,7 @@ def get_path_for_sbfwa_def():
 # In[ ]:
 
 
-def calc_glass_mean_clim(region, period_start, period_end, months_subset, 
+def calc_glass_mean_clim(region, period_start, period_end, period_months, 
                          glass_source_pref, var_or_dvar=None):
     
     """
@@ -2615,7 +2640,7 @@ def calc_glass_mean_clim(region, period_start, period_end, months_subset,
         period_end (str): End of period to perform calculation over.
             Must be of form "%b-%Y" eg. "Jul-1990".
             Must be between "Jan-1981" and "Dec-2021".
-        months_subset (str or list): Subset of period to perform calculation over.
+        period_months (str or list): Months subset of period to perform calculation over.
             Must be a str and one of: ["all", "djf", "mam", "jja", "son"], or a subset
             list of: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] with at least one item.
         glass_source_pref (str): Preferred glass data source to use when analysis is 
@@ -2626,16 +2651,16 @@ def calc_glass_mean_clim(region, period_start, period_end, months_subset,
                         
     Returns:
         ../data_processed/glass_mean_clim/{calc_funcs_ver}_calc_{region}_{period_start}_
-        {period_end}_{months_subset_str}_glass-mean_{glass_source}.nc:
+        {period_end}_{period_months_str}_glass-mean_{glass_source}.nc:
             Output netcdf4 file in data_processed folder containing both MLAI and
             MFAPAR. {calc_funcs_ver} is the version of the calc_funcs script being
-            used. {months_subset_str} is a string representing the list of selected 
+            used. {period_months_str} is a string representing the list of selected 
             months to use as a subset. {glass_source} is automatically selected 
             between ["avhrr", "modis"] based on the selected period. 
     
     For each grid cell, calculate the mean glass climatology (MLAI and MFAPAR). These
     values are computed over the period from period_start to period_end (inclusive),
-    and only using a subset of data within this period (if months_subset not "all" is 
+    and only using a subset of data within this period (if period_months not "all" is 
     specified). The calculation uses 8-day satellite HDF data from the data_raw
     folder as input, then outputs the result as a netcdf4 file into the
     data_processed folder.
@@ -2659,40 +2684,40 @@ def calc_glass_mean_clim(region, period_start, period_end, months_subset,
                                     args_cur, args_cur_values)
     
     # Assert that input arguments are valid, select the appropriate data source 
-    # (AVHRR or MODIS) to use depending on period, and create path for months_subset.
+    # (AVHRR or MODIS) to use depending on period, and create path for period_months.
     
     check_args_for_none(func_cur, args_cur, args_cur_values)
     check_args(region=region, period_start=period_start, period_end=period_end,
-               months_subset=months_subset, glass_source_pref=glass_source_pref)
+               period_months=period_months, glass_source_pref=glass_source_pref)
     
     glass_source = select_glass_source(period_start=period_start, 
                                        period_end=period_end,
                                        glass_source_pref=glass_source_pref)
-    months_subset_str = get_months_subset_str(months_subset=months_subset)
+    period_months_str = get_period_months_str(period_months=period_months)
     
     if (func_1up == "<cell line: 1>") | (func_1up == "<module>"):
-        logging.info(f"Executing: {func_cur} to obtain {months_subset_str} " +
+        logging.info(f"Executing: {func_cur} to obtain {period_months_str} " +
                      f"climatology of MLAI and MFAPAR using {glass_source} data " + 
                      f"between {period_start} and {period_end}.")
     else:
-        logging.info(f"Executing: {func_cur} to obtain {months_subset_str} " +
+        logging.info(f"Executing: {func_cur} to obtain {period_months_str} " +
                      f"climatology of MLAI and MFAPAR using {glass_source} data " + 
                      f"between {period_start} and {period_end} for use in {func_1up}.")
     
     # Define the output path, convert period_start and period_end to
-    # datetime.datetime objects, and months_subset to list if a str was used as input.
+    # datetime.datetime objects, and period_months to list if a str was used as input.
     
     path_output_glass_mean = get_path_for_calc_func(
         calc_func_name=func_cur, region=region, period_start=period_start, 
-        period_end=period_end, months_subset=months_subset, 
+        period_end=period_end, period_months=period_months, 
         glass_source_pref=glass_source_pref, var_or_dvar=var_or_dvar)
     terminate_if_file_exists(path_output_glass_mean, func_cur, func_1up)
     
-    period_start, period_end, months_subset = convert_period_data_types(
-        period_start=period_start, period_end=period_end, months_subset=months_subset)
+    period_start, period_end, period_months = convert_period_data_types(
+        period_start=period_start, period_end=period_end, period_months=period_months)
 
     # The two functions below are used with xarray's open_mfdataset for parallel
-    # computing using dask. The region and times (period with months_subset) are
+    # computing using dask. The region and times (period with period_months) are
     # selected within separate functions and uses different logic as compared with
     # filtering in the ERA5 datasets. This is because each GLASS file contains
     # global data whereas the ERA5 datasets were downloaded for each local region.
@@ -2706,7 +2731,7 @@ def calc_glass_mean_clim(region, period_start, period_end, months_subset,
         # since we may need to persist the data in RAM to speed up certain computations.
         time = file_name[-12:-4]
         time = datetime.strptime(time, "%Y-%j")
-        if ((time.month in months_subset) &
+        if ((time.month in period_months) &
             # We add an extra month to period_end here because period_end was
             # specified as a month, and conversion into a datetime object
             # defaults to the first (rather than last) day of that month.
@@ -2847,7 +2872,7 @@ def calc_glass_mean_clim(region, period_start, period_end, months_subset,
 
 
 def calc_era5_mdp_clim_given_var_or_dvar(region, period_start, period_end, 
-                                         months_subset, var_or_dvar, 
+                                         period_months, var_or_dvar, 
                                          glass_source_pref=None):
     
     """
@@ -2863,7 +2888,7 @@ def calc_era5_mdp_clim_given_var_or_dvar(region, period_start, period_end,
         period_end (str): End of period to perform calculation over.
             Must be of form "%b-%Y" eg. "Jul-1990".
             Must be between "Jan-1981" and "Dec-2021".
-        months_subset (str or list): Subset of period to perform calculation over.
+        period_months (str or list): Months subset of period to perform calculation over.
             Must be a str and one of: ["all", "djf", "mam", "jja", "son"], or a subset
             list of: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] with at least one item.
         var_or_dvar (str): Variable or value of change in variable to perform
@@ -2879,15 +2904,15 @@ def calc_era5_mdp_clim_given_var_or_dvar(region, period_start, period_end,
                         
     Returns:
         ../data_processed/era5_mdp_clim_given_var_or_dvar/{calc_funcs_ver}_calc_{region}_
-        {period_start}_{period_end}_{months_subset_str}_era5-mdp_{var_or_dvar}.nc:
+        {period_start}_{period_end}_{period_months_str}_era5-mdp_{var_or_dvar}.nc:
             Output netcdf4 file in data_processed folder containing the MDP for
             var_or_dvar. {calc_funcs_ver} is the version of the calc_funcs script
-            being used. {months_subset_str} is a string representing the list of 
+            being used. {period_months_str} is a string representing the list of 
             selected months to use as a subset.
     
     For each grid cell, calculate the MDP for the selected var_or_dvar. The MDP
     values are computed over the period from period_start to period_end (inclusive),
-    and only using a subset of data within this period (if months_subset not "all" is
+    and only using a subset of data within this period (if period_months not "all" is
     specified). The calculation uses monthly averaged reanalysis by hour of day netcdf4
     data from the data_raw folder as input, then outputs the result as a netcdf4 file
     into the data_processed folder.
@@ -2901,32 +2926,32 @@ def calc_era5_mdp_clim_given_var_or_dvar(region, period_start, period_end,
     create_log_if_directly_executed(time_exec, func_cur, func_1up, 
                                     args_cur, args_cur_values)
     
-    # Assert that input arguments are valid, and create path for months_subset.
+    # Assert that input arguments are valid, and create path for period_months.
     
     check_args_for_none(func_cur, args_cur, args_cur_values)
     check_args(region=region, period_start=period_start, period_end=period_end,
-               months_subset=months_subset, var_or_dvar=var_or_dvar)
+               period_months=period_months, var_or_dvar=var_or_dvar)
     
-    months_subset_str = get_months_subset_str(months_subset=months_subset)
+    period_months_str = get_period_months_str(period_months=period_months)
     
     if (func_1up == "<cell line: 1>") | (func_1up == "<module>"):
-        logging.info(f"Executing: {func_cur} to obtain {months_subset_str} climatology " +
+        logging.info(f"Executing: {func_cur} to obtain {period_months_str} climatology " +
                      f"of {var_or_dvar} MDP between {period_start} and {period_end}.")
     else:
-        logging.info(f"Executing: {func_cur} to obtain {months_subset_str} climatology " +
+        logging.info(f"Executing: {func_cur} to obtain {period_months_str} climatology " +
                      f"of {var_or_dvar} MDP between {period_start} and {period_end} " +
                      f"for use in {func_1up}.")
     
     # Define the output path, convert period_start and period_end to
-    # datetime.datetime objects, and months_subset to list if a str was used as input.
+    # datetime.datetime objects, and period_months to list if a str was used as input.
     
     path_output_mdp_clim = get_path_for_calc_func(
         calc_func_name=func_cur, region=region, period_start=period_start, 
-        period_end=period_end, months_subset=months_subset, var_or_dvar=var_or_dvar)
+        period_end=period_end, period_months=period_months, var_or_dvar=var_or_dvar)
     terminate_if_file_exists(path_output_mdp_clim, func_cur, func_1up)
     
-    period_start, period_end, months_subset = convert_period_data_types(
-        period_start=period_start, period_end=period_end, months_subset=months_subset)
+    period_start, period_end, period_months = convert_period_data_types(
+        period_start=period_start, period_end=period_end, period_months=period_months)
     
     # Obtain the var_or_dvar_layer and var_or_dvar_type classifications for the given 
     # var_or_dvar. This is used later to identify which folder to open files from, 
@@ -2964,7 +2989,7 @@ def calc_era5_mdp_clim_given_var_or_dvar(region, period_start, period_end,
         logging.debug(f"Preprocessing: file for use in {func_cur}: {file_name}.")
         ds = (regrid_era5(ds=ds)[[*vars_deps_and_rename[var].keys()]]
               .rename(vars_deps_and_rename[var])
-              .sel(time = ds.time.dt.month.isin(months_subset))
+              .sel(time = ds.time.dt.month.isin(period_months))
               # The downloaded ERA5 dataset is not sorted in time order (which
               # is a necessity for open_mfdataset, so we sort first over here.
               .sortby("time")
@@ -3159,7 +3184,7 @@ def calc_era5_mdp_clim_given_var_or_dvar(region, period_start, period_end,
 
 
 def calc_era5_mdp_clim_stats_given_var_or_dvar(region, period_start, period_end, 
-                                               months_subset, var_or_dvar, 
+                                               period_months, var_or_dvar, 
                                                glass_source_pref=None):
     """
     Calculate the mean diurnal profile (MDP) climatology statistics for a particular
@@ -3174,7 +3199,7 @@ def calc_era5_mdp_clim_stats_given_var_or_dvar(region, period_start, period_end,
         period_end (str): End of period to perform calculation over.
             Must be of form "%b-%Y" eg. "Jul-1990".
             Must be between "Jan-1981" and "Dec-2021".
-        months_subset (str or list): Subset of period to perform calculation over.
+        period_months (str or list): Months subset of period to perform calculation over.
             Must be a str and one of: ["all", "djf", "mam", "jja", "son"], or a subset
             list of: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] with at least one item.
         var_or_dvar (str): Variable or value of change in variable to perform
@@ -3190,18 +3215,18 @@ def calc_era5_mdp_clim_stats_given_var_or_dvar(region, period_start, period_end,
                         
     Returns:
         ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/{calc_funcs_ver}_calc_
-        {region}_{period_start}_{period_end}_{months_subset_str}_era5-mdp_
+        {region}_{period_start}_{period_end}_{period_months_str}_era5-mdp_
         {var_or_dvar}_stats.nc:
             Output netcdf4 file in data_processed folder containing the hour of maximum,
             hour of minimum, maximum, minimum, mean and range of the MDP for
             var_or_dvar. {calc_funcs_ver} is the version of the calc_funcs script
-            being used. {months_subset_str} is a string representing the list of 
+            being used. {period_months_str} is a string representing the list of 
             selected months to use as a subset.
     
     For each grid cell, calculate the max, min, mean, range, hour_max and hour_min of 
     the MDP for the selected var_or_dvar. The MDP values are computed over the period 
     from period_start to period_end (inclusive), and only using a subset of data within 
-    this period (if months_subset not "all" is specified). If var_or_dvar is one of:
+    this period (if period_months not "all" is specified). If var_or_dvar is one of:
     ["wv10", "wv100", "dwv10", "dwv100"], then hour_max and hour_min refer to the hours
     for when the magnitude of these vectors are at a maximum or minimum respectively.
     Max and min then refer to the vector quantities at hour_max and hour_min respectively.
@@ -3219,20 +3244,20 @@ def calc_era5_mdp_clim_stats_given_var_or_dvar(region, period_start, period_end,
     create_log_if_directly_executed(time_exec, func_cur, func_1up, 
                                     args_cur, args_cur_values)
     
-    # Assert that input arguments are valid, and create path for months_subset.
+    # Assert that input arguments are valid, and create path for period_months.
     
     check_args_for_none(func_cur, args_cur, args_cur_values)
     check_args(region=region, period_start=period_start, period_end=period_end,
-               months_subset=months_subset, var_or_dvar=var_or_dvar)
+               period_months=period_months, var_or_dvar=var_or_dvar)
     
-    months_subset_str = get_months_subset_str(months_subset=months_subset)
+    period_months_str = get_period_months_str(period_months=period_months)
     
     if (func_1up == "<cell line: 1>") | (func_1up == "<module>"):
-        logging.info(f"Executing: {func_cur} to obtain {months_subset_str} " +
+        logging.info(f"Executing: {func_cur} to obtain {period_months_str} " +
                      f"climatology of {var_or_dvar} MDP stats between " +
                      f"{period_start} and {period_end}.")
     else:
-        logging.info(f"Executing: {func_cur} to obtain {months_subset_str} " +
+        logging.info(f"Executing: {func_cur} to obtain {period_months_str} " +
                      f"climatology of {var_or_dvar} MDP stats between " +
                      f"{period_start} and {period_end} for use in {func_1up}.")
     
@@ -3241,12 +3266,12 @@ def calc_era5_mdp_clim_stats_given_var_or_dvar(region, period_start, period_end,
     
     path_output_mdp_clim_stats = get_path_for_calc_func(
         calc_func_name=func_cur, region=region, period_start=period_start, 
-        period_end=period_end, months_subset=months_subset, var_or_dvar=var_or_dvar)
+        period_end=period_end, period_months=period_months, var_or_dvar=var_or_dvar)
     terminate_if_file_exists(path_output_mdp_clim_stats, func_cur, func_1up)
     
     path_era5_mdp = get_path_for_calc_func(
         calc_func_name="calc_era5_mdp_clim_given_var_or_dvar", region=region, 
-        period_start=period_start, period_end=period_end, months_subset=months_subset, 
+        period_start=period_start, period_end=period_end, period_months=period_months, 
         var_or_dvar=var_or_dvar)
     if Path(path_era5_mdp).exists():
         msg_open = f"Opening: existing file for use in {func_cur}: {path_era5_mdp}."
@@ -3254,13 +3279,13 @@ def calc_era5_mdp_clim_stats_given_var_or_dvar(region, period_start, period_end,
         print(msg_open)
     else:
         calc_era5_mdp_clim_given_var_or_dvar(region, period_start, period_end,
-                                             months_subset, var_or_dvar)
+                                             period_months, var_or_dvar)
         
     # Convert period_start and period_end to datetime.datetime objects, 
-    # and months_subset to list if a str was used as input.
+    # and period_months to list if a str was used as input.
     
-    period_start, period_end, months_subset = convert_period_data_types(
-        period_start=period_start, period_end=period_end, months_subset=months_subset)
+    period_start, period_end, period_months = convert_period_data_types(
+        period_start=period_start, period_end=period_end, period_months=period_months)
     
     # Compute MDP stats for given var_or_dvar, treating vector values separately.
     logging.debug(f"Computing: {var_or_dvar} MDP stats for use in {func_cur}.")    
@@ -3353,7 +3378,7 @@ def calc_era5_mdp_clim_stats_given_var_or_dvar(region, period_start, period_end,
 # In[ ]:
 
 
-def calc_era5_wsd_clim(region, period_start, period_end, months_subset, 
+def calc_era5_wsd_clim(region, period_start, period_end, period_months, 
                        glass_source_pref=None, var_or_dvar=None):
 
     """
@@ -3369,7 +3394,7 @@ def calc_era5_wsd_clim(region, period_start, period_end, months_subset,
         period_end (str): End of period to perform calculation over.
             Must be of form "%b-%Y" eg. "Jul-1990".
             Must be between "Jan-1981" and "Dec-2021".
-        months_subset (str or list): Subset of period to perform calculation over.
+        period_months (str or list): Months subset of period to perform calculation over.
             Must be a str and one of: ["all", "djf", "mam", "jja", "son"], or a subset
             list of: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] with at least one item.
         glass_source_pref (None): This argument is not used for this analysis. It is used 
@@ -3379,13 +3404,13 @@ def calc_era5_wsd_clim(region, period_start, period_end, months_subset,
                         
     Returns:
         ../data_processed/era5_wsd_clim/{calc_funcs_ver}_calc_{region}_{period_start}_
-        {period_end}_{months_subset_str}_era5-wsd.nc:
+        {period_end}_{period_months_str}_era5-wsd.nc:
             Output netcdf4 file in data_processed folder containing Weibull shape and
             scale parameters for wind speed at 10 m and 100 m above surface, expected
             rate of exceedance for a particular wind speed at 100 m above surface,
             and gross capacity factor for a typical turbine at 100 m above surface.
             {calc_funcs_ver} is the version of the calc_funcs script being used.
-            {months_subset_str} is a string representing the list of selected months 
+            {period_months_str} is a string representing the list of selected months 
             to use as a subset.
     
     For each grid cell, calculate the Weibull scale and shape parameter for wind speed
@@ -3395,7 +3420,7 @@ def calc_era5_wsd_clim(region, period_start, period_end, months_subset,
     capacity factor for a typical wind turbine at 100 m above surface (TGCF100). The
     wind speed distributions (WSDs) are computed over the period between period_start
     and period_end (inclusive), and only using a subset of data within this period
-    (if a months_subset not "all" is specified). The calculation uses hourly ERA5 
+    (if a period_months not "all" is specified). The calculation uses hourly ERA5 
     netcdf4 data from the data_raw folder as input, then outputs the result as a
     netcdf4 file into the data_processed folder.
     """
@@ -3408,33 +3433,33 @@ def calc_era5_wsd_clim(region, period_start, period_end, months_subset,
     create_log_if_directly_executed(time_exec, func_cur, func_1up, 
                                     args_cur, args_cur_values)
     
-    # Assert that input arguments are valid, and create path for months_subset.
+    # Assert that input arguments are valid, and create path for period_months.
     
     check_args_for_none(func_cur, args_cur, args_cur_values)
     check_args(region=region, period_start=period_start, period_end=period_end,
-               months_subset=months_subset)
+               period_months=period_months)
     
-    months_subset_str = get_months_subset_str(months_subset=months_subset)
+    period_months_str = get_period_months_str(period_months=period_months)
     
     if (func_1up == "<cell line: 1>") | (func_1up == "<module>"):
         logging.info(f"Executing: {func_cur} to obtain wind speed distribution " +
-                     f"parameters over {months_subset_str} months between " + 
+                     f"parameters over {period_months_str} months between " + 
                      f"{period_start} and {period_end}.")
     else:
         logging.info(f"Executing: {func_cur} to obtain wind speed distribution " +
-                     f"parameters over {months_subset_str} months between " +
+                     f"parameters over {period_months_str} months between " +
                      f"{period_start} and {period_end} for use in {func_1up}.")
     
     # Define the output path, convert period_start and period_end to
-    # datetime.datetime objects, and months_subset to list if a str was used as input.
+    # datetime.datetime objects, and period_months to list if a str was used as input.
     
     path_output_wsd_clim = get_path_for_calc_func(
         calc_func_name=func_cur, region=region, period_start=period_start, 
-        period_end=period_end, months_subset=months_subset, var_or_dvar=var_or_dvar)
+        period_end=period_end, period_months=period_months, var_or_dvar=var_or_dvar)
     terminate_if_file_exists(path_output_wsd_clim, func_cur, func_1up)
     
-    period_start, period_end, months_subset = convert_period_data_types(
-        period_start=period_start, period_end=period_end, months_subset=months_subset)
+    period_start, period_end, period_months = convert_period_data_types(
+        period_start=period_start, period_end=period_end, period_months=period_months)
     if period_start + relativedelta(years=5, months=-1) > period_end:
         msg_years = ("WARNING: It is recommended to use at least 5 years of data " +
                      "for the wind speed distribution analysis.")
@@ -3465,7 +3490,7 @@ def calc_era5_wsd_clim(region, period_start, period_end, months_subset,
         file_name = ds.encoding["source"]
         logging.debug(f"Preprocessing: file for use in {func_cur}: {file_name}.")
         ds = (regrid_era5(ds=ds)[["u10", "v10", "u100", "v100"]]
-              .sel(time = ds.time.dt.month.isin(months_subset))
+              .sel(time = ds.time.dt.month.isin(period_months))
               # The downloaded ERA5 dataset is not sorted in time order (which
               # is a necessity for open_mfdataset, so we sort first over here.
               .sortby("time")
@@ -3559,7 +3584,7 @@ def calc_era5_wsd_clim(region, period_start, period_end, months_subset,
 
 
 def calc_diff(calc_func, region, period1_start, period1_end,
-              period2_start, period2_end, months_subset, 
+              period2_start, period2_end, period1_months, period2_months, 
               glass_source_pref=None, var_or_dvar=None):
     
     """
@@ -3586,9 +3611,12 @@ def calc_diff(calc_func, region, period1_start, period1_end,
         period2_end (str): End of second period to perform calculation over.
             Must be of form "%b-%Y" eg. "Jul-1990".
             Must be between "Jan-1981" and "Dec-2021".
-        months_subset (str or list): Subset of period to perform calculation over.
-            Must be a str and one of: ["all", "djf", "mam", "jja", "son"], or a subset
-            list of: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] with at least one item.
+        period1_months (str or list): Month subset of first period to perform calculation 
+            over. Must be a str and one of: ["all", "djf", "mam", "jja", "son"], or a 
+            subset list of: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] with at least one item.
+        period2_months (str or list): Month subset of second period to perform calculation 
+            over. Must be a str and one of: ["all", "djf", "mam", "jja", "son"], or a 
+            subset list of: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] with at least one item.
         glass_source_pref (str): Preferred glass data source to use when analysis is 
             over a period which is completely contained within both the available
             AVHRR and MODIS datasets. Must be one of: ["avhrr", "modis"].
@@ -3603,22 +3631,25 @@ def calc_diff(calc_func, region, period1_start, period1_end,
     
     Returns:
         ../data_processed/glass_mean_clim/{calc_funcs_ver}_diff_{region}_{period1_start}_
-            {period1_end}_{period2_start}_{period2_end}_{months_subset_str}_glass-mean_
-            {glass_source}.nc OR
+            {period1_end}_{period2_start}_{period2_end}_{period1_months_str}_
+            {period2_months_str}_glass-mean_{glass_source}.nc OR
         ../data_processed/era5_mdp_clim_given_var_or_dvar/{calc_funcs_ver}_diff_{region}_
             {period1_start}_{period1_end}_{period2_start}_{period2_end}_
-            {months_subset_str}_era5-mdp_{var_or_dvar}.nc OR
+            {period1_months_str}_{period2_months_str}_era5-mdp_{var_or_dvar}.nc OR
         ../data_processed/era5_mdp_clim_stats_given_var_or_dvar/{calc_funcs_ver}_diff_
             {region}_{period1_start}_{period1_end}_{period2_start}_{period2_end}_
-            {months_subset_str}_era5-mdp_{var_or_dvar}_stats.nc OR
+            {period1_months_str}_{period2_months_str}_era5-mdp_{var_or_dvar}_stats.nc OR
         ../data_processed/era5_wsd_clim/{calc_funcs_ver}_diff_{region}_{period1_start}_
-            {period1_end}_{period2_start}_{period2_end}_{months_subset_str}_era5-wsd.nc:
+            {period1_end}_{period2_start}_{period2_end}_{period1_months_str}_
+            {period2_months_str}_era5-wsd.nc:
                 Output netcdf4 file in data_processed folder containing the difference
                 in results, with name depending on calc_func being used.
                 {calc_funcs_ver} is the version of the calc_funcs script being
-                used. {months_subset_str} is a string representing the list of selected 
-                months to use as a subset. {glass_source} is automatically selected 
-                between ["avhrr", "modis"] based on the selected period. 
+                used. {period1_months_str} is a string representing the list of selected 
+                months to use as a subset for period1. {period2_months_str} is a string 
+                representing the list of selected months to use as a subset for period2. 
+                {glass_source} is automatically selected between ["avhrr", "modis"] 
+                based on the selected period. 
     
     First runs calc_func for each of the given periods if this has not already
     been done. Then calculates the difference in results as period2 - period1.
@@ -3641,8 +3672,9 @@ def calc_diff(calc_func, region, period1_start, period1_end,
     check_args_for_none(calc_func_name, args_cur, args_cur_values)
     check_args(calc_func=calc_func, region=region, period1_start=period1_start,
                period1_end=period1_end, period2_start=period2_start, 
-               period2_end=period2_end, months_subset=months_subset, 
-               glass_source_pref=glass_source_pref, var_or_dvar=var_or_dvar)
+               period2_end=period2_end, period1_months=period1_months, 
+               period2_months=period2_months, glass_source_pref=glass_source_pref, 
+               var_or_dvar=var_or_dvar)
     
     if (func_1up == "<cell line: 1>") | (func_1up == "<module>"):
         logging.info(f"Executing: {func_cur} to obtain difference in outputs from " +
@@ -3659,15 +3691,15 @@ def calc_diff(calc_func, region, period1_start, period1_end,
     path_output_diff = get_path_for_calc_diff(
         calc_func_name=calc_func_name, region=region, period1_start=period1_start,
         period1_end=period1_end, period2_start=period2_start, period2_end=period2_end,
-        months_subset=months_subset, glass_source_pref=glass_source_pref,
-        var_or_dvar=var_or_dvar)
+        period1_months=period1_months, period2_months=period2_months, 
+        glass_source_pref=glass_source_pref, var_or_dvar=var_or_dvar)
     terminate_if_file_exists(path_output_diff, func_cur, func_1up)
     
     # Create intermediate output files from each period if they don't already
     # exist, then read in these files as xarray datasets and compute difference.
     path_period1 = get_path_for_calc_func(
         calc_func_name=calc_func_name, region=region, period_start=period1_start, 
-        period_end=period1_end, months_subset=months_subset, 
+        period_end=period1_end, period_months=period1_months, 
         glass_source_pref=glass_source_pref, var_or_dvar=var_or_dvar)
     if Path(path_period1).exists():
         msg_open1 = f"Opening: existing file for use in {func_cur}: {path_period1}."
@@ -3675,13 +3707,13 @@ def calc_diff(calc_func, region, period1_start, period1_end,
         print(msg_open1)
     else:
         calc_func(region=region, period_start=period1_start, period_end=period1_end, 
-                  months_subset=months_subset, glass_source_pref=glass_source_pref, 
+                  period_months=period1_months, glass_source_pref=glass_source_pref, 
                   var_or_dvar=var_or_dvar)
     ds_period1 = xr.open_dataset(path_period1, engine = "netcdf4")
     
     path_period2 = get_path_for_calc_func(
         calc_func_name=calc_func_name, region=region, period_start=period2_start, 
-        period_end=period2_end, months_subset=months_subset,
+        period_end=period2_end, period_months=period2_months,
         glass_source_pref=glass_source_pref, var_or_dvar=var_or_dvar)
     if Path(path_period2).exists():
         msg_open2 = f"Opening: existing file for use in {func_cur}: {path_period2}."
@@ -3689,7 +3721,7 @@ def calc_diff(calc_func, region, period1_start, period1_end,
         print(msg_open2)
     else:
         calc_func(region=region, period_start=period2_start, period_end=period2_end,
-                  months_subset=months_subset, glass_source_pref=glass_source_pref,
+                  period_months=period2_months, glass_source_pref=glass_source_pref,
                   var_or_dvar=var_or_dvar)
     ds_period2 = xr.open_dataset(path_period2, engine = "netcdf4")
     
@@ -3848,7 +3880,7 @@ def calc_era5_orog():
 # In[ ]:
 
 
-def calc_glass_rolling_avg_of_annual_diff(region, year_start, year_end, months_subset,
+def calc_glass_rolling_avg_of_annual_diff(region, year_start, year_end, period_months,
                                           window_size, glass_source_pref):
     
     """
@@ -3861,7 +3893,7 @@ def calc_glass_rolling_avg_of_annual_diff(region, year_start, year_end, months_s
             Must be one of ["ca", "sa", "wa"].
         year_start (int): Earliest year to compute the rolling average for.
         year_end (int): Latest year to compute the rolling average for.
-        months_subset (str or list): Subset of period to perform calculation over.
+        period_months (str or list): Months subset of period to perform calculation over.
             Must be a str and one of: ["all", "djf", "mam", "jja", "son"], or a subset
             list of: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] with at least one item.
         window_size (int): Rolling window size (in years) to compute average for.
@@ -3872,16 +3904,16 @@ def calc_glass_rolling_avg_of_annual_diff(region, year_start, year_end, months_s
                         
     Returns:
         ../data_processed/glass_rolling_avg_of_annual_diff/{calc_funcs_ver}_calc_
-        {region}_{year_start}_{year_end}_{months_subset_str}_{window_size}-year_
+        {region}_{year_start}_{year_end}_{period_months_str}_{window_size}-year_
         glass-rolling-diff_{glass_source_pref}.nc:
             Output netcdf4 file in data_processed folder containing the rolling average
             of the annual difference in MLAI and MFAPAR. {calc_funcs_ver} is the version 
-            of the calc_funcs script being used. {months_subset_str} is a string 
+            of the calc_funcs script being used. {period_months_str} is a string 
             representing the list of selected months to use as a subset.
     
     For each grid cell, calculate the rolling average of the annual difference in 
     MLAI and MFAPAR, and only using a subset of data within this period (if a 
-    months_subset not "all" is specified). These rolling averages are computed for each 
+    period_months not "all" is specified). These rolling averages are computed for each 
     year between year_start and year_end (inclusive). For example, the 3-year rolling 
     average of MLAI for the year 1992 would be the average of MLAI(1993)-MLAI(1992) and
     MLAI(1992)-MLAI(1991), which uses 2 annual differences across 3 years of data.
@@ -3920,17 +3952,17 @@ def calc_glass_rolling_avg_of_annual_diff(region, year_start, year_end, months_s
     
     check_args_for_none(func_cur, args_cur, args_cur_values)
     check_args(region=region, year_start=year_start, year_end=year_end, 
-               months_subset=months_subset, window_size=window_size, 
+               period_months=period_months, window_size=window_size, 
                glass_source_pref=glass_source_pref)
     
-    months_subset_str = get_months_subset_str(months_subset=months_subset)
+    period_months_str = get_period_months_str(period_months=period_months)
     
     if (func_1up == "<cell line: 1>") | (func_1up == "<module>"):
-        logging.info(f"Executing: {func_cur} to obtain the {months_subset_str} rolling " +
+        logging.info(f"Executing: {func_cur} to obtain the {period_months_str} rolling " +
                      f"average of the annual difference in MLAI AND MFAPAR for years " +
                      f"{year_start} to {year_end}.")
     else:
-        logging.info(f"Executing: {func_cur} to obtain the {months_subset_str} rolling " +
+        logging.info(f"Executing: {func_cur} to obtain the {period_months_str} rolling " +
                      f"average of the annual difference in MLAI AND MFAPAR for years " +
                      f"{year_start} to {year_end} for use in {func_1up}.")
     
@@ -3938,7 +3970,7 @@ def calc_glass_rolling_avg_of_annual_diff(region, year_start, year_end, months_s
     
     path_output_glass_roll = get_path_for_calc_glass_rolling(
         region=region, year_start=year_start, year_end=year_end, 
-        months_subset=months_subset, window_size=window_size, 
+        period_months=period_months, window_size=window_size, 
         glass_source_pref=glass_source_pref)
     terminate_if_file_exists(path_output_glass_roll, func_cur, func_1up)
     
@@ -3963,7 +3995,7 @@ def calc_glass_rolling_avg_of_annual_diff(region, year_start, year_end, months_s
             calc_func_name="calc_glass_mean_clim", region=region, 
             period1_start="Jan-"+str(year-1), period1_end="Dec-"+str(year-1), 
             period2_start="Jan-"+str(year), period2_end="Dec-"+str(year), 
-            months_subset=months_subset, glass_source_pref=glass_source_pref)
+            period_months=period_months, glass_source_pref=glass_source_pref)
         
         glass_source_diff[str(year)] = path_diff[-8:-3]
         
@@ -3979,7 +4011,7 @@ def calc_glass_rolling_avg_of_annual_diff(region, year_start, year_end, months_s
             calc_diff(calc_func=calc_glass_mean_clim, region=region, 
                       period1_start="Jan-"+str(year-1), period1_end="Dec-"+str(year-1), 
                       period2_start="Jan-"+str(year), period2_end="Dec-"+str(year), 
-                      months_subset=months_subset, glass_source_pref=glass_source_pref)
+                      period_months=period_months, glass_source_pref=glass_source_pref)
             ds_diff = (xr.open_dataset(path_diff, engine = "netcdf4")
                        .expand_dims({"year": [year]})
                       )
@@ -4289,7 +4321,7 @@ def proc_sbfwa_def():
 # In[ ]:
 
 
-def create_all_possible_calc_data_files(region, period_start, period_end, months_subset):
+def create_all_possible_calc_data_files(region, period_start, period_end, period_months):
     
     """
     For the given inputs, run all possible calculation functions. For calculation
@@ -4306,7 +4338,7 @@ def create_all_possible_calc_data_files(region, period_start, period_end, months
         period_end (str): End of period to perform calculation over.
             Must be of form "%b-%Y" eg. "Jul-1990".
             Must be between "Jan-1981" and "Dec-2021".
-        months_subset (str or list): Subset of period to perform calculation over.
+        period_months (str or list): Months subset of period to perform calculation over.
             Must be a str and one of: ["all", "djf", "mam", "jja", "son"], or a subset
             list of: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] with at least one item.
     """
@@ -4321,17 +4353,17 @@ def create_all_possible_calc_data_files(region, period_start, period_end, months
     
     check_args_for_none(func_cur, args_cur, args_cur_values)
     check_args(region=region, period_start=period_start, period_end=period_end,
-               months_subset=months_subset)
+               period_months=period_months)
     
-    months_subset_str = get_months_subset_str(months_subset=months_subset)
+    period_months_str = get_period_months_str(period_months=period_months)
     
     if (func_1up == "<cell line: 1>") | (func_1up == "<module>"):
         logging.info(f"Executing: {func_cur} to create all possible calc data files " +
-                     f"in {region} over {months_subset_str} months between " + 
+                     f"in {region} over {period_months_str} months between " + 
                      f"{period_start} and {period_end}.")
     else:
         logging.info(f"Executing: {func_cur} to create all possible calc data files " +
-                     f"in {region} over {months_subset_str} months between " + 
+                     f"in {region} over {period_months_str} months between " + 
                      f"{period_start} and {period_end} for use in {func_1up}.")
     
     for calc_func_name in calc_func_names:
@@ -4340,7 +4372,7 @@ def create_all_possible_calc_data_files(region, period_start, period_end, months
         if calc_func_name == "calc_era5_wsd_clim":
             path = get_path_for_calc_func(
                 calc_func_name=calc_func_name, region=region, period_start=period_start, 
-                period_end=period_end, months_subset=months_subset
+                period_end=period_end, period_months=period_months
             )
             if Path(path).exists():
                 msg_exists = f"Skipped: file already exists: {path}."
@@ -4349,14 +4381,14 @@ def create_all_possible_calc_data_files(region, period_start, period_end, months
             else:
                 calc_func(
                     region=region, period_start=period_start, period_end=period_end,
-                    months_subset=months_subset
+                    period_months=period_months
                 )
         elif calc_func_name == "calc_glass_mean_clim":
             for glass_source in glass_sources_all:
                 path = get_path_for_calc_func(
                     calc_func_name=calc_func_name, region=region, 
                     period_start=period_start, period_end=period_end, 
-                    months_subset=months_subset, glass_source_pref=glass_source
+                    period_months=period_months, glass_source_pref=glass_source
                 )                
                 if Path(path).exists():
                     msg_exists = f"Skipped: file already exists: {path}."
@@ -4365,14 +4397,14 @@ def create_all_possible_calc_data_files(region, period_start, period_end, months
                 else:
                     calc_func(
                         region=region, period_start=period_start, period_end=period_end,
-                        months_subset=months_subset, glass_source_pref=glass_source
+                        period_months=period_months, glass_source_pref=glass_source
                     )
         else:
             for var_or_dvar in vars_and_dvars_era5_all:
                 path = get_path_for_calc_func(
                     calc_func_name=calc_func_name, region=region, 
                     period_start=period_start, period_end=period_end, 
-                    months_subset=months_subset, var_or_dvar=var_or_dvar
+                    period_months=period_months, var_or_dvar=var_or_dvar
                 )                
                 if Path(path).exists():
                     msg_exists = f"Skipped: file already exists: {path}."
@@ -4381,7 +4413,7 @@ def create_all_possible_calc_data_files(region, period_start, period_end, months
                 else:
                     calc_func(
                         region=region, period_start=period_start, period_end=period_end,
-                        months_subset=months_subset, var_or_dvar=var_or_dvar
+                        period_months=period_months, var_or_dvar=var_or_dvar
                     )
     
     remove_handlers_if_directly_executed(func_1up)
@@ -4390,8 +4422,10 @@ def create_all_possible_calc_data_files(region, period_start, period_end, months
 # In[ ]:
 
 
-def create_all_possible_diff_data_files(region, period1_start, period1_end,
-                                        period2_start, period2_end, months_subset):
+def create_all_possible_diff_data_files(
+    region, period1_start, period1_end, period2_start, period2_end, 
+    period1_months, period2_months, glass_source_pref
+):
     
     """
     For the given inputs, run calc_diff over all possible calculation functions. 
@@ -4414,9 +4448,15 @@ def create_all_possible_diff_data_files(region, period1_start, period1_end,
         period2_end (str): End of second period to perform calculation over.
             Must be of form "%b-%Y" eg. "Jul-1990".
             Must be between "Jan-1981" and "Dec-2021".
-        months_subset (str or list): Subset of period to perform calculation over.
-            Must be a str and one of: ["all", "djf", "mam", "jja", "son"], or a subset
-            list of: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] with at least one item.
+        period1_months (str or list): Month subset of first period to perform calculation 
+            over. Must be a str and one of: ["all", "djf", "mam", "jja", "son"], or a 
+            subset list of: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] with at least one item.
+        period2_months (str or list): Month subset of second period to perform calculation 
+            over. Must be a str and one of: ["all", "djf", "mam", "jja", "son"], or a 
+            subset list of: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] with at least one item.
+        glass_source_pref (str): Preferred glass data source to use when analysis is 
+            over a period which is completely contained within both the available
+            AVHRR and MODIS datasets. Must be one of: ["avhrr", "modis"].
     """
     
     time_exec = datetime.today()
@@ -4430,19 +4470,22 @@ def create_all_possible_diff_data_files(region, period1_start, period1_end,
     check_args_for_none(func_cur, args_cur, args_cur_values)
     check_args(region=region, period1_start=period1_start, period1_end=period1_end, 
                period2_start=period2_start, period2_end=period2_end,
-               months_subset=months_subset)
+               period1_months=period1_months, period2_months=period2_months,
+               glass_source_pref=glass_source_pref)
     
-    months_subset_str = get_months_subset_str(months_subset=months_subset)
+    period1_months_str = get_period_months_str(period_months=period1_months)
+    period2_months_str = get_period_months_str(period_months=period2_months)
     
     if (func_1up == "<cell line: 1>") | (func_1up == "<module>"):
-        logging.info(f"Executing: {func_cur} to create all possible {months_subset_str} " +
-                     f"difference data files in {region} over {period1_start} to " +
-                     f"{period1_end} and {period2_start} to {period2_end}.")
+        logging.info(f"Executing: {func_cur} to create all possible difference " +
+                     f"data files in {region} over {period1_start} " +
+                     f"({period1_months_str}) to {period1_end} and {period2_start} " +
+                     f"to {period2_end} ({period2_months_str}).")
     else:
-        logging.info(f"Executing: {func_cur} to create all possible {months_subset_str} " +
-                     f"difference data files in {region} over {period1_start} to " +
-                     f"{period1_end} and {period2_start} to {period2_end} " +
-                     f"for use in {func_1up}.")
+        logging.info(f"Executing: {func_cur} to create all possible difference " +
+                     f"data files in {region} over {period1_start} " +
+                     f"({period1_months_str}) to {period1_end} and {period2_start} " +
+                     f"to {period2_end} ({period2_months_str}) for use in {func_1up}.")
     
     for calc_func_name in calc_func_names:
         calc_func = globals()[calc_func_name]
@@ -4452,7 +4495,7 @@ def create_all_possible_diff_data_files(region, period1_start, period1_end,
                 calc_func_name=calc_func_name, region=region, 
                 period1_start=period1_start, period1_end=period1_end, 
                 period2_start=period2_start, period2_end=period2_end, 
-                months_subset=months_subset
+                period1_months=period1_months, period2_months=period2_months
             )
             if Path(path).exists():
                 msg_exists = f"Skipped: file already exists: {path}."
@@ -4463,34 +4506,36 @@ def create_all_possible_diff_data_files(region, period1_start, period1_end,
                     calc_func=calc_func, region=region, 
                     period1_start=period1_start, period1_end=period1_end, 
                     period2_start=period2_start, period2_end=period2_end, 
-                    months_subset=months_subset
+                    period1_months=period1_months, period2_months=period2_months
                 )
         elif calc_func_name == "calc_glass_mean_clim":
-            for glass_source in glass_sources_all:       
-                path = get_path_for_calc_diff(
-                    calc_func_name=calc_func_name, region=region, 
+            path = get_path_for_calc_diff(
+                calc_func_name=calc_func_name, region=region, 
+                period1_start=period1_start, period1_end=period1_end, 
+                period2_start=period2_start, period2_end=period2_end, 
+                period1_months=period1_months, period2_months=period2_months, 
+                glass_source_pref=glass_source_pref
+            )
+            if Path(path).exists():
+                msg_exists = f"Skipped: file already exists: {path}."
+                logging.info(msg_exists)
+                print(msg_exists)
+            else:
+                calc_diff(
+                    calc_func=calc_func, region=region, 
                     period1_start=period1_start, period1_end=period1_end, 
                     period2_start=period2_start, period2_end=period2_end, 
-                    months_subset=months_subset, glass_source_pref=glass_source
+                    period1_months=period1_months, period2_months=period2_months, 
+                    glass_source_pref=glass_source_pref
                 )
-                if Path(path).exists():
-                    msg_exists = f"Skipped: file already exists: {path}."
-                    logging.info(msg_exists)
-                    print(msg_exists)
-                else:
-                    calc_diff(
-                        calc_func=calc_func, region=region, 
-                        period1_start=period1_start, period1_end=period1_end, 
-                        period2_start=period2_start, period2_end=period2_end, 
-                        months_subset=months_subset, glass_source_pref=glass_source
-                    )
         else:
             for var_or_dvar in vars_and_dvars_era5_all:       
                 path = get_path_for_calc_diff(
                     calc_func_name=calc_func_name, region=region, 
                     period1_start=period1_start, period1_end=period1_end, 
                     period2_start=period2_start, period2_end=period2_end, 
-                    months_subset=months_subset, var_or_dvar=var_or_dvar
+                    period1_months=period1_months, period2_months=period2_months, 
+                    var_or_dvar=var_or_dvar
                 )
                 if Path(path).exists():
                     msg_exists = f"Skipped: file already exists: {path}."
@@ -4501,7 +4546,8 @@ def create_all_possible_diff_data_files(region, period1_start, period1_end,
                         calc_func=calc_func, region=region, 
                         period1_start=period1_start, period1_end=period1_end, 
                         period2_start=period2_start, period2_end=period2_end, 
-                        months_subset=months_subset, var_or_dvar=var_or_dvar
+                        period1_months=period1_months, period2_months=period2_months, 
+                        var_or_dvar=var_or_dvar
                     )
     
     remove_handlers_if_directly_executed(func_1up)

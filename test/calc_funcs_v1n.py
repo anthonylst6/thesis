@@ -1,19 +1,23 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+# # Setup
+
+# ## Import libraries for calculations
+
 # In[ ]:
 
-
-## Import libraries for calculations
 
 import logging
 import inspect
 import copy
 import math
 import pandas as pd
+import geopandas as gpd
 import numpy as np
 import xarray as xr
 import metpy.calc as mpcalc
+import os
 from glob import glob
 from pathlib import Path
 from datetime import datetime
@@ -22,10 +26,10 @@ from scipy.special import gamma
 from scipy.interpolate import interp1d
 
 
+# ## Settings and global variables for calculations
+
 # In[ ]:
 
-
-## Settings and global variables for calculations
 
 # This is to get the version number of the calc_funcs script being used so that it
 # can be appended to the file name of any outputs. The reason this is done is because
@@ -66,13 +70,13 @@ assert priority in priorities, \
 # as well as timezones in hour +- GMT
 regions = {
     # Central America (mostly Honduras-Nicaragua-Costa Rica)
-    "ca": {"extent": [-91, -81, 7, 17], "tz": -6},
+    "ca": {"extents": [-91, -81, 7, 17], "tz": -6},
     # South America (mostly central and eastern Brazil)
-    "sa": {"extent": [-65, -30, -15, 0], "tz": -3},
+    "sa": {"extents": [-65, -30, -15, 0], "tz": -3},
     # Western Australia (mostly near the west coast)
-    "wa": {"extent": [113, 123, -35, -30], "tz": +8},
+    "wa": {"extents": [114, 124, -36, -26], "tz": +8},
     # Global (requires a lot of memory)
-    "global": {"extent": [-180, 180, -90, 90], "tz": +0}
+    "global": {"extents": [-180, 180, -90, 90], "tz": +0}
 }
 
 # Size of chunks
@@ -81,7 +85,7 @@ chunksize = "500MB"
 # Valid subset strings to use as argument in climatologies and
 # their mapping to month numbers for use in xarray time slicing
 months_subsets = {
-    "all": list(range(1, 13)),
+    "all": list(range(1, 12+1)),
     "djf": [12,1,2], "mam": [3,4,5], "jja": [6,7,8], "son": [9,10,11]
 }
 
@@ -91,6 +95,7 @@ number_of_glass_files = {"lai": {"avhrr": 1748, "modis": 1005},
                         }
 number_of_era5_month_hour_files = 42
 number_of_era5_hour_files = 42
+number_of_noaa_static_files = 8
 
 # GLASS data sources
 glass_sources_all = ["avhrr", "modis"]
@@ -127,15 +132,19 @@ fapar_latest_year = int(fapar_latest[-4:])
 res_era5 = 0.25
 
 # Valid ERA5/ERA5-derived parameters for use in analysis
-hours_all = list(range(0, 24))
+hours_all = list(range(0, 23+1))
 vars_and_dvars_era5 = {
     "vars": {
-        "sfc": ["ws10", "ws100", "wv10", "wv100", "mslp", "t2", "slhf", "sshf"],
-        "atm": ["viec", "vipile", "vike", "tcclw", "tcwv", "nac"]
+        "sfc": ["u10", "v10", "ws10", "wv10", "u100", "v100", "ws100", "wv100", 
+                "mslp", "t2", "slhf", "sshf"],
+        "atm": ["nse", "vidmf", "viec", "vipile", "vike", "tcclw", "tcwv", "nac"],
+        "cld": ["blh", "fa", "cbh", "tcc", "cape", "ci"]
     },
     "dvars": {
-        "sfc": ["dws10", "dws100", "dwv10", "dwv100", "dmslp", "dt2", "dslhf", "dsshf"],
-        "atm": ["dviec", "dvipile", "dvike", "dtcclw", "dtcwv", "dnac"]
+        "sfc": ["du10", "dv10", "dws10", "dwv10", "du100", "dv100", "dws100", "dwv100", 
+                "dmslp", "dt2", "dslhf", "dsshf"],
+        "atm": ["dnse", "dvidmf", "dviec", "dvipile", "dvike", "dtcclw", "dtcwv", "dnac"],
+        "cld": ["dblh", "dfa", "dcbh", "dtcc", "dcape", "dci"]
     }
 }
 
@@ -150,14 +159,17 @@ for _, dvar_list in vars_and_dvars_era5["dvars"].items():
         dvars_era5_all.append(dvar)
 
 vars_and_dvars_era5_all = vars_era5_all + dvars_era5_all
+var_or_dvar_layers = [*[*vars_and_dvars_era5.values()][0].keys()]
+var_or_dvar_types = [*vars_and_dvars_era5]
 
 # Valid time strings to use as argument in plot_funcs script,
 times = {
-    "0-5": list(range(0, 6)), "6-11": list(range(6, 12)),
-    "12-17": list(range(12, 18)), "18-23": list(range(18, 24)),
-    "night": list(range(0, 6)), "morning": list(range(6, 12)),
-    "afternoon": list(range(12, 18)), "evening": list(range(18, 24))
+    "0-5": list(range(0, 5+1)), "6-11": list(range(6, 11+1)),
+    "12-17": list(range(12, 17+1)), "18-23": list(range(18, 23+1)),
+    "night": list(range(0, 5+1)), "morning": list(range(6, 11+1)),
+    "afternoon": list(range(12, 17+1)), "evening": list(range(18, 23+1))
 }
+times_all = [*times]
 
 # Parameters which are vectors
 params_vector = ["wv10", "wv100", "dwv10", "dwv100"]
@@ -176,22 +188,37 @@ params_wsd = ["ws10_mean", "ws10_std", "c10", "k10", "ws100_mean",
 # Output parameters for static orographic calculations
 params_orog = ["lse", "ssgo"]
 
+# Values which arg_extra in plot_funcs script can take on.
+arg_extra_all = params_glass_mean + hours_all + params_stat + params_wsd
+
 # Mapping from ERA5 dataset variable names to own desired names, while
 # also accounting for any var_or_dvar variable dependencies
-vars_deps_and_rename = {"ws10": {"u10": "u10", "v10": "v10"},
-                        "ws100": {"u100": "u100", "v100": "v100"},
+vars_deps_and_rename = {"u10": {"u10": "u10"},
+                        "v10": {"v10": "v10"},
+                        "ws10": {"u10": "u10", "v10": "v10"},
                         "wv10": {"u10": "u10", "v10": "v10"},
+                        "u100": {"u100": "u100"},
+                        "v100": {"v100": "v100"},
+                        "ws100": {"u100": "u100", "v100": "v100"},
                         "wv100": {"u100": "u100", "v100": "v100"},
                         "mslp": {"msl": "mslp"},
                         "t2": {"t2m": "t2"},
                         "slhf": {"slhf": "slhf"},
                         "sshf": {"sshf": "sshf"},
+                        "nse": {"e": "nse"},
+                        "vidmf": {"p84.162": "vidmf"},
                         "viec": {"p64.162": "viec"},
                         "vipile": {"p62.162": "vipile"},
                         "vike": {"p59.162": "vike"},
                         "tcclw": {"tclw": "tcclw"},
                         "tcwv": {"tcwv": "tcwv"},
-                        "nac": {"e": "nse", "p84.162": "vidmf", "tcwv": "tcwv"}
+                        "nac": {"e": "nse", "p84.162": "vidmf", "tcwv": "tcwv"},
+                        "blh": {"blh": "blh"},
+                        "fa": {"fal": "fa"},
+                        "cbh": {"cbh": "cbh"},
+                        "tcc": {"tcc": "tcc"},
+                        "cape": {"cape": "cape"},
+                        "ci": {"cin": "ci"}
                        }
 
 # Speed (in m/s) for expected rate of exceedance analysis at 100 m
@@ -239,10 +266,13 @@ per_diff_nan_max = 25
 
 # Plot-specific arguments for use in the plot_funcs script which can take on None
 # values (these args are excepted from the check_args_for_none function below)
-args_plot = ["extents", "mask_period1", "mask_period2", "vmin", "vmax", 
+args_plot = ["mask_period1", "mask_period2", "extents", "vmin", "vmax", 
              "vmin_periods", "vmax_periods", "vmin_diff", "vmax_diff", 
-             "ax", "ax_period1", "ax_period2", "ax_diff", "cfv_data", "output"]
+             "ax", "ax_period1", "ax_period2", "ax_diff",  "period1_mid", 
+             "period2_mid", "month1_mark", "month2_mark", "cfv_data"]
 
+
+# ## Metadata to be appended onto output datasets
 
 # In[ ]:
 
@@ -328,6 +358,24 @@ attrs_da = {
     "nac": {"abbreviation": "NAC",
             "full_name": "Net Atmospheric Condensation",
             "units": "$kg m^{-2} s^{-1}$"},
+    "blh": {"abbreviation": "BLH",
+            "full_name": "Boundary Layer Height",
+            "units": "$m$"},
+    "fa": {"abbreviation": "FA",
+           "full_name": "Forecast Albedo",
+           "units": "dimensionless"},
+    "cbh": {"abbreviation": "CBH",
+            "full_name": "Cloud Base Height",
+            "units": "$m$"},
+    "tcc": {"abbreviation": "TCC",
+            "full_name": "Total Cloud Cover",
+            "units": "dimensionless"},
+    "cape": {"abbreviation": "CAPE",
+             "full_name": "Convective Available Potential Energy",
+             "units": "$J kg^{-1}$"},
+    "ci": {"abbreviation": "CI",
+           "full_name": "Convective Inhibition",
+           "units": "$J kg^{-1}$"},
     
     # For calc_era5_mdp_clim_stats_given_var_or_dvar
     "hour_max": {"abbreviation": "$hour_{{max}}$({})",
@@ -412,8 +460,42 @@ attrs_da = {
             "units": "$m$"},
     "ssgo": {"abbreviation": "SSGO",
              "full_name": "Slope of Sub-Gridscale Orography",
-             "units": "dimensionless"}
-
+             "units": "dimensionless"},
+    
+    # For proc_noaa_ind
+    "amoi": {"abbreviation": "AMOI",
+            "full_name": "Atlantic Multidecadal Oscillation Index",
+            "units": "dimensionless",
+            "source": "NOAA-PSL"},
+    "pdoi": {"abbreviation": "PDOI",
+            "full_name": "Pacific Decadal Oscillation Index",
+            "units": "dimensionless",
+            "source": "NOAA-PSL"},
+    "oni": {"abbreviation": "ONI",
+            "full_name": "Oceanic Nino Index",
+            "units": "dimensionless",
+            "source": "NOAA-CPC"},
+    "dmi": {"abbreviation": "DMI",
+            "full_name": "Dipole Mode Index",
+            "units": "dimensionless",
+            "source": "NOAA-PSL"},
+    "aaoi": {"abbreviation": "AAOI",
+             "full_name": "Antarctic Oscillation Index",
+             "units": "dimensionless",
+             "source": "NOAA-CPC"},
+    "aoi": {"abbreviation": "AOI",
+            "full_name": "Arctic Oscillation Index",
+            "units": "dimensionless",
+            "source": "NOAA-CPC"},
+    "naoi": {"abbreviation": "NAOI",
+             "full_name": "North Atlantic Oscillation Index",
+             "units": "dimensionless",
+             "source": "NOAA-CPC"},
+    "epoi": {"abbreviation": "EPOI",
+             "full_name": "Eastern Pacific Oscillation Index",
+             "units": "dimensionless",
+             "source": "NOAA-CPC"},
+    
 }
 
 # Attributes for coordinates within output datasets.
@@ -433,10 +515,12 @@ coord_attrs = {
 }
 
 
+# # Functions
+
+# ## Supplementary functions for calculations
+
 # In[ ]:
 
-
-## Supplementary functions for calculations
 
 def create_log_if_directly_executed(time_exec_1up, func_1up=None, func_2up=None, 
                                     args_1up=None, args_1up_values=None):
@@ -503,7 +587,7 @@ def create_log_if_directly_executed(time_exec_1up, func_1up=None, func_2up=None,
             
         args_1up_str = ", ".join(arg_input for arg_input in args_1up_list)
         path_log = (f"../logs/{func_1up}/({args_1up_str})_" +
-                    f"{time_str}_{calc_funcs_ver}")
+                    f"{calc_funcs_ver}_{time_str}")
         Path(f"../logs/{func_1up}").mkdir(parents=True, exist_ok=True)
         # File names can only have maximum 255 characters.
         logging.basicConfig(level=calc_log_level, filename=path_log[:255], force=True)
@@ -572,7 +656,7 @@ def terminate_if_file_exists(path_output, func_1up=None, func_2up=None):
 # In[ ]:
 
 
-def create_output_file(ds, path_output, func_2up=None):
+def create_output_data_file(ds, path_output, func_2up=None):
     
     """
     Output the dataset ds as a netcdf4 file into the given path_output.
@@ -641,6 +725,9 @@ def check_args_for_none(func_name, args_1up=None, args_1up_values=None):
         assert args_1up_values["var_or_dvar"] == None, \
             f"var_or_dvar must be None if calc_func = {func_name}"
         args_1up.remove("var_or_dvar")
+        
+    if func_name == "create_orog_static_plot":
+        args_1up.remove("region")
     
     # Make exceptions for args in plot_funcs script which can be None.
     for arg_plot in args_plot:
@@ -648,7 +735,8 @@ def check_args_for_none(func_name, args_1up=None, args_1up_values=None):
             args_1up.remove(arg_plot)
         except:
             pass
-        
+    
+    # Remaining arguments must not be None.
     for arg in args_1up:
         assert args_1up_values[arg] != None, \
             f"{arg} cannot be None"
@@ -657,22 +745,36 @@ def check_args_for_none(func_name, args_1up=None, args_1up_values=None):
 # In[ ]:
 
 
-def check_args(calc_func=None, region=None, period_start=None, period_end=None,
-               months_subset=None, glass_source_pref=None, var_or_dvar=None, 
-               hour=None, year_start=None, year_end=None, window_size=None, 
-               var_or_dvar_layer=None, var_or_dvar_type=None, time=None):
+def check_args(
+    calc_func=None, region=None, period_start=None, period_end=None, period1_start=None, 
+    period1_end=None, period2_start=None, period2_end=None, months_subset=None, 
+    glass_source_pref=None, var_or_dvar=None, year_start=None, year_end=None, 
+    window_size=None, arg_extra=None, hour=None, time=None, param_orog=None,
+    param_glass_mean=None, var_or_dvar_layer=None, var_or_dvar_type=None, perc=None, 
+    mask_perc_quantile=None, mask_period1=None, mask_period2=None, extents=None, 
+    vmin=None, vmax=None, vmin_periods=None, vmax_periods=None, vmin_diff=None, 
+    vmax_diff=None, ax=None, ax_period1=None, ax_period2=None, ax_diff=None, 
+    period1_mid=None, period2_mid=None, month1_mark=None, month2_mark=None, 
+    cfv_data=None, output=None
+):
     
     """
     Function to check whether input arguments are valid.
     
     Arguments:
-        calc_func (function): Calculation function to compute difference in
-            results from. Must be one of: [calc_glass_mean_clim,
+        calc_func (function): Calculation function to use in analysis. Must be one of: 
+            [calc_glass_mean_clim,
             calc_era5_mdp_clim_given_var_or_dvar,
             calc_era5_mdp_clim_stats_given_var_or_dvar,
             calc_era5_wsd_clim].
         region (str): Region to perform calculation over.
             Must be one of: ["ca", "sa", "wa"].
+        period_start (str): Start of period to perform calculation over.
+            Must be of form "%b-%Y" eg. "Jul-1990".
+            Must be between "Jan-1981" and "Dec-2021".
+        period_end (str): End of period to perform calculation over.
+            Must be of form "%b-%Y" eg. "Jul-1990".
+            Must be between "Jan-1981" and "Dec-2021".
         period1_start (str): Start of first period to perform calculation over.
             Must be of form "%b-%Y" eg. "Jul-1990".
             Must be between "Jan-1981" and "Dec-2021".
@@ -692,28 +794,86 @@ def check_args(calc_func=None, region=None, period_start=None, period_end=None,
             over a period which is completely contained within both the available
             AVHRR and MODIS datasets. Must be one of: ["avhrr", "modis"].
         var_or_dvar (str): Variable or value of change in variable to perform
-            calculation over. Must be one of: ['ws10', 'ws100', 'wv10', 'wv100', 
-            'mslp', 't2', 'slhf', 'sshf', 'viec', 'vipile', 'vike', 'tcclw', 'tcwv', 
-            'nac', 'dws10', 'dws100', 'dwv10', 'dwv100', 'dmslp', 'dt2', 'dslhf', 
-            'dsshf', 'dviec', 'dvipile', 'dvike', 'dtcclw', 'dtcwv', 'dnac'].
-        hour (int): Hour of mean diurnal profile to compute value for.
-            Must be one of: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
-            13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23].
+            calculation over. Must be one of: ['u10', 'v10', 'ws10', 'wv10', 'u100', 
+            'v100', 'ws100', 'wv100', 'mslp', 't2', 'slhf', 'sshf', 'nse', 'vidmf', 
+            'viec', 'vipile', 'vike', 'tcclw', 'tcwv', 'nac', 'blh', 'fa', 'cbh', 'tcc', 
+            'cape', 'ci', 'du10', 'dv10', 'dws10', 'dwv10', 'du100', 'dv100', 'dws100', 
+            'dwv100', 'dmslp', 'dt2', 'dslhf', 'dsshf', 'dnse', 'dvidmf', 'dviec', 
+            'dvipile', 'dvike', 'dtcclw', 'dtcwv', 'dnac', 'dblh', 'dfa', 'dcbh', 
+            'dtcc', 'dcape', 'dci'].
         year_start (int): Earliest year to compute the rolling average for.
         year_end (int): Latest year to compute the rolling average for.
         window_size (int): Rolling window size (in years) to compute average for.
             Must be an odd number and greater than or equal to 3.
+        arg_extra (str or int): Extra plotting argument used to specify which GLASS 
+            parameter to plot, which hour for the mean diurnal profile of an ERA5 
+            parameter to plot, which statistic of the mean diurnal profile to plot, 
+            or which parameter of the wind speed distribution to plot. Must be one of:
+            ["mlai", "mfapar", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,
+            16, 17, 18, 19, 20, 21, 22, 23, "hour_max", "hour_min", "max", "max_u", 
+            "max_v", "min", "min_u", "min_v", "mean", "mean_u", "mean_v", "range", 
+            "ws10_mean", "ws10_std", "c10", "k10", "ws100_mean", "ws100_std", "c100", 
+            "k100", "eroe100", "tgcf100"].
+        hour (int): Hour of mean diurnal profile to plot values for. This is used for
+            the plot_funcs script. Must be one of: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 
+            11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23].
+        time (str): Which times of the day to display MDP values for. This
+            is used for the plot_funcs script. Must be one of: 
+            ["0-5"/"night", "6-11"/"morning", "12-17"/"afternoon", "18-23"/"evening"].
+        param_orog (str): 
+        param_glass_mean (str): 
         var_or_dvar_layer (str): Spatial layer from which to draw ERA5 parameters for 
-            analysis. This is used for the plot_func script. Must be one of: 
-            ["sfc", "atm"].
+            analysis. This is used for the plot_funcs script. Must be one of: 
+            ["sfc", "atm", "cld"].
         var_or_dvar_type (str): Whether to analyse the variables themselves or the 
             change in their mean diurnal profile values as compared with their values
-            in the previous hour. This is used for the plot_func script.
+            in the previous hour. This is used for the plot_funcs script.
             Must be one of: ["vars", "dvars"].
-        time (str): Which times of the day to display MDP values for. This
-            is used for the plot_func_script. Must be one of: 
-            ["0-5"/"night", "6-11"/"morning", "12-17"/"afternoon", "18-23"/"evening"].
-    
+        perc (bool): Whether to plot the difference in values as a percentage of the
+            value (magnitude if negative) in period1. This is used for the comp plots
+            in the plot_funcs script. Must be one of: [True, False].
+        mask_perc_quantile (int): If perc is True, specify the quantile of values
+            (magnitude if negative) from period1 to mask for the difference plot.
+            This is used because percentage differences may be particularly high
+            for values which had a low magnitude as a base in period 1.
+        mask_period1 (str): Whether to mask grid cells in a comp plot depending on
+            whether the value in period 1 was positive or negative. Must be one of:
+            ["pos", "neg"].
+        mask_period2 (str): Whether to mask grid cells in a comp plot depending on
+            whether the value in period 2 was positive or negative. Must be one of:
+            ["pos", "neg"].
+        extents (list): Longitudinal and latitudinal extents to display in plot.
+            Must be a 4 element list in [W, E, S, N] format with longitudes -180
+            to 180 and latitudes -90 to 90.
+        vmin (float or int): Minimum of colourbar extents for a calc plot.
+        vmax (float or int): Maximum of colourbar extents for a calc plot.
+        vmin_periods (float or int): Minimum of colourbar extents for a calc plot.
+            Used to set common colourbar extents for both periods in a comp plot.
+        vmax_periods (float or int): Maximum of colourbar extents for a calc plot.
+            Used to set common colourbar extents for both periods in a comp plot.
+        vmin_diff (float or int): Minimum of colourbar extents for a diff plot.
+            Used to set colourbar extents for the diff plot within a comp plot.
+        vmax_diff (float or int): Maximum of colourbar extents for a diff plot.
+            Used to set colourbar extents for the diff plot within a comp plot.
+        ax (cartopy.GeoAxesSubplot): Figure axis to create plot on.
+        ax_period1 (cartopy.GeoAxesSubplot): Figure axis to create calc plot on.
+            Used for period 1 plot within a comp plot.
+        ax_period2 (cartopy.GeoAxesSubplot): Figure axis to create calc plot on.
+            Used for period 2 plot within a comp plot.
+        ax_diff (cartopy.GeoAxesSubplot): Figure axis to create diff plot on.
+            Used for period2 - period1 diff plot within a comp plot.
+        period1_mid (str): Month in middle of first period to plot rolling average 
+            of climate indices for. Must be of form "%b-%Y" eg. "Jul-1990".
+        period2_mid (str): Month in middle of second period to plot rolling average 
+            of climate indices for. Must be of form "%b-%Y" eg. "Jul-1990".
+        month1_mark (str): First month to plot monthly value for in the climate 
+            indices plot. Must be of form "%b-%Y" eg. "Jul-1990".
+        month2_mark (str): Second month to plot monthly value for in the climate 
+            indices plot. Must be of form "%b-%Y" eg. "Jul-1990".
+        cfv_data (str): calc_funcs_ver of pre-existing data to use in plotting.
+        output (bool): Whether to output the plot as a PNG file. Must be one of:
+            [True, False].
+        
     Returns:
         AssertionError if any of the input arguments are invalid.
     """
@@ -736,7 +896,8 @@ def check_args(calc_func=None, region=None, period_start=None, period_end=None,
     if calc_func:
         assert callable(calc_func), \
             f"calc_func must be a function and one of: {calc_func_names}"
-        assert calc_func.__name__ in calc_func_names, \
+        calc_func_name = calc_func.__name__
+        assert calc_func_name in calc_func_names, \
             f"calc_func must be a function and one of: {calc_func_names}"
         
     if region:
@@ -756,7 +917,35 @@ def check_args(calc_func=None, region=None, period_start=None, period_end=None,
     if (period_start is not None) & (period_end is not None):
         assert period_end >= period_start, \
             "period_end must be equal to or later than period_start"
+    
+    if period1_start:
+        period1_start = datetime.strptime(period1_start, "%b-%Y")
+        assert period1_start >= datetime.strptime(avhrr_earliest, "%b-%Y"), \
+            f"period1_start must be equal to or later than {avhrr_earliest}"
         
+    if period1_end:
+        period1_end = datetime.strptime(period1_end, "%b-%Y")
+        assert period1_end <= datetime.strptime(modis_latest, "%b-%Y"), \
+            f"period1_end must be equal to or earlier than {modis_latest}"
+        
+    if (period1_start is not None) & (period1_end is not None):
+        assert period1_end >= period1_start, \
+            "period1_end must be equal to or later than period1_start"
+        
+    if period2_start:
+        period2_start = datetime.strptime(period2_start, "%b-%Y")
+        assert period2_start >= datetime.strptime(avhrr_earliest, "%b-%Y"), \
+            f"period2_start must be equal to or later than {avhrr_earliest}"
+        
+    if period2_end:
+        period2_end = datetime.strptime(period2_end, "%b-%Y")
+        assert period2_end <= datetime.strptime(modis_latest, "%b-%Y"), \
+            f"period2_end must be equal to or earlier than {modis_latest}"
+        
+    if (period2_start is not None) & (period2_end is not None):
+        assert period2_end >= period2_start, \
+            "period2_end must be equal to or later than period2_start"
+    
     if months_subset:
         assert (isinstance(months_subset, list) & (months_subset != []) & 
                 all(month in months_subsets["all"] for month in months_subset)
@@ -770,8 +959,24 @@ def check_args(calc_func=None, region=None, period_start=None, period_end=None,
         if isinstance(months_subset, str):
             months_subset = months_subsets[months_subset]
         assert any(month in months_subset for month in months_in_period), \
-            "period(s) must contain at least one month within the given months_subset"
+            "period must contain at least one month within the given months_subset"
+    
+    if (period1_start is not None) & (period1_end is not None) & (months_subset is not None):
+        dates_in_period1 = pd.date_range(period1_start, period1_end, freq = "MS")
+        months_in_period1 = set(map(int, dates_in_period1.strftime("%-m")))
+        if isinstance(months_subset, str):
+            months_subset = months_subsets[months_subset]
+        assert any(month in months_subset for month in months_in_period1), \
+            "period1 must contain at least one month within the given months_subset"
         
+    if (period2_start is not None) & (period2_end is not None) & (months_subset is not None):
+        dates_in_period2 = pd.date_range(period2_start, period2_end, freq = "MS")
+        months_in_period2 = set(map(int, dates_in_period2.strftime("%-m")))
+        if isinstance(months_subset, str):
+            months_subset = months_subsets[months_subset]
+        assert any(month in months_subset for month in months_in_period2), \
+            "period2 must contain at least one month within the given months_subset"
+    
     if glass_source_pref:
         assert glass_source_pref in glass_sources_all, \
             f"glass_source_pref must be one of: {glass_sources_all}"
@@ -779,10 +984,6 @@ def check_args(calc_func=None, region=None, period_start=None, period_end=None,
     if var_or_dvar:
         assert var_or_dvar in vars_and_dvars_era5_all, \
             f"var_or_dvar must be one of: {vars_and_dvars_era5_all}"
-        
-    if hour:
-        assert hour in hours_all, \
-            f"hour must be one of: {hours_all}"
         
     if year_start:
         year_earliest = int(avhrr_earliest[-4:])
@@ -814,18 +1015,225 @@ def check_args(calc_func=None, region=None, period_start=None, period_end=None,
             (f"year_end must be equal to or earlier than {year_latest_roll} " + 
              f"if window_size is {window_size}")
         
+    if arg_extra:
+        assert arg_extra in arg_extra_all, \
+            f"arg_extra must be one of: {arg_extra_all}"
+        
+    if (arg_extra is not None) & (calc_func is not None):
+        if calc_func_name == "calc_glass_mean_clim":
+            assert arg_extra in params_glass_mean, \
+                (f"arg_extra must be one of: {params_glass_mean} " +
+                 f"for calc_func = {calc_func_name}")
+        if calc_func_name == "calc_era5_mdp_clim_given_var_or_dvar":
+            assert arg_extra in hours_all, \
+                (f"arg_extra must be one of: {hours_all} " +
+                 f"for calc_func = {calc_func_name}")
+        if calc_func_name == "calc_era5_mdp_clim_stats_given_var_or_dvar":
+            assert arg_extra in params_stat, \
+                (f"arg_extra must be one of: {params_stat} " +
+                 f"for calc_func = {calc_func_name}")
+            if (arg_extra in ["max_u", "max_v", "min_u", "min_v", 
+                              "mean_u", "mean_v"]) & (var_or_dvar is not None):
+                assert var_or_dvar in params_vector, \
+                    (f"var_or_dvar must be one of: {params_vector} " +
+                     f"for arg_extra = {arg_extra}")
+        if calc_func_name == "calc_era5_wsd_clim":
+            assert arg_extra in params_wsd, \
+                (f"arg_extra must be one of: {params_wsd} " +
+                 f"for calc_func = {calc_func_name}")
+        
+    if hour:
+        assert hour in hours_all, \
+            f"hour must be one of: {hours_all}"
+    
+    if time:
+        assert time in times_all, \
+            f"time must be one of: {times_all}"
+    
+    if param_orog:
+        assert param_orog in params_orog, \
+            f"param_orog must be one of {params_orog}"
+        
+    if param_glass_mean:
+        assert param_glass_mean in params_glass_mean, \
+            f"param_glass must be one of {params_glass_mean}"
+    
     if var_or_dvar_layer:
-        assert var_or_dvar_layer in [*[*vars_and_dvars_era5.values()][0].keys()], \
-            ("var_or_dvar_layer must be one of: "+
-             f"{[*[*vars_and_dvars_era5.values()][0].keys()]}")
+        assert var_or_dvar_layer in var_or_dvar_layers, \
+            f"var_or_dvar_layer must be one of: {var_or_dvar_layers}"
         
     if var_or_dvar_type:
-        assert var_or_dvar_type in [*vars_and_dvars_era5], \
-            f"var_or_dvar_type must be one of: {[*vars_and_dvars_era5]}"
+        assert var_or_dvar_type in var_or_dvar_types, \
+            f"var_or_dvar_type must be one of: {var_or_dvar_types}"
         
-    if time:
-        assert time in [*times], \
-            f"time must be one of: {[*times]}"
+    if perc:
+        assert perc in [True, False], \
+            "perc must be one of: [True, False]"
+        
+    if mask_perc_quantile:
+        assert mask_perc_quantile in range(0, 100+1), \
+            "mask_perc_quantile must be an integer between 0 and 100 (inclusive)"
+        
+    if mask_period1:
+        assert mask_period1 in ["pos", "neg"], \
+            "mask_period1 must be one of: ['pos', 'neg']"
+        
+    if mask_period2:
+        assert mask_period2 in ["pos", "neg"], \
+            "mask_period2 must be one of: ['pos', 'neg']"
+        
+    if extents:
+        assert (isinstance(extents, list) & (len(extents) == 4) & 
+                (extents[0] >= -180) & (extents[1] <= 180) &
+                (extents[2] >= -90) & (extents[3] <= 90) &
+                (extents[1] > extents[0]) & (extents[3] > extents[2])), \
+            ("extents must a 4 element list in [W, E, S, N] format " + 
+             "with longitudes -180 to 180 and latitudes -90 to 90")
+        if region:
+            extents_default = regions[region]["extents"]
+        else:
+            extents_default = [-180, 180, -90, 90]
+        assert ((extents[0] >= extents_default[0]) & 
+                (extents[1] <= extents_default[1]) & 
+                (extents[2] >= extents_default[2]) & 
+                (extents[3] <= extents_default[3])), \
+            ("extents must be completely contained within " +
+             f"{extents_default} for region = {region}")
+        
+    if vmin:
+        assert isinstance(vmin, float) | isinstance(vmin, int), \
+            "vmin must have data type float or int"
+    
+    if vmax:
+        assert isinstance(vmax, float) | isinstance(vmax, int), \
+            "vmax must have data type float or int"
+    
+    if (vmin is not None) & (vmax is not None):
+        assert vmax >= vmin, \
+            "vmax must be equal to or greater than vmin"
+        
+    if vmin_periods:
+        assert isinstance(vmin_periods, float) | isinstance(vmin_periods, int), \
+            "vmin_periods must have data type float or int"
+    
+    if vmax_periods:
+        assert isinstance(vmax_periods, float) | isinstance(vmax_periods, int), \
+            "vmax_periods must have data type float or int"
+    
+    if (vmin_periods is not None) & (vmax_periods is not None):
+        assert vmax_periods >= vmin_periods, \
+            "vmax_periods must be equal to or greater than vmin_periods"
+        
+    if vmin_diff:
+        assert isinstance(vmin_diff, float) | isinstance(vmin_diff, int), \
+            "vmin_diff must have data type float or int"
+    
+    if vmax_diff:
+        assert isinstance(vmax_diff, float) | isinstance(vmax_diff, int), \
+            "vmax_diff must have data type float or int"
+    
+    if (vmin_diff is not None) & (vmax_diff is not None):
+        assert vmax_diff >= vmin_diff, \
+            "vmax_diff must be equal to or greater than vmin_diff"
+        
+    if ax:
+        assert str(type(ax)) == "<class 'cartopy.mpl.geoaxes.GeoAxesSubplot'>", \
+            "ax must be a cartopy.GeoAxesSubplot"
+        
+    if ax_period1:
+        assert str(type(ax_period1)) == "<class 'cartopy.mpl.geoaxes.GeoAxesSubplot'>", \
+            "ax_period1 must be a cartopy.GeoAxesSubplot"
+        
+    if ax_period2:
+        assert str(type(ax_period2)) == "<class 'cartopy.mpl.geoaxes.GeoAxesSubplot'>", \
+            "ax_period2 must be a cartopy.GeoAxesSubplot"
+        
+    if ax_diff:
+        assert str(type(ax_diff)) == "<class 'cartopy.mpl.geoaxes.GeoAxesSubplot'>", \
+            "ax_diff must be a cartopy.GeoAxesSubplot"
+    
+    if period1_mid:
+        period1_mid = datetime.strptime(period1_mid, "%b-%Y")
+        if (year_start is not None) & (year_end is not None):
+            period1_mid_earliest = datetime.strptime("Jul-"+str(year_start), "%b-%Y")
+            period1_mid_latest = datetime.strptime("Jul-"+str(year_end), "%b-%Y")
+        else:
+            period1_mid_earliest = (datetime.strptime(avhrr_earliest, "%b-%Y") + 
+                                    relativedelta(years=1, months=6))
+            period1_mid_latest = (datetime.strptime(modis_latest, "%b-%Y") + 
+                                  relativedelta(years=-1, months=-5))
+        assert period1_mid >= period1_mid_earliest, \
+            ("period1_mid must be equal to or later than {} for year_start = {}"
+             .format(period1_mid_earliest.strftime("%b-%Y"), year_start))
+        assert period1_mid <= period1_mid_latest, \
+            ("period1_mid must be equal to or earlier than {} for year_end = {}"
+             .format(period1_mid_latest.strftime("%b-%Y"), year_end))
+        
+    if period2_mid:
+        period2_mid = datetime.strptime(period2_mid, "%b-%Y")
+        if (year_start is not None) & (year_end is not None):
+            period2_mid_earliest = datetime.strptime("Jul-"+str(year_start), "%b-%Y")
+            period2_mid_latest = datetime.strptime("Jul-"+str(year_end), "%b-%Y")
+        else:
+            period2_mid_earliest = (datetime.strptime(avhrr_earliest, "%b-%Y") + 
+                                    relativedelta(years=1, months=6))
+            period2_mid_latest = (datetime.strptime(modis_latest, "%b-%Y") + 
+                                  relativedelta(years=-1, months=-5))
+        assert period2_mid >= period2_mid_earliest, \
+            ("period2_mid must be equal to or later than {} for year_start = {}"
+             .format(period2_mid_earliest.strftime("%b-%Y"), year_start))
+        assert period2_mid <= period2_mid_latest, \
+            ("period2_mid must be equal to or earlier than {} for year_end = {}"
+             .format(period2_mid_latest.strftime("%b-%Y"), year_end))
+        
+    if month1_mark:
+        month1_mark = datetime.strptime(month1_mark, "%b-%Y")
+        if (year_start is not None) & (year_end is not None) & (window_size is not None):
+            month1_mark_earliest = datetime.strptime(
+                "Jan-"+str(int(year_start-(window_size-1)/2)), "%b-%Y")
+            month1_mark_latest = datetime.strptime(
+                "Dec-"+str(int(year_end+(window_size-1)/2)), "%b-%Y")
+        else:
+            month1_mark_earliest = datetime.strptime(avhrr_earliest, "%b-%Y")
+            month1_mark_latest = datetime.strptime(modis_latest, "%b-%Y")
+        assert month1_mark >= month1_mark_earliest, \
+            ("month1_mark must be equal to or later than " +
+             "{} for year_start = {} and window_size = {}"
+             .format(month1_mark_earliest.strftime("%b-%Y"), year_start, window_size))
+        assert month1_mark <= month1_mark_latest, \
+            ("month1_mark must be equal to or earlier than " +
+             "{} for year_end = {} and window_size = {}"
+             .format(month1_mark_latest.strftime("%b-%Y"), year_end, window_size))
+        
+    if month2_mark:
+        month2_mark = datetime.strptime(month2_mark, "%b-%Y")
+        if (year_start is not None) & (year_end is not None) & (window_size is not None):
+            month2_mark_earliest = datetime.strptime(
+                "Jan-"+str(int(year_start-(window_size-1)/2)), "%b-%Y")
+            month2_mark_latest = datetime.strptime(
+                "Dec-"+str(int(year_end+(window_size-1)/2)), "%b-%Y")
+        else:
+            month2_mark_earliest = datetime.strptime(avhrr_earliest, "%b-%Y")
+            month2_mark_latest = datetime.strptime(modis_latest, "%b-%Y")
+        assert month2_mark >= month2_mark_earliest, \
+            ("month2_mark must be equal to or later than " +
+             "{} for year_start = {} and window_size = {}"
+             .format(month2_mark_earliest.strftime("%b-%Y"), year_start, window_size))
+        assert month2_mark <= month2_mark_latest, \
+            ("month2_mark must be equal to or earlier than " +
+             "{} for year_end = {} and window_size = {}"
+             .format(month2_mark_latest.strftime("%b-%Y"), year_end, window_size))
+        
+    if cfv_data:
+        assert (isinstance(cfv_data, str) & (len(cfv_data) == 5) & 
+                (cfv_data[:3] == "cfv") & cfv_data[3].isnumeric() & 
+                cfv_data[4].isalpha() & cfv_data[4].islower()) | (cfv_data == "cfv00"), \
+            ("cfv_data must be 'cfv00' or of form 'cfvXY' where X is a single digit " +
+             "number and Y is a lowercase alphabet character. eg. cfv1n")
+    
+    if output:
+        assert output in [True, False], \
+            "output must be one of: [True, False]"
     
     if (func_1up == "<cell line: 1>") | (func_1up == "<module>"):
         logging.info("Passed: validity check for input arguments.")
@@ -936,14 +1344,18 @@ def get_var_or_dvar_layer_and_type(var_or_dvar):
     
     Arguments:
         var_or_dvar (str): Variable or value of change in variable to perform
-            calculation over. Must be one of: ['ws10', 'ws100', 'wv10', 'wv100', 
-            'mslp', 't2', 'slhf', 'sshf', 'viec', 'vipile', 'vike', 'tcclw', 'tcwv', 
-            'nac', 'dws10', 'dws100', 'dwv10', 'dwv100', 'dmslp', 'dt2', 'dslhf', 
-            'dsshf', 'dviec', 'dvipile', 'dvike', 'dtcclw', 'dtcwv', 'dnac'].
+            calculation over. Must be one of: ['u10', 'v10', 'ws10', 'wv10', 'u100', 
+            'v100', 'ws100', 'wv100', 'mslp', 't2', 'slhf', 'sshf', 'nse', 'vidmf', 
+            'viec', 'vipile', 'vike', 'tcclw', 'tcwv', 'nac', 'blh', 'fa', 'cbh', 'tcc', 
+            'cape', 'ci', 'du10', 'dv10', 'dws10', 'dwv10', 'du100', 'dv100', 'dws100', 
+            'dwv100', 'dmslp', 'dt2', 'dslhf', 'dsshf', 'dnse', 'dvidmf', 'dviec', 
+            'dvipile', 'dvike', 'dtcclw', 'dtcwv', 'dnac', 'dblh', 'dfa', 'dcbh', 
+            'dtcc', 'dcape', 'dci'].
     
     Returns:
         var_or_dvar_layer (str): var_or_dvar_layer classification indicating which 
-            spatial layer var_or_dvar primarily sits in. Can be either "sfc" or "atm".
+            spatial layer var_or_dvar primarily sits in. Can be one of: 
+            ["sfc", "atm", "cld"].
         var_or_dvar_type (str): var_or_dvar_type classification indicating whether 
             var_or_dvar is the variable itself ("vars") or the change in the value of a
             variable as compared with the previous hour ("dvars").
@@ -1365,11 +1777,9 @@ def get_da_range_for_vector_mdp_values(ds_era5_mdp, var_or_dvar):
     Arguments:
         ds_era5_mdp (xarray.Dataset): xarray Dataset containing MDP values for
             the given var_or_dvar.
-        var_or_dvar (str): Variable or value of change in variable to perform
-            calculation over. Must be one of: ['ws10', 'ws100', 'wv10', 'wv100', 
-            'mslp', 't2', 'slhf', 'sshf', 'viec', 'vipile', 'vike', 'tcclw', 'tcwv', 
-            'nac', 'dws10', 'dws100', 'dwv10', 'dwv100', 'dmslp', 'dt2', 'dslhf', 
-            'dsshf', 'dviec', 'dvipile', 'dvike', 'dtcclw', 'dtcwv', 'dnac'].
+        var_or_dvar (str): Vector variable or value of change in vector variable to 
+            perform calculation over. Must be one of: 
+            ['wv10', 'wv100', 'dwv10', 'dwv100'].
                         
     Returns:
         da_range (xarray.DataArray): Range of vector MDP values.
@@ -1411,8 +1821,8 @@ def get_da_range_for_vector_mdp_values(ds_era5_mdp, var_or_dvar):
         # the "iteration" dimension, compute magnitudes for each iteration, then find 
         # maximum magnitude along the iteration dimension.
         ds_subtract_list = []
-        for i in range(0, 24):
-            for j in range(0, 24):
+        for i in range(0, 23+1):
+            for j in range(0, 23+1):
                 ds_subtract_ij = (ds_era5_mdp.isel(hour = i, drop = True) - 
                                   ds_era5_mdp.isel(hour = j, drop = True))
                 ds_subtract_list.append(ds_subtract_ij)
@@ -1429,8 +1839,8 @@ def get_da_range_for_vector_mdp_values(ds_era5_mdp, var_or_dvar):
         # (latitude, longitude) coordinate if a following iteration has a larger
         # magnitude at that (latitude, longitude) coordinate.
         da_sub_mag_list = []
-        for i in range(0, 24):
-            for j in range(0, 24):
+        for i in range(0, 23+1):
+            for j in range(0, 23+1):
                 ds_sub_ij = (ds_era5_mdp.isel(hour = i, drop = True) - 
                              ds_era5_mdp.isel(hour = j, drop = True))
                 da_sub_mag_ij = get_magnitude(ds_sub_ij[var_or_dvar.replace("wv", "u")], 
@@ -1805,10 +2215,13 @@ def get_path_for_calc_func(calc_func_name, region, period_start, period_end,
             over a period which is completely contained within both the available
             AVHRR and MODIS datasets. Must be one of: ["avhrr", "modis"].
         var_or_dvar (str): Variable or value of change in variable to perform
-            calculation over. Must be one of: ['ws10', 'ws100', 'wv10', 'wv100', 
-            'mslp', 't2', 'slhf', 'sshf', 'viec', 'vipile', 'vike', 'tcclw', 'tcwv', 
-            'nac', 'dws10', 'dws100', 'dwv10', 'dwv100', 'dmslp', 'dt2', 'dslhf', 
-            'dsshf', 'dviec', 'dvipile', 'dvike', 'dtcclw', 'dtcwv', 'dnac'].
+            calculation over. Must be one of: ['u10', 'v10', 'ws10', 'wv10', 'u100', 
+            'v100', 'ws100', 'wv100', 'mslp', 't2', 'slhf', 'sshf', 'nse', 'vidmf', 
+            'viec', 'vipile', 'vike', 'tcclw', 'tcwv', 'nac', 'blh', 'fa', 'cbh', 'tcc', 
+            'cape', 'ci', 'du10', 'dv10', 'dws10', 'dwv10', 'du100', 'dv100', 'dws100', 
+            'dwv100', 'dmslp', 'dt2', 'dslhf', 'dsshf', 'dnse', 'dvidmf', 'dviec', 
+            'dvipile', 'dvike', 'dtcclw', 'dtcwv', 'dnac', 'dblh', 'dfa', 'dcbh', 
+            'dtcc', 'dcape', 'dci'].
             
     Returns:
         path_output_calc_func (str): Output path for results from calc_func.
@@ -1908,10 +2321,13 @@ def get_path_for_calc_diff(calc_func_name, region, period1_start, period1_end,
             over a period which is completely contained within both the available
             AVHRR and MODIS datasets. Must be one of: ["avhrr", "modis"].
         var_or_dvar (str): Variable or value of change in variable to perform
-            calculation over. Must be one of: ['ws10', 'ws100', 'wv10', 'wv100', 
-            'mslp', 't2', 'slhf', 'sshf', 'viec', 'vipile', 'vike', 'tcclw', 'tcwv', 
-            'nac', 'dws10', 'dws100', 'dwv10', 'dwv100', 'dmslp', 'dt2', 'dslhf', 
-            'dsshf', 'dviec', 'dvipile', 'dvike', 'dtcclw', 'dtcwv', 'dnac'].
+            calculation over. Must be one of: ['u10', 'v10', 'ws10', 'wv10', 'u100', 
+            'v100', 'ws100', 'wv100', 'mslp', 't2', 'slhf', 'sshf', 'nse', 'vidmf', 
+            'viec', 'vipile', 'vike', 'tcclw', 'tcwv', 'nac', 'blh', 'fa', 'cbh', 'tcc', 
+            'cape', 'ci', 'du10', 'dv10', 'dws10', 'dwv10', 'du100', 'dv100', 'dws100', 
+            'dwv100', 'dmslp', 'dt2', 'dslhf', 'dsshf', 'dnse', 'dvidmf', 'dviec', 
+            'dvipile', 'dvike', 'dtcclw', 'dtcwv', 'dnac', 'dblh', 'dfa', 'dcbh', 
+            'dtcc', 'dcape', 'dci'].
             
     Returns:
         path_output_calc_diff (str): Output path for results from calc_diff.
@@ -1930,11 +2346,10 @@ def get_path_for_calc_diff(calc_func_name, region, period1_start, period1_end,
     assert calc_func_name in calc_func_names, \
         f"calc_func_name must be one of: {calc_func_names}"
     check_args_for_none(calc_func_name, args_cur, args_cur_values)
-    check_args(region=region, period_start=period1_start, period_end=period1_end,
+    check_args(region=region, period1_start=period1_start, period1_end=period1_end,
+               period2_start=period2_start, period2_end=period2_end,
                months_subset=months_subset, var_or_dvar=var_or_dvar, 
                glass_source_pref=glass_source_pref)
-    check_args(period_start=period2_start, period_end=period2_end, 
-               months_subset=months_subset)
     
     months_subset_str = get_months_subset_str(months_subset=months_subset)
     
@@ -2102,7 +2517,87 @@ def get_path_for_calc_glass_rolling(region, year_start, year_end, months_subset,
 # In[ ]:
 
 
-## Main calculation functions
+def get_path_for_noaa_ind():
+    
+    """
+    Obtain output path for proc_noaa_ind function.
+            
+    Returns:
+        path_output_noaa (str): Output path for results from proc_noaa_ind.
+    """
+    
+    time_exec = datetime.today()
+    func_cur = inspect.stack()[0][3]
+    func_1up = inspect.stack()[1][3]
+    frame_cur = inspect.currentframe()
+    args_cur, _, _, args_cur_values = inspect.getargvalues(frame_cur)
+    create_log_if_directly_executed(time_exec, func_cur, func_1up, 
+                                    args_cur, args_cur_values)
+    
+    if (func_1up == "<cell line: 1>") | (func_1up == "<module>"):
+        logging.debug(f"Executing: {func_cur} to obtain proc_noaa_ind output path.")
+    else:
+        logging.debug(f"Executing: {func_cur} to obtain proc_noaa_ind output path " +
+                      f"for use in {func_1up}.")
+        
+    # Obtain output path.
+    
+    path_output_noaa = (f"../data_processed/noaa_ind/{calc_funcs_ver}_" +
+                         "proc_global_noaa-ind.nc")
+    
+    if (func_1up == "<cell line: 1>") | (func_1up == "<module>"):
+        logging.info(f"Obtained: proc_noaa_ind output path.")
+    else:
+        logging.info(f"Obtained: proc_noaa_ind output path for use in {func_1up}.")
+    
+    remove_handlers_if_directly_executed(func_1up)
+    return path_output_noaa
+
+
+# In[ ]:
+
+
+def get_path_for_sbfwa_def():
+    
+    """
+    Obtain output path for proc_sbfwa_def function.
+            
+    Returns:
+        path_output_sbfwa (str): Output path for results from proc_sbfwa_def.
+    """
+    
+    time_exec = datetime.today()
+    func_cur = inspect.stack()[0][3]
+    func_1up = inspect.stack()[1][3]
+    frame_cur = inspect.currentframe()
+    args_cur, _, _, args_cur_values = inspect.getargvalues(frame_cur)
+    create_log_if_directly_executed(time_exec, func_cur, func_1up, 
+                                    args_cur, args_cur_values)
+    
+    if (func_1up == "<cell line: 1>") | (func_1up == "<module>"):
+        logging.debug(f"Executing: {func_cur} to obtain proc_sbfwa_def output path.")
+    else:
+        logging.debug(f"Executing: {func_cur} to obtain proc_sbfwa_def output path " +
+                      f"for use in {func_1up}.")
+        
+    # Obtain output path.
+    
+    path_output_sbfwa = (f"../data_processed/sbfwa_def/{calc_funcs_ver}_" +
+                         "proc_wa_sbfwa-def.gpkg")
+    
+    if (func_1up == "<cell line: 1>") | (func_1up == "<module>"):
+        logging.info(f"Obtained: proc_sbfwa_def output path.")
+    else:
+        logging.info(f"Obtained: proc_sbfwa_def output path for use in {func_1up}.")
+    
+    remove_handlers_if_directly_executed(func_1up)
+    return path_output_sbfwa
+
+
+# ## Main calculation functions
+
+# In[ ]:
+
 
 def calc_glass_mean_clim(region, period_start, period_end, months_subset, 
                          glass_source_pref, var_or_dvar=None):
@@ -2241,10 +2736,10 @@ def calc_glass_mean_clim(region, period_start, period_end, months_subset,
               .drop_vars("spatial_ref")
               .squeeze("band", drop=True)
               )
-        ds = ds.sel(longitude=slice(regions[region]["extent"][0],
-                                    regions[region]["extent"][1]),
-                    latitude=slice(regions[region]["extent"][3],
-                                   regions[region]["extent"][2])
+        ds = ds.sel(longitude=slice(regions[region]["extents"][0],
+                                    regions[region]["extents"][1]),
+                    latitude=slice(regions[region]["extents"][3],
+                                   regions[region]["extents"][2])
                    )
         return ds
     
@@ -2344,7 +2839,7 @@ def calc_glass_mean_clim(region, period_start, period_end, months_subset,
     
     # Create output file in data_processed folder.
     
-    create_output_file(ds_glass_mean, path_output_glass_mean, func_1up)
+    create_output_data_file(ds_glass_mean, path_output_glass_mean, func_1up)
     remove_handlers_if_directly_executed(func_1up)
 
 
@@ -2372,10 +2867,13 @@ def calc_era5_mdp_clim_given_var_or_dvar(region, period_start, period_end,
             Must be a str and one of: ["all", "djf", "mam", "jja", "son"], or a subset
             list of: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] with at least one item.
         var_or_dvar (str): Variable or value of change in variable to perform
-            calculation over. Must be one of: ['ws10', 'ws100', 'wv10', 'wv100', 
-            'mslp', 't2', 'slhf', 'sshf', 'viec', 'vipile', 'vike', 'tcclw', 'tcwv', 
-            'nac', 'dws10', 'dws100', 'dwv10', 'dwv100', 'dmslp', 'dt2', 'dslhf', 
-            'dsshf', 'dviec', 'dvipile', 'dvike', 'dtcclw', 'dtcwv', 'dnac'].
+            calculation over. Must be one of: ['u10', 'v10', 'ws10', 'wv10', 'u100', 
+            'v100', 'ws100', 'wv100', 'mslp', 't2', 'slhf', 'sshf', 'nse', 'vidmf', 
+            'viec', 'vipile', 'vike', 'tcclw', 'tcwv', 'nac', 'blh', 'fa', 'cbh', 'tcc', 
+            'cape', 'ci', 'du10', 'dv10', 'dws10', 'dwv10', 'du100', 'dv100', 'dws100', 
+            'dwv100', 'dmslp', 'dt2', 'dslhf', 'dsshf', 'dnse', 'dvidmf', 'dviec', 
+            'dvipile', 'dvike', 'dtcclw', 'dtcwv', 'dnac', 'dblh', 'dfa', 'dcbh', 
+            'dtcc', 'dcape', 'dci'].
         glass_source_pref (None): This argument is not used for this analysis. It is used 
             for applying the calc_diff function over an arbitrary calc_func.
                         
@@ -2445,7 +2943,7 @@ def calc_era5_mdp_clim_given_var_or_dvar(region, period_start, period_end,
     # computing using dask. Together they select out the relevant files to read
     # and persist in memory only the data which is necessary for the computation.
     
-    def filter_era5_month_hour_files(file_name):
+    def filter_era5_files(file_name):
         # This function is used as a mask in conjunction with the default python
         # filter function later, in order to select out the raw data files with
         # years within the input period. The following preprocess function also
@@ -2458,7 +2956,7 @@ def calc_era5_mdp_clim_given_var_or_dvar(region, period_start, period_end,
         else:
             return False
     
-    def preprocess_era5_month_hour(ds):
+    def preprocess_era5(ds):
         # This function is used for the preprocess argument in open_mfdataset.
         # It selects out only the subset months for persist scalability,
         # renames variables and sorts data in time order.
@@ -2486,15 +2984,29 @@ def calc_era5_mdp_clim_given_var_or_dvar(region, period_start, period_end,
         ds_era5_mdp = xr.open_dataset(path_output_var, engine = "netcdf4")
     else:      
         # The following code opens the relevant monthy ERA5 files then computes
-        # mean over each hour of the day.
-        files_era5_month_hour = glob(
-            f"../data_raw/{region}_era5-slv-{var_or_dvar_layer}_month-hour/*.nc")
-        files_era5_month_hour.sort()
-        if len(files_era5_month_hour) != number_of_era5_month_hour_files:
+        # mean over each hour of the day. Wind speeds have to be derived using
+        # hourly data rather than monthly averaged by hour of day data. This is because
+        # the ERA5 datasets for monthly averaged by hour of day don't directly provide
+        # the wind speed at 100 m (it provides the u100 and v100 components). Averaging 
+        # over the days of the month would then provide a VECTOR average, and computing 
+        # the magnitude froms from this would then significantly underestimate ws100.
+        # Unfortunately this limits the code's scalability since analysis upon larger
+        # extents (such as on a global scale) will also require downloading and running
+        # code on hourly datasets (which require more storage and RAM).
+        if var in ["ws10", "ws100"]:
+            files_era5 = glob(
+                f"../data_raw/{region}_era5-slv-{var_or_dvar_layer}_hour/*.nc")
+            number_of_era5_files = number_of_era5_hour_files
+        else:
+            files_era5 = glob(
+                f"../data_raw/{region}_era5-slv-{var_or_dvar_layer}_month-hour/*.nc")
+            number_of_era5_files = number_of_era5_month_hour_files
+        files_era5.sort()
+        if len(files_era5) != number_of_era5_files:
             msg_files = (
-                f"WARNING: Expected {number_of_era5_month_hour_files} files in " +
+                f"WARNING: Expected {number_of_era5_files} files in " +
                 f"../data_raw/{region}_era5-slv-{var_or_dvar_layer}_month-hour/ but " +
-                f"got {len(files_era5_month_hour)}. This could be because the " + 
+                f"got {len(files_era5)}. This could be because the " + 
                 "data_download.ipynb notebook was not run properly. Or it could " +
                 "be that the user has selected a different number of years to " +
                 "retrieve data for in the data_download.ipynb notebook as " +
@@ -2506,21 +3018,20 @@ def calc_era5_mdp_clim_given_var_or_dvar(region, period_start, period_end,
             
         logging.debug(f"Filtering: ERA5 {var_or_dvar_layer} files from data_raw " +
                       f"folder for use in {func_cur}.")
-        files_era5_month_hour_filtered = list(filter(filter_era5_month_hour_files, 
-                                                     files_era5_month_hour))
-        files_era5_month_hour_filtered.sort()
+        files_era5_filtered = list(filter(filter_era5_files, files_era5))
+        files_era5_filtered.sort()
         
         logging.debug(f"Opening: ERA5 {var_or_dvar_layer} files from data_raw " +
                       f"folder for use in {func_cur}.")
-        ds_era5_mdp = (xr.open_mfdataset(files_era5_month_hour_filtered,
-                                         preprocess=preprocess_era5_month_hour,
+        ds_era5_mdp = (xr.open_mfdataset(files_era5_filtered,
+                                         preprocess=preprocess_era5,
                                          engine = "netcdf4", parallel = True)
                        # We add an extra month to period_end here because period_end was
                        # specified as a month, and conversion into a datetime object
                        # defaults to the first (rather than last) day of that month. The
                        # -1 hr is to avoid selecting first hour of the following month.
                        .sel(time = slice(period_start, period_end +
-                                         relativedelta(months=1, hours = -1)))
+                                         relativedelta(months=1, hours=-1)))
                        # Rechunking after open_mfdataset here is actually bad practice
                        # since it requires extra computation, but the chunks argument
                        # for open_mfdataset doesn't seem to work here for some reason.
@@ -2528,15 +3039,11 @@ def calc_era5_mdp_clim_given_var_or_dvar(region, period_start, period_end,
                       )
         if priority == "speed":
             ds_era5_mdp = ds_era5_mdp.persist()
-        
-        if var == "ws10":
-            ds_era5_mdp = (get_magnitude(ds_era5_mdp["u10"], ds_era5_mdp["v10"])
-                           .to_dataset(name = "ws10")
-                          )
             
-        if var == "ws100":
-            ds_era5_mdp = (get_magnitude(ds_era5_mdp["u100"], ds_era5_mdp["v100"])
-                           .to_dataset(name = "ws100")
+        if var in ["ws10", "ws100"]:
+            ds_era5_mdp = (get_magnitude(ds_era5_mdp[var.replace("ws", "u")], 
+                                         ds_era5_mdp[var.replace("ws", "v")])
+                           .to_dataset(name = var)
                           )
         
         logging.debug(f"Computing: MDPs of {[*ds_era5_mdp.keys()]} for use in {func_cur}.")
@@ -2548,6 +3055,13 @@ def calc_era5_mdp_clim_given_var_or_dvar(region, period_start, period_end,
                        # shouldn't affect the results of an hour-wise average.
                        .groupby("time.hour")
                        .mean("time")
+                      )
+        
+        # Change to hours to local timezone.
+        ds_era5_mdp = (ds_era5_mdp
+                       .assign_coords(
+                           {"hour": (ds_era5_mdp.hour + regions[region]["tz"]) % 24})
+                       .sortby("hour")
                       )
         
         # For slhf, sshf and nse: average values from hour before and hour after.
@@ -2603,7 +3117,7 @@ def calc_era5_mdp_clim_given_var_or_dvar(region, period_start, period_end,
                 ds_era5_mdp.attrs["func_executed"]
                 .replace(var_or_dvar, var)
             )
-            create_output_file(ds_era5_mdp, path_output_var, func_1up)
+            create_output_data_file(ds_era5_mdp, path_output_var, func_1up)
     
     # If a dvar was specified for var_or_dvar, calculate the change in the value
     # of the variable as compared with its value in the previous hour.
@@ -2637,7 +3151,7 @@ def calc_era5_mdp_clim_given_var_or_dvar(region, period_start, period_end,
     
     # Create output file in data_processed folder.
     
-    create_output_file(ds_era5_mdp, path_output_mdp_clim, func_1up)
+    create_output_data_file(ds_era5_mdp, path_output_mdp_clim, func_1up)
     remove_handlers_if_directly_executed(func_1up)
 
 
@@ -2664,10 +3178,13 @@ def calc_era5_mdp_clim_stats_given_var_or_dvar(region, period_start, period_end,
             Must be a str and one of: ["all", "djf", "mam", "jja", "son"], or a subset
             list of: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] with at least one item.
         var_or_dvar (str): Variable or value of change in variable to perform
-            calculation over. Must be one of: ['ws10', 'ws100', 'wv10', 'wv100', 
-            'mslp', 't2', 'slhf', 'sshf', 'viec', 'vipile', 'vike', 'tcclw', 'tcwv', 
-            'nac', 'dws10', 'dws100', 'dwv10', 'dwv100', 'dmslp', 'dt2', 'dslhf', 
-            'dsshf', 'dviec', 'dvipile', 'dvike', 'dtcclw', 'dtcwv', 'dnac'].
+            calculation over. Must be one of: ['u10', 'v10', 'ws10', 'wv10', 'u100', 
+            'v100', 'ws100', 'wv100', 'mslp', 't2', 'slhf', 'sshf', 'nse', 'vidmf', 
+            'viec', 'vipile', 'vike', 'tcclw', 'tcwv', 'nac', 'blh', 'fa', 'cbh', 'tcc', 
+            'cape', 'ci', 'du10', 'dv10', 'dws10', 'dwv10', 'du100', 'dv100', 'dws100', 
+            'dwv100', 'dmslp', 'dt2', 'dslhf', 'dsshf', 'dnse', 'dvidmf', 'dviec', 
+            'dvipile', 'dvike', 'dtcclw', 'dtcwv', 'dnac', 'dblh', 'dfa', 'dcbh', 
+            'dtcc', 'dcape', 'dci'].
         glass_source_pref (None): This argument is not used for this analysis. It is used 
             for applying the calc_diff function over an arbitrary calc_func.
                         
@@ -2763,10 +3280,8 @@ def calc_era5_mdp_clim_stats_given_var_or_dvar(region, period_start, period_end,
         da_u = ds_era5_mdp[var_or_dvar.replace("wv", "u")]
         da_v = ds_era5_mdp[var_or_dvar.replace("wv", "v")]
         da_mag = get_magnitude(da_u, da_v)
-        da_hour_max = xr.DataArray(da_mag.argmax("hour"), name = "hour_max")
-        da_hour_max = (da_hour_max + regions[region]["tz"]) % 24
-        da_hour_min = xr.DataArray(da_mag.argmin("hour"), name = "hour_min")
-        da_hour_min = (da_hour_min + regions[region]["tz"]) % 24
+        da_hour_max = xr.DataArray(da_mag.idxmax("hour"), name = "hour_max")
+        da_hour_min = xr.DataArray(da_mag.idxmin("hour"), name = "hour_min")
         da_max_u = xr.DataArray(da_u.sel(hour = da_hour_max, drop = True), name = "max_u")
         da_max_v = xr.DataArray(da_v.sel(hour = da_hour_max, drop = True), name = "max_v")
         da_min_u = xr.DataArray(da_u.sel(hour = da_hour_min, drop = True), name = "min_u")
@@ -2783,10 +3298,8 @@ def calc_era5_mdp_clim_stats_given_var_or_dvar(region, period_start, period_end,
         var_or_dvar_attrs = copy.deepcopy(da_era5_mdp.attrs)
         if priority == "speed":
             da_era5_mdp = da_era5_mdp.persist()
-        da_hour_max = xr.DataArray(da_era5_mdp.argmax("hour"), name = "hour_max")
-        da_hour_max = (da_hour_max + regions[region]["tz"]) % 24
-        da_hour_min = xr.DataArray(da_era5_mdp.argmin("hour"), name = "hour_min")
-        da_hour_min = (da_hour_min + regions[region]["tz"]) % 24
+        da_hour_max = xr.DataArray(da_era5_mdp.idxmax("hour"), name = "hour_max")
+        da_hour_min = xr.DataArray(da_era5_mdp.idxmin("hour"), name = "hour_min")
         da_max = xr.DataArray(da_era5_mdp.max("hour"), name = "max")
         da_min = xr.DataArray(da_era5_mdp.min("hour"), name = "min")
         da_mean = xr.DataArray(da_era5_mdp.mean("hour"), name = "mean")
@@ -2833,7 +3346,7 @@ def calc_era5_mdp_clim_stats_given_var_or_dvar(region, period_start, period_end,
     
     # Create output file in data_processed folder.
     
-    create_output_file(ds_era5_mdp_stats, path_output_mdp_clim_stats, func_1up)
+    create_output_data_file(ds_era5_mdp_stats, path_output_mdp_clim_stats, func_1up)
     remove_handlers_if_directly_executed(func_1up)
 
 
@@ -2922,7 +3435,7 @@ def calc_era5_wsd_clim(region, period_start, period_end, months_subset,
     
     period_start, period_end, months_subset = convert_period_data_types(
         period_start=period_start, period_end=period_end, months_subset=months_subset)
-    if period_start + relativedelta(years=5) > period_end:
+    if period_start + relativedelta(years=5, months=-1) > period_end:
         msg_years = ("WARNING: It is recommended to use at least 5 years of data " +
                      "for the wind speed distribution analysis.")
         logging.warning(msg_years)
@@ -2953,6 +3466,9 @@ def calc_era5_wsd_clim(region, period_start, period_end, months_subset,
         logging.debug(f"Preprocessing: file for use in {func_cur}: {file_name}.")
         ds = (regrid_era5(ds=ds)[["u10", "v10", "u100", "v100"]]
               .sel(time = ds.time.dt.month.isin(months_subset))
+              # The downloaded ERA5 dataset is not sorted in time order (which
+              # is a necessity for open_mfdataset, so we sort first over here.
+              .sortby("time")
              )
         return ds
     
@@ -2980,7 +3496,7 @@ def calc_era5_wsd_clim(region, period_start, period_end, months_subset,
     
     logging.debug(f"Opening: ERA5 atm files from data_raw folder for use in {func_cur}.")
     ds_era5_hour = (xr.open_mfdataset(files_era5_hour_filtered, engine = "netcdf4",
-                                     preprocess=preprocess_era5_hour, parallel = True)
+                                      preprocess=preprocess_era5_hour, parallel = True)
                     # We add an extra month to period_end here because period_end was
                     # specified as a month, and conversion into a datetime object
                     # defaults to the first (rather than last) day of that month. The
@@ -3033,14 +3549,14 @@ def calc_era5_wsd_clim(region, period_start, period_end, months_subset,
     
     # Create output file in data_processed folder.
     
-    create_output_file(ds_era5_wsd, path_output_wsd_clim, func_1up)
+    create_output_data_file(ds_era5_wsd, path_output_wsd_clim, func_1up)
     remove_handlers_if_directly_executed(func_1up)
 
 
+# ## Main extra functions
+
 # In[ ]:
 
-
-## Main extra functions
 
 def calc_diff(calc_func, region, period1_start, period1_end,
               period2_start, period2_end, months_subset, 
@@ -3051,8 +3567,8 @@ def calc_diff(calc_func, region, period1_start, period1_end,
     each been outputted by the same calculation function.
     
     Arguments:
-        calc_func (function): Calculation function to compute difference in
-            results from. Must be one of: [calc_glass_mean_clim,
+        calc_func (function): Calculation function to use in analysis. Must be one of: 
+            [calc_glass_mean_clim,
             calc_era5_mdp_clim_given_var_or_dvar,
             calc_era5_mdp_clim_stats_given_var_or_dvar,
             calc_era5_wsd_clim].
@@ -3077,10 +3593,13 @@ def calc_diff(calc_func, region, period1_start, period1_end,
             over a period which is completely contained within both the available
             AVHRR and MODIS datasets. Must be one of: ["avhrr", "modis"].
         var_or_dvar (str): Variable or value of change in variable to perform
-            calculation over. Must be one of: ['ws10', 'ws100', 'wv10', 'wv100', 
-            'mslp', 't2', 'slhf', 'sshf', 'viec', 'vipile', 'vike', 'tcclw', 'tcwv', 
-            'nac', 'dws10', 'dws100', 'dwv10', 'dwv100', 'dmslp', 'dt2', 'dslhf', 
-            'dsshf', 'dviec', 'dvipile', 'dvike', 'dtcclw', 'dtcwv', 'dnac'].
+            calculation over. Must be one of: ['u10', 'v10', 'ws10', 'wv10', 'u100', 
+            'v100', 'ws100', 'wv100', 'mslp', 't2', 'slhf', 'sshf', 'nse', 'vidmf', 
+            'viec', 'vipile', 'vike', 'tcclw', 'tcwv', 'nac', 'blh', 'fa', 'cbh', 'tcc', 
+            'cape', 'ci', 'du10', 'dv10', 'dws10', 'dwv10', 'du100', 'dv100', 'dws100', 
+            'dwv100', 'dmslp', 'dt2', 'dslhf', 'dsshf', 'dnse', 'dvidmf', 'dviec', 
+            'dvipile', 'dvike', 'dtcclw', 'dtcwv', 'dnac', 'dblh', 'dfa', 'dcbh', 
+            'dtcc', 'dcape', 'dci'].
     
     Returns:
         ../data_processed/glass_mean_clim/{calc_funcs_ver}_diff_{region}_{period1_start}_
@@ -3120,11 +3639,10 @@ def calc_diff(calc_func, region, period1_start, period1_end,
     
     calc_func_name = calc_func.__name__
     check_args_for_none(calc_func_name, args_cur, args_cur_values)
-    check_args(calc_func=calc_func, region=region, period_start=period1_start,
-               period_end=period1_end, months_subset=months_subset, 
+    check_args(calc_func=calc_func, region=region, period1_start=period1_start,
+               period1_end=period1_end, period2_start=period2_start, 
+               period2_end=period2_end, months_subset=months_subset, 
                glass_source_pref=glass_source_pref, var_or_dvar=var_or_dvar)
-    check_args(period_start=period2_start, period_end=period2_end, 
-               months_subset=months_subset)
     
     if (func_1up == "<cell line: 1>") | (func_1up == "<module>"):
         logging.info(f"Executing: {func_cur} to obtain difference in outputs from " +
@@ -3218,7 +3736,7 @@ def calc_diff(calc_func, region, period1_start, period1_end,
     
     # Create output file in data_processed folder.
     
-    create_output_file(ds_diff, path_output_diff, func_1up)
+    create_output_data_file(ds_diff, path_output_diff, func_1up)
     remove_handlers_if_directly_executed(func_1up)
 
 
@@ -3232,8 +3750,7 @@ def calc_era5_orog():
     land surface using ERA5 data.
                         
     Returns:
-        ../data_processed/era5_orog_slope/{calc_funcs_ver}_calc_
-        global_static_orog.nc:
+        ../data_processed/era5_orog/{calc_funcs_ver}_calc_global_static_orog.nc:
             Output netcdf4 file in data_processed folder containing the elevation and 
             slope of sub-gridscale orography for the global land surface. 
             {calc_funcs_ver} is the version of the calc_funcs script being used.
@@ -3283,10 +3800,14 @@ def calc_era5_orog():
         remove_handlers_if_directly_executed(func_1up)
         return None
     
+    da_geop = ds_static["z"]
+    da_ssgo_raw = ds_static["slor"]
+    da_lsm = ds_static["lsm"]
+    
     if priority == "speed":
-        da_geop = ds_static["z"].persist()
-        da_ssgo_raw = ds_static["slor"].persist()
-        da_lsm = ds_static["lsm"].persist()
+        da_geop = da_geop.persist()
+        da_ssgo_raw = da_ssgo_raw.persist()
+        da_lsm = da_lsm.persist()
     
     logging.debug("Computing: land surface elevation.")
     da_era5_orog_eleva = (mpcalc.geopotential_to_height(da_geop)
@@ -3320,7 +3841,7 @@ def calc_era5_orog():
     
     # Create output file in data_processed folder.
     
-    create_output_file(ds_era5_orog, path_output_orog, func_1up)
+    create_output_data_file(ds_era5_orog, path_output_orog, func_1up)
     remove_handlers_if_directly_executed(func_1up)
 
 
@@ -3586,14 +4107,187 @@ def calc_glass_rolling_avg_of_annual_diff(region, year_start, year_end, months_s
     
     # Create output file in data_processed folder.
     
-    create_output_file(ds_roll_diff, path_output_glass_roll, func_1up)
+    create_output_data_file(ds_roll_diff, path_output_glass_roll, func_1up)
+    remove_handlers_if_directly_executed(func_1up)
+
+
+# ## Processing functions
+
+# In[ ]:
+
+
+def proc_noaa_ind():
+    
+    """
+    Process the NOAA climate index files.
+                        
+    Returns:
+        ../data_processed/noaa_ind/{calc_funcs_ver}_proc_global_noaa-ind.nc:
+            Output netcdf4 file in data_processed folder containing the processed
+            NOAA climate indices. {calc_funcs_ver} is the version of the 
+            calc_funcs script being used.
+    
+    This function reads in the raw climate index files then processes them into a 
+    netcdf4file containing monthly values for all the indices. The processing uses 
+    text data from the data_raw folder as input, then outputs the result as a 
+    netcdf4 file into the data_processed folder.
+    """
+    
+    time_exec = datetime.today()
+    func_cur = inspect.stack()[0][3]
+    func_1up = inspect.stack()[1][3]
+    frame_cur = inspect.currentframe()
+    args_cur, _, _, args_cur_values = inspect.getargvalues(frame_cur)
+    create_log_if_directly_executed(time_exec, func_cur, func_1up, 
+                                    args_cur, args_cur_values)
+    
+    if (func_1up == "<cell line: 1>") | (func_1up == "<module>"):
+        logging.info(f"Executing: {func_cur} to process the raw NOAA climate index " +
+                     "files.")
+    else:
+        logging.info(f"Executing: {func_cur} to process the raw NOAA climate index " +
+                     f"files for use in {func_1up}.")
+    
+    # Create output path, open raw datasets, process data.
+    
+    path_output_noaa = get_path_for_noaa_ind()
+    terminate_if_file_exists(path_output_noaa, func_cur, func_1up)
+    
+    files_noaa = sorted(glob("../data_raw/global_noaa-climate-indices/*"), 
+                        key=os.path.getmtime)
+    if len(files_noaa) != number_of_noaa_static_files:
+        msg_files = (
+            f"WARNING: Expected {number_of_noaa_static_files} files in " +
+            f"../data_raw/global_noaa-climate-indices/ but " +
+            f"got {len(files_noaa)}. This could be because the " + 
+            "data_download.ipynb notebook was not run properly. Or it could " +
+            "be that the user has selected a different number of indices to " +
+            "retrieve data for in the data_download.ipynb notebook as " +
+            "compared with the original analysis. Or it may be that the " +
+            "user has changed some files in this folder."
+        )
+        logging.warning(msg_files)
+        print(msg_files)
+        
+    datasets = []
+    for file in files_noaa:
+        index = file.split("_")[-1]
+        ds_index = (pd.read_csv(file, skiprows = 1, delim_whitespace = True, 
+                                header = None, names = 
+                                ["year", "Jan", "Feb", "Mar", "Apr", "May", 
+                                 "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"])
+                    .dropna()
+                    .melt(id_vars = "year", var_name = "month", value_name = index)
+                    .assign(time = lambda x: pd.to_datetime(x.month + "-" + x.year, 
+                                                            format = "%b-%Y"))
+                    .drop(columns = ["year", "month"])
+                    .astype({index: "float"})
+                    .replace([-9.9, -9.90, -99.9, -99.90, -99.99, -99.990, 
+                              -999, -999.000, -9999.000], np.nan)
+                    .set_index("time")
+                    .sort_index()
+                    .to_xarray()
+                   )
+        datasets.append(ds_index)
+    ds_noaa_ind = xr.merge(datasets)
+    
+    # Add attributes to each DataArray within Dataset.
+        
+    logging.info("Adding: attributes for each DataArray within output "+
+                 f"Dataset from {func_cur}.")
+    for da_name in [*ds_noaa_ind.keys()]:
+        ds_noaa_ind[da_name].attrs = copy.deepcopy(attrs_da[da_name])
+    
+    # Create output file in data_processed folder.
+    
+    create_output_data_file(ds_noaa_ind, path_output_noaa, func_1up)
     remove_handlers_if_directly_executed(func_1up)
 
 
 # In[ ]:
 
 
-## High level calculation functions to create all possible data files.
+def proc_sbfwa_def():
+    
+    """
+    Process the geopackage file which outlines the definition for the
+    State Boundary Fence of Western Australia (SBFWA).
+                        
+    Returns:
+        ../data_processed/sbfwa_def/{calc_funcs_ver}_proc_wa_sbfwa-def.gpkg:
+            Output geopackage file in data_processed folder containing the processed 
+            geospatial data which defines the SBFWA. {calc_funcs_ver} is the version 
+            of the calc_funcs script being used.
+    
+    This function merely rearranges the columns of the raw geopackage data file by 
+    setting the index to be the object_id parameter. This does not change any content in 
+    itself but is done so as to retain consistency in the design choice that functions 
+    from the plot_funcs script should only use data from the data_processed folder. The 
+    processing uses geopackage data from the data_raw folder as input, then outputs the 
+    result also as a geopackage data file into the data_processed folder.
+    """
+    
+    time_exec = datetime.today()
+    func_cur = inspect.stack()[0][3]
+    func_1up = inspect.stack()[1][3]
+    frame_cur = inspect.currentframe()
+    args_cur, _, _, args_cur_values = inspect.getargvalues(frame_cur)
+    create_log_if_directly_executed(time_exec, func_cur, func_1up, 
+                                    args_cur, args_cur_values)
+    
+    if (func_1up == "<cell line: 1>") | (func_1up == "<module>"):
+        logging.info(f"Executing: {func_cur} to obtain the State Boundary Fence of " +
+                     "Western Australia's geospatial definitions.")
+    else:
+        logging.info(f"Executing: {func_cur} to obtain the State Boundary Fence of " +
+                     f"Western Australia's geospatial definitions for use in {func_1up}.")
+    
+    # Create paths, open raw datasets, process data.
+    
+    path_output_sbfwa = get_path_for_sbfwa_def()
+    terminate_if_file_exists(path_output_sbfwa, func_cur, func_1up)
+    
+    path_static = ("../data_raw/wa_sbfwa_static/" +
+                   "State_Barrier_Fence_DPIRD_025_WA_GDA2020_Public.gpkg")
+    if Path(path_static).exists():
+        msg_exist = f"Opening: existing file for use in {func_cur}: {path_static}."
+        logging.info(msg_exist)
+        print(msg_exist)
+        gdf_sbfwa = gpd.read_file(path_static)
+    else:
+        msg_miss = (f"TERMINATED: file could not be found: {path_static}. This could " +
+                    "be because the data_download.ipynb notebook was not run properly. " +
+                    "Alternatively, the user may have changed some files in this folder.")
+        logging.error(msg_miss)
+        print(msg_miss)
+        remove_handlers_if_directly_executed(func_1up)
+        return None
+    
+    gdf_sbfwa = gdf_sbfwa.set_index("object_id")
+    
+    # Create output file in data_processed folder.
+    
+    logging.info(f"Creating: file: {path_output_sbfwa}.")
+    path_output_sbfwa_dir = "/".join(path_output_sbfwa.split("/")[:-1])
+    Path(path_output_sbfwa_dir).mkdir(parents=True, exist_ok=True)
+    gdf_sbfwa.to_file(path_output_sbfwa, driver="GPKG")
+    
+    if (func_1up == "<cell line: 1>") | (func_1up == "<module>"):
+        msg_cre_cur = f"CREATED: file: {path_output_sbfwa}."
+        logging.info(msg_cre_cur)
+        print(msg_cre_cur)
+    else:
+        msg_cre_1up = f"CREATED: file for use in {func_1up}: {path_output_sbfwa}."
+        logging.info(msg_cre_1up)
+        print(msg_cre_1up)
+    
+    remove_handlers_if_directly_executed(func_1up)
+
+
+# ## Top-level calculation functions to create all possible data files
+
+# In[ ]:
+
 
 def create_all_possible_calc_data_files(region, period_start, period_end, months_subset):
     
@@ -3734,9 +4428,8 @@ def create_all_possible_diff_data_files(region, period1_start, period1_end,
                                     args_cur, args_cur_values)
     
     check_args_for_none(func_cur, args_cur, args_cur_values)
-    check_args(region=region, period_start=period1_start, period_end=period1_end, 
-               months_subset=months_subset)
-    check_args(period_start=period2_start, period_end=period2_end, 
+    check_args(region=region, period1_start=period1_start, period1_end=period1_end, 
+               period2_start=period2_start, period2_end=period2_end,
                months_subset=months_subset)
     
     months_subset_str = get_months_subset_str(months_subset=months_subset)
