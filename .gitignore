@@ -4,6 +4,7 @@ data_processed/
 data_raw/
 global_results/
 logs/
+report/
 report_examples/
 scrap/
 scripts/__pycache__/
