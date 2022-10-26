@@ -2,12 +2,11 @@ data_archived/
 data_final/
 data_processed/
 data_raw/
-global_results/
 logs/
 report/
-report_examples/
 scrap/
 scripts/__pycache__/
 scripts/.ipynb_checkpoints/
+scripts_test/
 textbooks/
 UNSW-Data-Archive-master/
