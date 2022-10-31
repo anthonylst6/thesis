@@ -76,62 +76,62 @@ print(f"Using: {plot_funcs_module}")
 # In[ ]:
 
 
-# # General analysis settings
-# region = "wa"
-# year_start = 1983
-# year_end = 2019
-# window_size = 5
-# months_wet = "jja"
-# months_dry = "djf"
-# hours_light = [8, 9, 10, 11, 12, 13, 14, 15]
-# hours_night = [20, 21, 22, 23, 0, 1, 2, 3]
-# perc = False
-# mask_perc_quantile = pf.mask_perc_quantile_default
-# mask_period1 = None
-# mask_period2 = None
-# extents = None
-# cfv_data = None
+# General analysis settings
+region = "wa"
+year_start = 1983
+year_end = 2019
+window_size = 5
+months_wet = "jja"
+months_dry = "djf"
+hours_light = [8, 9, 10, 11, 12, 13, 14, 15]
+hours_night = [20, 21, 22, 23, 0, 1, 2, 3]
+perc = False
+mask_perc_quantile = pf.mask_perc_quantile_default
+mask_period1 = None
+mask_period2 = None
+extents = None
+cfv_data = None
 
-# # Entire periods covered by AVHRR or MODIS data and for which there is FAPAR data
-# period_start_avhrr = "Jan-1982"
-# period_end_avhrr = "Dec-2018"
-# period_start_modis = "Jan-2001"
-# period_end_modis = "Dec-2020"
+# Entire periods covered by AVHRR or MODIS data and for which there is FAPAR data
+period_start_avhrr = "Jan-1982"
+period_end_avhrr = "Dec-2018"
+period_start_modis = "Jan-2001"
+period_end_modis = "Dec-2020"
 
-# # Periods with similar background atmospheric oscillations
-# period1_mid_sim = "Dec-1999"
-# period1_start_sim = "Jun-1997"
-# period1_end_sim = "May-2002"
-# period2_mid_sim = "Mar-2013"
-# period2_start_sim = "Sep-2010"
-# period2_end_sim = "Aug-2015"
-# if (datetime.strptime(period1_start_sim, "%b-%Y") >= 
+# Periods with similar background atmospheric oscillations
+period1_mid_sim = "Dec-1999"
+period1_start_sim = "Jun-1997"
+period1_end_sim = "May-2002"
+period2_mid_sim = "Mar-2013"
+period2_start_sim = "Sep-2010"
+period2_end_sim = "Aug-2015"
+if (datetime.strptime(period1_start_sim, "%b-%Y") >= 
+    datetime.strptime(cf.modis_earliest, "%b-%Y")):
+    glass_source_pref_sim = "modis"
+else:
+    glass_source_pref_sim = "avhrr"
+
+# # Periods with dissimilar background atmospheric oscillations
+# period1_mid_dis = "Sep-1990"
+# period1_start_dis = "Mar-1988"
+# period1_end_dis = "Feb-1993"
+# period2_mid_dis = "Jul-2016"
+# period2_start_dis = "Jan-2014"
+# period2_end_dis = "Dec-2018"
+# if (datetime.strptime(period1_start_dis, "%b-%Y") >= 
 #     datetime.strptime(cf.modis_earliest, "%b-%Y")):
-#     glass_source_pref_sim = "modis"
+#     glass_source_pref_dis = "modis"
 # else:
-#     glass_source_pref_sim = "avhrr"
+#     glass_source_pref_dis = "avhrr"
 
-# # # Periods with dissimilar background atmospheric oscillations
-# # period1_mid_dis = "Sep-1990"
-# # period1_start_dis = "Mar-1988"
-# # period1_end_dis = "Feb-1993"
-# # period2_mid_dis = "Jul-2016"
-# # period2_start_dis = "Jan-2014"
-# # period2_end_dis = "Dec-2018"
-# # if (datetime.strptime(period1_start_dis, "%b-%Y") >= 
-# #     datetime.strptime(cf.modis_earliest, "%b-%Y")):
-# #     glass_source_pref_dis = "modis"
-# # else:
-# #     glass_source_pref_dis = "avhrr"
-
-# # # Single months with very dissimilar background atmospheric oscillations
-# # month1_dis = "Nov-1996"
-# # month2_dis = "Sep-2015"
-# # if (datetime.strptime(month1_dis, "%b-%Y") >= 
-# #     datetime.strptime(cf.modis_earliest, "%b-%Y")):
-# #     glass_source_pref_dis_month = "modis"
-# # else:
-# #     glass_source_pref_dis_month = "avhrr"
+# # Single months with very dissimilar background atmospheric oscillations
+# month1_dis = "Nov-1996"
+# month2_dis = "Sep-2015"
+# if (datetime.strptime(month1_dis, "%b-%Y") >= 
+#     datetime.strptime(cf.modis_earliest, "%b-%Y")):
+#     glass_source_pref_dis_month = "modis"
+# else:
+#     glass_source_pref_dis_month = "avhrr"
 
 
 # In[ ]:
@@ -198,62 +198,62 @@ print(f"Using: {plot_funcs_module}")
 # In[ ]:
 
 
-# General analysis settings
-region = "sa"
-year_start = 1983
-year_end = 2019
-window_size = 5
-months_wet = [1, 2, 3, 4, 5, 6]
-months_dry = [7, 8, 9, 10, 11, 12]
-hours_light = [8, 9, 10, 11, 12, 13, 14, 15]
-hours_night = [20, 21, 22, 23, 0, 1, 2, 3]
-perc = False
-mask_perc_quantile = pf.mask_perc_quantile_default
-mask_period1 = None
-mask_period2 = None
-extents = None
-cfv_data = None
+# # General analysis settings
+# region = "sa"
+# year_start = 1983
+# year_end = 2019
+# window_size = 5
+# months_wet = [1, 2, 3, 4, 5, 6]
+# months_dry = [7, 8, 9, 10, 11, 12]
+# hours_light = [8, 9, 10, 11, 12, 13, 14, 15]
+# hours_night = [20, 21, 22, 23, 0, 1, 2, 3]
+# perc = False
+# mask_perc_quantile = pf.mask_perc_quantile_default
+# mask_period1 = None
+# mask_period2 = None
+# extents = None
+# cfv_data = None
 
-# Entire periods covered by AVHRR or MODIS data and for which there is FAPAR data
-period_start_avhrr = "Jan-1982"
-period_end_avhrr = "Dec-2018"
-period_start_modis = "Jan-2001"
-period_end_modis = "Dec-2020"
+# # Entire periods covered by AVHRR or MODIS data and for which there is FAPAR data
+# period_start_avhrr = "Jan-1982"
+# period_end_avhrr = "Dec-2018"
+# period_start_modis = "Jan-2001"
+# period_end_modis = "Dec-2020"
 
-# Periods with similar background atmospheric oscillations
-period1_mid_sim = "Jul-2005"
-period1_start_sim = "Jan-2003"
-period1_end_sim = "Dec-2007"
-period2_mid_sim = "Jul-2018"
-period2_start_sim = "Jan-2016"
-period2_end_sim = "Dec-2020"
-if (datetime.strptime(period1_start_sim, "%b-%Y") >= 
-    datetime.strptime(cf.modis_earliest, "%b-%Y")):
-    glass_source_pref_sim = "modis"
-else:
-    glass_source_pref_sim = "avhrr"
+# # Periods with similar background atmospheric oscillations
+# period1_mid_sim = "Jul-2005"
+# period1_start_sim = "Jan-2003"
+# period1_end_sim = "Dec-2007"
+# period2_mid_sim = "Jul-2018"
+# period2_start_sim = "Jan-2016"
+# period2_end_sim = "Dec-2020"
+# if (datetime.strptime(period1_start_sim, "%b-%Y") >= 
+#     datetime.strptime(cf.modis_earliest, "%b-%Y")):
+#     glass_source_pref_sim = "modis"
+# else:
+#     glass_source_pref_sim = "avhrr"
     
-# # Periods with dissimilar background atmospheric oscillations
-# period1_mid_dis = "Mar-1985"
-# period1_start_dis = "Sep-1982"
-# period1_end_dis = "Aug-1987"
-# period2_mid_dis = "Jul-2010"
-# period2_start_dis = "Jan-2008"
-# period2_end_dis = "Dec-2012"
-# if (datetime.strptime(period1_start_dis, "%b-%Y") >= 
-#     datetime.strptime(cf.modis_earliest, "%b-%Y")):
-#     glass_source_pref_dis = "modis"
-# else:
-#     glass_source_pref_dis = "avhrr"
+# # # Periods with dissimilar background atmospheric oscillations
+# # period1_mid_dis = "Mar-1985"
+# # period1_start_dis = "Sep-1982"
+# # period1_end_dis = "Aug-1987"
+# # period2_mid_dis = "Jul-2010"
+# # period2_start_dis = "Jan-2008"
+# # period2_end_dis = "Dec-2012"
+# # if (datetime.strptime(period1_start_dis, "%b-%Y") >= 
+# #     datetime.strptime(cf.modis_earliest, "%b-%Y")):
+# #     glass_source_pref_dis = "modis"
+# # else:
+# #     glass_source_pref_dis = "avhrr"
 
-# # Single months with very dissimilar background atmospheric oscillations
-# month1_dis = "Nov-1996"
-# month2_dis = "Sep-2015"
-# if (datetime.strptime(month1_dis, "%b-%Y") >= 
-#     datetime.strptime(cf.modis_earliest, "%b-%Y")):
-#     glass_source_pref_dis_month = "modis"
-# else:
-#     glass_source_pref_dis_month = "avhrr"
+# # # Single months with very dissimilar background atmospheric oscillations
+# # month1_dis = "Nov-1996"
+# # month2_dis = "Sep-2015"
+# # if (datetime.strptime(month1_dis, "%b-%Y") >= 
+# #     datetime.strptime(cf.modis_earliest, "%b-%Y")):
+# #     glass_source_pref_dis_month = "modis"
+# # else:
+# #     glass_source_pref_dis_month = "avhrr"
 
 
 # In[ ]:

@@ -4,6 +4,7 @@ data_processed/
 data_raw/
 logs/
 report/
+results/
 scrap/
 scripts/__pycache__/
 scripts/.ipynb_checkpoints/

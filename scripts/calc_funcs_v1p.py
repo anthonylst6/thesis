@@ -1469,8 +1469,17 @@ def get_var_or_dvar_layer_and_type(var_or_dvar):
     for var_or_dvar_type_ans, dict_ans in vars_and_dvars_era5.items():
         for var_or_dvar_layer_ans, list_ans in dict_ans.items():
             if var_or_dvar in list_ans:
-                var_or_dvar_layer = var_or_dvar_layer_ans
-                var_or_dvar_type = var_or_dvar_type_ans
+                var_or_dvar_layer = copy.deepcopy(var_or_dvar_layer_ans)
+                var_or_dvar_type = copy.deepcopy(var_or_dvar_type_ans)
+                
+    try:
+        var_or_dvar_layer
+    except:
+        raise Exception(f"var_or_dvar_layer not defined for var_or_dvar={var_or_dvar}")
+    try:
+        var_or_dvar_type
+    except:
+        raise Exception(f"var_or_dvar_type not defined for var_or_dvar={var_or_dvar}")
                 
     if (func_1up == "<cell line: 1>") | (func_1up == "<module>"):
         logging.info(f"Obtained: {var_or_dvar} classifications of " +

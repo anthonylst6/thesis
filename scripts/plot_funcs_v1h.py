@@ -712,6 +712,7 @@ def create_pcolormesh(da, extents=None, vmin=None, vmax=None, ax=None):
     
     ax.set_title(da.attrs["full_name"])
     ax.add_feature(cfeature.COASTLINE)
+    ax.add_feature(cfeature.BORDERS)
     grid = ax.gridlines(draw_labels=True, x_inline=False, y_inline=False)
     grid.top_labels = False
     grid.right_labels = False
@@ -840,6 +841,7 @@ def create_quiver(da_u, da_v, extents=None, vmin=None, vmax=None, ax=None):
     
     ax.set_title(attrs_u["full_name"])
     ax.add_feature(cfeature.COASTLINE)
+    ax.add_feature(cfeature.BORDERS)
     grid = ax.gridlines(draw_labels=True, x_inline=False, y_inline=False)
     grid.top_labels = False
     grid.right_labels = False
@@ -1381,9 +1383,9 @@ def create_individual_comp_plot(
     
     if ax_diff_input == None:
         
-        for idx in range(0, 2+1):
-            ax_title = axes[idx].get_title()
-            axes[idx].set_title(chr(ord('`')+(idx+1)) + ") " + ax_title)
+        # for idx in range(0, 2+1):
+        #     ax_title = axes[idx].get_title()
+        #     axes[idx].set_title(chr(ord('`')+(idx+1)) + ") " + ax_title)
         
         fig.tight_layout()
         
@@ -1821,9 +1823,11 @@ def create_climate_indices_plot(
         ax.xaxis.set_major_formatter(mdates.DateFormatter('%b-%Y'))
         ax.set_xlabel(None)
         ax.set_ylabel("{} [{}]"
-              .format(index_attrs["abbreviation"], index_attrs["units"]))
-        ax.set_title(chr(ord('`')+(row+1)) + ") {} ({} data)"
-             .format(index_attrs["full_name"], index_attrs["source"]))
+                      .format(index_attrs["abbreviation"], index_attrs["units"]))
+        # ax.set_title(chr(ord('`')+(row+1)) + ") {} ({} data)"
+        #              .format(index_attrs["full_name"], index_attrs["source"]))
+        ax.set_title("{} ({} data)"
+                     .format(index_attrs["full_name"], index_attrs["source"]))
         
         if index == "oni":
             for idx, dates_list in enumerate(dates_la_nina_processed):
@@ -2017,11 +2021,11 @@ def plot_mdp_clim_stats_given_var_or_dvar(
             cfv_data=cfv_data
         )
     
-    for idx in range(0, figrows * figcols):
-        row = math.floor(idx / figcols)
-        col = idx % figcols
-        ax_title = axes[row][col].get_title()
-        axes[row][col].set_title(chr(ord('`')+(idx+1)) + ") " + ax_title)
+    # for idx in range(0, figrows * figcols):
+    #     row = math.floor(idx / figcols)
+    #     col = idx % figcols
+    #     ax_title = axes[row][col].get_title()
+    #     axes[row][col].set_title(chr(ord('`')+(idx+1)) + ") " + ax_title)
     
     fig.tight_layout()
     
@@ -2149,11 +2153,11 @@ def plot_means_given_layer_and_type(
             extents=extents, ax=axes[row][col], cfv_data=cfv_data
         )
     
-    for idx in range(0, figrows * figcols):
-        row = math.floor(idx / figcols)
-        col = idx % figcols
-        ax_title = axes[row][col].get_title()
-        axes[row][col].set_title(chr(ord('`')+(idx+1)) + ") " + ax_title)
+    # for idx in range(0, figrows * figcols):
+    #     row = math.floor(idx / figcols)
+    #     col = idx % figcols
+    #     ax_title = axes[row][col].get_title()
+    #     axes[row][col].set_title(chr(ord('`')+(idx+1)) + ") " + ax_title)
     
     fig.tight_layout()
     
@@ -2330,11 +2334,11 @@ def plot_hourly_means_given_var_or_dvar(
             vmin=vmin, vmax=vmax, ax=axes[row][col], cfv_data=cfv_data
         )
     
-    for idx in range(0, figrows * figcols):
-        row = math.floor(idx / figcols)
-        col = idx % figcols
-        ax_title = axes[row][col].get_title()
-        axes[row][col].set_title(chr(ord('`')+(idx+1)) + ") " + ax_title)
+    # for idx in range(0, figrows * figcols):
+    #     row = math.floor(idx / figcols)
+    #     col = idx % figcols
+    #     ax_title = axes[row][col].get_title()
+    #     axes[row][col].set_title(chr(ord('`')+(idx+1)) + ") " + ax_title)
     
     fig.tight_layout()
     
@@ -2511,11 +2515,11 @@ def plot_monthly_means_given_var_or_dvar(
             vmin=vmin, vmax=vmax, ax=axes[row][col], cfv_data=cfv_data
         )
     
-    for idx in range(0, figrows * figcols):
-        row = math.floor(idx / figcols)
-        col = idx % figcols
-        ax_title = axes[row][col].get_title()
-        axes[row][col].set_title(chr(ord('`')+(idx+1)) + ") " + ax_title)
+    # for idx in range(0, figrows * figcols):
+    #     row = math.floor(idx / figcols)
+    #     col = idx % figcols
+    #     ax_title = axes[row][col].get_title()
+    #     axes[row][col].set_title(chr(ord('`')+(idx+1)) + ") " + ax_title)
     
     fig.tight_layout()
     
@@ -2636,11 +2640,11 @@ def plot_wsd_clim(
             extents=extents, ax=axes[row][col], cfv_data=cfv_data
         )
     
-    for idx in range(0, figrows * figcols):
-        row = math.floor(idx / figcols)
-        col = idx % figcols
-        ax_title = axes[row][col].get_title()
-        axes[row][col].set_title(chr(ord('`')+(idx+1)) + ") " + ax_title)
+    # for idx in range(0, figrows * figcols):
+    #     row = math.floor(idx / figcols)
+    #     col = idx % figcols
+    #     ax_title = axes[row][col].get_title()
+    #     axes[row][col].set_title(chr(ord('`')+(idx+1)) + ") " + ax_title)
     
     fig.tight_layout()
     
@@ -2776,11 +2780,11 @@ def plot_diff_mdp_clim_stats_given_var_or_dvar(
             extents=extents, ax=axes[row][col], cfv_data=cfv_data
         )
     
-    for idx in range(0, figrows * figcols):
-        row = math.floor(idx / figcols)
-        col = idx % figcols
-        ax_title = axes[row][col].get_title()
-        axes[row][col].set_title(chr(ord('`')+(idx+1)) + ") " + ax_title)
+    # for idx in range(0, figrows * figcols):
+    #     row = math.floor(idx / figcols)
+    #     col = idx % figcols
+    #     ax_title = axes[row][col].get_title()
+    #     axes[row][col].set_title(chr(ord('`')+(idx+1)) + ") " + ax_title)
     
     fig.tight_layout()
     
@@ -2926,11 +2930,11 @@ def plot_diff_means_given_layer_and_type(
             extents=extents, ax=axes[row][col], cfv_data=cfv_data
         )
     
-    for idx in range(0, figrows * figcols):
-        row = math.floor(idx / figcols)
-        col = idx % figcols
-        ax_title = axes[row][col].get_title()
-        axes[row][col].set_title(chr(ord('`')+(idx+1)) + ") " + ax_title)
+    # for idx in range(0, figrows * figcols):
+    #     row = math.floor(idx / figcols)
+    #     col = idx % figcols
+    #     ax_title = axes[row][col].get_title()
+    #     axes[row][col].set_title(chr(ord('`')+(idx+1)) + ") " + ax_title)
     
     fig.tight_layout()
     
@@ -3131,11 +3135,11 @@ def plot_diff_hourly_means_given_var_or_dvar(
             vmin=vmin, vmax=vmax, ax=axes[row][col], cfv_data=cfv_data
         )
     
-    for idx in range(0, figrows * figcols):
-        row = math.floor(idx / figcols)
-        col = idx % figcols
-        ax_title = axes[row][col].get_title()
-        axes[row][col].set_title(chr(ord('`')+(idx+1)) + ") " + ax_title)
+    # for idx in range(0, figrows * figcols):
+    #     row = math.floor(idx / figcols)
+    #     col = idx % figcols
+    #     ax_title = axes[row][col].get_title()
+    #     axes[row][col].set_title(chr(ord('`')+(idx+1)) + ") " + ax_title)
     
     fig.tight_layout()
     
@@ -3336,11 +3340,11 @@ def plot_diff_monthly_means_given_var_or_dvar(
             vmin=vmin, vmax=vmax, ax=axes[row][col], cfv_data=cfv_data
         )
     
-    for idx in range(0, figrows * figcols):
-        row = math.floor(idx / figcols)
-        col = idx % figcols
-        ax_title = axes[row][col].get_title()
-        axes[row][col].set_title(chr(ord('`')+(idx+1)) + ") " + ax_title)
+    # for idx in range(0, figrows * figcols):
+    #     row = math.floor(idx / figcols)
+    #     col = idx % figcols
+    #     ax_title = axes[row][col].get_title()
+    #     axes[row][col].set_title(chr(ord('`')+(idx+1)) + ") " + ax_title)
     
     fig.tight_layout()
     
@@ -3480,11 +3484,11 @@ def plot_diff_wsd_clim(
             ax=axes[row][col], cfv_data=cfv_data
         )
     
-    for idx in range(0, figrows * figcols):
-        row = math.floor(idx / figcols)
-        col = idx % figcols
-        ax_title = axes[row][col].get_title()
-        axes[row][col].set_title(chr(ord('`')+(idx+1)) + ") " + ax_title)
+    # for idx in range(0, figrows * figcols):
+    #     row = math.floor(idx / figcols)
+    #     col = idx % figcols
+    #     ax_title = axes[row][col].get_title()
+    #     axes[row][col].set_title(chr(ord('`')+(idx+1)) + ") " + ax_title)
     
     fig.tight_layout()
     
@@ -3622,11 +3626,11 @@ def plot_comp_mdp_clim_stats_given_var_or_dvar(
             cfv_data=cfv_data
         )
     
-    for idx in range(0, figrows * figcols):
-        row = math.floor(idx / figcols)
-        col = idx % figcols
-        ax_title = axes[row][col].get_title()
-        axes[row][col].set_title(chr(ord('`')+(idx+1)) + ") " + ax_title)
+    # for idx in range(0, figrows * figcols):
+    #     row = math.floor(idx / figcols)
+    #     col = idx % figcols
+    #     ax_title = axes[row][col].get_title()
+    #     axes[row][col].set_title(chr(ord('`')+(idx+1)) + ") " + ax_title)
     
     fig.tight_layout()
     
@@ -3769,11 +3773,11 @@ def plot_comp_means_given_layer_and_type(
             cfv_data=cfv_data
         )
     
-    for idx in range(0, figrows * figcols):
-        row = math.floor(idx / figcols)
-        col = idx % figcols
-        ax_title = axes[row][col].get_title()
-        axes[row][col].set_title(chr(ord('`')+(idx+1)) + ") " + ax_title)
+    # for idx in range(0, figrows * figcols):
+    #     row = math.floor(idx / figcols)
+    #     col = idx % figcols
+    #     ax_title = axes[row][col].get_title()
+    #     axes[row][col].set_title(chr(ord('`')+(idx+1)) + ") " + ax_title)
     
     fig.tight_layout()
     
@@ -4037,11 +4041,11 @@ def plot_comp_hourly_means_given_var_or_dvar(
             ax_diff=axes[row][2], cfv_data=cfv_data
         )
     
-    for idx in range(0, figrows * figcols):
-        row = math.floor(idx / figcols)
-        col = idx % figcols
-        ax_title = axes[row][col].get_title()
-        axes[row][col].set_title(chr(ord('`')+(idx+1)) + ") " + ax_title)
+    # for idx in range(0, figrows * figcols):
+    #     row = math.floor(idx / figcols)
+    #     col = idx % figcols
+    #     ax_title = axes[row][col].get_title()
+    #     axes[row][col].set_title(chr(ord('`')+(idx+1)) + ") " + ax_title)
     
     fig.tight_layout()
     
@@ -4305,11 +4309,11 @@ def plot_comp_monthly_means_given_var_or_dvar(
             ax_diff=axes[row][2], cfv_data=cfv_data
         )
     
-    for idx in range(0, figrows * figcols):
-        row = math.floor(idx / figcols)
-        col = idx % figcols
-        ax_title = axes[row][col].get_title()
-        axes[row][col].set_title(chr(ord('`')+(idx+1)) + ") " + ax_title)
+    # for idx in range(0, figrows * figcols):
+    #     row = math.floor(idx / figcols)
+    #     col = idx % figcols
+    #     ax_title = axes[row][col].get_title()
+    #     axes[row][col].set_title(chr(ord('`')+(idx+1)) + ") " + ax_title)
     
     fig.tight_layout()
     
@@ -4449,11 +4453,11 @@ def plot_comp_wsd_clim(
             ax_period2=axes[row][1], ax_diff=axes[row][2], cfv_data=cfv_data
         )
     
-    for idx in range(0, figrows * figcols):
-        row = math.floor(idx / figcols)
-        col = idx % figcols
-        ax_title = axes[row][col].get_title()
-        axes[row][col].set_title(chr(ord('`')+(idx+1)) + ") " + ax_title)
+    # for idx in range(0, figrows * figcols):
+    #     row = math.floor(idx / figcols)
+    #     col = idx % figcols
+    #     ax_title = axes[row][col].get_title()
+    #     axes[row][col].set_title(chr(ord('`')+(idx+1)) + ") " + ax_title)
     
     fig.tight_layout()
     
@@ -4475,6 +4479,90 @@ def plot_comp_wsd_clim(
 
 
 # ## Top-level plotting functions to create all possible plot files
+
+# In[ ]:
+
+
+def create_comb_orog_static_plot(cfv_data=None, output=False):
+    
+    time_exec = datetime.today()
+    func_cur = inspect.stack()[0][3]
+    func_1up = inspect.stack()[1][3]
+    frame_cur = inspect.currentframe()
+    args_cur, _, _, args_cur_values = inspect.getargvalues(frame_cur)
+    cf.create_log_if_directly_executed(time_exec, func_cur, func_1up, 
+                                       args_cur, args_cur_values)
+    
+    if cfv_data:
+        cfv_used = cfv_data
+    else:
+        cfv_used = cf.calc_funcs_ver
+    
+    path_output = (f"../data_final/era5_orog/" +
+                   f"{plot_funcs_ver}_{cfv_used}_comb_era5-orog.png")
+    
+    if Path(path_output).exists():
+        msg_exist = ("WARNING: plot file already exists (and was " +
+                     f"not overwritten): {path_output}")
+        logging.warning(msg_exist)
+        print(msg_exist)
+        
+    figrows = 2
+    figcols = 3
+    figwidth = figwidth_standard * 2
+    figheight = (figwidth * figrows/figcols)
+    fig, axes = plt.subplots(figrows, figcols, figsize=(figwidth, figheight), 
+                             subplot_kw = {"projection": ccrs.PlateCarree()}
+                            )
+    
+    create_orog_static_plot(
+        param_orog="lse", region="wa", extents=None, vmin=None, vmax=None, 
+        ax=axes[0][0], cfv_data=cfv_data, output=False
+    )
+    create_orog_static_plot(
+        param_orog="lse", region="ca", extents=None, vmin=None, vmax=None, 
+        ax=axes[0][1], cfv_data=cfv_data, output=False
+    )
+    create_orog_static_plot(
+        param_orog="lse", region="sa", extents=None, vmin=None, vmax=None, 
+        ax=axes[0][2], cfv_data=cfv_data, output=False
+    )
+    create_orog_static_plot(
+        param_orog="ssgo", region="wa", extents=None, vmin=None, vmax=None, 
+        ax=axes[1][0], cfv_data=cfv_data, output=False
+    )
+    create_orog_static_plot(
+        param_orog="ssgo", region="ca", extents=None, vmin=None, vmax=None, 
+        ax=axes[1][1], cfv_data=cfv_data, output=False
+    )
+    create_orog_static_plot(
+        param_orog="ssgo", region="sa", extents=None, vmin=None, vmax=None, 
+        ax=axes[1][2], cfv_data=cfv_data, output=False
+    )
+    
+    # for idx in range(0, figrows * figcols):
+    #     row = math.floor(idx / figcols)
+    #     col = idx % figcols
+    #     ax_title = axes[row][col].get_title()
+    #     axes[row][col].set_title(chr(ord('`')+(idx+1)) + ") " + ax_title)
+    
+    fig.tight_layout()
+    
+    if (output == True) & (Path(path_output).exists() == False):
+        path_output_dir = "/".join(path_output.split("/")[:-1])
+        Path(path_output_dir).mkdir(parents=True, exist_ok=True)
+        plt.savefig(path_output, metadata=get_plot_metadata(time_exec, func_cur, 
+                                                            args_cur, args_cur_values))
+        msg_create = f"CREATED: plot file: {path_output}"
+        logging.info(msg_create)
+        print(msg_create)
+    
+    plt.show()
+    fig.clear()
+    plt.close(fig)
+    
+    cf.remove_handlers_if_directly_executed(func_1up)
+
 
 # In[ ]:
 

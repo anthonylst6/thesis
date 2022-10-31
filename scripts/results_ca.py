@@ -3,7 +3,9 @@
 
 # # Setup
 # 
-# Note: the following code requires up to 30 GB of RAM over 2 hours if using 4 CPUs
+# Note: the following code requires up to 70 GB of RAM over 18 hours if using 6 CPUs
+# 
+# It can also be run with less RAM but this will require manual restarting of code everytime RAM limit is reached
 
 # ## Import libraries for analysis
 
@@ -74,6 +76,67 @@ print(f"Using: {plot_funcs_module}")
 # In[ ]:
 
 
+# # General analysis settings
+# region = "wa"
+# year_start = 1983
+# year_end = 2019
+# window_size = 5
+# months_wet = "jja"
+# months_dry = "djf"
+# hours_light = [8, 9, 10, 11, 12, 13, 14, 15]
+# hours_night = [20, 21, 22, 23, 0, 1, 2, 3]
+# perc = False
+# mask_perc_quantile = pf.mask_perc_quantile_default
+# mask_period1 = None
+# mask_period2 = None
+# extents = None
+# cfv_data = None
+
+# # Entire periods covered by AVHRR or MODIS data and for which there is FAPAR data
+# period_start_avhrr = "Jan-1982"
+# period_end_avhrr = "Dec-2018"
+# period_start_modis = "Jan-2001"
+# period_end_modis = "Dec-2020"
+
+# # Periods with similar background atmospheric oscillations
+# period1_mid_sim = "Dec-1999"
+# period1_start_sim = "Jun-1997"
+# period1_end_sim = "May-2002"
+# period2_mid_sim = "Mar-2013"
+# period2_start_sim = "Sep-2010"
+# period2_end_sim = "Aug-2015"
+# if (datetime.strptime(period1_start_sim, "%b-%Y") >= 
+#     datetime.strptime(cf.modis_earliest, "%b-%Y")):
+#     glass_source_pref_sim = "modis"
+# else:
+#     glass_source_pref_sim = "avhrr"
+
+# # # Periods with dissimilar background atmospheric oscillations
+# # period1_mid_dis = "Sep-1990"
+# # period1_start_dis = "Mar-1988"
+# # period1_end_dis = "Feb-1993"
+# # period2_mid_dis = "Jul-2016"
+# # period2_start_dis = "Jan-2014"
+# # period2_end_dis = "Dec-2018"
+# # if (datetime.strptime(period1_start_dis, "%b-%Y") >= 
+# #     datetime.strptime(cf.modis_earliest, "%b-%Y")):
+# #     glass_source_pref_dis = "modis"
+# # else:
+# #     glass_source_pref_dis = "avhrr"
+
+# # # Single months with very dissimilar background atmospheric oscillations
+# # month1_dis = "Nov-1996"
+# # month2_dis = "Sep-2015"
+# # if (datetime.strptime(month1_dis, "%b-%Y") >= 
+# #     datetime.strptime(cf.modis_earliest, "%b-%Y")):
+# #     glass_source_pref_dis_month = "modis"
+# # else:
+# #     glass_source_pref_dis_month = "avhrr"
+
+
+# In[ ]:
+
+
 # General analysis settings
 region = "ca"
 year_start = 1983
@@ -81,41 +144,116 @@ year_end = 2019
 window_size = 5
 months_wet = [5, 6, 7, 8, 9, 10]
 months_dry = [11, 12, 1, 2, 3, 4]
+hours_light = [8, 9, 10, 11, 12, 13, 14, 15]
+hours_night = [20, 21, 22, 23, 0, 1, 2, 3]
+perc = False
+mask_perc_quantile = pf.mask_perc_quantile_default
+mask_period1 = None
+mask_period2 = None
+extents = None
+cfv_data = None
+
+# Entire periods covered by AVHRR or MODIS data and for which there is FAPAR data
+period_start_avhrr = "Jan-1982"
+period_end_avhrr = "Dec-2018"
+period_start_modis = "Jan-2001"
+period_end_modis = "Dec-2020"
 
 # Periods with similar background atmospheric oscillations
-period1_mid_sim = "Jul-1983"
-period1_start_sim = "Jan-1981"
-period1_end_sim = "Dec-1985"
-period2_mid_sim = "Jul-1994"
-period2_start_sim = "Jan-1992"
-period2_end_sim = "Dec-1996"
+period1_mid_sim = "Jul-2005"
+period1_start_sim = "Jan-2003"
+period1_end_sim = "Dec-2007"
+period2_mid_sim = "Jul-2018"
+period2_start_sim = "Jan-2016"
+period2_end_sim = "Dec-2020"
 if (datetime.strptime(period1_start_sim, "%b-%Y") >= 
     datetime.strptime(cf.modis_earliest, "%b-%Y")):
     glass_source_pref_sim = "modis"
 else:
     glass_source_pref_sim = "avhrr"
     
-# Periods with dissimilar background atmospheric oscillations
-period1_mid_dis = "Mar-1985"
-period1_start_dis = "Sep-1982"
-period1_end_dis = "Aug-1987"
-period2_mid_dis = "Jul-2010"
-period2_start_dis = "Jan-2008"
-period2_end_dis = "Dec-2012"
-if (datetime.strptime(period1_start_dis, "%b-%Y") >= 
-    datetime.strptime(cf.modis_earliest, "%b-%Y")):
-    glass_source_pref_dis = "modis"
-else:
-    glass_source_pref_dis = "avhrr"
+# # Periods with dissimilar background atmospheric oscillations
+# period1_mid_dis = "Mar-1985"
+# period1_start_dis = "Sep-1982"
+# period1_end_dis = "Aug-1987"
+# period2_mid_dis = "Jul-2010"
+# period2_start_dis = "Jan-2008"
+# period2_end_dis = "Dec-2012"
+# if (datetime.strptime(period1_start_dis, "%b-%Y") >= 
+#     datetime.strptime(cf.modis_earliest, "%b-%Y")):
+#     glass_source_pref_dis = "modis"
+# else:
+#     glass_source_pref_dis = "avhrr"
 
-# Single months with very dissimilar background atmospheric oscillations
-month1_dis = "Nov-1996"
-month2_dis = "Sep-2015"
-if (datetime.strptime(month1_dis, "%b-%Y") >= 
-    datetime.strptime(cf.modis_earliest, "%b-%Y")):
-    glass_source_pref_dis_month = "modis"
-else:
-    glass_source_pref_dis_month = "avhrr"
+# # Single months with very dissimilar background atmospheric oscillations
+# month1_dis = "Nov-1996"
+# month2_dis = "Sep-2015"
+# if (datetime.strptime(month1_dis, "%b-%Y") >= 
+#     datetime.strptime(cf.modis_earliest, "%b-%Y")):
+#     glass_source_pref_dis_month = "modis"
+# else:
+#     glass_source_pref_dis_month = "avhrr"
+
+
+# In[ ]:
+
+
+# # General analysis settings
+# region = "sa"
+# year_start = 1983
+# year_end = 2019
+# window_size = 5
+# months_wet = [1, 2, 3, 4, 5, 6]
+# months_dry = [7, 8, 9, 10, 11, 12]
+# hours_light = [8, 9, 10, 11, 12, 13, 14, 15]
+# hours_night = [20, 21, 22, 23, 0, 1, 2, 3]
+# perc = False
+# mask_perc_quantile = pf.mask_perc_quantile_default
+# mask_period1 = None
+# mask_period2 = None
+# extents = None
+# cfv_data = None
+
+# # Entire periods covered by AVHRR or MODIS data and for which there is FAPAR data
+# period_start_avhrr = "Jan-1982"
+# period_end_avhrr = "Dec-2018"
+# period_start_modis = "Jan-2001"
+# period_end_modis = "Dec-2020"
+
+# # Periods with similar background atmospheric oscillations
+# period1_mid_sim = "Jul-2005"
+# period1_start_sim = "Jan-2003"
+# period1_end_sim = "Dec-2007"
+# period2_mid_sim = "Jul-2018"
+# period2_start_sim = "Jan-2016"
+# period2_end_sim = "Dec-2020"
+# if (datetime.strptime(period1_start_sim, "%b-%Y") >= 
+#     datetime.strptime(cf.modis_earliest, "%b-%Y")):
+#     glass_source_pref_sim = "modis"
+# else:
+#     glass_source_pref_sim = "avhrr"
+    
+# # # Periods with dissimilar background atmospheric oscillations
+# # period1_mid_dis = "Mar-1985"
+# # period1_start_dis = "Sep-1982"
+# # period1_end_dis = "Aug-1987"
+# # period2_mid_dis = "Jul-2010"
+# # period2_start_dis = "Jan-2008"
+# # period2_end_dis = "Dec-2012"
+# # if (datetime.strptime(period1_start_dis, "%b-%Y") >= 
+# #     datetime.strptime(cf.modis_earliest, "%b-%Y")):
+# #     glass_source_pref_dis = "modis"
+# # else:
+# #     glass_source_pref_dis = "avhrr"
+
+# # # Single months with very dissimilar background atmospheric oscillations
+# # month1_dis = "Nov-1996"
+# # month2_dis = "Sep-2015"
+# # if (datetime.strptime(month1_dis, "%b-%Y") >= 
+# #     datetime.strptime(cf.modis_earliest, "%b-%Y")):
+# #     glass_source_pref_dis_month = "modis"
+# # else:
+# #     glass_source_pref_dis_month = "avhrr"
 
 
 # In[ ]:
@@ -133,26 +271,12 @@ else:
 # In[ ]:
 
 
-# Create glass rolling avg files to identify years with significant LAI change
-cf.calc_glass_rolling_avg_of_annual_diff(
-    region=region, year_start=year_start, year_end=year_end, months_subset="all", 
-    window_size=window_size, glass_source_pref="avhrr"
-)
-cf.calc_glass_rolling_avg_of_annual_diff(
-    region=region, year_start=year_start, year_end=year_end, months_subset="all", 
-    window_size=window_size, glass_source_pref="modis"
-)
-
-
-# In[ ]:
-
-
 # Plot the glass rolling avg files to identify years with significant LAI change 
 # using AVHRR data
 pf.create_glass_rolling_plot(
-    region=region, year_start=year_start, year_end=year_end, months_subset="all", 
+    region=region, year_start=year_start, year_end=year_end, period_months="all", 
     window_size=window_size, param_glass_mean="mlai", glass_source_pref="avhrr", 
-    extents=None, vmin=None, vmax=None, cfv_data=None, output=True
+    extents=extents, vmin=None, vmax=None, cfv_data=cfv_data, output=True
 )
 
 
@@ -162,9 +286,9 @@ pf.create_glass_rolling_plot(
 # Plot the glass rolling avg files to identify years with significant LAI change 
 # using MODIS data
 pf.create_glass_rolling_plot(
-    region=region, year_start=year_start, year_end=year_end, months_subset="all", 
+    region=region, year_start=year_start, year_end=year_end, period_months="all", 
     window_size=window_size, param_glass_mean="mlai", glass_source_pref="modis", 
-    extents=None, vmin=None, vmax=None, cfv_data=None, output=True
+    extents=extents, vmin=None, vmax=None, cfv_data=cfv_data, output=True
 )
 
 
@@ -177,38 +301,49 @@ pf.create_individual_comp_plot(
     calc_func=cf.calc_glass_mean_clim, region=region, 
     period1_start=period1_start_sim, period1_end=period1_end_sim, 
     period2_start=period2_start_sim, period2_end=period2_end_sim, 
-    months_subset="all", arg_extra="mlai", glass_source_pref=glass_source_pref_sim, 
-    var_or_dvar=None, perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, 
+    period1_months="all", period2_months="all", period1_hours=None, period2_hours=None,
+    arg_extra="mlai", glass_source_pref=glass_source_pref_sim, 
+    var_or_dvar=None, perc=perc, mask_perc_quantile=mask_perc_quantile, 
+    mask_period1=mask_period1, mask_period2=mask_period2, extents=extents, 
     vmin_periods=None, vmax_periods=None, vmin_diff=None, vmax_diff=None, 
-    ax_period1=None, ax_period2=None, ax_diff=None, cfv_data=None, output=True
+    ax_period1=None, ax_period2=None, ax_diff=None, cfv_data=cfv_data, output=True
 )
 
 
 # In[ ]:
 
 
-# Check the difference in MLAI for periods with dissimilar background
-# atmospheric oscillations
-pf.create_individual_comp_plot(
-    calc_func=cf.calc_glass_mean_clim, region=region, 
-    period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, 
-    months_subset="all", arg_extra="mlai", glass_source_pref=glass_source_pref_dis, 
-    var_or_dvar=None, perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, 
-    vmin_periods=None, vmax_periods=None, vmin_diff=None, vmax_diff=None, 
-    ax_period1=None, ax_period2=None, ax_diff=None, cfv_data=None, output=True
-)
+# # Check the difference in MLAI for periods with dissimilar background
+# # atmospheric oscillations
+# pf.create_individual_comp_plot(
+#     calc_func=cf.calc_glass_mean_clim, region=region, 
+#     period1_start=period1_start_dis, period1_end=period1_end_dis, 
+#     period2_start=period2_start_dis, period2_end=period2_end_dis, 
+#     period1_months="all", period2_months="all", period1_hours=None, period2_hours=None,
+#     arg_extra="mlai", glass_source_pref=glass_source_pref_dis, 
+#     var_or_dvar=None, perc=perc, mask_perc_quantile=mask_perc_quantile, 
+#     mask_period1=mask_period1, mask_period2=mask_period2, extents=extents, 
+#     vmin_periods=None, vmax_periods=None, vmin_diff=None, vmax_diff=None, 
+#     ax_period1=None, ax_period2=None, ax_diff=None, cfv_data=cfv_data, output=True
+# )
+
+
+# In[ ]:
+
+
+
 
 
 # ## Periods with similar / dissimilar background atmospheric oscillations
 # 
-# Select periods based on:
-# - similar/dissimilar pattern in monthly values over each period
-# - having similar/dissimilar 5-year rolling averages for relevant indices
-# - for WA this is mainly the AAOI and DMI
-# - for CA and SA this is mainly the AMOI, PDOI and ONI
+# Criteria for selection of periods:
+# 
+# - 5-year rolling averages for relevant climate indices were similar / dissimilar
+# - Change in leaf area index between the periods was extensive
+# - Periods cover a similar / dissimilar amount of time spent in La Nina / El Nino (where relevant) and Negative / Positive Indian Ocean Dipole (where relevant)
+# - Monthly values for relevant climate indices over each period display a similar / dissimilar time evolution pattern
+# - For WA, relevant indices are AAOI and DMI
+# - For CA and SA, relevant indices are AMOI, PDOI and ONI
 
 # In[ ]:
 
@@ -219,21 +354,21 @@ pf.create_climate_indices_plot(
     year_start=year_start, year_end=year_end, window_size=window_size, 
     period1_mid=period1_mid_sim, period2_mid=period2_mid_sim, 
     month1_mark=None, month2_mark=None, 
-    cfv_data=None, output=True
+    cfv_data=cfv_data, output=True
 )
 
 
 # In[ ]:
 
 
-# Create climate indices plot to help select periods with dissimilar background 
-# atmospheric oscillations
-pf.create_climate_indices_plot(
-    year_start=year_start, year_end=year_end, window_size=window_size, 
-    period1_mid=period1_mid_dis, period2_mid=period2_mid_dis, 
-    month1_mark=month1_dis, month2_mark=month2_dis, 
-    cfv_data=None, output=True
-)
+# # Create climate indices plot to help select periods with dissimilar background 
+# # atmospheric oscillations
+# pf.create_climate_indices_plot(
+#     year_start=year_start, year_end=year_end, window_size=window_size, 
+#     period1_mid=period1_mid_dis, period2_mid=period2_mid_dis, 
+#     # month1_mark=month1_dis, month2_mark=month2_dis, 
+#     cfv_data=cfv_data, output=True
+# )
 
 
 # In[ ]:
@@ -242,65 +377,9 @@ pf.create_climate_indices_plot(
 
 
 
-# # Create all output files
+# # Create all output plot files
 
-# ## Create all output data files over each season
-# 
-# - this outputs all possible files for the difference in results between periods
-# - it does so by invoking the create_all_possible_diff_data_files function
-# - this function in turn calls upon the create_all_possible_calc_data_files function
-# - so intermediate data files for each period are also implicitly outputted
-
-# In[ ]:
-
-
-# Create all possible diff data files for periods with similar background 
-# atmospheric oscillations (year round, wet season only, and dry season only)
-cf.create_all_possible_diff_data_files(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim,
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset="all"
-)
-cf.create_all_possible_diff_data_files(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim,
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset=months_wet
-)
-cf.create_all_possible_diff_data_files(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim,
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset=months_dry
-)
-
-
-# In[ ]:
-
-
-# Create all possible diff data files for periods with dissimilar background 
-# atmospheric oscillations (year round, wet season only, and dry season only)
-cf.create_all_possible_diff_data_files(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis,
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset="all"
-)
-cf.create_all_possible_diff_data_files(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis,
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset=months_wet
-)
-cf.create_all_possible_diff_data_files(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis,
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset=months_dry
-)
-
-
-# In[ ]:
-
-
-# Create all possible diff data files for months with dissimilar background 
-# atmospheric oscillations
-cf.create_all_possible_diff_data_files(
-    region=region, period1_start=month1_dis, period1_end=month1_dis,
-    period2_start=month2_dis, period2_end=month2_dis, months_subset="all"
-)
-
-
-# ## Create all static plot files
+# ## Static plots
 
 # In[ ]:
 
@@ -309,8 +388,15 @@ cf.create_all_possible_diff_data_files(
 pf.create_climate_indices_plot(
     year_start=year_start, year_end=year_end, window_size=window_size, 
     period1_mid=None, period2_mid=None, month1_mark=None, month2_mark=None, 
-    cfv_data=None, output=True
+    cfv_data=cfv_data, output=True
 )
+
+
+# In[ ]:
+
+
+# Combined plot for orography of each region
+pf.create_comb_orog_static_plot(cfv_data=cfv_data, output=True)
 
 
 # In[ ]:
@@ -318,8 +404,8 @@ pf.create_climate_indices_plot(
 
 # Plot for land surface elevation
 pf.create_orog_static_plot(
-    param_orog="lse", region=region, extents=None, vmin=None, vmax=None, 
-    ax=None, cfv_data=None, output=True
+    param_orog="lse", region=region, extents=extents, vmin=None, vmax=None, 
+    ax=None, cfv_data=cfv_data, output=True
 )
 
 
@@ -328,2680 +414,462 @@ pf.create_orog_static_plot(
 
 # Plot for slope of sub-gridscale orography
 pf.create_orog_static_plot(
-    param_orog="ssgo", region=region, extents=None, vmin=None, vmax=None, 
-    ax=None, cfv_data=None, output=True
+    param_orog="ssgo", region=region, extents=extents, vmin=None, vmax=None, 
+    ax=None, cfv_data=cfv_data, output=True
 )
 
-
-# ## Create all output comparison plot files over each season
 
 # In[ ]:
 
 
-# Create all possible comp plot files for periods with similar background 
-# atmospheric oscillations (year round, wet season only, and dry season only)
+
+
+
+# ## Entire modis period
+
+# ### Entire modis period, wet vs dry months
+
+# #### Entire modis period, wet vs dry months, all hours
+
+# In[ ]:
+
+
+pf.create_all_possible_comp_plot_files(
+    region=region, period1_start=period_start_modis, period1_end=period_end_modis, 
+    period2_start=period_start_modis, period2_end=period_end_modis, 
+    period1_months=months_wet, period2_months=months_dry, 
+    period1_hours="all", period2_hours="all",
+    glass_source_pref="modis", 
+    perc=perc, mask_perc_quantile=mask_perc_quantile, 
+    mask_period1=mask_period1, mask_period2=mask_period2, 
+    extents=extents, cfv_data=cfv_data
+)
+
+
+# #### Entire modis period, wet vs dry months, day hours
+
+# In[ ]:
+
+
+pf.create_all_possible_comp_plot_files(
+    region=region, period1_start=period_start_modis, period1_end=period_end_modis, 
+    period2_start=period_start_modis, period2_end=period_end_modis, 
+    period1_months=months_wet, period2_months=months_dry, 
+    period1_hours=hours_light, period2_hours=hours_light,
+    glass_source_pref="modis", 
+    perc=perc, mask_perc_quantile=mask_perc_quantile, 
+    mask_period1=mask_period1, mask_period2=mask_period2, 
+    extents=extents, cfv_data=cfv_data
+)
+
+
+# #### Entire modis period, wet vs dry months, night hours
+
+# In[ ]:
+
+
+pf.create_all_possible_comp_plot_files(
+    region=region, period1_start=period_start_modis, period1_end=period_end_modis, 
+    period2_start=period_start_modis, period2_end=period_end_modis, 
+    period1_months=months_wet, period2_months=months_dry, 
+    period1_hours=hours_night, period2_hours=hours_night,
+    glass_source_pref="modis", 
+    perc=perc, mask_perc_quantile=mask_perc_quantile, 
+    mask_period1=mask_period1, mask_period2=mask_period2, 
+    extents=extents, cfv_data=cfv_data
+)
+
+
+# ### Entire modis period, day vs night hours
+
+# #### Entire modis period, day vs night hours, all months
+
+# In[ ]:
+
+
+pf.create_all_possible_comp_plot_files(
+    region=region, period1_start=period_start_modis, period1_end=period_end_modis, 
+    period2_start=period_start_modis, period2_end=period_end_modis, 
+    period1_months="all", period2_months="all", 
+    period1_hours=hours_light, period2_hours=hours_night,
+    glass_source_pref="modis", 
+    perc=perc, mask_perc_quantile=mask_perc_quantile, 
+    mask_period1=mask_period1, mask_period2=mask_period2, 
+    extents=extents, cfv_data=cfv_data
+)
+
+
+# #### Entire modis period, day vs night hours, wet months
+
+# In[ ]:
+
+
+pf.create_all_possible_comp_plot_files(
+    region=region, period1_start=period_start_modis, period1_end=period_end_modis, 
+    period2_start=period_start_modis, period2_end=period_end_modis, 
+    period1_months=months_wet, period2_months=months_wet, 
+    period1_hours=hours_light, period2_hours=hours_night,
+    glass_source_pref="modis", 
+    perc=perc, mask_perc_quantile=mask_perc_quantile, 
+    mask_period1=mask_period1, mask_period2=mask_period2, 
+    extents=extents, cfv_data=cfv_data
+)
+
+
+# #### Entire modis period, day vs night hours, dry months
+
+# In[ ]:
+
+
+pf.create_all_possible_comp_plot_files(
+    region=region, period1_start=period_start_modis, period1_end=period_end_modis, 
+    period2_start=period_start_modis, period2_end=period_end_modis, 
+    period1_months=months_dry, period2_months=months_dry, 
+    period1_hours=hours_light, period2_hours=hours_night,
+    glass_source_pref="modis", 
+    perc=perc, mask_perc_quantile=mask_perc_quantile, 
+    mask_period1=mask_period1, mask_period2=mask_period2, 
+    extents=extents, cfv_data=cfv_data
+)
+
+
+# In[ ]:
+
+
+
+
+
+# ## Similar periods
+
+# ### Similar periods, wet vs dry months
+
+# #### Entire modis period, wet vs dry months, all hours
+
+# In[ ]:
+
+
 pf.create_all_possible_comp_plot_files(
     region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset="all", 
-    glass_source_pref=glass_source_pref_sim, perc=False, 
-    mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None
-)
-pf.create_all_possible_comp_plot_files(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset=months_wet, 
-    glass_source_pref=glass_source_pref_sim, perc=False, 
-    mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None
-)
-pf.create_all_possible_comp_plot_files(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset=months_dry, 
-    glass_source_pref=glass_source_pref_sim, perc=False, 
-    mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None
-)
-
-
-# In[ ]:
-
-
-# Create all possible comp plot files for periods with dissimilar background 
-# atmospheric oscillations (year round, wet season only, and dry season only)
-pf.create_all_possible_comp_plot_files(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset="all", 
-    glass_source_pref=glass_source_pref_dis, perc=False, 
-    mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None
-)
-pf.create_all_possible_comp_plot_files(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset=months_wet, 
-    glass_source_pref=glass_source_pref_dis, perc=False, 
-    mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None
-)
-pf.create_all_possible_comp_plot_files(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset=months_dry, 
-    glass_source_pref=glass_source_pref_dis, perc=False, 
-    mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None
-)
-
-
-# In[ ]:
-
-
-# Create all possible comp plot files for months with dissimilar background 
-# atmospheric oscillations
-pf.create_all_possible_comp_plot_files(
-    region=region, period1_start=month1_dis, period1_end=month1_dis, 
-    period2_start=month2_dis, period2_end=month2_dis, months_subset="all", 
-    glass_source_pref=glass_source_pref_dis_month, perc=False, 
-    mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None
-)
-
-
-# In[ ]:
-
-
-
-
-
-# # Overview for similar periods
-
-# ## Similar periods (all months)
-
-# ### Similar periods (all months): MDP stats 
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_stats_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset="all", 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="wv100", 
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_stats_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset="all", 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="ws100", 
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_stats_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset="all", 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="u100", 
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_stats_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset="all", 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="v100", 
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_stats_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset="all", 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="mslp", 
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_stats_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset="all", 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="t2", 
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_stats_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset="all", 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="nac", 
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# ### Similar periods (all months): MDP values
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset="all", 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="dwv100", time="0-5",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset="all", 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="dwv100", time="6-11",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset="all", 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="dwv100", time="12-17",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset="all", 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="dwv100", time="18-23",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset="all", 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="dmslp", time="0-5",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset="all", 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="dmslp", time="6-11",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset="all", 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="dmslp", time="12-17",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset="all", 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="dmslp", time="18-23",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset="all", 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="dt2", time="0-5",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset="all", 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="dt2", time="6-11",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset="all", 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="dt2", time="12-17",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset="all", 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="dt2", time="18-23",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset="all", 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="dnac", time="0-5",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset="all", 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="dnac", time="6-11",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset="all", 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="dnac", time="12-17",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset="all", 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="dnac", time="18-23",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset="all", 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="nac", time="0-5",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset="all", 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="nac", time="6-11",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset="all", 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="nac", time="12-17",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset="all", 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="nac", time="18-23",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# ### Similar periods (all months): WSD
-
-# In[ ]:
-
-
-pf.plot_comp_wsd_clim(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset="all", 
+    period2_start=period2_start_sim, period2_end=period2_end_sim, 
+    period1_months=months_wet, period2_months=months_dry, 
+    period1_hours="all", period2_hours="all",
     glass_source_pref=glass_source_pref_sim, 
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
+    perc=perc, mask_perc_quantile=mask_perc_quantile, 
+    mask_period1=mask_period1, mask_period2=mask_period2, 
+    extents=extents, cfv_data=cfv_data
 )
 
 
-# ## Similar periods (wet season)
-
-# ### Similar periods (wet season): MDP stats
+# #### Similar periods, wet vs dry months, day hours
 
 # In[ ]:
 
 
-pf.plot_comp_mdp_clim_stats_given_var_or_dvar(
+pf.create_all_possible_comp_plot_files(
     region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset=months_wet, 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="wv100", 
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_stats_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset=months_wet, 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="ws100", 
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_stats_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset=months_wet, 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="u100", 
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_stats_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset=months_wet, 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="v100", 
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_stats_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset=months_wet, 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="mslp", 
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_stats_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset=months_wet, 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="t2", 
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_stats_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset=months_wet, 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="nac", 
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# ### Similar periods (wet season): MDP values
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset=months_wet, 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="dwv100", time="0-5",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset=months_wet, 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="dwv100", time="6-11",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset=months_wet, 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="dwv100", time="12-17",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset=months_wet, 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="dwv100", time="18-23",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset=months_wet, 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="dmslp", time="0-5",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset=months_wet, 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="dmslp", time="6-11",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset=months_wet, 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="dmslp", time="12-17",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset=months_wet, 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="dmslp", time="18-23",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset=months_wet, 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="dt2", time="0-5",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset=months_wet, 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="dt2", time="6-11",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset=months_wet, 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="dt2", time="12-17",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset=months_wet, 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="dt2", time="18-23",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset=months_wet, 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="dnac", time="0-5",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset=months_wet, 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="dnac", time="6-11",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset=months_wet, 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="dnac", time="12-17",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset=months_wet, 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="dnac", time="18-23",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset=months_wet, 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="nac", time="0-5",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset=months_wet, 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="nac", time="6-11",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset=months_wet, 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="nac", time="12-17",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset=months_wet, 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="nac", time="18-23",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# ### Similar periods (wet season): WSD
-
-# In[ ]:
-
-
-pf.plot_comp_wsd_clim(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset=months_wet, 
+    period2_start=period2_start_sim, period2_end=period2_end_sim, 
+    period1_months=months_wet, period2_months=months_dry, 
+    period1_hours=hours_light, period2_hours=hours_light,
     glass_source_pref=glass_source_pref_sim, 
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
+    perc=perc, mask_perc_quantile=mask_perc_quantile, 
+    mask_period1=mask_period1, mask_period2=mask_period2, 
+    extents=extents, cfv_data=cfv_data
 )
 
 
-# ## Similar periods (dry season)
-
-# ### Similar periods (dry season): MDP stats
+# #### Similar periods, wet vs dry months, night hours
 
 # In[ ]:
 
 
-pf.plot_comp_mdp_clim_stats_given_var_or_dvar(
+pf.create_all_possible_comp_plot_files(
     region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset=months_dry, 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="wv100", 
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_stats_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset=months_dry, 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="ws100", 
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_stats_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset=months_dry, 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="u100", 
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_stats_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset=months_dry, 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="v100", 
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_stats_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset=months_dry, 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="mslp", 
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_stats_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset=months_dry, 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="t2", 
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_stats_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset=months_dry, 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="nac", 
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# ### Similar periods (dry season): MDP values
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset=months_dry, 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="dwv100", time="0-5",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset=months_dry, 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="dwv100", time="6-11",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset=months_dry, 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="dwv100", time="12-17",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset=months_dry, 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="dwv100", time="18-23",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset=months_dry, 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="dmslp", time="0-5",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset=months_dry, 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="dmslp", time="6-11",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset=months_dry, 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="dmslp", time="12-17",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset=months_dry, 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="dmslp", time="18-23",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset=months_dry, 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="dt2", time="0-5",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset=months_dry, 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="dt2", time="6-11",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset=months_dry, 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="dt2", time="12-17",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset=months_dry, 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="dt2", time="18-23",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset=months_dry, 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="dnac", time="0-5",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset=months_dry, 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="dnac", time="6-11",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset=months_dry, 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="dnac", time="12-17",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset=months_dry, 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="dnac", time="18-23",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset=months_dry, 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="nac", time="0-5",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset=months_dry, 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="nac", time="6-11",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset=months_dry, 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="nac", time="12-17",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset=months_dry, 
-    glass_source_pref=glass_source_pref_sim, var_or_dvar="nac", time="18-23",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# ### Similar periods (dry season): WSD
-
-# In[ ]:
-
-
-pf.plot_comp_wsd_clim(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, months_subset=months_dry, 
+    period2_start=period2_start_sim, period2_end=period2_end_sim, 
+    period1_months=months_wet, period2_months=months_dry, 
+    period1_hours=hours_night, period2_hours=hours_night,
     glass_source_pref=glass_source_pref_sim, 
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
+    perc=perc, mask_perc_quantile=mask_perc_quantile, 
+    mask_period1=mask_period1, mask_period2=mask_period2, 
+    extents=extents, cfv_data=cfv_data
 )
 
 
-# In[ ]:
-
-
-
-
-
-# # Overview for dissimilar periods
-
-# ## Dissimilar periods (all months)
-
-# ### Dissimilar periods (all months): MDP stats 
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_stats_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset="all", 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="wv100", 
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_stats_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset="all", 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="ws100", 
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_stats_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset="all", 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="u100", 
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_stats_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset="all", 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="v100", 
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_stats_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset="all", 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="mslp", 
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_stats_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset="all", 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="t2", 
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_stats_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset="all", 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="nac", 
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# ### Dissimilar periods (all months): MDP values
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset="all", 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="dwv100", time="0-5",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset="all", 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="dwv100", time="6-11",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset="all", 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="dwv100", time="12-17",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset="all", 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="dwv100", time="18-23",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset="all", 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="dmslp", time="0-5",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset="all", 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="dmslp", time="6-11",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset="all", 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="dmslp", time="12-17",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset="all", 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="dmslp", time="18-23",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset="all", 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="dt2", time="0-5",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset="all", 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="dt2", time="6-11",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset="all", 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="dt2", time="12-17",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset="all", 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="dt2", time="18-23",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset="all", 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="dnac", time="0-5",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset="all", 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="dnac", time="6-11",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset="all", 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="dnac", time="12-17",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset="all", 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="dnac", time="18-23",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset="all", 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="nac", time="0-5",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset="all", 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="nac", time="6-11",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset="all", 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="nac", time="12-17",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset="all", 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="nac", time="18-23",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# ### Dissimilar periods (all months): WSD
-
-# In[ ]:
-
-
-pf.plot_comp_wsd_clim(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset="all", 
-    glass_source_pref=glass_source_pref_dis, 
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# ## Dissimilar periods (wet season)
-
-# ### Dissimilar periods (wet season): MDP stats
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_stats_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset=months_wet, 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="wv100", 
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_stats_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset=months_wet, 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="ws100", 
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_stats_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset=months_wet, 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="u100", 
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_stats_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset=months_wet, 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="v100", 
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_stats_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset=months_wet, 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="mslp", 
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_stats_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset=months_wet, 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="t2", 
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_stats_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset=months_wet, 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="nac", 
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# ### Dissimilar periods (wet season): MDP values
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset=months_wet, 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="dwv100", time="0-5",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset=months_wet, 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="dwv100", time="6-11",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset=months_wet, 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="dwv100", time="12-17",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset=months_wet, 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="dwv100", time="18-23",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset=months_wet, 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="dmslp", time="0-5",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset=months_wet, 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="dmslp", time="6-11",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset=months_wet, 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="dmslp", time="12-17",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset=months_wet, 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="dmslp", time="18-23",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset=months_wet, 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="dt2", time="0-5",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset=months_wet, 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="dt2", time="6-11",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset=months_wet, 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="dt2", time="12-17",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset=months_wet, 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="dt2", time="18-23",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset=months_wet, 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="dnac", time="0-5",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset=months_wet, 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="dnac", time="6-11",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset=months_wet, 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="dnac", time="12-17",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset=months_wet, 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="dnac", time="18-23",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset=months_wet, 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="nac", time="0-5",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset=months_wet, 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="nac", time="6-11",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset=months_wet, 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="nac", time="12-17",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset=months_wet, 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="nac", time="18-23",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# ### Dissimilar periods (wet season): WSD
-
-# In[ ]:
-
-
-pf.plot_comp_wsd_clim(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset=months_wet, 
-    glass_source_pref=glass_source_pref_dis, 
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# ## Dissimilar periods (dry season)
-
-# ### Dissimilar periods (dry season): MDP stats
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_stats_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset=months_dry, 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="wv100", 
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_stats_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset=months_dry, 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="ws100", 
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_stats_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset=months_dry, 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="u100", 
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_stats_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset=months_dry, 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="v100", 
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_stats_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset=months_dry, 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="mslp", 
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_stats_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset=months_dry, 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="t2", 
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_stats_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset=months_dry, 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="nac", 
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# ### Dissimilar periods (dry season): MDP values
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset=months_dry, 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="dwv100", time="0-5",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset=months_dry, 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="dwv100", time="6-11",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset=months_dry, 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="dwv100", time="12-17",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset=months_dry, 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="dwv100", time="18-23",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset=months_dry, 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="dmslp", time="0-5",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset=months_dry, 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="dmslp", time="6-11",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset=months_dry, 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="dmslp", time="12-17",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset=months_dry, 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="dmslp", time="18-23",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset=months_dry, 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="dt2", time="0-5",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset=months_dry, 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="dt2", time="6-11",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset=months_dry, 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="dt2", time="12-17",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset=months_dry, 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="dt2", time="18-23",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset=months_dry, 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="dnac", time="0-5",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset=months_dry, 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="dnac", time="6-11",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset=months_dry, 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="dnac", time="12-17",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset=months_dry, 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="dnac", time="18-23",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset=months_dry, 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="nac", time="0-5",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
+# ### Similar periods, day vs night hours
 
+# #### Similar periods, day vs night hours, all months
 
 # In[ ]:
 
 
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset=months_dry, 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="nac", time="6-11",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
+pf.create_all_possible_comp_plot_files(
+    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
+    period2_start=period2_start_sim, period2_end=period2_end_sim, 
+    period1_months="all", period2_months="all", 
+    period1_hours=hours_light, period2_hours=hours_night,
+    glass_source_pref=glass_source_pref_sim, 
+    perc=perc, mask_perc_quantile=mask_perc_quantile, 
+    mask_period1=mask_period1, mask_period2=mask_period2, 
+    extents=extents, cfv_data=cfv_data
 )
 
 
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset=months_dry, 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="nac", time="12-17",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset=months_dry, 
-    glass_source_pref=glass_source_pref_dis, var_or_dvar="nac", time="18-23",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# ### Dissimilar periods (dry season): WSD
-
-# In[ ]:
-
-
-pf.plot_comp_wsd_clim(
-    region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-    period2_start=period2_start_dis, period2_end=period2_end_dis, months_subset=months_dry, 
-    glass_source_pref=glass_source_pref_dis, 
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-
-
-
-# # Overview for dissimilar months
-
-# ## Dissimilar months
-
-# ### Dissimilar months: MDP stats 
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_stats_given_var_or_dvar(
-    region=region, period1_start=month1_dis, period1_end=month1_dis, 
-    period2_start=month2_dis, period2_end=month2_dis, months_subset="all", 
-    glass_source_pref=glass_source_pref_dis_month, var_or_dvar="wv100", 
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
+# #### Similar periods, day vs night hours, wet months
 
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_stats_given_var_or_dvar(
-    region=region, period1_start=month1_dis, period1_end=month1_dis, 
-    period2_start=month2_dis, period2_end=month2_dis, months_subset="all", 
-    glass_source_pref=glass_source_pref_dis_month, var_or_dvar="ws100", 
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_stats_given_var_or_dvar(
-    region=region, period1_start=month1_dis, period1_end=month1_dis, 
-    period2_start=month2_dis, period2_end=month2_dis, months_subset="all", 
-    glass_source_pref=glass_source_pref_dis_month, var_or_dvar="u100", 
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_stats_given_var_or_dvar(
-    region=region, period1_start=month1_dis, period1_end=month1_dis, 
-    period2_start=month2_dis, period2_end=month2_dis, months_subset="all", 
-    glass_source_pref=glass_source_pref_dis_month, var_or_dvar="v100", 
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_stats_given_var_or_dvar(
-    region=region, period1_start=month1_dis, period1_end=month1_dis, 
-    period2_start=month2_dis, period2_end=month2_dis, months_subset="all", 
-    glass_source_pref=glass_source_pref_dis_month, var_or_dvar="mslp", 
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_stats_given_var_or_dvar(
-    region=region, period1_start=month1_dis, period1_end=month1_dis, 
-    period2_start=month2_dis, period2_end=month2_dis, months_subset="all", 
-    glass_source_pref=glass_source_pref_dis_month, var_or_dvar="t2", 
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
 # In[ ]:
 
 
-pf.plot_comp_mdp_clim_stats_given_var_or_dvar(
-    region=region, period1_start=month1_dis, period1_end=month1_dis, 
-    period2_start=month2_dis, period2_end=month2_dis, months_subset="all", 
-    glass_source_pref=glass_source_pref_dis_month, var_or_dvar="nac", 
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
+pf.create_all_possible_comp_plot_files(
+    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
+    period2_start=period2_start_sim, period2_end=period2_end_sim, 
+    period1_months=months_wet, period2_months=months_wet, 
+    period1_hours=hours_light, period2_hours=hours_night,
+    glass_source_pref=glass_source_pref_sim, 
+    perc=perc, mask_perc_quantile=mask_perc_quantile, 
+    mask_period1=mask_period1, mask_period2=mask_period2, 
+    extents=extents, cfv_data=cfv_data
 )
-
 
-# ### Dissimilar months: MDP values
 
-# In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=month1_dis, period1_end=month1_dis, 
-    period2_start=month2_dis, period2_end=month2_dis, months_subset="all", 
-    glass_source_pref=glass_source_pref_dis_month, var_or_dvar="dwv100", time="0-5",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
+# #### Similar periods, day vs night hours, dry months
 
-
 # In[ ]:
 
 
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=month1_dis, period1_end=month1_dis, 
-    period2_start=month2_dis, period2_end=month2_dis, months_subset="all", 
-    glass_source_pref=glass_source_pref_dis_month, var_or_dvar="dwv100", time="6-11",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
+pf.create_all_possible_comp_plot_files(
+    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
+    period2_start=period2_start_sim, period2_end=period2_end_sim, 
+    period1_months=months_dry, period2_months=months_dry, 
+    period1_hours=hours_light, period2_hours=hours_night,
+    glass_source_pref=glass_source_pref_sim, 
+    perc=perc, mask_perc_quantile=mask_perc_quantile, 
+    mask_period1=mask_period1, mask_period2=mask_period2, 
+    extents=extents, cfv_data=cfv_data
 )
 
 
 # In[ ]:
 
 
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=month1_dis, period1_end=month1_dis, 
-    period2_start=month2_dis, period2_end=month2_dis, months_subset="all", 
-    glass_source_pref=glass_source_pref_dis_month, var_or_dvar="dwv100", time="12-17",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
 
 
-# In[ ]:
 
+# ## Entire avhrr period
 
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=month1_dis, period1_end=month1_dis, 
-    period2_start=month2_dis, period2_end=month2_dis, months_subset="all", 
-    glass_source_pref=glass_source_pref_dis_month, var_or_dvar="dwv100", time="18-23",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
+# ### Entire avhrr period, wet vs dry months
 
+# #### Entire avhrr period, wet vs dry months, all hours
 
 # In[ ]:
 
 
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=month1_dis, period1_end=month1_dis, 
-    period2_start=month2_dis, period2_end=month2_dis, months_subset="all", 
-    glass_source_pref=glass_source_pref_dis_month, var_or_dvar="dmslp", time="0-5",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
+# pf.create_all_possible_comp_plot_files(
+#     region=region, period1_start=period_start_avhrr, period1_end=period_end_avhrr, 
+#     period2_start=period_start_avhrr, period2_end=period_end_avhrr, 
+#     period1_months=months_wet, period2_months=months_dry, 
+#     period1_hours="all", period2_hours="all",
+#     glass_source_pref="avhrr", 
+#     perc=perc, mask_perc_quantile=mask_perc_quantile, 
+#     mask_period1=mask_period1, mask_period2=mask_period2, 
+#     extents=extents, cfv_data=cfv_data
+# )
 
 
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=month1_dis, period1_end=month1_dis, 
-    period2_start=month2_dis, period2_end=month2_dis, months_subset="all", 
-    glass_source_pref=glass_source_pref_dis_month, var_or_dvar="dmslp", time="6-11",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
+# #### Entire avhrr period, wet vs dry months, day hours
 
 # In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=month1_dis, period1_end=month1_dis, 
-    period2_start=month2_dis, period2_end=month2_dis, months_subset="all", 
-    glass_source_pref=glass_source_pref_dis_month, var_or_dvar="dmslp", time="12-17",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
 
-# In[ ]:
 
+# pf.create_all_possible_comp_plot_files(
+#     region=region, period1_start=period_start_avhrr, period1_end=period_end_avhrr, 
+#     period2_start=period_start_avhrr, period2_end=period_end_avhrr, 
+#     period1_months=months_wet, period2_months=months_dry, 
+#     period1_hours=hours_light, period2_hours=hours_light,
+#     glass_source_pref="avhrr", 
+#     perc=perc, mask_perc_quantile=mask_perc_quantile, 
+#     mask_period1=mask_period1, mask_period2=mask_period2, 
+#     extents=extents, cfv_data=cfv_data
+# )
 
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=month1_dis, period1_end=month1_dis, 
-    period2_start=month2_dis, period2_end=month2_dis, months_subset="all", 
-    glass_source_pref=glass_source_pref_dis_month, var_or_dvar="dmslp", time="18-23",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
 
+# #### Entire avhrr period, wet vs dry months, night hours
 
 # In[ ]:
 
 
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=month1_dis, period1_end=month1_dis, 
-    period2_start=month2_dis, period2_end=month2_dis, months_subset="all", 
-    glass_source_pref=glass_source_pref_dis_month, var_or_dvar="dt2", time="0-5",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
+# pf.create_all_possible_comp_plot_files(
+#     region=region, period1_start=period_start_avhrr, period1_end=period_end_avhrr, 
+#     period2_start=period_start_avhrr, period2_end=period_end_avhrr, 
+#     period1_months=months_wet, period2_months=months_dry, 
+#     period1_hours=hours_night, period2_hours=hours_night,
+#     glass_source_pref="avhrr", 
+#     perc=perc, mask_perc_quantile=mask_perc_quantile, 
+#     mask_period1=mask_period1, mask_period2=mask_period2, 
+#     extents=extents, cfv_data=cfv_data
+# )
 
 
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=month1_dis, period1_end=month1_dis, 
-    period2_start=month2_dis, period2_end=month2_dis, months_subset="all", 
-    glass_source_pref=glass_source_pref_dis_month, var_or_dvar="dt2", time="6-11",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
+# ### Entire avhrr period, day vs night hours
 
+# #### Entire avhrr period, day vs night hours, all months
 
 # In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=month1_dis, period1_end=month1_dis, 
-    period2_start=month2_dis, period2_end=month2_dis, months_subset="all", 
-    glass_source_pref=glass_source_pref_dis_month, var_or_dvar="dt2", time="12-17",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
 
 
-# In[ ]:
-
+# pf.create_all_possible_comp_plot_files(
+#     region=region, period1_start=period_start_avhrr, period1_end=period_end_avhrr, 
+#     period2_start=period_start_avhrr, period2_end=period_end_avhrr, 
+#     period1_months="all", period2_months="all", 
+#     period1_hours=hours_light, period2_hours=hours_night,
+#     glass_source_pref="avhrr", 
+#     perc=perc, mask_perc_quantile=mask_perc_quantile, 
+#     mask_period1=mask_period1, mask_period2=mask_period2, 
+#     extents=extents, cfv_data=cfv_data
+# )
 
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=month1_dis, period1_end=month1_dis, 
-    period2_start=month2_dis, period2_end=month2_dis, months_subset="all", 
-    glass_source_pref=glass_source_pref_dis_month, var_or_dvar="dt2", time="18-23",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
 
+# #### Entire avhrr period, day vs night hours, wet months
 
 # In[ ]:
-
 
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=month1_dis, period1_end=month1_dis, 
-    period2_start=month2_dis, period2_end=month2_dis, months_subset="all", 
-    glass_source_pref=glass_source_pref_dis_month, var_or_dvar="dnac", time="0-5",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# In[ ]:
 
+# pf.create_all_possible_comp_plot_files(
+#     region=region, period1_start=period_start_avhrr, period1_end=period_end_avhrr, 
+#     period2_start=period_start_avhrr, period2_end=period_end_avhrr, 
+#     period1_months=months_wet, period2_months=months_wet, 
+#     period1_hours=hours_light, period2_hours=hours_night,
+#     glass_source_pref="avhrr", 
+#     perc=perc, mask_perc_quantile=mask_perc_quantile, 
+#     mask_period1=mask_period1, mask_period2=mask_period2, 
+#     extents=extents, cfv_data=cfv_data
+# )
 
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=month1_dis, period1_end=month1_dis, 
-    period2_start=month2_dis, period2_end=month2_dis, months_subset="all", 
-    glass_source_pref=glass_source_pref_dis_month, var_or_dvar="dnac", time="6-11",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
 
+# #### Entire avhrr period, day vs night hours, dry months
 
 # In[ ]:
 
 
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=month1_dis, period1_end=month1_dis, 
-    period2_start=month2_dis, period2_end=month2_dis, months_subset="all", 
-    glass_source_pref=glass_source_pref_dis_month, var_or_dvar="dnac", time="12-17",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
+# pf.create_all_possible_comp_plot_files(
+#     region=region, period1_start=period_start_avhrr, period1_end=period_end_avhrr, 
+#     period2_start=period_start_avhrr, period2_end=period_end_avhrr, 
+#     period1_months=months_dry, period2_months=months_dry, 
+#     period1_hours=hours_light, period2_hours=hours_night,
+#     glass_source_pref="avhrr", 
+#     perc=perc, mask_perc_quantile=mask_perc_quantile, 
+#     mask_period1=mask_period1, mask_period2=mask_period2, 
+#     extents=extents, cfv_data=cfv_data
+# )
 
 
 # In[ ]:
 
 
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=month1_dis, period1_end=month1_dis, 
-    period2_start=month2_dis, period2_end=month2_dis, months_subset="all", 
-    glass_source_pref=glass_source_pref_dis_month, var_or_dvar="dnac", time="18-23",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
 
 
-# In[ ]:
 
+# ## Dissimilar periods
 
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=month1_dis, period1_end=month1_dis, 
-    period2_start=month2_dis, period2_end=month2_dis, months_subset="all", 
-    glass_source_pref=glass_source_pref_dis_month, var_or_dvar="nac", time="0-5",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
+# ### Dissimilar periods, wet vs dry months
 
+# #### Dissimilar periods, wet vs dry months, all hours
 
 # In[ ]:
-
-
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=month1_dis, period1_end=month1_dis, 
-    period2_start=month2_dis, period2_end=month2_dis, months_subset="all", 
-    glass_source_pref=glass_source_pref_dis_month, var_or_dvar="nac", time="6-11",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
 
 
-# In[ ]:
-
+# pf.create_all_possible_comp_plot_files(
+#     region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
+#     period2_start=period2_start_dis, period2_end=period2_end_dis, 
+#     period1_months=months_wet, period2_months=months_dry, 
+#     period1_hours="all", period2_hours="all",
+#     glass_source_pref=glass_source_pref_dis, 
+#     perc=perc, mask_perc_quantile=mask_perc_quantile, 
+#     mask_period1=mask_period1, mask_period2=mask_period2, 
+#     extents=extents, cfv_data=cfv_data
+# )
 
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=month1_dis, period1_end=month1_dis, 
-    period2_start=month2_dis, period2_end=month2_dis, months_subset="all", 
-    glass_source_pref=glass_source_pref_dis_month, var_or_dvar="nac", time="12-17",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
 
+# #### Dissimilar periods, wet vs dry months, day hours
 
 # In[ ]:
-
 
-pf.plot_comp_mdp_clim_values_given_var_or_dvar(
-    region=region, period1_start=month1_dis, period1_end=month1_dis, 
-    period2_start=month2_dis, period2_end=month2_dis, months_subset="all", 
-    glass_source_pref=glass_source_pref_dis_month, var_or_dvar="nac", time="18-23",
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
-
-
-# ### Dissimilar months: WSD
-
-# In[ ]:
 
+# pf.create_all_possible_comp_plot_files(
+#     region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
+#     period2_start=period2_start_dis, period2_end=period2_end_dis, 
+#     period1_months=months_wet, period2_months=months_dry, 
+#     period1_hours=hours_light, period2_hours=hours_light,
+#     glass_source_pref=glass_source_pref_dis, 
+#     perc=perc, mask_perc_quantile=mask_perc_quantile, 
+#     mask_period1=mask_period1, mask_period2=mask_period2, 
+#     extents=extents, cfv_data=cfv_data
+# )
 
-pf.plot_comp_wsd_clim(
-    region=region, period1_start=month1_dis, period1_end=month1_dis, 
-    period2_start=month2_dis, period2_end=month2_dis, months_subset="all", 
-    glass_source_pref=glass_source_pref_dis_month, 
-    perc=False, mask_perc_quantile=pf.mask_perc_quantile_default, 
-    mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=True
-)
 
+# #### Dissimilar periods, wet vs dry months, night hours
 
 # In[ ]:
 
 
+# pf.create_all_possible_comp_plot_files(
+#     region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
+#     period2_start=period2_start_dis, period2_end=period2_end_dis, 
+#     period1_months=months_wet, period2_months=months_dry, 
+#     period1_hours=hours_night, period2_hours=hours_night,
+#     glass_source_pref=glass_source_pref_dis, 
+#     perc=perc, mask_perc_quantile=mask_perc_quantile, 
+#     mask_period1=mask_period1, mask_period2=mask_period2, 
+#     extents=extents, cfv_data=cfv_data
+# )
 
 
+# ### Dissimilar periods, day vs night hours
 
-# # Selected analysis and insights
+# #### Dissimilar periods, day vs night hours, all months
 
 # In[ ]:
-
-
 
 
+# pf.create_all_possible_comp_plot_files(
+#     region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
+#     period2_start=period2_start_dis, period2_end=period2_end_dis, 
+#     period1_months="all", period2_months="all", 
+#     period1_hours=hours_light, period2_hours=hours_night,
+#     glass_source_pref=glass_source_pref_dis, 
+#     perc=perc, mask_perc_quantile=mask_perc_quantile, 
+#     mask_period1=mask_period1, mask_period2=mask_period2, 
+#     extents=extents, cfv_data=cfv_data
+# )
 
-# # Scrap
 
-# ## WA settings
+# #### Dissimilar periods, day vs night hours, wet months
 
 # In[ ]:
 
 
-# General analysis settings
-region = "wa"
-year_start = 1983
-year_end = 2019
-window_size = 5
-months_wet = "mam"
-months_dry = "djf"
-
-# Periods with similar background atmospheric oscillations
-period1_mid_sim = "Dec-1999"
-period1_start_sim = "Jun-1997"
-period1_end_sim = "May-2002"
-period2_mid_sim = "Mar-2013"
-period2_start_sim = "Sep-2010"
-period2_end_sim = "Aug-2015"
-if (datetime.strptime(period1_start_sim, "%b-%Y") >= 
-    datetime.strptime(cf.modis_earliest, "%b-%Y")):
-    glass_source_pref_sim = "modis"
-else:
-    glass_source_pref_sim = "avhrr"
-
-# Periods with dissimilar background atmospheric oscillations
-period1_mid_dis = "Sep-1990"
-period1_start_dis = "Mar-1988"
-period1_end_dis = "Feb-1993"
-period2_mid_dis = "Jul-2016"
-period2_start_dis = "Jan-2014"
-period2_end_dis = "Dec-2018"
-if (datetime.strptime(period1_start_dis, "%b-%Y") >= 
-    datetime.strptime(cf.modis_earliest, "%b-%Y")):
-    glass_source_pref_dis = "modis"
-else:
-    glass_source_pref_dis = "avhrr"
-
-# Single months with very dissimilar background atmospheric oscillations
-month1_dis = "Nov-1996"
-month2_dis = "Sep-2015"
-if (datetime.strptime(month1_dis, "%b-%Y") >= 
-    datetime.strptime(cf.modis_earliest, "%b-%Y")):
-    glass_source_pref_dis_month = "modis"
-else:
-    glass_source_pref_dis_month = "avhrr"
-
-
-# ## CA settings
+# pf.create_all_possible_comp_plot_files(
+#     region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
+#     period2_start=period2_start_dis, period2_end=period2_end_dis, 
+#     period1_months=months_wet, period2_months=months_wet, 
+#     period1_hours=hours_light, period2_hours=hours_night,
+#     glass_source_pref=glass_source_pref_dis, 
+#     perc=perc, mask_perc_quantile=mask_perc_quantile, 
+#     mask_period1=mask_period1, mask_period2=mask_period2, 
+#     extents=extents, cfv_data=cfv_data
+# )
 
-# In[ ]:
-
-
-# General analysis settings
-region = "ca"
-year_start = 1983
-year_end = 2019
-window_size = 5
-months_wet = [5, 6, 7, 8, 9, 10]
-months_dry = [11, 12, 1, 2, 3, 4]
-
-# Periods with similar background atmospheric oscillations
-period1_mid_sim = "Jul-1983"
-period1_start_sim = "Jan-1981"
-period1_end_sim = "Dec-1985"
-period2_mid_sim = "Jul-1994"
-period2_start_sim = "Jan-1992"
-period2_end_sim = "Dec-1996"
-if (datetime.strptime(period1_start_sim, "%b-%Y") >= 
-    datetime.strptime(cf.modis_earliest, "%b-%Y")):
-    glass_source_pref_sim = "modis"
-else:
-    glass_source_pref_sim = "avhrr"
-    
-# Periods with dissimilar background atmospheric oscillations
-period1_mid_dis = "Mar-1985"
-period1_start_dis = "Sep-1982"
-period1_end_dis = "Aug-1987"
-period2_mid_dis = "Jul-2010"
-period2_start_dis = "Jan-2008"
-period2_end_dis = "Dec-2012"
-if (datetime.strptime(period1_start_dis, "%b-%Y") >= 
-    datetime.strptime(cf.modis_earliest, "%b-%Y")):
-    glass_source_pref_dis = "modis"
-else:
-    glass_source_pref_dis = "avhrr"
-
-# Single months with very dissimilar background atmospheric oscillations
-month1_dis = "Nov-1996"
-month2_dis = "Sep-2015"
-if (datetime.strptime(month1_dis, "%b-%Y") >= 
-    datetime.strptime(cf.modis_earliest, "%b-%Y")):
-    glass_source_pref_dis_month = "modis"
-else:
-    glass_source_pref_dis_month = "avhrr"
-
-
-# ## SA settings
-
-# In[ ]:
-
 
-# General analysis settings
-region = "sa"
-year_start = 1983
-year_end = 2019
-window_size = 5
-months_wet = [1, 2, 3, 4, 5, 6]
-months_dry = [7, 8, 9, 10, 11, 12]
-
-# Periods with similar background atmospheric oscillations
-period1_mid_sim = "Jul-2005"
-period1_start_sim = "Jan-2003"
-period1_end_sim = "Dec-2007"
-period2_mid_sim = "Jul-2018"
-period2_start_sim = "Jan-2016"
-period2_end_sim = "Dec-2020"
-if (datetime.strptime(period1_start_sim, "%b-%Y") >= 
-    datetime.strptime(cf.modis_earliest, "%b-%Y")):
-    glass_source_pref_sim = "modis"
-else:
-    glass_source_pref_sim = "avhrr"
-    
-# Periods with dissimilar background atmospheric oscillations
-period1_mid_dis = "Mar-1985"
-period1_start_dis = "Sep-1982"
-period1_end_dis = "Aug-1987"
-period2_mid_dis = "Jul-2010"
-period2_start_dis = "Jan-2008"
-period2_end_dis = "Dec-2012"
-if (datetime.strptime(period1_start_dis, "%b-%Y") >= 
-    datetime.strptime(cf.modis_earliest, "%b-%Y")):
-    glass_source_pref_dis = "modis"
-else:
-    glass_source_pref_dis = "avhrr"
-
-# Single months with very dissimilar background atmospheric oscillations
-month1_dis = "Nov-1996"
-month2_dis = "Sep-2015"
-if (datetime.strptime(month1_dis, "%b-%Y") >= 
-    datetime.strptime(cf.modis_earliest, "%b-%Y")):
-    glass_source_pref_dis_month = "modis"
-else:
-    glass_source_pref_dis_month = "avhrr"
+# #### Dissimilar periods, day vs night hours, dry months
 
-
 # In[ ]:
-
-
 
 
+# pf.create_all_possible_comp_plot_files(
+#     region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
+#     period2_start=period2_start_dis, period2_end=period2_end_dis, 
+#     period1_months=months_dry, period2_months=months_dry, 
+#     period1_hours=hours_light, period2_hours=hours_night,
+#     glass_source_pref=glass_source_pref_dis, 
+#     perc=perc, mask_perc_quantile=mask_perc_quantile, 
+#     mask_period1=mask_period1, mask_period2=mask_period2, 
+#     extents=extents, cfv_data=cfv_data
+# )
