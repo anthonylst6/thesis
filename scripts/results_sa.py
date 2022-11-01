@@ -541,79 +541,9 @@ pf.create_all_possible_comp_plot_files(
 
 # ## Similar periods
 
-# ### Similar periods, wet vs dry months
+# ### Similar periods, wet months
 
-# #### Entire modis period, wet vs dry months, all hours
-
-# In[ ]:
-
-
-pf.create_all_possible_comp_plot_files(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, 
-    period1_months=months_wet, period2_months=months_dry, 
-    period1_hours="all", period2_hours="all",
-    glass_source_pref=glass_source_pref_sim, 
-    perc=perc, mask_perc_quantile=mask_perc_quantile, 
-    mask_period1=mask_period1, mask_period2=mask_period2, 
-    extents=extents, cfv_data=cfv_data
-)
-
-
-# #### Similar periods, wet vs dry months, day hours
-
-# In[ ]:
-
-
-pf.create_all_possible_comp_plot_files(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, 
-    period1_months=months_wet, period2_months=months_dry, 
-    period1_hours=hours_light, period2_hours=hours_light,
-    glass_source_pref=glass_source_pref_sim, 
-    perc=perc, mask_perc_quantile=mask_perc_quantile, 
-    mask_period1=mask_period1, mask_period2=mask_period2, 
-    extents=extents, cfv_data=cfv_data
-)
-
-
-# #### Similar periods, wet vs dry months, night hours
-
-# In[ ]:
-
-
-pf.create_all_possible_comp_plot_files(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, 
-    period1_months=months_wet, period2_months=months_dry, 
-    period1_hours=hours_night, period2_hours=hours_night,
-    glass_source_pref=glass_source_pref_sim, 
-    perc=perc, mask_perc_quantile=mask_perc_quantile, 
-    mask_period1=mask_period1, mask_period2=mask_period2, 
-    extents=extents, cfv_data=cfv_data
-)
-
-
-# ### Similar periods, day vs night hours
-
-# #### Similar periods, day vs night hours, all months
-
-# In[ ]:
-
-
-pf.create_all_possible_comp_plot_files(
-    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
-    period2_start=period2_start_sim, period2_end=period2_end_sim, 
-    period1_months="all", period2_months="all", 
-    period1_hours=hours_light, period2_hours=hours_night,
-    glass_source_pref=glass_source_pref_sim, 
-    perc=perc, mask_perc_quantile=mask_perc_quantile, 
-    mask_period1=mask_period1, mask_period2=mask_period2, 
-    extents=extents, cfv_data=cfv_data
-)
-
-
-# #### Similar periods, day vs night hours, wet months
+# #### Similar periods, wet months, all hours
 
 # In[ ]:
 
@@ -622,7 +552,7 @@ pf.create_all_possible_comp_plot_files(
     region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
     period2_start=period2_start_sim, period2_end=period2_end_sim, 
     period1_months=months_wet, period2_months=months_wet, 
-    period1_hours=hours_light, period2_hours=hours_night,
+    period1_hours="all", period2_hours="all",
     glass_source_pref=glass_source_pref_sim, 
     perc=perc, mask_perc_quantile=mask_perc_quantile, 
     mask_period1=mask_period1, mask_period2=mask_period2, 
@@ -630,7 +560,43 @@ pf.create_all_possible_comp_plot_files(
 )
 
 
-# #### Similar periods, day vs night hours, dry months
+# #### Similar periods, wet months, day hours
+
+# In[ ]:
+
+
+pf.create_all_possible_comp_plot_files(
+    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
+    period2_start=period2_start_sim, period2_end=period2_end_sim, 
+    period1_months=months_wet, period2_months=months_wet, 
+    period1_hours=hours_light, period2_hours=hours_light,
+    glass_source_pref=glass_source_pref_sim, 
+    perc=perc, mask_perc_quantile=mask_perc_quantile, 
+    mask_period1=mask_period1, mask_period2=mask_period2, 
+    extents=extents, cfv_data=cfv_data
+)
+
+
+# #### Similar periods, wet months, night hours
+
+# In[ ]:
+
+
+pf.create_all_possible_comp_plot_files(
+    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
+    period2_start=period2_start_sim, period2_end=period2_end_sim, 
+    period1_months=months_wet, period2_months=months_wet, 
+    period1_hours=hours_night, period2_hours=hours_night,
+    glass_source_pref=glass_source_pref_sim, 
+    perc=perc, mask_perc_quantile=mask_perc_quantile, 
+    mask_period1=mask_period1, mask_period2=mask_period2, 
+    extents=extents, cfv_data=cfv_data
+)
+
+
+# ### Similar periods, dry months
+
+# #### Similar periods, dry months, all hours
 
 # In[ ]:
 
@@ -639,7 +605,41 @@ pf.create_all_possible_comp_plot_files(
     region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
     period2_start=period2_start_sim, period2_end=period2_end_sim, 
     period1_months=months_dry, period2_months=months_dry, 
-    period1_hours=hours_light, period2_hours=hours_night,
+    period1_hours="all", period2_hours="all",
+    glass_source_pref=glass_source_pref_sim, 
+    perc=perc, mask_perc_quantile=mask_perc_quantile, 
+    mask_period1=mask_period1, mask_period2=mask_period2, 
+    extents=extents, cfv_data=cfv_data
+)
+
+
+# #### Similar periods, dry months, day hours
+
+# In[ ]:
+
+
+pf.create_all_possible_comp_plot_files(
+    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
+    period2_start=period2_start_sim, period2_end=period2_end_sim, 
+    period1_months=months_dry, period2_months=months_dry, 
+    period1_hours=hours_light, period2_hours=hours_light,
+    glass_source_pref=glass_source_pref_sim, 
+    perc=perc, mask_perc_quantile=mask_perc_quantile, 
+    mask_period1=mask_period1, mask_period2=mask_period2, 
+    extents=extents, cfv_data=cfv_data
+)
+
+
+# #### Similar periods, dry months, night hours
+
+# In[ ]:
+
+
+pf.create_all_possible_comp_plot_files(
+    region=region, period1_start=period1_start_sim, period1_end=period1_end_sim, 
+    period2_start=period2_start_sim, period2_end=period2_end_sim, 
+    period1_months=months_dry, period2_months=months_dry, 
+    period1_hours=hours_night, period2_hours=hours_night,
     glass_source_pref=glass_source_pref_sim, 
     perc=perc, mask_perc_quantile=mask_perc_quantile, 
     mask_period1=mask_period1, mask_period2=mask_period2, 
@@ -769,79 +769,9 @@ pf.create_all_possible_comp_plot_files(
 
 # ## Dissimilar periods
 
-# ### Dissimilar periods, wet vs dry months
+# ### Dissimilar periods, wet months
 
-# #### Dissimilar periods, wet vs dry months, all hours
-
-# In[ ]:
-
-
-# pf.create_all_possible_comp_plot_files(
-#     region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-#     period2_start=period2_start_dis, period2_end=period2_end_dis, 
-#     period1_months=months_wet, period2_months=months_dry, 
-#     period1_hours="all", period2_hours="all",
-#     glass_source_pref=glass_source_pref_dis, 
-#     perc=perc, mask_perc_quantile=mask_perc_quantile, 
-#     mask_period1=mask_period1, mask_period2=mask_period2, 
-#     extents=extents, cfv_data=cfv_data
-# )
-
-
-# #### Dissimilar periods, wet vs dry months, day hours
-
-# In[ ]:
-
-
-# pf.create_all_possible_comp_plot_files(
-#     region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-#     period2_start=period2_start_dis, period2_end=period2_end_dis, 
-#     period1_months=months_wet, period2_months=months_dry, 
-#     period1_hours=hours_light, period2_hours=hours_light,
-#     glass_source_pref=glass_source_pref_dis, 
-#     perc=perc, mask_perc_quantile=mask_perc_quantile, 
-#     mask_period1=mask_period1, mask_period2=mask_period2, 
-#     extents=extents, cfv_data=cfv_data
-# )
-
-
-# #### Dissimilar periods, wet vs dry months, night hours
-
-# In[ ]:
-
-
-# pf.create_all_possible_comp_plot_files(
-#     region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-#     period2_start=period2_start_dis, period2_end=period2_end_dis, 
-#     period1_months=months_wet, period2_months=months_dry, 
-#     period1_hours=hours_night, period2_hours=hours_night,
-#     glass_source_pref=glass_source_pref_dis, 
-#     perc=perc, mask_perc_quantile=mask_perc_quantile, 
-#     mask_period1=mask_period1, mask_period2=mask_period2, 
-#     extents=extents, cfv_data=cfv_data
-# )
-
-
-# ### Dissimilar periods, day vs night hours
-
-# #### Dissimilar periods, day vs night hours, all months
-
-# In[ ]:
-
-
-# pf.create_all_possible_comp_plot_files(
-#     region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
-#     period2_start=period2_start_dis, period2_end=period2_end_dis, 
-#     period1_months="all", period2_months="all", 
-#     period1_hours=hours_light, period2_hours=hours_night,
-#     glass_source_pref=glass_source_pref_dis, 
-#     perc=perc, mask_perc_quantile=mask_perc_quantile, 
-#     mask_period1=mask_period1, mask_period2=mask_period2, 
-#     extents=extents, cfv_data=cfv_data
-# )
-
-
-# #### Dissimilar periods, day vs night hours, wet months
+# #### Dissimilar periods, wet months, all hours
 
 # In[ ]:
 
@@ -850,7 +780,7 @@ pf.create_all_possible_comp_plot_files(
 #     region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
 #     period2_start=period2_start_dis, period2_end=period2_end_dis, 
 #     period1_months=months_wet, period2_months=months_wet, 
-#     period1_hours=hours_light, period2_hours=hours_night,
+#     period1_hours="all", period2_hours="all",
 #     glass_source_pref=glass_source_pref_dis, 
 #     perc=perc, mask_perc_quantile=mask_perc_quantile, 
 #     mask_period1=mask_period1, mask_period2=mask_period2, 
@@ -858,7 +788,43 @@ pf.create_all_possible_comp_plot_files(
 # )
 
 
-# #### Dissimilar periods, day vs night hours, dry months
+# #### Dissimilar periods, wet months, day hours
+
+# In[ ]:
+
+
+# pf.create_all_possible_comp_plot_files(
+#     region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
+#     period2_start=period2_start_dis, period2_end=period2_end_dis, 
+#     period1_months=months_wet, period2_months=months_wet, 
+#     period1_hours=hours_light, period2_hours=hours_light,
+#     glass_source_pref=glass_source_pref_dis, 
+#     perc=perc, mask_perc_quantile=mask_perc_quantile, 
+#     mask_period1=mask_period1, mask_period2=mask_period2, 
+#     extents=extents, cfv_data=cfv_data
+# )
+
+
+# #### Dissimilar periods, wet months, night hours
+
+# In[ ]:
+
+
+# pf.create_all_possible_comp_plot_files(
+#     region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
+#     period2_start=period2_start_dis, period2_end=period2_end_dis, 
+#     period1_months=months_wet, period2_months=months_wet, 
+#     period1_hours=hours_night, period2_hours=hours_night,
+#     glass_source_pref=glass_source_pref_dis, 
+#     perc=perc, mask_perc_quantile=mask_perc_quantile, 
+#     mask_period1=mask_period1, mask_period2=mask_period2, 
+#     extents=extents, cfv_data=cfv_data
+# )
+
+
+# ### Dissimilar periods, dry months
+
+# #### Dissimilar periods, dry months, all hours
 
 # In[ ]:
 
@@ -867,9 +833,84 @@ pf.create_all_possible_comp_plot_files(
 #     region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
 #     period2_start=period2_start_dis, period2_end=period2_end_dis, 
 #     period1_months=months_dry, period2_months=months_dry, 
-#     period1_hours=hours_light, period2_hours=hours_night,
+#     period1_hours="all", period2_hours="all",
 #     glass_source_pref=glass_source_pref_dis, 
 #     perc=perc, mask_perc_quantile=mask_perc_quantile, 
 #     mask_period1=mask_period1, mask_period2=mask_period2, 
 #     extents=extents, cfv_data=cfv_data
 # )
+
+
+# #### Dissimilar periods, dry months, day hours
+
+# In[ ]:
+
+
+# pf.create_all_possible_comp_plot_files(
+#     region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
+#     period2_start=period2_start_dis, period2_end=period2_end_dis, 
+#     period1_months=months_dry, period2_months=months_dry, 
+#     period1_hours=hours_light, period2_hours=hours_light,
+#     glass_source_pref=glass_source_pref_dis, 
+#     perc=perc, mask_perc_quantile=mask_perc_quantile, 
+#     mask_period1=mask_period1, mask_period2=mask_period2, 
+#     extents=extents, cfv_data=cfv_data
+# )
+
+
+# #### Dissimilar periods, dry months, night hours
+
+# In[ ]:
+
+
+# pf.create_all_possible_comp_plot_files(
+#     region=region, period1_start=period1_start_dis, period1_end=period1_end_dis, 
+#     period2_start=period2_start_dis, period2_end=period2_end_dis, 
+#     period1_months=months_dry, period2_months=months_dry, 
+#     period1_hours=hours_night, period2_hours=hours_night,
+#     glass_source_pref=glass_source_pref_dis, 
+#     perc=perc, mask_perc_quantile=mask_perc_quantile, 
+#     mask_period1=mask_period1, mask_period2=mask_period2, 
+#     extents=extents, cfv_data=cfv_data
+# )
+
+
+# In[ ]:
+
+
+
+
+
+# # Scrap
+
+# In[ ]:
+
+
+# import lcl
+# import numpy as np
+# import matplotlib.pyplot as plt
+
+# p_0 = 101325
+# T_0 = 293.15
+# rh_0 = 0.9
+
+# p = list(np.arange(100000, 103100, 100))
+# T = list(np.arange(273.15, 344.15, 1))
+# rh = list(np.arange(0, 1.01, 0.01))
+
+# lcl_p = [lcl.lcl(p=p_i, T=T_0, rh=rh_0) for p_i in p]
+# lcl_T = [lcl.lcl(p=p_0, T=T_i, rh=rh_0) for T_i in T]
+# lcl_rh = [lcl.lcl(p=p_0, T=T_0, rh=rh_i) for rh_i in rh]
+
+# fig, axes = plt.subplots(1, 3, figsize=(20, 5))
+# axes[0].plot(p, lcl_p)
+# axes[1].plot(T, lcl_T)
+# axes[2].plot(rh, lcl_rh)
+# fig.tight_layout()
+
+
+# In[ ]:
+
+
+
+

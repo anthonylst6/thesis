@@ -69,14 +69,14 @@ assert priority in priorities, \
 # Valid regions and their mapping to axis extents in [W, E, S, N] format 
 # as well as timezones in hour +- GMT
 regions = {
+    # Global (requires a lot of memory)
+    "global": {"extents": [-180, 180, -90, 90], "tz": +0},
+    # Western Australia (mostly south-west part and coast)
+    "wa": {"extents": [114, 124, -36, -26], "tz": +8},
     # Central America (mostly Honduras-Nicaragua-Costa Rica)
     "ca": {"extents": [-91, -81, 7, 17], "tz": -6},
-    # South America (mostly central and eastern Brazil)
+    # South America (mostly Northern Brazil)
     "sa": {"extents": [-65, -30, -15, 0], "tz": -3},
-    # Western Australia (mostly near the west coast)
-    "wa": {"extents": [114, 124, -36, -26], "tz": +8},
-    # Global (requires a lot of memory)
-    "global": {"extents": [-180, 180, -90, 90], "tz": +0}
 }
 
 # Size of chunks

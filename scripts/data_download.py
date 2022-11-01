@@ -490,82 +490,209 @@ for index in [*indices]:
 # In[ ]:
 
 
-# Retrieve monthly averaged by hour reanalysis data for global surface analysis
-retrieve_era5_slv_month_hour("global", "sfc", 1981, 1985)
+# # Retrieve monthly averaged by hour reanalysis data for global surface analysis
+# retrieve_era5_slv_month_hour("global", "sfc", 1981, 1985)
 
 
 # In[ ]:
 
 
-# Retrieve monthly averaged by hour reanalysis data for global surface analysis
-retrieve_era5_slv_month_hour("global", "sfc", 1992, 1996)
+# # Retrieve monthly averaged by hour reanalysis data for global surface analysis
+# retrieve_era5_slv_month_hour("global", "sfc", 1992, 1996)
 
 
 # In[ ]:
 
 
-# Retrieve monthly averaged by hour reanalysis data for global surface analysis
-retrieve_era5_slv_month_hour("global", "sfc", 2007, 2011)
+# # Retrieve monthly averaged by hour reanalysis data for global surface analysis
+# retrieve_era5_slv_month_hour("global", "sfc", 2007, 2011)
 
 
 # In[ ]:
 
 
-# Retrieve monthly averaged by hour reanalysis data for global surface analysis
-retrieve_era5_slv_month_hour("global", "sfc", 2017, 2021)
+# # Retrieve monthly averaged by hour reanalysis data for global surface analysis
+# retrieve_era5_slv_month_hour("global", "sfc", 2017, 2021)
 
 
 # In[ ]:
 
 
-# Retrieve monthly averaged by hour reanalysis data for global atmospheric analysis
-retrieve_era5_slv_month_hour("global", "atm", 1981, 1985)
+# # Retrieve monthly averaged by hour reanalysis data for global atmospheric analysis
+# retrieve_era5_slv_month_hour("global", "atm", 1981, 1985)
 
 
 # In[ ]:
 
 
-# Retrieve monthly averaged by hour reanalysis data for global atmospheric analysis
-retrieve_era5_slv_month_hour("global", "atm", 1992, 1996)
+# # Retrieve monthly averaged by hour reanalysis data for global atmospheric analysis
+# retrieve_era5_slv_month_hour("global", "atm", 1992, 1996)
 
 
 # In[ ]:
 
 
-# Retrieve monthly averaged by hour reanalysis data for global atmospheric analysis
-retrieve_era5_slv_month_hour("global", "atm", 2007, 2011)
+# # Retrieve monthly averaged by hour reanalysis data for global atmospheric analysis
+# retrieve_era5_slv_month_hour("global", "atm", 2007, 2011)
 
 
 # In[ ]:
 
 
-# Retrieve monthly averaged by hour reanalysis data for global atmospheric analysis
-retrieve_era5_slv_month_hour("global", "atm", 2017, 2021)
+# # Retrieve monthly averaged by hour reanalysis data for global atmospheric analysis
+# retrieve_era5_slv_month_hour("global", "atm", 2017, 2021)
 
 
 # In[ ]:
 
 
-# Retrieve monthly averaged by hour reanalysis data for global cloud analysis
-retrieve_era5_slv_month_hour("global", "cld", 1981, 1985)
+# # Retrieve monthly averaged by hour reanalysis data for global cloud analysis
+# retrieve_era5_slv_month_hour("global", "cld", 1981, 1985)
 
 
 # In[ ]:
 
 
-# Retrieve monthly averaged by hour reanalysis data for global cloud analysis
-retrieve_era5_slv_month_hour("global", "cld", 1992, 1996)
+# # Retrieve monthly averaged by hour reanalysis data for global cloud analysis
+# retrieve_era5_slv_month_hour("global", "cld", 1992, 1996)
 
 
 # In[ ]:
 
 
-# Retrieve monthly averaged by hour reanalysis data for global cloud analysis
-retrieve_era5_slv_month_hour("global", "cld", 2007, 2011)
+# # Retrieve monthly averaged by hour reanalysis data for global cloud analysis
+# retrieve_era5_slv_month_hour("global", "cld", 2007, 2011)
 
 
 # In[ ]:
 
 
-# Retrieve monthly averaged by hour reanalysis data for global cloud analysis
-retrieve_era5_slv_month_hour("global", "cld", 2017, 2021)
+# # Retrieve monthly averaged by hour reanalysis data for global cloud analysis
+# retrieve_era5_slv_month_hour("global", "cld", 2017, 2021)
+
+
+# ## (Deprecated) BoM hourly observation data
+# 
+# Request from http://www.bom.gov.au/catalogue/data-feeds.shtml
+
+# In[ ]:
+
+
+# # Create wa_bom_hour folder to download data into
+# # (if it doesn't already exist)
+# Path("../data_raw/wa_bom_hour").mkdir(parents=True, exist_ok=True)
+
+
+# ## (Deprecated) BoM minutely observation data
+# 
+# Request from http://www.bom.gov.au/catalogue/data-feeds.shtml
+
+# In[ ]:
+
+
+# # Create wa_bom_minute folder to download data into
+# # (if it doesn't already exist)
+# Path("../data_raw/wa_bom_minute").mkdir(parents=True, exist_ok=True)
+
+
+# ## (Deprecated) Bunny Fence Experiment (2005-2007) data
+# 
+# Request from https://www.eol.ucar.edu/field_projects/bufex
+
+# In[ ]:
+
+
+# # Create wa_bufex folder to download data into
+# # (if it doesn't already exist)
+# Path("../data_raw/wa_bufex").mkdir(parents=True, exist_ok=True)
+
+
+# ## (Deprecated) Original set of ERA5 variables which were retrieved
+# 
+# In the original set of data retrievals, the atmospheric variables included 'vertical_integral_of_divergence_of_cloud_frozen_water_flux' and 'vertical_integral_of_divergence_of_cloud_liquid_water_flux'. This is because it was thought that the vertical integral of divergence of *water vapour* flux needed to be derived by subtracting these two variables from 'vertical_integral_of_divergence_of_moisture_flux'. But correspondence with ECMWF specialist support confirmed that 'vertical_integral_of_divergence_of_moisture_flux' includes the divergence for water vapour only (i.e. does not include cloud liquid or frozen water fluxes).
+
+# In[ ]:
+
+
+# # Variable names in ECMWF CDS, available here:
+# # https://confluence.ecmwf.int/display/CKB/ERA5%3A+data+documentation
+
+# vars_era5_static = [
+#             'angle_of_sub_gridscale_orography', 'anisotropy_of_sub_gridscale_orography', 'geopotential',
+#             'high_vegetation_cover', 'lake_cover', 'lake_depth',
+#             'land_sea_mask', 'low_vegetation_cover', 'slope_of_sub_gridscale_orography',
+#             'soil_type', 'standard_deviation_of_filtered_subgrid_orography', 'standard_deviation_of_orography',
+#             'type_of_high_vegetation', 'type_of_low_vegetation',
+# ]
+
+# vars_era5 = {
+#     "sfc": [
+#             '100m_u_component_of_wind', '100m_v_component_of_wind', '10m_u_component_of_wind',
+#             '10m_v_component_of_wind', '2m_temperature', 'mean_sea_level_pressure',
+#             'surface_latent_heat_flux', 'surface_sensible_heat_flux',
+#     ],
+#     "atm": [
+#             'evaporation', 'total_column_cloud_liquid_water', 'total_column_water_vapour',
+#             'vertical_integral_of_divergence_of_cloud_frozen_water_flux', 'vertical_integral_of_divergence_of_cloud_liquid_water_flux', 'vertical_integral_of_divergence_of_moisture_flux',
+#             'vertical_integral_of_energy_conversion', 'vertical_integral_of_kinetic_energy', 'vertical_integral_of_potential_internal_and_latent_energy',
+#     ]
+# }
+
+
+# ## (Deprecated) Request one static ERA5 variable at a time
+# 
+# Abandoned in favour of retrieving all static variables simultaneously (since these don't take up much storage anyway).
+
+# In[ ]:
+
+
+# # Define request to retrieve static data (to be used with retrieve function)
+# def request_era5_slv_static(variable):
+#     file_name = "../data_raw/global_era5-slv_static/global_era5-slv_static_{output_name}.nc".format(
+#         output_name=variable.replace("_", "-"))
+#     if Path(file_name).exists():
+#         print(file_name, "already exists")
+#     else:
+#         try:
+#             c.retrieve(
+#                 'reanalysis-era5-single-levels-monthly-means',
+#                 {
+#                     'product_type': 'monthly_averaged_reanalysis',
+#                     'variable': variable,
+#                     'year': '2022',
+#                     'month': '01',
+#                     'time': '00:00',
+#                     'format': 'netcdf',
+#                 },
+#                 file_name)
+#             print("Retrieved", file_name)
+#         except:
+#             print("Failed to retrieve " + file_name)
+            
+# # Define function to retrieve static data 
+# def retrieve_era5_slv_static(variables):
+#     # Assert variables are valid so we don't unneccessarily create folders in the next part
+#     # And so we don't unnecessarily trigger the exception message
+#     assert all(variable in vars_era5_static for variable in variables), \
+#         "variables not subset of: {}".format(vars_era5["static"])
+#     # Create global_era5-slv_static folder to download data into
+#     # (if it doesn't already exist)
+#     Path("../data_raw/global_era5-slv_static").mkdir(parents=True, exist_ok=True)
+#     # Run up to 10 parallel retrieve requests (to queue and download data for all variables simultaneously)
+#     with ThreadPoolExecutor(max_workers=min(len(variables), 10)) as executor:
+#         for variable in variables:
+#             executor.submit(request_era5_slv_static, variable)
+
+
+# In[ ]:
+
+
+# # Retrieve static data for slope of sub-gridscale orography, geopotential (to plot elevation) and land-sea mask
+# retrieve_era5_slv_static(["slope_of_sub_gridscale_orography", "geopotential", "land_sea_mask"])
+
+
+# In[ ]:
+
+
+
+
