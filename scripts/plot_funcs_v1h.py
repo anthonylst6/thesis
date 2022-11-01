@@ -671,6 +671,13 @@ def create_pcolormesh(da, extents=None, vmin=None, vmax=None, ax=None):
                 vmin = min(-abs(min_of_da), -abs(max_of_da))
                 vmax = -vmin
     
+    if vmin != None:
+        if math.isnan(vmin):
+            vmin = None
+    if vmax != None:
+        if math.isnan(vmax):
+            vmax = None
+    
     ax.set_extent(extents=extents, crs=ccrs.PlateCarree())
     
     if da.attrs["full_name"].split(" ")[1] == "Rolling":
@@ -684,9 +691,10 @@ def create_pcolormesh(da, extents=None, vmin=None, vmax=None, ax=None):
         if da.attrs["full_name"].split(" ")[0] == "Difference":
             # The conditional reassignment of vmin and vmax below is to avoid cbar
             # extents falling within the linear range and producing ugly graphs.
-            if vmax < eroe100_linthresh:
-                vmin = round_down_first_sig(vmin)
-                vmax = round_down_first_sig(vmax)
+            if (vmin != None) & (vmax != None):
+                if vmax < eroe100_linthresh:
+                    vmin = round_down_first_sig(vmin)
+                    vmax = round_down_first_sig(vmax)
             da.plot.pcolormesh(ax = ax, cmap = cmap, transform = ccrs.PlateCarree(),
                                norm = colors.SymLogNorm(linthresh=eroe100_linthresh, 
                                                         vmin=vmin, vmax=vmax),
@@ -821,6 +829,13 @@ def create_quiver(da_u, da_v, extents=None, vmin=None, vmax=None, ax=None):
     vmax = vmax if vmax else da_mag_subset.max()
     cbar_label = "{} [{}]".format(attrs_u["abbreviation"], attrs_u["units"])
     scale = float(vmax) * quiver_scale_multiplier
+    
+    if vmin != None:
+        if math.isnan(vmin):
+            vmin = None
+    if vmax != None:
+        if math.isnan(vmax):
+            vmax = None
     
     ax.set_extent(extents=extents, crs=ccrs.PlateCarree())
     da_mag.plot.pcolormesh(ax = ax, cmap = cmap, transform = ccrs.PlateCarree(),
@@ -2131,7 +2146,8 @@ def plot_means_given_layer_and_type(
         extents=extents, ax=axes[1][1], cfv_data=cfv_data
     )
     
-    params_to_plot = cf.vars_and_dvars_era5[var_or_dvar_type][var_or_dvar_layer]
+    params_to_plot = copy.deepcopy(
+        cf.vars_and_dvars_era5[var_or_dvar_type][var_or_dvar_layer])
     
     for param in ["u10", "v10", "ws10", "wv10", "u100", "v100", "nse", "vidmf", "du10", 
                   "dv10", "dws10", "dwv10", "du100", "dv100", "dnse", "dvidmf"]:
@@ -2321,6 +2337,13 @@ def plot_hourly_means_given_var_or_dvar(
             vmin = min(-abs(min_da), -abs(max_da))
             vmax = -vmin
     
+    if vmin != None:
+        if math.isnan(vmin):
+            vmin = None
+    if vmax != None:
+        if math.isnan(vmax):
+            vmax = None
+    
     rows_to_skip = 2
     
     for idx, hour in enumerate(hours):
@@ -2501,6 +2524,13 @@ def plot_monthly_means_given_var_or_dvar(
             max_da = float(da_month.max())
             vmin = min(-abs(min_da), -abs(max_da))
             vmax = -vmin
+    
+    if vmin != None:
+        if math.isnan(vmin):
+            vmin = None
+    if vmax != None:
+        if math.isnan(vmax):
+            vmax = None
     
     rows_to_skip = 2
     
@@ -2905,7 +2935,8 @@ def plot_diff_means_given_layer_and_type(
         extents=extents, ax=axes[1][1], cfv_data=cfv_data
     )
     
-    params_to_plot = cf.vars_and_dvars_era5[var_or_dvar_type][var_or_dvar_layer]
+    params_to_plot = copy.deepcopy(
+        cf.vars_and_dvars_era5[var_or_dvar_type][var_or_dvar_layer])
     
     for param in ["u10", "v10", "ws10", "wv10", "u100", "v100", "nse", "vidmf", "du10", 
                   "dv10", "dws10", "dwv10", "du100", "dv100", "dnse", "dvidmf"]:
@@ -3119,6 +3150,13 @@ def plot_diff_hourly_means_given_var_or_dvar(
             vmin = min(-abs(min_da), -abs(max_da))
             vmax = -vmin
     
+    if vmin != None:
+        if math.isnan(vmin):
+            vmin = None
+    if vmax != None:
+        if math.isnan(vmax):
+            vmax = None
+    
     rows_to_skip = 2
     
     for idx, hour in enumerate(hours):
@@ -3323,6 +3361,13 @@ def plot_diff_monthly_means_given_var_or_dvar(
             max_da = float(da_month.max())
             vmin = min(-abs(min_da), -abs(max_da))
             vmax = -vmin
+    
+    if vmin != None:
+        if math.isnan(vmin):
+            vmin = None
+    if vmax != None:
+        if math.isnan(vmax):
+            vmax = None
     
     rows_to_skip = 2
     
@@ -3747,7 +3792,8 @@ def plot_comp_means_given_layer_and_type(
         ax_period2=axes[1][1], ax_diff=axes[1][2], cfv_data=cfv_data
     )
     
-    params_to_plot = cf.vars_and_dvars_era5[var_or_dvar_type][var_or_dvar_layer]
+    params_to_plot = copy.deepcopy(
+        cf.vars_and_dvars_era5[var_or_dvar_type][var_or_dvar_layer])
     
     for param in ["u10", "v10", "ws10", "wv10", "u100", "v100", "nse", "vidmf", "du10", 
                   "dv10", "dws10", "dwv10", "du100", "dv100", "dnse", "dvidmf"]:
@@ -4023,6 +4069,19 @@ def plot_comp_hourly_means_given_var_or_dvar(
             vmin_periods = min(-abs(min_da_periods), -abs(max_da_periods))
             vmax_periods = -vmin_periods
     
+    if vmin_diff != None:
+        if math.isnan(vmin_diff):
+            vmin_diff = None
+    if vmax_diff != None:
+        if math.isnan(vmax_diff):
+            vmax_diff = None
+    if vmin_periods != None:
+        if math.isnan(vmin_periods):
+            vmin_periods = None
+    if vmax_periods != None:
+        if math.isnan(vmax_periods):
+            vmax_periods = None
+    
     rows_to_skip = 2
     
     for idx, hour in enumerate(hours):
@@ -4290,6 +4349,19 @@ def plot_comp_monthly_means_given_var_or_dvar(
             max_da_periods = float(max(da_period1.max(), da_period2.max()))
             vmin_periods = min(-abs(min_da_periods), -abs(max_da_periods))
             vmax_periods = -vmin_periods
+    
+    if vmin_diff != None:
+        if math.isnan(vmin_diff):
+            vmin_diff = None
+    if vmax_diff != None:
+        if math.isnan(vmax_diff):
+            vmax_diff = None
+    if vmin_periods != None:
+        if math.isnan(vmin_periods):
+            vmin_periods = None
+    if vmax_periods != None:
+        if math.isnan(vmax_periods):
+            vmax_periods = None
     
     rows_to_skip = 2
     

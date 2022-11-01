@@ -22,25 +22,25 @@ from datetime import datetime
 # In[ ]:
 
 
-# Choose calc_funcs_ver to use in plotting scripts.
-cfv = "latest"
+# # Choose calc_funcs_ver to use in plotting scripts.
+# cfv = "latest"
 
-assert (isinstance(cfv, str) & (len(cfv) == 5) & (cfv[:3] == "cfv") & 
-        cfv[3].isnumeric() & cfv[4].isalpha() & cfv[4].islower()) | (cfv == "latest"), \
-    ("cfv must be 'latest' or of form 'cfvXY' where X is a single digit number " +
-     "and Y is a lowercase alphabet character. eg. cfv1n")
+# assert (isinstance(cfv, str) & (len(cfv) == 5) & (cfv[:3] == "cfv") & 
+#         cfv[3].isnumeric() & cfv[4].isalpha() & cfv[4].islower()) | (cfv == "latest"), \
+#     ("cfv must be 'latest' or of form 'cfvXY' where X is a single digit number " +
+#      "and Y is a lowercase alphabet character. eg. cfv1n")
 
-if cfv == "latest":
-    calc_funcs_scripts = glob("calc_funcs_*.py")
-    calc_funcs_scripts.sort()
-    calc_funcs_module = calc_funcs_scripts[-1][:-3]
+# if cfv == "latest":
+#     calc_funcs_scripts = glob("calc_funcs_*.py")
+#     calc_funcs_scripts.sort()
+#     calc_funcs_module = calc_funcs_scripts[-1][:-3]
     
-else:
-    calc_funcs_module = "calc_funcs_" + cfv[2:]
+# else:
+#     calc_funcs_module = "calc_funcs_" + cfv[2:]
     
-cf = importlib.import_module(calc_funcs_module)
+# cf = importlib.import_module(calc_funcs_module)
 
-print(f"Using: {calc_funcs_module}")
+# print(f"Using: {calc_funcs_module}")
 
 
 # ## Import plot_funcs module for use in analysis
@@ -106,7 +106,7 @@ period2_mid_sim = "Mar-2013"
 period2_start_sim = "Sep-2010"
 period2_end_sim = "Aug-2015"
 if (datetime.strptime(period1_start_sim, "%b-%Y") >= 
-    datetime.strptime(cf.modis_earliest, "%b-%Y")):
+    datetime.strptime(pf.cf.modis_earliest, "%b-%Y")):
     glass_source_pref_sim = "modis"
 else:
     glass_source_pref_sim = "avhrr"
@@ -119,7 +119,7 @@ else:
 # period2_start_dis = "Jan-2014"
 # period2_end_dis = "Dec-2018"
 # if (datetime.strptime(period1_start_dis, "%b-%Y") >= 
-#     datetime.strptime(cf.modis_earliest, "%b-%Y")):
+#     datetime.strptime(pf.cf.modis_earliest, "%b-%Y")):
 #     glass_source_pref_dis = "modis"
 # else:
 #     glass_source_pref_dis = "avhrr"
@@ -128,7 +128,7 @@ else:
 # month1_dis = "Nov-1996"
 # month2_dis = "Sep-2015"
 # if (datetime.strptime(month1_dis, "%b-%Y") >= 
-#     datetime.strptime(cf.modis_earliest, "%b-%Y")):
+#     datetime.strptime(pf.cf.modis_earliest, "%b-%Y")):
 #     glass_source_pref_dis_month = "modis"
 # else:
 #     glass_source_pref_dis_month = "avhrr"
@@ -167,7 +167,7 @@ else:
 # period2_start_sim = "Jan-2016"
 # period2_end_sim = "Dec-2020"
 # if (datetime.strptime(period1_start_sim, "%b-%Y") >= 
-#     datetime.strptime(cf.modis_earliest, "%b-%Y")):
+#     datetime.strptime(pf.cf.modis_earliest, "%b-%Y")):
 #     glass_source_pref_sim = "modis"
 # else:
 #     glass_source_pref_sim = "avhrr"
@@ -180,7 +180,7 @@ else:
 # # period2_start_dis = "Jan-2008"
 # # period2_end_dis = "Dec-2012"
 # # if (datetime.strptime(period1_start_dis, "%b-%Y") >= 
-# #     datetime.strptime(cf.modis_earliest, "%b-%Y")):
+# #     datetime.strptime(pf.cf.modis_earliest, "%b-%Y")):
 # #     glass_source_pref_dis = "modis"
 # # else:
 # #     glass_source_pref_dis = "avhrr"
@@ -189,7 +189,7 @@ else:
 # # month1_dis = "Nov-1996"
 # # month2_dis = "Sep-2015"
 # # if (datetime.strptime(month1_dis, "%b-%Y") >= 
-# #     datetime.strptime(cf.modis_earliest, "%b-%Y")):
+# #     datetime.strptime(pf.cf.modis_earliest, "%b-%Y")):
 # #     glass_source_pref_dis_month = "modis"
 # # else:
 # #     glass_source_pref_dis_month = "avhrr"
@@ -228,7 +228,7 @@ else:
 # period2_start_sim = "Jan-2016"
 # period2_end_sim = "Dec-2020"
 # if (datetime.strptime(period1_start_sim, "%b-%Y") >= 
-#     datetime.strptime(cf.modis_earliest, "%b-%Y")):
+#     datetime.strptime(pf.cf.modis_earliest, "%b-%Y")):
 #     glass_source_pref_sim = "modis"
 # else:
 #     glass_source_pref_sim = "avhrr"
@@ -241,7 +241,7 @@ else:
 # # period2_start_dis = "Jan-2008"
 # # period2_end_dis = "Dec-2012"
 # # if (datetime.strptime(period1_start_dis, "%b-%Y") >= 
-# #     datetime.strptime(cf.modis_earliest, "%b-%Y")):
+# #     datetime.strptime(pf.cf.modis_earliest, "%b-%Y")):
 # #     glass_source_pref_dis = "modis"
 # # else:
 # #     glass_source_pref_dis = "avhrr"
@@ -250,7 +250,7 @@ else:
 # # month1_dis = "Nov-1996"
 # # month2_dis = "Sep-2015"
 # # if (datetime.strptime(month1_dis, "%b-%Y") >= 
-# #     datetime.strptime(cf.modis_earliest, "%b-%Y")):
+# #     datetime.strptime(pf.cf.modis_earliest, "%b-%Y")):
 # #     glass_source_pref_dis_month = "modis"
 # # else:
 # #     glass_source_pref_dis_month = "avhrr"
@@ -298,7 +298,7 @@ pf.create_glass_rolling_plot(
 # Check the difference in MLAI for periods with similar background
 # atmospheric oscillations
 pf.create_individual_comp_plot(
-    calc_func=cf.calc_glass_mean_clim, region=region, 
+    calc_func=pf.cf.calc_glass_mean_clim, region=region, 
     period1_start=period1_start_sim, period1_end=period1_end_sim, 
     period2_start=period2_start_sim, period2_end=period2_end_sim, 
     period1_months="all", period2_months="all", period1_hours=None, period2_hours=None,
@@ -316,7 +316,7 @@ pf.create_individual_comp_plot(
 # # Check the difference in MLAI for periods with dissimilar background
 # # atmospheric oscillations
 # pf.create_individual_comp_plot(
-#     calc_func=cf.calc_glass_mean_clim, region=region, 
+#     calc_func=pf.cf.calc_glass_mean_clim, region=region, 
 #     period1_start=period1_start_dis, period1_end=period1_end_dis, 
 #     period2_start=period2_start_dis, period2_end=period2_end_dis, 
 #     period1_months="all", period2_months="all", period1_hours=None, period2_hours=None,
