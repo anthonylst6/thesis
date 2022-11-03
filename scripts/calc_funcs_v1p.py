@@ -3279,7 +3279,7 @@ def calc_era5_mdp_clim_given_var_or_dvar(region, period_start, period_end,
                        .sortby("hour")
                       )
         
-        # For slhf, sshf and nse: average values from hour before and hour after.
+        # For slhf, sshf and nse: average values for current hour with the hour after.
         # This is because these variables are hourly accumulations ending at each hour.
         # The average then provides an estimate of the instantaneous value at the 
         # midpoint between these two accumulation periods. Afterwards, calculate net 
@@ -3289,25 +3289,35 @@ def calc_era5_mdp_clim_given_var_or_dvar(region, period_start, period_end,
             logging.debug(f"Computing: averages for consecutive {var} accumulation " +
                           "periods to estimate instantaneous hourly values for use " +
                           f"in {func_cur}.")
-            da_slhf_for, da_slhf_lag = get_da_mdp_for_and_lag(ds_era5_mdp["slhf"])
-            # Estimate midpoint and convert from J m-2 to W m-2.
-            ds_era5_mdp["slhf"] = (da_slhf_for + da_slhf_lag)/(2*3600)
+            da_slhf_for, _ = get_da_mdp_for_and_lag(ds_era5_mdp["slhf"])
+            # Estimate midpoint, convert from J m-2 to W m-2, and change sign convention.
+            ds_era5_mdp["slhf"] = -(ds_era5_mdp["slhf"] + da_slhf_for)/(2*3600)
             
         if var == "sshf":
             logging.debug(f"Computing: averages for consecutive {var} accumulation " +
                           "periods to estimate instantaneous hourly values for use " +
                           f"in {func_cur}.")
-            da_sshf_for, da_sshf_lag = get_da_mdp_for_and_lag(ds_era5_mdp["sshf"])
-            # Estimate midpoint and convert from J m-2 to W m-2.
-            ds_era5_mdp["sshf"] = (da_sshf_for + da_sshf_lag)/(2*3600)
+            da_sshf_for, _ = get_da_mdp_for_and_lag(ds_era5_mdp["sshf"])
+            # Estimate midpoint, convert from J m-2 to W m-2, and change sign convention.
+            ds_era5_mdp["sshf"] = -(ds_era5_mdp["sshf"] + da_sshf_for)/(2*3600)
+            
+        if var == "nse":
+            logging.debug(f"Computing: averages for consecutive {var} accumulation " +
+                          "periods to estimate instantaneous hourly values for use " +
+                          f"in {func_cur}.")
+            da_nse_for, _ = get_da_mdp_for_and_lag(ds_era5_mdp["nse"])
+            # Estimate midpoint, convert from m of water equivalent to kg m-2 s-1,
+            # and change sign convention.
+            ds_era5_mdp["nse"] = -(ds_era5_mdp["nse"] + da_nse_for)/(2*3.6)
             
         if var == "nac":
             logging.debug("Computing: averages for consecutive nse accumulation " +
                           f"periods to estimate instantaneous {var} hourly values " +
                           f"for use in {func_cur}.")
-            da_nse_for, da_nse_lag = get_da_mdp_for_and_lag(ds_era5_mdp["nse"])
-            # Estimate midpoint and convert from m of water equivalent to kg m-2 s-1.
-            ds_era5_mdp["nse"] = (da_nse_for + da_nse_lag)/(2*3.6)
+            da_nse_for, _ = get_da_mdp_for_and_lag(ds_era5_mdp["nse"])
+            # Estimate midpoint, convert from m of water equivalent to kg m-2 s-1,
+            # and change sign convention.
+            ds_era5_mdp["nse"] = -(ds_era5_mdp["nse"] + da_nse_for)/(2*3.6)
             ds_era5_mdp["nac"] = get_nac(ds_era5_mdp["nse"], ds_era5_mdp["vidmf"],  
                                          ds_era5_mdp["tcwv"])
         
@@ -4998,3 +5008,18 @@ def create_all_possible_diff_data_files(
                     )
     
     remove_handlers_if_directly_executed(func_1up)
+
+
+# In[ ]:
+
+
+
+
+
+# # Scrap
+
+# In[ ]:
+
+
+
+

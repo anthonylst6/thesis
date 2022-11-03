@@ -6,7 +6,7 @@
 ### on github under the HPC-Basics directory titled "pbs-variables.pbs"
 
 #PBS -N results_ca
-#PBS -l select=1:ncpus=8:mem=124gb
+#PBS -l select=1:ncpus=8:mem=60gb
 #PBS -l walltime=12:00:00
 #PBS -j oe
 #PBS -k oed

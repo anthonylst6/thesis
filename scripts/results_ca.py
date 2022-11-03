@@ -3,9 +3,13 @@
 
 # # Setup
 # 
-# Note: the following code requires up to 70 GB of RAM over 18 hours if using 6 CPUs
+# Note that the following code requires:
 # 
-# It can also be run with less RAM but this will require manual restarting of code everytime RAM limit is reached
+# - For WA results, 12 GB of storage, and up to 60 GB of RAM over 12 hours if using 8 CPUs
+# - For CA results, 12 GB of storage, and up to 60 GB of RAM over 12 hours if using 8 CPUs
+# - For SA results, 20 GB of storage, and up to 140 GB of RAM over 12 hours if using 8 CPUs
+# 
+# It can also be run with less RAM and fewer CPU cores but this will be slower and will require manual restarting of code everytime RAM limit is reached
 
 # ## Import libraries for analysis
 
