@@ -3566,6 +3566,102 @@ def plot_comp_mdp_clim_stats_given_var_or_dvar(
     mask_period2=None, extents=None, cfv_data=None, output=False
 ):
     
+    """
+    Create comparison plot for the mean diurnal profile (MDP) stats between
+    two different periods.
+    
+    Arguments:
+        region (str): Region to perform calculation over.
+            Must be one of: ["ca", "sa", "wa"].
+        period1_start (str): Start of first period to perform calculation over.
+            Must be of form "%b-%Y" eg. "Jul-1990".
+            Must be between "Jan-1981" and "Dec-2021".
+        period1_end (str): End of first period to perform calculation over.
+            Must be of form "%b-%Y" eg. "Jul-1990".
+            Must be between "Jan-1981" and "Dec-2021".
+        period2_start (str): Start of second period to perform calculation over.
+            Must be of form "%b-%Y" eg. "Jul-1990".
+            Must be between "Jan-1981" and "Dec-2021".
+        period2_end (str): End of second period to perform calculation over.
+            Must be of form "%b-%Y" eg. "Jul-1990".
+            Must be between "Jan-1981" and "Dec-2021".
+        period1_months (str or list): Month subset of first period to perform calculation 
+            over. Must be a str and one of: ["all", "djf", "mam", "jja", "son"], or a 
+            subset list of: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] with at least one item.
+        period2_months (str or list): Month subset of second period to perform calculation 
+            over. Must be a str and one of: ["all", "djf", "mam", "jja", "son"], or a 
+            subset list of: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] with at least one item.
+        glass_source_pref (str): Preferred glass data source to use when analysis is 
+            over a period which is completely contained within both the available
+            AVHRR and MODIS datasets. Must be one of: ["avhrr", "modis"].
+        var_or_dvar (str): Variable or value of change in variable to perform
+            calculation over. Must be one of: ['u10', 'v10', 'ws10', 'wv10', 'u100', 
+            'v100', 'ws100', 'wv100', 'mslp', 't2', 'slhf', 'sshf', 'nse', 'vidmf', 
+            'viec', 'vipile', 'vike', 'tcclw', 'tcwv', 'nac', 'blh', 'fa', 'cbh', 'tcc', 
+            'cape', 'ci', 'du10', 'dv10', 'dws10', 'dwv10', 'du100', 'dv100', 'dws100', 
+            'dwv100', 'dmslp', 'dt2', 'dslhf', 'dsshf', 'dnse', 'dvidmf', 'dviec', 
+            'dvipile', 'dvike', 'dtcclw', 'dtcwv', 'dnac', 'dblh', 'dfa', 'dcbh', 
+            'dtcc', 'dcape', 'dci'].
+        perc (bool): Whether to plot the difference in values as a percentage of the
+            value (magnitude if negative) in period1. This is used for the comp plots
+            in the plot_funcs script. Must be one of: [True, False].
+        mask_perc_quantile (int): If perc is True, specify the quantile of values
+            (magnitude if negative) from period1 to mask for the difference plot.
+            This is used because percentage differences may be particularly high
+            for values which had a low magnitude as a base in period 1.
+        mask_period1 (str): Whether to mask grid cells in a comp plot depending on
+            whether the value in period 1 was positive or negative. Must be one of:
+            ["pos", "neg"].
+        mask_period2 (str): Whether to mask grid cells in a comp plot depending on
+            whether the value in period 2 was positive or negative. Must be one of:
+            ["pos", "neg"].
+        extents (list): Longitudinal and latitudinal extents to display in plot.
+            Must be a 4 element list in [W, E, S, N] format with longitudes
+            between -180 to 180 and latitudes between -90 to 90.
+        cfv_data (str): calc_funcs_ver of pre-existing data to use in plotting.
+        output (bool): Whether to output the plot as a PNG file. Must be one of:
+            [True, False].
+    
+    Returns (if output = True):
+        ../data_final/mdp_clim_stats_given_var_or_dvar/{plot_funcs_ver}_{cfv_used}_comp_
+        {extents_used}_{period1_start}_{period1_end}_{period2_start}_{period2_end}_
+        {period1_months_str}_{period2_months_str}_stats_{var_or_dvar}_
+        perc-{mask_perc_quantile}_mask1-{mask_period1}_mask2-{mask_period2}.png:
+            Output PNG file in data_final folder for the comparison plot. {plot_funcs_ver}
+            is the version of the plot_funcs script being used. {cfv_used} is the version
+            of the calc_funcs script which outputted the data used in making this plot.
+            {extents_used} is a string indicating the region, or the WESN coordinates
+            for the extents argument if this was specified. {period1_months_str} and
+            {period2_months_str} are strings representing the list of selected months 
+            to use as a subset in each period.
+    
+    For each period, plot the max, min, mean, range, hour of max (24-hour Local Time) 
+    and hour of min (24-hour Local Time), for the mean diurnal profile (MDP) of a given 
+    variable for each grid cell, as well as the difference in results between the two 
+    periods. The MDPs are computed over the period between period1_start and period1_end, 
+    and period2_start and period2_end (inclusive), and only using a subset of data within 
+    these periods (if period1_months and period2_months respectively not "all" is 
+    specified). Also included for reference are subplots for mean leaf area index (MLAI) 
+    and mean fraction of absorbed photosynthetically active radiation (MFAPAR).
+    
+    If perc = True is specified, the differences in results between periods are plotted
+    as percentage deviations from the magnitude of var_or_dvar in period1 at each 
+    grid cell. Extremely high percentages may arise if coming off a low base magnitude
+    in period1, so the mask_perc_quantile argument is used to specify at what magnitude
+    quantile should a grid cell be masked. Eg. if mask_perc_quantile = 10, all grid cells
+    where the magnitude of var_or_dvar was within the lowest 10% of values will be masked.
+    If mask_period1 = "pos" or "neg" is specified, all grid cells where var_or_dvar was 
+    positive or negative respectively in period1 will be masked, but only if var_or_dvar 
+    was a parameter which could take both positive and negative values in the first place 
+    (for positive-only parameters, this mask argument is ignored). Similar comments
+    apply for mask_period2 but for values in period2. All 3 masks apply only to scalar
+    variables (i.e. quiver plots for vectors are not masked by their magnitude).
+    
+    The computation uses data from the data_raw folder, then outputs 
+    intermediate results as a netcdf4 file into the data_processed folder, 
+    and a PNG plot into the data_final folder.
+    """
+    
     time_exec = datetime.today()
     func_cur = inspect.stack()[0][3]
     func_1up = inspect.stack()[1][3]
@@ -3706,6 +3802,140 @@ def plot_comp_means_given_layer_and_type(
     perc=False, mask_perc_quantile=mask_perc_quantile_default, 
     mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=False
 ):
+    
+    """
+    Create comparison plot for the means between two different periods for an
+    assortment of different parameters specified by parameter layer and type.
+    
+    Arguments:
+        region (str): Region to perform calculation over.
+            Must be one of: ["ca", "sa", "wa"].
+        period1_start (str): Start of first period to perform calculation over.
+            Must be of form "%b-%Y" eg. "Jul-1990".
+            Must be between "Jan-1981" and "Dec-2021".
+        period1_end (str): End of first period to perform calculation over.
+            Must be of form "%b-%Y" eg. "Jul-1990".
+            Must be between "Jan-1981" and "Dec-2021".
+        period2_start (str): Start of second period to perform calculation over.
+            Must be of form "%b-%Y" eg. "Jul-1990".
+            Must be between "Jan-1981" and "Dec-2021".
+        period2_end (str): End of second period to perform calculation over.
+            Must be of form "%b-%Y" eg. "Jul-1990".
+            Must be between "Jan-1981" and "Dec-2021".
+        period1_months (str or list): Month subset of first period to perform calculation 
+            over. Must be a str and one of: ["all", "djf", "mam", "jja", "son"], or a 
+            subset list of: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] with at least one item.
+        period2_months (str or list): Month subset of second period to perform calculation 
+            over. Must be a str and one of: ["all", "djf", "mam", "jja", "son"], or a 
+            subset list of: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] with at least one item.
+        period1_hours (str or list): Hours subset of first period to perform calculation 
+            over. Must be a str and one of: ["0-5"/"night", "6-11"/"morning", 
+            "12-17"/"afternoon", "18-23"/"evening", "all"], or a subset
+            list of: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 
+            15, 16, 17, 18, 19, 20, 21, 22, 23] with at least one item.
+            Should be expressed in local time corresponding to selected region.
+        period2_hours (str or list): Hours subset of second period to perform calculation 
+            over. Must be a str and one of: ["0-5"/"night", "6-11"/"morning", 
+            "12-17"/"afternoon", "18-23"/"evening", "all"], or a subset
+            list of: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 
+            15, 16, 17, 18, 19, 20, 21, 22, 23] with at least one item.
+            Should be expressed in local time corresponding to selected region.
+        glass_source_pref (str): Preferred glass data source to use when analysis is 
+            over a period which is completely contained within both the available
+            AVHRR and MODIS datasets. Must be one of: ["avhrr", "modis"].
+        var_or_dvar_layer (str): Spatial layer from which to draw ERA5 parameters for 
+            analysis. This is used for the plot_funcs script. Must be one of: 
+            ["sfc", "atm", "cld"].
+        var_or_dvar_type (str): Whether to analyse the variables themselves or the 
+            change in their mean diurnal profile values as compared with their values
+            in the previous hour. This is used for the plot_funcs script.
+            Must be one of: ["vars", "dvars"].
+        perc (bool): Whether to plot the difference in values as a percentage of the
+            value (magnitude if negative) in period1. This is used for the comp plots
+            in the plot_funcs script. Must be one of: [True, False].
+        mask_perc_quantile (int): If perc is True, specify the quantile of values
+            (magnitude if negative) from period1 to mask for the difference plot.
+            This is used because percentage differences may be particularly high
+            for values which had a low magnitude as a base in period 1.
+        mask_period1 (str): Whether to mask grid cells in a comp plot depending on
+            whether the value in period 1 was positive or negative. Must be one of:
+            ["pos", "neg"].
+        mask_period2 (str): Whether to mask grid cells in a comp plot depending on
+            whether the value in period 2 was positive or negative. Must be one of:
+            ["pos", "neg"].
+        extents (list): Longitudinal and latitudinal extents to display in plot.
+            Must be a 4 element list in [W, E, S, N] format with longitudes
+            between -180 to 180 and latitudes between -90 to 90.
+        cfv_data (str): calc_funcs_ver of pre-existing data to use in plotting.
+        output (bool): Whether to output the plot as a PNG file. Must be one of:
+            [True, False].
+    
+    Returns (if output = True):
+        ../data_final/means_given_layer_and_type/{plot_funcs_ver}_{cfv_used}_comp_
+        {extents_used}_{period1_start}_{period1_end}_{period2_start}_{period2_end}_
+        means_{period1_months_str}_{period2_months_str}_{period1_hours_str}_
+        {period2_hours_str}_{var_or_dvar_layer}_{var_or_dvar_type}_
+        perc-{mask_perc_quantile}_mask1-{mask_period1}_mask2-{mask_period2}.png:
+            Output PNG file in data_final folder for the comparison plot. {plot_funcs_ver}
+            is the version of the plot_funcs script being used. {cfv_used} is the version
+            of the calc_funcs script which outputted the data used in making this plot.
+            {extents_used} is a string indicating the region, or the WESN coordinates
+            for the extents argument if this was specified. {period1_months_str} and
+            {period2_months_str} are strings representing the list of selected months 
+            to use as a subset in each period. {period1_hours_str} and {period2_hours_str} 
+            are strings representing the list of selected hours to use as a subset in 
+            each period.
+    
+    For each period, plot the mean values, as well as their differences, for an assortment 
+    of parameters which are categorised within the surface ("sfc"), atmosphere ("atm") 
+    or cloud ("cld") layers,and are either variable values themselves or an hourly change 
+    in the variable values. The means are computed over the period between period1_start 
+    and period1_end, and period2_start and period2_end (inclusive), using a subset of months 
+    (if period1_months and period2_months respectively not "all" is  specified) and hours 
+    (if period1_hours and period2_hours respectively not "all" is specified) within
+    each period. Also included for reference are subplots for mean leaf area index (MLAI) 
+    and mean fraction of absorbed photosynthetically active radiation (MFAPAR).
+    
+    If var_or_dvar_layer == “sfc” and var_or_dvar_type == “vars”, then the wind speed at 
+    100 m above surface (WS100), wind velocity at 100 m above surface (WV100), mean sea 
+    level pressure (MSLP), temperature at 2 m above surface (T2), surface latent heat flux 
+    (SLHF) and surface sensible heat flux (SSHF) will be plotted. If var_or_dvar_layer == 
+    “sfc” and var_or_dvar_type == “dvars”, then the change in each of these variables as 
+    compared with the value in the previous hour (dWS100, dWV100, dMSLP, dT2, dSLHF, 
+    dSSHF) will be plotted instead.
+    
+    If var_or_dvar_layer == “atm” and var_or_dvar_type == “vars”, then the vertical integral 
+    of energy conversion (VIEC), vertical integral of potential, internal and latent energy 
+    (VIPILE), vertical integral of kinetic energy (VIKE), total column cloud liquid water 
+    (TCCLW), total column water vapour (TCWV) and net atmospheric condensation (NAC) will be 
+    plotted. If var_or_dvar_layer == “atm” and var_or_dvar_type == “dvars”, then the change 
+    in each of these variables as compared with the value in the previous hour (dVIEC, 
+    dVIPILE, dVIKE, dTCCLW, dTCWV, dNAC) will be plotted instead.
+    
+    If var_or_dvar_layer == “cld” and var_or_dvar_type == “vars”, then the boundary layer
+    height (BLH), forecast albedo (FA), cloud base height (CBH), total cloud cover (TCC),
+    convective available potential energy (CAPE) and convective inhibition (CI) will be
+    plotted. If var_or_dvar_layer == “cld” and var_or_dvar_type == “dvars”, then the change 
+    in each of these variables as compared with the value in the previous hour (dBLH, dFA, 
+    dCBH, dTCC, dCAPE, dCI) will be plotted instead.
+    
+    If perc = True is specified, the differences in results between periods are plotted
+    as percentage deviations from the magnitude of var_or_dvar in period1 at each 
+    grid cell. Extremely high percentages may arise if coming off a low base magnitude
+    in period1, so the mask_perc_quantile argument is used to specify at what magnitude
+    quantile should a grid cell be masked. Eg. if mask_perc_quantile = 10, all grid cells
+    where the magnitude of var_or_dvar was within the lowest 10% of values will be masked.
+    If mask_period1 = "pos" or "neg" is specified, all grid cells where var_or_dvar was 
+    positive or negative respectively in period1 will be masked, but only if var_or_dvar 
+    was a parameter which could take both positive and negative values in the first place 
+    (for positive-only parameters, this mask argument is ignored). Similar comments
+    apply for mask_period2 but for values in period2. All 3 masks apply only to scalar
+    variables (i.e. quiver plots for vectors are not masked by their magnitude).
+    
+    The computation uses data from the data_raw folder, then outputs 
+    intermediate results as a netcdf4 file into the data_processed folder, 
+    and a PNG plot into the data_final folder.
+    """
     
     time_exec = datetime.today()
     func_cur = inspect.stack()[0][3]
@@ -3853,6 +4083,106 @@ def plot_comp_hourly_means_given_var_or_dvar(
     perc=False, mask_perc_quantile=mask_perc_quantile_default, 
     mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=False
 ):
+    
+    """
+    Create comparison plot for the hourly mean values of var_or_dvar between
+    two different periods.
+    
+    Arguments:
+        region (str): Region to perform calculation over.
+            Must be one of: ["ca", "sa", "wa"].
+        period1_start (str): Start of first period to perform calculation over.
+            Must be of form "%b-%Y" eg. "Jul-1990".
+            Must be between "Jan-1981" and "Dec-2021".
+        period1_end (str): End of first period to perform calculation over.
+            Must be of form "%b-%Y" eg. "Jul-1990".
+            Must be between "Jan-1981" and "Dec-2021".
+        period2_start (str): Start of second period to perform calculation over.
+            Must be of form "%b-%Y" eg. "Jul-1990".
+            Must be between "Jan-1981" and "Dec-2021".
+        period2_end (str): End of second period to perform calculation over.
+            Must be of form "%b-%Y" eg. "Jul-1990".
+            Must be between "Jan-1981" and "Dec-2021".
+        period1_months (str or list): Month subset of first period to perform calculation 
+            over. Must be a str and one of: ["all", "djf", "mam", "jja", "son"], or a 
+            subset list of: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] with at least one item.
+        period2_months (str or list): Month subset of second period to perform calculation 
+            over. Must be a str and one of: ["all", "djf", "mam", "jja", "son"], or a 
+            subset list of: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] with at least one item.
+        glass_source_pref (str): Preferred glass data source to use when analysis is 
+            over a period which is completely contained within both the available
+            AVHRR and MODIS datasets. Must be one of: ["avhrr", "modis"].
+        var_or_dvar (str): Variable or value of change in variable to perform
+            calculation over. Must be one of: ['u10', 'v10', 'ws10', 'wv10', 'u100', 
+            'v100', 'ws100', 'wv100', 'mslp', 't2', 'slhf', 'sshf', 'nse', 'vidmf', 
+            'viec', 'vipile', 'vike', 'tcclw', 'tcwv', 'nac', 'blh', 'fa', 'cbh', 'tcc', 
+            'cape', 'ci', 'du10', 'dv10', 'dws10', 'dwv10', 'du100', 'dv100', 'dws100', 
+            'dwv100', 'dmslp', 'dt2', 'dslhf', 'dsshf', 'dnse', 'dvidmf', 'dviec', 
+            'dvipile', 'dvike', 'dtcclw', 'dtcwv', 'dnac', 'dblh', 'dfa', 'dcbh', 
+            'dtcc', 'dcape', 'dci'].
+        hours_to_plot (str): Which hours (in local time) to display results for in 
+            plot. Must be one of: ["0-5", "6-11", "12-17", "18-23"].
+        perc (bool): Whether to plot the difference in values as a percentage of the
+            value (magnitude if negative) in period1. This is used for the comp plots
+            in the plot_funcs script. Must be one of: [True, False].
+        mask_perc_quantile (int): If perc is True, specify the quantile of values
+            (magnitude if negative) from period1 to mask for the difference plot.
+            This is used because percentage differences may be particularly high
+            for values which had a low magnitude as a base in period 1.
+        mask_period1 (str): Whether to mask grid cells in a comp plot depending on
+            whether the value in period 1 was positive or negative. Must be one of:
+            ["pos", "neg"].
+        mask_period2 (str): Whether to mask grid cells in a comp plot depending on
+            whether the value in period 2 was positive or negative. Must be one of:
+            ["pos", "neg"].
+        extents (list): Longitudinal and latitudinal extents to display in plot.
+            Must be a 4 element list in [W, E, S, N] format with longitudes
+            between -180 to 180 and latitudes between -90 to 90.
+        cfv_data (str): calc_funcs_ver of pre-existing data to use in plotting.
+        output (bool): Whether to output the plot as a PNG file. Must be one of:
+            [True, False].
+    
+    Returns (if output = True):
+        ../data_final/hourly_means_given_var_or_dvar/{plot_funcs_ver}_{cfv_used}_comp_
+        {extents_used}_{period1_start}_{period1_end}_{period2_start}_{period2_end}_
+        means-hourly_{period1_months_str}_{period2_months_str}_{var_or_dvar}_
+        {hours_to_plot}_perc-{mask_perc_quantile}_mask1-{mask_period1}_
+        mask2-{mask_period2}.png:
+            Output PNG file in data_final folder for the comparison plot. {plot_funcs_ver}
+            is the version of the plot_funcs script being used. {cfv_used} is the version
+            of the calc_funcs script which outputted the data used in making this plot.
+            {extents_used} is a string indicating the region, or the WESN coordinates
+            for the extents argument if this was specified. {period1_months_str} and
+            {period2_months_str} are strings representing the list of selected months 
+            to use as a subset in each period.
+    
+    For each period, plot the hourly mean values for a given variable or its change since 
+    the previous hour for Local Time: 0000 to 0500, 0600 to 1100, 1200 to 1700, 
+    or 1800-2300 (inclusive) at each grid cell, as well as the difference in results between 
+    the two periods. The hourly mean values are computed over the period between 
+    period1_start and period1_end, and period2_start and period2_end (inclusive), and 
+    only using a subset of months within these periods (if period1_months and period2_months 
+    respectively not "all" is specified). Also included for reference are subplots for 
+    mean leaf area index (MLAI) and mean fraction of absorbed photosynthetically active 
+    radiation (MFAPAR).
+    
+    If perc = True is specified, the differences in results between periods are plotted
+    as percentage deviations from the magnitude of var_or_dvar in period1 at each 
+    grid cell. Extremely high percentages may arise if coming off a low base magnitude
+    in period1, so the mask_perc_quantile argument is used to specify at what magnitude
+    quantile should a grid cell be masked. Eg. if mask_perc_quantile = 10, all grid cells
+    where the magnitude of var_or_dvar was within the lowest 10% of values will be masked.
+    If mask_period1 = "pos" or "neg" is specified, all grid cells where var_or_dvar was 
+    positive or negative respectively in period1 will be masked, but only if var_or_dvar 
+    was a parameter which could take both positive and negative values in the first place 
+    (for positive-only parameters, this mask argument is ignored). Similar comments
+    apply for mask_period2 but for values in period2. All 3 masks apply only to scalar
+    variables (i.e. quiver plots for vectors are not masked by their magnitude).
+    
+    The computation uses data from the data_raw folder, then outputs 
+    intermediate results as a netcdf4 file into the data_processed folder, 
+    and a PNG plot into the data_final folder.
+    """
     
     time_exec = datetime.today()
     func_cur = inspect.stack()[0][3]
@@ -4135,6 +4465,111 @@ def plot_comp_monthly_means_given_var_or_dvar(
     mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=False
 ):
     
+    """
+    Create comparison plot for the monthly mean values of var_or_dvar between
+    two different periods.
+    
+    Arguments:
+        region (str): Region to perform calculation over.
+            Must be one of: ["ca", "sa", "wa"].
+        period1_start (str): Start of first period to perform calculation over.
+            Must be of form "%b-%Y" eg. "Jul-1990".
+            Must be between "Jan-1981" and "Dec-2021".
+        period1_end (str): End of first period to perform calculation over.
+            Must be of form "%b-%Y" eg. "Jul-1990".
+            Must be between "Jan-1981" and "Dec-2021".
+        period2_start (str): Start of second period to perform calculation over.
+            Must be of form "%b-%Y" eg. "Jul-1990".
+            Must be between "Jan-1981" and "Dec-2021".
+        period2_end (str): End of second period to perform calculation over.
+            Must be of form "%b-%Y" eg. "Jul-1990".
+            Must be between "Jan-1981" and "Dec-2021".
+        period1_hours (str or list): Hours subset of first period to perform calculation 
+            over. Must be a str and one of: ["0-5"/"night", "6-11"/"morning", 
+            "12-17"/"afternoon", "18-23"/"evening", "all"], or a subset
+            list of: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 
+            15, 16, 17, 18, 19, 20, 21, 22, 23] with at least one item.
+            Should be expressed in local time corresponding to selected region.
+        period2_hours (str or list): Hours subset of second period to perform calculation 
+            over. Must be a str and one of: ["0-5"/"night", "6-11"/"morning", 
+            "12-17"/"afternoon", "18-23"/"evening", "all"], or a subset
+            list of: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 
+            15, 16, 17, 18, 19, 20, 21, 22, 23] with at least one item.
+            Should be expressed in local time corresponding to selected region.
+        glass_source_pref (str): Preferred glass data source to use when analysis is 
+            over a period which is completely contained within both the available
+            AVHRR and MODIS datasets. Must be one of: ["avhrr", "modis"].
+        var_or_dvar (str): Variable or value of change in variable to perform
+            calculation over. Must be one of: ['u10', 'v10', 'ws10', 'wv10', 'u100', 
+            'v100', 'ws100', 'wv100', 'mslp', 't2', 'slhf', 'sshf', 'nse', 'vidmf', 
+            'viec', 'vipile', 'vike', 'tcclw', 'tcwv', 'nac', 'blh', 'fa', 'cbh', 'tcc', 
+            'cape', 'ci', 'du10', 'dv10', 'dws10', 'dwv10', 'du100', 'dv100', 'dws100', 
+            'dwv100', 'dmslp', 'dt2', 'dslhf', 'dsshf', 'dnse', 'dvidmf', 'dviec', 
+            'dvipile', 'dvike', 'dtcclw', 'dtcwv', 'dnac', 'dblh', 'dfa', 'dcbh', 
+            'dtcc', 'dcape', 'dci'].
+        months_to_plot (str): Which months to display results for in plot. Must be
+            one of: ["1-6", "7-12"].
+        perc (bool): Whether to plot the difference in values as a percentage of the
+            value (magnitude if negative) in period1. This is used for the comp plots
+            in the plot_funcs script. Must be one of: [True, False].
+        mask_perc_quantile (int): If perc is True, specify the quantile of values
+            (magnitude if negative) from period1 to mask for the difference plot.
+            This is used because percentage differences may be particularly high
+            for values which had a low magnitude as a base in period 1.
+        mask_period1 (str): Whether to mask grid cells in a comp plot depending on
+            whether the value in period 1 was positive or negative. Must be one of:
+            ["pos", "neg"].
+        mask_period2 (str): Whether to mask grid cells in a comp plot depending on
+            whether the value in period 2 was positive or negative. Must be one of:
+            ["pos", "neg"].
+        extents (list): Longitudinal and latitudinal extents to display in plot.
+            Must be a 4 element list in [W, E, S, N] format with longitudes
+            between -180 to 180 and latitudes between -90 to 90.
+        cfv_data (str): calc_funcs_ver of pre-existing data to use in plotting.
+        output (bool): Whether to output the plot as a PNG file. Must be one of:
+            [True, False].
+    
+    Returns (if output = True):
+        ../data_final/monthly_means_given_var_or_dvar/{plot_funcs_ver}_{cfv_used}_comp_
+        {extents_used}_{period1_start}_{period1_end}_{period2_start}_{period2_end}_
+        means-monthly_{period1_hours_str}_{period2_hours_str}_{var_or_dvar}_
+        {months_to_plot}_perc-{mask_perc_quantile}_mask1-{mask_period1}_
+        mask2-{mask_period2}.png:
+            Output PNG file in data_final folder for the comparison plot. {plot_funcs_ver}
+            is the version of the plot_funcs script being used. {cfv_used} is the version
+            of the calc_funcs script which outputted the data used in making this plot.
+            {extents_used} is a string indicating the region, or the WESN coordinates
+            for the extents argument if this was specified. {period1_hours_str} and
+            {period2_hours_str} are strings representing the list of selected hours 
+            to use as a subset in each period.
+    
+    For each period, plot the monthly mean values for a given variable or its change since 
+    the previous hour for months: Jan-Jun (1-6) or Jul-Dec (7-12) inclusive at each grid 
+    cell, as well as the difference in results between the two periods. The monthly mean 
+    values are computed over the period between period1_start and period1_end, and 
+    period2_start and period2_end (inclusive), and only using a subset of hours within 
+    these periods (if period1_hours and period2_hours respectively not "all" is specified). 
+    Also included for reference are subplots for mean leaf area index (MLAI) and mean 
+    fraction of absorbed photosynthetically active radiation (MFAPAR).
+    
+    If perc = True is specified, the differences in results between periods are plotted
+    as percentage deviations from the magnitude of var_or_dvar in period1 at each 
+    grid cell. Extremely high percentages may arise if coming off a low base magnitude
+    in period1, so the mask_perc_quantile argument is used to specify at what magnitude
+    quantile should a grid cell be masked. Eg. if mask_perc_quantile = 10, all grid cells
+    where the magnitude of var_or_dvar was within the lowest 10% of values will be masked.
+    If mask_period1 = "pos" or "neg" is specified, all grid cells where var_or_dvar was 
+    positive or negative respectively in period1 will be masked, but only if var_or_dvar 
+    was a parameter which could take both positive and negative values in the first place 
+    (for positive-only parameters, this mask argument is ignored). Similar comments
+    apply for mask_period2 but for values in period2. All 3 masks apply only to scalar
+    variables (i.e. quiver plots for vectors are not masked by their magnitude).
+    
+    The computation uses data from the data_raw folder, then outputs 
+    intermediate results as a netcdf4 file into the data_processed folder, 
+    and a PNG plot into the data_final folder.
+    """
+    
     time_exec = datetime.today()
     func_cur = inspect.stack()[0][3]
     func_1up = inspect.stack()[1][3]
@@ -4415,6 +4850,112 @@ def plot_comp_wsd_clim(
     perc=False, mask_perc_quantile=mask_perc_quantile_default, 
     mask_period1=None, mask_period2=None, extents=None, cfv_data=None, output=False
 ):
+    
+    """
+    Create comparison plot for the 100 m wind speed distribution parameters.
+    
+    Arguments:
+        region (str): Region to perform calculation over.
+            Must be one of: ["ca", "sa", "wa"].
+        period1_start (str): Start of first period to perform calculation over.
+            Must be of form "%b-%Y" eg. "Jul-1990".
+            Must be between "Jan-1981" and "Dec-2021".
+        period1_end (str): End of first period to perform calculation over.
+            Must be of form "%b-%Y" eg. "Jul-1990".
+            Must be between "Jan-1981" and "Dec-2021".
+        period2_start (str): Start of second period to perform calculation over.
+            Must be of form "%b-%Y" eg. "Jul-1990".
+            Must be between "Jan-1981" and "Dec-2021".
+        period2_end (str): End of second period to perform calculation over.
+            Must be of form "%b-%Y" eg. "Jul-1990".
+            Must be between "Jan-1981" and "Dec-2021".
+        period1_months (str or list): Month subset of first period to perform calculation 
+            over. Must be a str and one of: ["all", "djf", "mam", "jja", "son"], or a 
+            subset list of: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] with at least one item.
+        period2_months (str or list): Month subset of second period to perform calculation 
+            over. Must be a str and one of: ["all", "djf", "mam", "jja", "son"], or a 
+            subset list of: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] with at least one item.
+        period1_hours (str or list): Hours subset of first period to perform calculation 
+            over. Must be a str and one of: ["0-5"/"night", "6-11"/"morning", 
+            "12-17"/"afternoon", "18-23"/"evening", "all"], or a subset
+            list of: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 
+            15, 16, 17, 18, 19, 20, 21, 22, 23] with at least one item.
+            Should be expressed in local time corresponding to selected region.
+        period2_hours (str or list): Hours subset of second period to perform calculation 
+            over. Must be a str and one of: ["0-5"/"night", "6-11"/"morning", 
+            "12-17"/"afternoon", "18-23"/"evening", "all"], or a subset
+            list of: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 
+            15, 16, 17, 18, 19, 20, 21, 22, 23] with at least one item.
+            Should be expressed in local time corresponding to selected region.
+        glass_source_pref (str): Preferred glass data source to use when analysis is 
+            over a period which is completely contained within both the available
+            AVHRR and MODIS datasets. Must be one of: ["avhrr", "modis"].
+        perc (bool): Whether to plot the difference in values as a percentage of the
+            value (magnitude if negative) in period1. This is used for the comp plots
+            in the plot_funcs script. Must be one of: [True, False].
+        mask_perc_quantile (int): If perc is True, specify the quantile of values
+            (magnitude if negative) from period1 to mask for the difference plot.
+            This is used because percentage differences may be particularly high
+            for values which had a low magnitude as a base in period 1.
+        mask_period1 (str): Whether to mask grid cells in a comp plot depending on
+            whether the value in period 1 was positive or negative. Must be one of:
+            ["pos", "neg"].
+        mask_period2 (str): Whether to mask grid cells in a comp plot depending on
+            whether the value in period 2 was positive or negative. Must be one of:
+            ["pos", "neg"].
+        extents (list): Longitudinal and latitudinal extents to display in plot.
+            Must be a 4 element list in [W, E, S, N] format with longitudes
+            between -180 to 180 and latitudes between -90 to 90.
+        cfv_data (str): calc_funcs_ver of pre-existing data to use in plotting.
+        output (bool): Whether to output the plot as a PNG file. Must be one of:
+            [True, False].
+    
+    Returns (if output = True):
+        ../data_final/wsd_clim/{plot_funcs_ver}_{cfv_used}_comp_{extents_used}_
+        {period1_start}_{period1_end}_{period2_start}_{period2_end}_
+        {period1_months_str}_{period2_months_str}_wsd_{period1_hours_str}_
+        {period2_hours_str}_perc-{mask_perc_quantile}_mask1-{mask_period1}_
+        mask2-{mask_period2}.png:
+            Output PNG file in data_final folder for the comparison plot. {plot_funcs_ver}
+            is the version of the plot_funcs script being used. {cfv_used} is the version
+            of the calc_funcs script which outputted the data used in making this plot.
+            {extents_used} is a string indicating the region, or the WESN coordinates
+            for the extents argument if this was specified. {period1_months_str} and
+            {period2_months_str} are strings representing the list of selected months 
+            to use as a subset in each period. {period1_hours_str} and {period2_hours_str} 
+            are strings representing the list of selected hours to use as a subset in 
+            each period.
+    
+    For each period, plot the mean and standard deviation of wind speed at 100 m above 
+    surface, the Weibull scale and shape parameter for wind speed at 100 m above surface 
+    (C100 and K100), the expected rate of exceedance for a particular wind speed at 100 m 
+    above surface (EROE100) and the gross capacity factor for a typical wind turbine at 
+    100 m above surface (TGCF100) for each grid cell, as well as the difference in results 
+    between the two periods. The wind speed distributions (WSDs) are computed over the 
+    period between period1_start and period1_end, and period2_start and period2_end 
+    (inclusive), using a subset of months (if period1_months and period2_months 
+    respectively not "all" is  specified) and hours (if period1_hours and period2_hours 
+    respectively not "all" is specified) within each period. Also included for reference 
+    are subplots for mean leaf area index (MLAI) and mean fraction of absorbed 
+    photosynthetically active radiation (MFAPAR).
+    
+    If perc = True is specified, the differences in results between periods are plotted
+    as percentage deviations from the magnitude of var_or_dvar in period1 at each 
+    grid cell. Extremely high percentages may arise if coming off a low base magnitude
+    in period1, so the mask_perc_quantile argument is used to specify at what magnitude
+    quantile should a grid cell be masked. Eg. if mask_perc_quantile = 10, all grid cells
+    where the magnitude of var_or_dvar was within the lowest 10% of values will be masked.
+    If mask_period1 = "pos" or "neg" is specified, all grid cells where var_or_dvar was 
+    positive or negative respectively in period1 will be masked, but only if var_or_dvar 
+    was a parameter which could take both positive and negative values in the first place 
+    (for positive-only parameters, this mask argument is ignored). Similar comments
+    apply for mask_period2 but for values in period2. All 3 masks apply only to scalar
+    variables (i.e. quiver plots for vectors are not masked by their magnitude).
+    
+    The computation uses data from the data_raw folder, then outputs 
+    intermediate results as a netcdf4 file into the data_processed folder, 
+    and a PNG plot into the data_final folder.
+    """
     
     time_exec = datetime.today()
     func_cur = inspect.stack()[0][3]
@@ -4921,5 +5462,33 @@ def create_all_possible_comp_plot_files(
 # In[ ]:
 
 
+import xarray as xr
+test1 = xr.open_dataset("../data_processed/glass_mean_clim/cfv1p_calc_wa_Jun-1997_May-2002_djf_glass-mean_avhrr.nc")
+test2 = xr.open_dataset("../data_processed/glass_mean_clim/cfv1p_calc_wa_Sep-2010_Aug-2015_djf_glass-mean_avhrr.nc")
+(test2["mlai"]-test1["mlai"]).plot()
 
+
+# In[ ]:
+
+
+test = xr.open_dataset("../data_processed/glass_mean_clim/cfv1p_diff_wa_Jun-1997_May-2002_Sep-2010_Aug-2015_djf_djf_glass-mean_avhrr.nc")
+test["mlai"].plot()
+
+
+# In[ ]:
+
+
+create_individual_comp_plot(cf.calc_glass_mean_clim, "wa", "Jun-1997", "May-2002", "Sep-2010", "Aug-2015", "djf", "djf", "mlai", glass_source_pref="avhrr")
+
+
+# In[ ]:
+
+
+create_individual_comp_plot(cf.calc_glass_mean_clim, "wa", "Jun-1997", "May-2002", "Sep-2010", "Aug-2015", "mam", "mam", "mlai", glass_source_pref="avhrr")
+
+
+# In[ ]:
+
+
+create_individual_calc_plot(cf.calc_glass_mean_clim, "wa", "Jun-1997", "May-2002", "Sep-2010", "Aug-2015", "djf", "djf", "mlai", glass_source_pref="avhrr")
 

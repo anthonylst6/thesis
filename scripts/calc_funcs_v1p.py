@@ -69,8 +69,8 @@ assert priority in priorities, \
 # Valid regions and their mapping to axis extents in [W, E, S, N] format 
 # as well as timezones in hour +- GMT
 regions = {
-    # Global (requires a lot of memory)
-    "global": {"extents": [-180, 180, -90, 90], "tz": +0},
+    # # Global (requires a lot of memory)
+    # "global": {"extents": [-180, 180, -90, 90], "tz": +0},
     # Western Australia (mostly south-west part and coast)
     "wa": {"extents": [114, 124, -36, -26], "tz": +8},
     # Central America (mostly Honduras-Nicaragua-Costa Rica)
@@ -869,8 +869,8 @@ def check_args(
             change in their mean diurnal profile values as compared with their values
             in the previous hour. This is used for the plot_funcs script.
             Must be one of: ["vars", "dvars"].
-        hours_to_plot (str): Which hours to display results for in plot. Must be
-            one of: ["0-5", "6-11", "12-17", "18-23"].
+        hours_to_plot (str): Which hours (in local time) to display results for in 
+            plot. Must be one of: ["0-5", "6-11", "12-17", "18-23"].
         months_to_plot (str): Which months to display results for in plot. Must be
             one of: ["1-6", "7-12"].
         perc (bool): Whether to plot the difference in values as a percentage of the
@@ -887,8 +887,8 @@ def check_args(
             whether the value in period 2 was positive or negative. Must be one of:
             ["pos", "neg"].
         extents (list): Longitudinal and latitudinal extents to display in plot.
-            Must be a 4 element list in [W, E, S, N] format with longitudes -180
-            to 180 and latitudes -90 to 90.
+            Must be a 4 element list in [W, E, S, N] format with longitudes
+            between -180 to 180 and latitudes between -90 to 90.
         vmin (float or int): Minimum of colourbar extents for a calc plot.
         vmax (float or int): Maximum of colourbar extents for a calc plot.
         vmin_periods (float or int): Minimum of colourbar extents for a calc plot.
