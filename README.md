@@ -107,7 +107,9 @@ Suppose we were interested in analysing the seasonal differences in the hourly m
   
 </details>
 
-## Analysing other regions and variables (has not been tested)
+## Analysing other regions and variables
+
+Note: the steps in this section have not been tested.
 
 ### For custom regions
 
@@ -123,7 +125,24 @@ Suppose we were interested in analysing the seasonal differences in the hourly m
 
 ### For arbitrary ERA5 variables
 
-- The default ERA5 variables used in the thesis project were: ['100m_u_component_of_wind', '100m_v_component_of_wind', '10m_u_component_of_wind', '10m_v_component_of_wind', '2m_temperature', 'mean_sea_level_pressure', 'surface_latent_heat_flux', 'surface_sensible_heat_flux', 'evaporation', 'total_column_cloud_liquid_water', 'total_column_water_vapour', 'vertical_integral_of_divergence_of_moisture_flux', 'vertical_integral_of_energy_conversion', 'vertical_integral_of_kinetic_energy', 'boundary_layer_height', 'cloud_base_height', 'convective_available_potential_energy', 'convective_inhibition', 'forecast_albedo', 'total_cloud_cover']
+- The ERA5 variables obtained from ECMWF for use in the thesis project by default were (using naming conventions from https://confluence.ecmwf.int/display/CKB/ERA5%3A+data+documentation): 
+    - `'100m_u_component_of_wind'`
+    - `'100m_v_component_of_wind'`
+    - `'10m_u_component_of_wind'`
+    - `'10m_v_component_of_wind'`
+    - `'2m_temperature'`
+    - `'mean_sea_level_pressure'`
+    - `'surface_latent_heat_flux'`
+    - `'surface_sensible_heat_flux'`
+    - `'evaporation'`
+    - `'total_column_cloud_liquid_water'`
+    - `'otal_column_water_vapour'`
+    - `'vertical_integral_of_divergence_of_moisture_flux'`
+    - `'vertical_integral_of_energy_conversion'`
+    - `'vertical_integral_of_kinetic_energy'`
+    - `'convective_inhibition'`
+    - `'forecast_albedo'`
+    - `'total_cloud_cover'`
 - To add an arbitrary ERA5 variable:
     1. Edit the `vars_era5` variable in `data_download.ipynb` or `data_download.py` to include the name of the new variable using the ERA5 variable names from https://confluence.ecmwf.int/display/CKB/ERA5%3A+data+documentation
     2. Place the variable within one of the existing "sfc", "atm" or "cld" categories
