@@ -2,17 +2,17 @@
 
 ## Table of contents
 
-- [High-level description of functions]()
-- [Example usage]()
-    - [plot_comp_mdp_clim_stats_given_var_or_dvar]()
-    - [plot_comp_means_given_layer_and_type]()
-    - [plot_comp_hourly_means_given_var_or_dvar]()
-- [Analysing other regions and variables (has not been tested)]()
-    - [For regions]()
-    - [For ERA5 variables]()
-    - [For novel ERA5-derived variables]()
-- [Steps to reproduce thesis results from scratch]()
-- [System and time requirements (for reproducing thesis results only)]()
+- [High-level description of functions](#high-level-description-of-functions)
+- [Example usage](#example-usage)
+    - [plot_comp_mdp_clim_stats_given_var_or_dvar](#plot_comp_mdp_clim_stats_given_var_or_dvar)
+    - [plot_comp_means_given_layer_and_type](#plot_comp_means_given_layer_and_type)
+    - [plot_comp_hourly_means_given_var_or_dvar](#plot_comp_hourly_means_given_var_or_dvar)
+- [Analysing other regions and variables (has not been tested)](#analysing-other-regions-and-variables-has-not-been-tested)
+    - [For regions](#for-regions)
+    - [For ERA5 variables](#for-era5-variables)
+    - [For novel ERA5-derived variables](#for-novel-era5-derived-variables)
+- [Steps to reproduce thesis results from scratch](#steps-to-reproduce-thesis-results-from-scratch)
+- [System and time requirements (for reproducing thesis results only)](#system-and-time-requirements-for-reproducing-thesis-results-only)
     
 
 ## High-level description of functions
