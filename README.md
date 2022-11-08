@@ -109,7 +109,7 @@ Suppose we were interested in analysing the seasonal differences in the hourly m
 
 ## Analysing other regions and variables (has not been tested)
 
-### For regions
+### For custom regions
 
 - The default regions and extents in [W, E, S, N] format (for `cartopy` plotting library) used in the thesis project were:
     - "wa": [114, 124, -36, -26]
@@ -121,7 +121,7 @@ Suppose we were interested in analysing the seasonal differences in the hourly m
     3. Run the edited `data_download.ipynb` or `data_download.py` to download the relevant ERA5 data from ECMWF
     4. Edit the `regions` variable in the `calc_funcs.py` script to include the new region's name, extents in [W, E, S, N] format, and local timezone relative to UTC
 
-### For ERA5 variables
+### For arbitrary ERA5 variables
 
 - The default ERA5 variables used in the thesis project were: ['100m_u_component_of_wind', '100m_v_component_of_wind', '10m_u_component_of_wind', '10m_v_component_of_wind', '2m_temperature', 'mean_sea_level_pressure', 'surface_latent_heat_flux', 'surface_sensible_heat_flux', 'evaporation', 'total_column_cloud_liquid_water', 'total_column_water_vapour', 'vertical_integral_of_divergence_of_moisture_flux', 'vertical_integral_of_energy_conversion', 'vertical_integral_of_kinetic_energy', 'boundary_layer_height', 'cloud_base_height', 'convective_available_potential_energy', 'convective_inhibition', 'forecast_albedo', 'total_cloud_cover']
 - To add an arbitrary ERA5 variable:
