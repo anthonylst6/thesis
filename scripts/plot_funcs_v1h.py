@@ -2015,7 +2015,7 @@ def plot_mdp_clim_stats_given_var_or_dvar(
         ax=axes[1][1], cfv_data=cfv_data
     )
     
-    stats_to_plot = cf.params_stat
+    stats_to_plot = copy.deepcopy(cf.params_stat)
     
     for stat in ["max_u", "max_v", "min_u", "min_v", "mean_u", "mean_v"]:
         try:
@@ -2650,7 +2650,7 @@ def plot_wsd_clim(
         extents=extents, ax=axes[1][1], cfv_data=cfv_data
     )
     
-    params_to_plot = cf.params_wsd
+    params_to_plot = copy.deepcopy(cf.params_wsd)
     
     for param in ["ws10_mean", "ws10_std", "c10", "k10"]:
         try:
@@ -2787,7 +2787,7 @@ def plot_diff_mdp_clim_stats_given_var_or_dvar(
         ax=axes[1][1], cfv_data=cfv_data
     )
     
-    stats_to_plot = cf.params_stat
+    stats_to_plot = copy.deepcopy(cf.params_stat)
     
     for stat in ["max_u", "max_v", "min_u", "min_v", "mean_u", "mean_v"]:
         try:
@@ -3505,7 +3505,7 @@ def plot_diff_wsd_clim(
         ax=axes[1][1], cfv_data=cfv_data
     )
     
-    params_to_plot = cf.params_wsd
+    params_to_plot = copy.deepcopy(cf.params_wsd)
     
     for param in ["ws10_mean", "ws10_std", "c10", "k10"]:
         try:
@@ -3743,7 +3743,7 @@ def plot_comp_mdp_clim_stats_given_var_or_dvar(
         ax_period2=axes[1][1], ax_diff=axes[1][2], cfv_data=cfv_data
     )
     
-    stats_to_plot = cf.params_stat
+    stats_to_plot = copy.deepcopy(cf.params_stat)
     
     for stat in ["max_u", "max_v", "min_u", "min_v", "mean_u", "mean_v"]:
         try:
@@ -5042,7 +5042,7 @@ def plot_comp_wsd_clim(
         ax_period2=axes[1][1], ax_diff=axes[1][2], cfv_data=cfv_data
     )
     
-    params_to_plot = cf.params_wsd
+    params_to_plot = copy.deepcopy(cf.params_wsd)
     
     for param in ["ws10_mean", "ws10_std", "c10", "k10"]:
         try:
@@ -5462,33 +5462,5 @@ def create_all_possible_comp_plot_files(
 # In[ ]:
 
 
-import xarray as xr
-test1 = xr.open_dataset("../data_processed/glass_mean_clim/cfv1p_calc_wa_Jun-1997_May-2002_djf_glass-mean_avhrr.nc")
-test2 = xr.open_dataset("../data_processed/glass_mean_clim/cfv1p_calc_wa_Sep-2010_Aug-2015_djf_glass-mean_avhrr.nc")
-(test2["mlai"]-test1["mlai"]).plot()
 
-
-# In[ ]:
-
-
-test = xr.open_dataset("../data_processed/glass_mean_clim/cfv1p_diff_wa_Jun-1997_May-2002_Sep-2010_Aug-2015_djf_djf_glass-mean_avhrr.nc")
-test["mlai"].plot()
-
-
-# In[ ]:
-
-
-create_individual_comp_plot(cf.calc_glass_mean_clim, "wa", "Jun-1997", "May-2002", "Sep-2010", "Aug-2015", "djf", "djf", "mlai", glass_source_pref="avhrr")
-
-
-# In[ ]:
-
-
-create_individual_comp_plot(cf.calc_glass_mean_clim, "wa", "Jun-1997", "May-2002", "Sep-2010", "Aug-2015", "mam", "mam", "mlai", glass_source_pref="avhrr")
-
-
-# In[ ]:
-
-
-create_individual_calc_plot(cf.calc_glass_mean_clim, "wa", "Jun-1997", "May-2002", "Sep-2010", "Aug-2015", "djf", "djf", "mlai", glass_source_pref="avhrr")
 
