@@ -1,5 +1,20 @@
 # Mini Thesis Project
 
+## Table of contents
+
+- [High-level description of functions]()
+- [Example usage]()
+    - [plot_comp_mdp_clim_stats_given_var_or_dvar]()
+    - [plot_comp_means_given_layer_and_type]()
+    - [plot_comp_hourly_means_given_var_or_dvar]()
+- [Analysing other regions and variables (has not been tested)]()
+    - [For regions]()
+    - [For ERA5 variables]()
+    - [For novel ERA5-derived variables]()
+- [Steps to reproduce thesis results from scratch]()
+- [System and time requirements (for reproducing thesis results only)]()
+    
+
 ## High-level description of functions
 - The functions created in the course of this thesis allow comparison for the mean leaf area index (MLAI) and mean fraction of absorbed photosynthetically active radiation (MFAPAR) between two arbitrary periods (so long as they are within the range of available data from 1981-2021). And the comparison can further be done in terms of a subset of months from each period. So it is possible, for example, to compare the MLAI over the months of January, March and December between 1990-2000 with the MLAI over the months of July and November between 2005-2007. These variables derive from the GLASS dataset.
 - These functions also allow comparison for various ERA5 variables between two arbitrary periods in terms of each variable's diurnal profile (can choose subset of months), mean (can choose subset of both months and hours), hourly means for each hour of the day (can choose subset of months), and monthly means for each month of the day (can choose subset of hours).
@@ -29,7 +44,7 @@ Suppose we were interested in analysing the seasonal differences in the diurnal 
 <details>
   <summary>plot_comp_mdp_clim_stats_given_var_or_dvar</summary>
   
-  After importing the `plot_funcs.py` script as a module with name `pf` using the `importlib` library:
+  After importing the `plot_funcs.py` script as a module with name `pf`:
     
   ```python
   pf.plot_comp_mdp_clim_stats_given_var_or_dvar(
@@ -47,12 +62,12 @@ Suppose we were interested in analysing the seasonal differences in the diurnal 
 
 ### plot_comp_means_given_layer_and_type
 
-Suppose we were interested in analysing differences in the means for the hourly change in variables ("dvars") at the surface ("sfc"), in a region of Central America ("ca"), with default region extents manually defined in the `calc_funcs.py` script. Specifically, we are interested in differences in means computed over daytime hours from 0800 to 1500 ([8,9,10,11,12,13,14,15]) and the wet season from May to October ([5,6,7,8,9,10]), between the periods from "Jan-2003" to "Dec-2007" and "Jan-2016" to "Dec-2020". Then we would use the following code:
+Suppose we were interested in analysing differences in the means between two separate periods for the hourly change in variables ("dvars") at the surface ("sfc"), in a region of Central America ("ca"), with default region extents manually defined in the `calc_funcs.py` script. Specifically, we are interested in differences in means computed over daytime hours from 0800 to 1500 ([8,9,10,11,12,13,14,15]) and the wet season from May to October ([5,6,7,8,9,10]), between the periods from "Jan-2003" to "Dec-2007" and "Jan-2016" to "Dec-2020". Then we would use the following code:
 
 <details>
   <summary>plot_comp_means_given_layer_and_type</summary>
   
-  After importing the `plot_funcs.py` script as a module with name `pf` using the `importlib` library:
+  After importing the `plot_funcs.py` script as a module with name `pf`:
     
   ```python
   pf.plot_comp_means_given_layer_and_type(
@@ -76,7 +91,7 @@ Suppose we were interested in analysing the seasonal differences in the hourly m
 <details>
   <summary>plot_comp_hourly_means_given_var_or_dvar</summary>
   
-  After importing the `plot_funcs.py` script as a module with name `pf` using the `importlib` library:
+  After importing the `plot_funcs.py` script as a module with name `pf`:
     
   ```python
   pf.plot_comp_hourly_means_given_var_or_dvar(
@@ -96,12 +111,12 @@ Suppose we were interested in analysing the seasonal differences in the hourly m
 
 ### For regions
 
-- The default regions and extents in [W, E, S, N] format used in the thesis project were:
+- The default regions and extents in [W, E, S, N] format (for `cartopy` plotting library) used in the thesis project were:
     - "wa": [114, 124, -36, -26]
     - "ca": [-91, -81, 7, 17]
     - "sa": [-65, -30, -15, 0]
 - To add a custom region:
-    1. Edit the `area` variable in `data_download.ipynb` or `data_download.py` to include the name of the new region and its extents in [N, W, S, E] format 
+    1. Edit the `area` variable in `data_download.ipynb` or `data_download.py` to include the name of the new region and its extents in [N, W, S, E] format (for ECMWF CDS API)
     2. Edit the first argument in the `retrieve_era5_slv_month_hour` and `retrieve_era5_slv_hour` functions so that it reflects the name of the new region
     3. Run the edited `data_download.ipynb` or `data_download.py` to download the relevant ERA5 data from ECMWF
     4. Edit the `regions` variable in the `calc_funcs.py` script to include the new region's name, extents in [W, E, S, N] format, and local timezone relative to UTC
@@ -110,26 +125,26 @@ Suppose we were interested in analysing the seasonal differences in the hourly m
 
 - The default ERA5 variables used in the thesis project were: ['100m_u_component_of_wind', '100m_v_component_of_wind', '10m_u_component_of_wind', '10m_v_component_of_wind', '2m_temperature', 'mean_sea_level_pressure', 'surface_latent_heat_flux', 'surface_sensible_heat_flux', 'evaporation', 'total_column_cloud_liquid_water', 'total_column_water_vapour', 'vertical_integral_of_divergence_of_moisture_flux', 'vertical_integral_of_energy_conversion', 'vertical_integral_of_kinetic_energy', 'boundary_layer_height', 'cloud_base_height', 'convective_available_potential_energy', 'convective_inhibition', 'forecast_albedo', 'total_cloud_cover']
 - To add an arbitrary ERA5 variable:
-    1. Edit the `vars_era5` variable in `data_download.ipynb` or `data_download.py` to include the name of the new variable using the ECMWF names from https://confluence.ecmwf.int/display/CKB/ERA5%3A+data+documentation
+    1. Edit the `vars_era5` variable in `data_download.ipynb` or `data_download.py` to include the name of the new variable using the ERA5 variable names from https://confluence.ecmwf.int/display/CKB/ERA5%3A+data+documentation
     2. Place the variable within one of the existing "sfc", "atm" or "cld" categories
     3. (Alternatively) Create a new category with the variable and add additional code cells with the new category name as an argument into the `retrieve_era5_slv_month_hour` and `retrieve_era5_slv_hour` functions
-    4. Run the edited `data_download.ipynb` or `data_download.py` to download the relevant ERA5 data from ECMWF
+    4. Run the edited `data_download.ipynb` or `data_download.py` to download the relevant ERA5 data from ECMWF CDS
     5. Edit the `vars_and_dvars_era5`, `vars_dep_and_rename` and `attrs_da` variables in the `calc_funcs.py` script to reflect this new variable
     6. Edit the try-except blocks in the `plot_means_given_layer_and_type`, `plot_diff_means_given_layer_and_type` and `plot_comp_means_given_layer_and_type` functions in the `plot_funcs.py` script so that a total of 6 ERA5 variables will be displayed at all times (this is an unfortunate design constraint from displaying 8 rows for the comparison plots with the first 2 rows occupied by MLAI and MFAPAR)
 
 ### For novel ERA5-derived variables
 
-- For the thesis project, the only ERA5-derived variables were:
+- The default ERA5-derived variables used in the thesis project were:
     - Instantaneous approximation (with negative sign reversed and units converted) for Surface Latent Heat Flux (SLHF)
     - Instantaneous approximation (with negative sign reversed and units converted) for Surface Sensible Heat Flux (SSHF)
     - Instantaneous approximation (with negative sign reversed and units converted) for Net Surface Evaporation (NSE)
     - Approximation for Net Atmospheric Condensation (NAC)
-- To incorporate an arbitrary ERA5-derived variable:
+- To incorporate a novel ERA5-derived variable:
     1. Insert an if statement into the `calc_era5_mdp_clim_given_var_or_dvar` function in the `calc_funcs.py` script (this is the function which is furthest upstream and from which other computations apart from wind speed distribution derive from) using the same style and logic as that for NAC in the script
     2. Edit the `vars_and_dvars_era5`, `vars_dep_and_rename` and `attrs_da` variables in the `calc_funcs.py` script to reflect this new variable
     3. Edit the try-except blocks in the `plot_means_given_layer_and_type`, `plot_diff_means_given_layer_and_type` and `plot_comp_means_given_layer_and_type` functions in the `plot_funcs.py` script so that a total of 6 ERA5 variables will be displayed at all times (this is an unfortunate design constraint from displaying 8 rows for the comparison plots with the first 2 rows occupied by MLAI and MFAPAR)
 
-## Steps to reproduce thesis results from scratch 
+## Steps to reproduce thesis results from scratch
 1. (If haven't already) Install miniconda for Python 3.9 or later using instructions from  https://docs.conda.io/en/latest/miniconda.html
 2. Download thesis repository using `git clone git@github.com:anthonylst6/thesis.git` or clicking Code -> Download ZIP on Github then unzip the folder
 3. Open bash shell in home directory of repository then run `conda env create -f env_thesis.yml`
