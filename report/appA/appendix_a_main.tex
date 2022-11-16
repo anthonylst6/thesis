@@ -1,10 +1,10 @@
-\chapter{Supplementary information, tables and graphs}
+\chapter{Supplementary information}
 \label{app:supp}
 
 \section{Unmarked figures}
 \label{sec:unmarked}
 
-\subsection{January means for selected variables 1}
+\subsection{January means for selected variables 1 (unmarked)}
 
 The use of coloured markings with thick outline in Figure~\ref{fig:wa_jan_comb_1} somewhat distorts perception of the trends. For an undistorted view, see the January mean values for \ac{VIEC}, \ac{NAC}, \ac{VIDMF} and \ac{NSE} in Figure~\ref{fig:wa_jan_comb_1_unmarked}.
 
@@ -15,7 +15,7 @@ The use of coloured markings with thick outline in Figure~\ref{fig:wa_jan_comb_1
 	\label{fig:wa_jan_comb_1_unmarked}
 \end{figure}
 
-\subsection{January means for selected variables 2}
+\subsection{January means for selected variables 2 (unmarked)}
 
 The use of coloured markings with thick outline in Figure~\ref{fig:wa_jan_comb_2} somewhat distorts perception of the trends. For an undistorted view, see the January mean values for \ac{WS100}, \ac{dWS100}, \ac{MSLP} and \ac{T2} in Figure~\ref{fig:wa_jan_comb_2_unmarked}.
 
@@ -36,8 +36,8 @@ Some of the key variables studied in this project were presented in Section~\ref
 	\begingroup
 	\renewcommand\arraystretch{1.33} % only applicable to this table because of group
 	
-	\begin{longtable}{P{2cm}P{3cm}P{15cm}}
-		\caption[Full list of study variables]{Variables which were analysed. Abbreviations for these variables as used in this report are provided, along with descriptions of each variable.} 
+	\begin{longtable}{P{2cm}P{3cm}P{13cm}}
+		\caption[Full list of study variables]{A full list of variables which were analysed. Abbreviations for these variables as used in the report are provided, along with descriptions of each variable.} 
 		\label{tab:vars_analysis} 
 		\\ 
 		\toprule 
@@ -56,46 +56,46 @@ Some of the key variables studied in this project were presented in Section~\ref
 		\multicolumn{3}{l@{}}{(continued\ldots)}\\
 		\endfoot
 		\endlastfoot
-		LSE & Land Surface Elevation & Units in $m$. Elevation of the land surface above seas level. Obtained by converting from ERA5 geopotential data using the MetPy python library \citep{metpy}. \\
-		SSGO & Slope of Sub-Gridscale Orography & Dimensionless. Represents slopes of orographic features such as mountains and hills which are present down to a scale of 1 km. Flat surfaces have value 0 while vertical cliffs have value 1. \\ \midrule
-		MLAI & Mean Leaf Area Index & Dimensionless. The leaf area index for a grid cell is the total leaf area divided by ground area of that cell. MLAI is the mean of this over the study period. This was the main metric used in assessing vegetation cover and vegetation cover change.  \\
-		MFAPAR & Mean Fraction of Photosynthetically Absorbed Radiation & Dimensionless. The fraction of photosynthetically absorbed radiation for a grid cell is the fraction of radiation between 400-700 nm wavelength absorbed within that cell. MFAPAR is the mean of this over the study period. This was a supplementary metric used in assessing vegetation cover and vegetation cover change. \\ \midrule
-		BLH & Boundary Layer Height & Units in $m$. Height of the depth of air for which surface effects are significant. This was used to assess level of convective mixing and likelihood fo cloud formation. \\
+		\acs{LSE} & Land Surface Elevation & Units in $m$. Elevation of the land surface above sea level. Obtained by converting from ERA5 geopotential data using the MetPy Python library \citep{metpy}. \\
+		\acs{SSGO} & Slope of Sub-Gridscale Orography & Dimensionless. Represents slopes of orographic features such as mountains and hills which are present down to a scale of 1 km. Flat surfaces have value 0 while vertical cliffs have value 1. \\ \midrule
+		\acs{MLAI} & Mean Leaf Area Index & Dimensionless. The \ac{LAI} index for a grid cell is the total leaf area divided by ground area of that cell. \ac{MLAI} is the mean of this over the study period. This was the main metric used in assessing vegetation cover and vegetation cover change.  \\
+		\acs{MFAPAR} & Mean Fraction of Photosynthetically Absorbed Radiation & Dimensionless. The \ac{FAPAR} for a grid cell is the fraction of radiation between 400-700 nm wavelength absorbed within that cell. \ac{MFAPAR} is the mean of this over the study period. This was a supplementary metric used in assessing vegetation cover and vegetation cover change. \\ \midrule
+		\acs{BLH} & Boundary Layer Height & Units in $m$. Height of the depth of air for which surface effects are significant. This was used to assess level of convective mixing and likelihood fo cloud formation. \\
 		CAPE & Convective Available Potential Energy & Units in $J kg^{-1}$. Work which would be performed on an air parcel if it rose through the atmosphere. This was used to indicate atmospheric stability. The more positive the more air will rise, the more negative the more air will sink. \\
-		CBH & Cloud Base Height & Units in $m$. Height for base of lowest cloud. This was used to assess how height of cloud formation may affect atmospheric circulations. \\
+		\acs{CBH} & Cloud Base Height & Units in $m$. Height for base of lowest cloud. This was used to assess how height of cloud formation may affect atmospheric circulations. \\
 		FA & Forecast Albedo & Dimensionless. Fraction of short-wave radiation reflected from surface. This was used to assess how reflectivity of different land cover affects the surface energy balance. \\
-		MSLP & Mean Sea Level Pressure & Units in $Pa$. Pressure of atmosphere adjusted to sea level. This is one of the main variables affecting wind. High values typically coincide with calm conditions while low values coincide with windy. This was also used to identify synoptic features. \\
-		NAC & Net Atmospheric Condensation & Units in $kg m^{-2} s^{-1}$. Condensation minus evaporation in atmosphere (does not include surface). Positive values indicate more cloud formation than cloud evaporation. Calculated using ERA5 data for TCWV, NSE and VIDMF (see Appendix~\ref{sec:nac_derive}). This is one of the major factors affecting the partitioning of the atmospheric energy budget. \\
-		NSE & Net Surface Evaporation & Units in $kg m^{-2} s^{-1}$. Evaporation minus condensation at surface (does not include atmosphere). For vegetation, positive values indicate a greater amount of evapotranspiration than dew formation. Instantaneous values are approximated by averaging consecutive ERA5 accumulation values.\footnote{ERA5 parameters come in instantaneous and accumulation values. Instantaneous values are calculated for that point in time at each hour whereas accumulation values represent a sum compiled over the course of the previous hour window. NSE, SLHF and SSHF are accumulation values whereas the remainder are instantaneous. Averages for these variables were computed to approximate "instantaneous" values in order to allow an apples to apples comparison.} \\
-		SLHF & Surface Latent Heat Flux & Units in $W m^{-2}$. Rate at which energy at the surface is being used for evapotranspiration. Instantaneous values are approximated by averaging consecutive ERA5 accumulation values (see NSE footnote). \\
-		SSHF & Surface Sensible Heat Flux & Units in $W m^{-2}$. Rate at which energy at the surface is being used to induce convection and warming of the air mass above it. Instantaneous values are approximated by averaging consecutive ERA5 accumulation values (see NSE footnote). \\
-		T2 & Temperature at 2 m Above Surface & Units in $K$. This is one of the major factors affecting the partitioning of the atmospheric energy budget. \\
-		TCC & Total Cloud Cover & Dimensionless. Fraction of grid cell covered by cloud. \\
-		TCCLW & Total Column Cloud Liquid Water & Units in $kg m^{-2}$. Total cloud liquid content averaged over grid cell. Does not include rain water droplets. \\
-		TCWV & Total Column Water Vapour & Units in $kg m^{-2}$. Total amount of water vapour averaged over grid cell. Often referred to as precipitable water (PW). \\
-		U10 & Zonal Component of 10 m Wind Velocity & Units in $m s^{-1}$. East-West component of wind velocity at 10 m above surface. Positive values indicate that wind has a westerly component (blowing \textit{to} the east). \\
-		U100 & Zonal Component of 10 m Wind Velocity & Units in $m s^{-1}$. East-West component of wind velocity at 100 m above surface. Positive values indicate that wind has a westerly component (blowing \textit{to} the east). \\
-		V10 & Meridional Component of 10 m Wind Velocity & Units in $m s^{-1}$. North-South component of wind velocity at 10 m above surface. Positive values indicate that wind has a southerly component (blowing \textit{to} the north). \\
-		V100 & Meridional Component of 100 m Wind Velocity & Units in $m s^{-1}$. North-South component of wind velocity at 100 m above surface. Positive values indicate that wind has a southerly component (blowing \textit{to} the north). \\
-		VIDMF & Vertical Integral of Divergence of Moisture Flux & Units in $kg m^{-2} s^{-1}$. The average rate at which water vapour in a grid cell is leaving to neighbouring grid cells.\footnote{Note that ERA5 has a similarly named parameter called "vertically integrated moisture divergence" (VIMD) which is an accumulation rather than instantaneous parameter, but with the crucial difference that "moisture" in this variable refers to the total of water vapour, cloud liquid and cloud ice. The ERA5 documentation for VIDMF also refers to "moisture" and it is not apparent that this actually uses a different definition where it only includes water vapour, but this was indeed confirmed to be the case via correspondence with ECMWF specialist support.} Positive values indicate water vapour is diverging (leaving grid cell) while negative values indicate water vapour is converging (entering grid cell). \\
-		VIEC & Vertical Integral of Energy Conversion & Units in $W m^{-2}$. Rate at which energy is being converted from internal plus potential energy into kinetic energy.\footnote{By ERA5 definitions, internal energy refers to the microscopic energy of the air molecules excluding latent energy (this is treated as a separate part of the atmospheric energy budget) which may be different to definitions used in chemistry. Potential energy here refers to macroscopic gravitational potential energy (as opposed to internal air pressure within the grid cell, as this is implicitly accounted for within internal energy). Kinetic energy refers to kinetic energy from the \textit{horizontal} motion of air masses.} Negative values indicate kinetic energy conversion into internal plus potential energy. \\
-		VIKE & Vertical Integral of Kinetic Energy & Units in $J m^{-2}$. Total kinetic energy from the \textit{horizontal} motion of air masses through the grid cell, averaged over the grid cell. This was used to study how land cover change affects partitioning in the atmospheric energy budget. \\
-		VIPILE & Vertical Integral of Potential, Internal and Latent Energy & Units in $J m^{-2}$. Total of gravitational potential energy, internal energy and latent energy (see footnote for VIEC). This constitutes the total atmospheric energy budget minus kinetic energy. This was used to study how land cover change affects partitioning in the atmospheric energy budget. \\
-		WS10 & Wind Speed at 10 m Above Surface & Units in $m s^{-1}$. Scalar quantity for wind speed at 10 m above surface. \\
-		WS100 & Wind Speed at 100 m Above Surface & Units in $m s^{-1}$. Scalar quantity for wind speed at 100 m above surface. This is the quantity most directly relevant for wind energy generation. \\
-		WV10 & Wind Velocity at 10 m Above Surface & Units in $m s^{-1}$. Vector quantity for wind velocity at 10 m above surface. \\
-		WV100 & Wind Velocity at 100 m Above Surface & Units in $m s^{-1}$. Vector quantity for wind velocity at 100 m above surface. This quantity is also directly relevant for wind energy generation and furthermore highlights how wind direction changes. \\ \midrule
-		d\{VAR\} & Hourly Change in \{VAR\} & Units vary. Change in the value for each of the above ERA5 or ERA5-derived values, as compared with its value in the previous hour. This was used to study how the rate of change of a variable was correlated with land cover change. \\ \midrule
-		C10 & Weibull Scale Parameter for 10 m Wind Speed & Units in $m s^{-1}$. Scale parameter for the Weibull distribution fit to the wind speed at 10 m above surface. The empirical Weibull fit was obtained using the equations of \citep{justus1977}. \\
-		C100 & Weibull Scale Parameter for 100 m Wind Speed & Units in $m s^{-1}$. Scale parameter for the Weibull distribution fit to the wind speed at 100 m above surface. The empirical Weibull fit was obtained using the equations of \citep{justus1977}. \\
-		EROE100 & Expected Rate of 100 m Wind Speed Exceeding 42.5 m/s & Dimensionless. The \textit{expected} rate for wind speed at 100 m exceeding 42.5 m/s, which in practice is the typical wind speed which wind turbines can last 10 mins in before failure \citep{chen2015, chen2016, ge_web}. This is the \textit{expected} rate calculated from the tail of the Weibull distribution fit rather than the actual observed rate of exceedance. \\
-		K10 & Weibull Shape Parameter for 10 m Wind Speed & Dimensionless. Shape parameter for the Weibull distribution fit to the wind speed at 10 m above surface. The empirical Weibull fit was obtained using the equations of \citep{justus1977}. \\
-		K100 & Weibull Shape Parameter for 100 m Wind Speed & Dimensionless. Shape parameter for the Weibull distribution fit to the wind speed at 100 m above surface. The empirical Weibull fit was obtained using the equations of \citep{justus1977}. \\
-		$mean$(WS10) & Mean of 10 m Wind Speed & Units in $m s^{-1}$. Mean of wind speed at 10 m above surface. This is roughly equivalent to the mean of the mean diurnal profile for WS10 (see Section~\ref{ssec:method_mdp}). \\
-		$mean$(WS100) & Mean of 100 m Wind Speed & Units in $m s^{-1}$. Mean of wind speed at 10 m above surface. This is roughly equivalent to the mean of the mean diurnal profile for WS100 (see Section~\ref{ssec:method_mdp}). \\
-		$std$(WS10) & Standard Deviation of 10 m Wind Speed & Units in $m s^{-1}$. Standard deviation of wind speed at 10 m above surface. This is used with K10 to analyse how the variability in wind speed changes along with land cover. \\
-		$std$(WS100) & Standard Deviation of 100 m Wind Speed & Units in $m s^{-1}$. Standard deviation of wind speed at 10 m above surface. This is used with K100 to analyse how the variability in wind speed changes along with land cover. \\
-		TGCF100 & Gross Capacity Factor for Typical Turbine at 100 m Above Surface & Dimensionless. Gross capacity factor which a typical 2.5 MW turbine with 100 m hub height would have had over the study period. This was computed by first averaging the power curves for similar 2.5 MW turbines from Vestas, Goldwind and GE Energy, then computing the energy generation for each hour in the study period using ERA5 data for the wind speed at 100 m above surface (see Section~\ref{ssec:method_wsd}). \\ \bottomrule
+		\acs{MSLP} & Mean Sea Level Pressure & Units in $Pa$. Pressure of atmosphere adjusted to sea level. This is one of the main variables affecting wind. High values typically coincide with calm conditions while low values coincide with windy. This was also used to identify synoptic features. \\
+		\acs{NAC} & Net Atmospheric Condensation & Units in $kg m^{-2} s^{-1}$. Condensation minus evaporation in atmosphere (does not include surface). Positive values indicate more cloud formation than cloud evaporation. Calculated using \ac{ERA5} data for \ac{TCWV}, \ac{NSE} and \ac{VIDMF} (see Appendix~\ref{sec:nac_derive}). This is one of the major factors affecting the partitioning of the atmospheric energy budget. \\
+		\acs{NSE} & Net Surface Evaporation & Units in $kg m^{-2} s^{-1}$. Evaporation minus condensation at surface (does not include atmosphere). For vegetation, positive values indicate a greater amount of evapotranspiration than dew formation. Instantaneous values are approximated by averaging consecutive \ac{ERA5} accumulation values.\footnote{\ac{ERA5} parameters come in instantaneous and accumulation values. Instantaneous values are calculated for that point in time at each hour whereas accumulation values represent a sum compiled over the course of the previous hour window. \ac{NSE}, \ac{SLHF} and \ac{SSHF} are accumulation values whereas the remainder are instantaneous. Averages for these variables were computed to approximate "instantaneous" values in order to allow an apples to apples comparison.} \\
+		\acs{SLHF} & Surface Latent Heat Flux & Units in $W m^{-2}$. Rate at which energy at the surface is being used for evapotranspiration. Instantaneous values are approximated by averaging consecutive \ac{ERA5} accumulation values (see \ac{NSE} footnote). \\
+		\acs{SSHF} & Surface Sensible Heat Flux & Units in $W m^{-2}$. Rate at which energy at the surface is being used to induce convection and warming of the air mass above it. Instantaneous values are approximated by averaging consecutive \ac{ERA5} accumulation values (see \ac{NSE} footnote). \\
+		\acs{T2} & Temperature at 2 m Above Surface & Units in $K$. This is one of the major factors affecting the partitioning of the atmospheric energy budget. \\
+		\acs{TCC} & Total Cloud Cover & Dimensionless. Fraction of grid cell covered by cloud. \\
+		\acs{TCCLW} & Total Column Cloud Liquid Water & Units in $kg m^{-2}$. Total cloud liquid content averaged over grid cell. Does not include rain water droplets. \\
+		\acs{TCWV} & Total Column Water Vapour & Units in $kg m^{-2}$. Total amount of water vapour averaged over grid cell. Often referred to as precipitable water (PW). \\
+		\acs{U10} & Zonal Component of 10 m Wind Velocity & Units in $m s^{-1}$. East-West component of wind velocity at 10 m above surface. Positive values indicate that wind has a westerly component (blowing \textit{to} the east). \\
+		\acs{U100} & Zonal Component of 10 m Wind Velocity & Units in $m s^{-1}$. East-West component of wind velocity at 100 m above surface. Positive values indicate that wind has a westerly component (blowing \textit{to} the east). \\
+		\acs{V10} & Meridional Component of 10 m Wind Velocity & Units in $m s^{-1}$. North-South component of wind velocity at 10 m above surface. Positive values indicate that wind has a southerly component (blowing \textit{to} the north). \\
+		\acs{V100} & Meridional Component of 100 m Wind Velocity & Units in $m s^{-1}$. North-South component of wind velocity at 100 m above surface. Positive values indicate that wind has a southerly component (blowing \textit{to} the north). \\
+		\acs{VIDMF} & Vertical Integral of Divergence of Moisture Flux & Units in $kg m^{-2} s^{-1}$. The average rate at which water vapour in a grid cell is leaving to neighbouring grid cells.\footnote{Note that \ac{ERA5} has a similarly named parameter called \ac{VIMF} which is an accumulation rather than instantaneous parameter, but with the crucial difference that "moisture" in this variable refers to the total of water vapour, cloud liquid and cloud ice. The ERA5 documentation for \ac{VIDMF} also refers to "moisture" and it is not apparent that this actually uses a different definition where it only includes water vapour, but this was indeed confirmed to be the case via correspondence with \ac{ECMWF} specialist support.} Positive values indicate water vapour is diverging (leaving grid cell) while negative values indicate water vapour is converging (entering grid cell). \\
+		\acs{VIEC} & Vertical Integral of Energy Conversion & Units in $W m^{-2}$. Rate at which energy is being converted from internal plus potential energy into kinetic energy.\footnote{By \ac{ERA5} definitions, internal energy refers to the microscopic energy of the air molecules excluding latent energy (this is treated as a separate part of the atmospheric energy budget) which may be different to definitions used in chemistry. Potential energy here refers to macroscopic gravitational potential energy (as opposed to internal air pressure within the grid cell, as this is implicitly accounted for within internal energy). Kinetic energy refers to kinetic energy from the \textit{horizontal} motion of air masses.} Negative values indicate kinetic energy conversion into internal plus potential energy. \\
+		\acs{VIKE} & Vertical Integral of Kinetic Energy & Units in $J m^{-2}$. Total kinetic energy from the \textit{horizontal} motion of air masses through the grid cell, averaged over the grid cell. This was used to study how land cover change affects partitioning in the atmospheric energy budget. \\
+		\acs{VIPILE} & Vertical Integral of Potential, Internal and Latent Energy & Units in $J m^{-2}$. Total of gravitational potential energy, internal energy and latent energy (see footnote for \ac{VIEC}). This constitutes the total atmospheric energy budget minus kinetic energy. This was used to study how land cover change affects partitioning in the atmospheric energy budget. \\
+		\acs{WS10} & Wind Speed at 10 m Above Surface & Units in $m s^{-1}$. Scalar quantity for wind speed at 10 m above surface. \\
+		\acs{WS100} & Wind Speed at 100 m Above Surface & Units in $m s^{-1}$. Scalar quantity for wind speed at 100 m above surface. This is the quantity most directly relevant for wind energy generation. \\
+		\acs{WV10} & Wind Velocity at 10 m Above Surface & Units in $m s^{-1}$. Vector quantity for wind velocity at 10 m above surface. \\
+		\acs{WV100} & Wind Velocity at 100 m Above Surface & Units in $m s^{-1}$. Vector quantity for wind velocity at 100 m above surface. This quantity is also directly relevant for wind energy generation and furthermore highlights how wind direction changes. \\ \midrule
+		d\{VAR\} & Hourly Change in \{VAR\} & Units vary. Change in the value for each of the above \ac{ERA5} or \ac{ERA5}-derived values, as compared with its value in the previous hour. This was used to study how the rate of change of a variable was correlated with land cover change. \\ \midrule
+		\acs{C10} & Weibull Scale Parameter for 10 m Wind Speed & Units in $m s^{-1}$. Scale parameter for the Weibull distribution fit to the wind speed at 10 m above surface. The empirical Weibull fit was obtained using the equations of \citep{justus1977}. \\
+		\acs{C100} & Weibull Scale Parameter for 100 m Wind Speed & Units in $m s^{-1}$. Scale parameter for the Weibull distribution fit to the wind speed at 100 m above surface. The empirical Weibull fit was obtained using the equations of \citep{justus1977}. \\
+		\acs{EROE100} & Expected Rate of 100 m Wind Speed Exceeding 42.5 m/s & Dimensionless. The \textit{expected} rate for wind speed at 100 m exceeding 42.5 m/s, which in practice is the typical wind speed which wind turbines can last 10 mins in before failure \citep{chen2015, chen2016, ge_web}. This is the \textit{expected} rate calculated from the tail of the Weibull distribution fit rather than the actual observed rate of exceedance. \\
+		\acs{K10} & Weibull Shape Parameter for 10 m Wind Speed & Dimensionless. Shape parameter for the Weibull distribution fit to the wind speed at 10 m above surface. The empirical Weibull fit was obtained using the equations of \citep{justus1977}. \\
+		\acs{K100} & Weibull Shape Parameter for 100 m Wind Speed & Dimensionless. Shape parameter for the Weibull distribution fit to the wind speed at 100 m above surface. The empirical Weibull fit was obtained using the equations of \citep{justus1977}. \\
+		$mean$(\acs{WS10}) & Mean of 10 m Wind Speed & Units in $m s^{-1}$. Mean of wind speed at 10 m above surface. This is roughly equivalent to the mean of the mean diurnal profile for \ac{WS10} (see Section~\ref{ssec:mean_commute}). \\
+		$mean$(\acs{WS100}) & Mean of 100 m Wind Speed & Units in $m s^{-1}$. Mean of wind speed at 10 m above surface. This is roughly equivalent to the mean of the mean diurnal profile for \ac{WS100} (see Section~\ref{ssec:mean_commute}). \\
+		$std$(\acs{WS10}) & Standard Deviation of 10 m Wind Speed & Units in $m s^{-1}$. Standard deviation of wind speed at 10 m above surface. This is used with \ac{K10} to analyse how the variability in wind speed changes along with land cover. \\
+		$std$(\acs{WS100}) & Standard Deviation of 100 m Wind Speed & Units in $m s^{-1}$. Standard deviation of wind speed at 10 m above surface. This is used with \ac{K100} to analyse how the variability in wind speed changes along with land cover. \\
+		\acs{TGCF100} & Typical Gross Capacity Factor for 100 m Turbine & Dimensionless. Gross capacity factor which a typical 2.5 MW turbine with 100 m hub height would have had over the study period. This was computed by first averaging the power curves for similar 2.5 MW turbines from Vestas, Goldwind and GE Energy, then computing the energy generation for each hour in the study period using \ac{ERA5} data for the wind speed at 100 m above surface (see Section~\ref{ssec:method_wsd}). \\ \bottomrule
 	\end{longtable}
 	
 	\endgroup
@@ -104,7 +104,11 @@ Some of the key variables studied in this project were presented in Section~\ref
 \section{Assimilation cycle artefacts in ERA5}
 \label{sec:artefact}
 
+\subsection{Artefacts in TCWV}
+
 The hourly mean results for \ac{dTCWV} at hours 0600 \ac{LT} (2200 UTC) and 1800 \ac{LT} (1000 UTC) indicate a discontinuous change in \ac{TCWV} (not shown). These values represent the change in \ac{TCWV} from 2100-2200 UTC and 0900-1000 UTC respectively. The humidity (and by extension \ac{TCWV}) values in ERA5 are known to have a mismatch between the end of one assimilation cycle and the beginning of the next, which happen at exactly these time windows \citep{ecmwf}.
+
+\subsection{Artefacts inherited by NAC}
 
 Because the \ac{NAC} value at hour i is derived using the \ac{TCWV} values at hours i-1 and i+1 (see Appendix~\ref{sec:nac_derive}), the \ac{NAC} value at hours 0500-0700 \ac{LT} and 1700-1900 \ac{LT} inherit these discontinuities (see Figure~\ref{fig:wa_dnac_artefact}). These discontinuities are not observed for any of the other variables which \ac{NAC} is derived from (\ac{NSE} and \ac{VIDMF}).
 
@@ -115,13 +119,15 @@ Because the \ac{NAC} value at hour i is derived using the \ac{TCWV} values at ho
 	\label{fig:wa_dnac_artefact}
 \end{figure}
 
-Figure~\ref{fig:wa_dnac_artefact} shows how this leads to unusually large \ac{dNAC} means from 1700-1900 \ac{LT}. But importantly, the increases at 1700 \ac{LT} are offset by a spatially correlated decrease of comparable magnitude at 1900 \ac{LT}. Analogous results were found between 0500-0700 \ac{LT} (not shown). So the means computed over the course of this project should be relatively unaffected. This applies even for the diurnal comparison where means were computed over a subset of hours, since daytime and nighttime hours were defined as 0800-1500 \ac{LT} and 2000-0300 \ac{LT} respectively (see Section~\ref{ssec:method_diurnal_seasonal}), which falls outside of the hours with artefacts. This does mean, however, that \ac{MDP} statistics apart from the mean (hour of maximum, hour of minimum, maximum, minimum and range) need to be interpreted with care. 
+\subsection{Results relatively unaffected}
 
-None of the other key study variables were found to have similar assimilation cycle artefacts.
+Figure~\ref{fig:wa_dnac_artefact} shows how this leads to unusually large \ac{dNAC} means from 1700-1900 \ac{LT}. But importantly, the increases at 1700 \ac{LT} are offset by a spatially correlated decrease of comparable magnitude at 1900 \ac{LT}. Analogous results were found between 0500-0700 \ac{LT} (not shown). So the means computed over the course of this project should be relatively unaffected. This applies even for the diurnal comparison where means were computed over a subset of hours, since daytime and nighttime hours were defined as 0800-1500 \ac{LT} and 2000-0300 \ac{LT} respectively (see Section~\ref{ssec:method_diurnal_seasonal}), which falls outside of the hours with artefacts. This does mean, however, that \ac{MDP} statistics apart from the mean (hour of maximum, hour of minimum, maximum, minimum and range) need to be interpreted with care when it comes to \ac{TCWV}, \ac{dTCWV}, \ac{NAC} and \ac{dNAC}. 
 
-\newpage
+\subsection{Other affected variables}
 
-\section{Other focus regions}
+None of the other key study variables apart from \ac{FA} were found to have similarly obvious assimilation cycle discontinuities, but \ac{FA} was only used for one result (Figure~\ref{fig:wa_stats_seasonal_2}) which was a mean over all hours of the day so results should still be relatively unaffected.
+
+\section{Other focus regions in original project scope}
 \label{sec:other_regions}
 
 The original project scope included results for \ac{CA} and \ac{NB} but time did not allow for detailed analysis, discussion and presentation of these results. Included below is a summary for each of these regions, as well as the selected periods for the similar comparison. This may be used for future research.
@@ -160,32 +166,44 @@ The orography for each focus region is displayed in Figure~\ref{fig:orog}.
 
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width=0.9\textwidth]{maps_twp_ca}
+	\includegraphics[width=0.75\textwidth]{maps_twp_ca}
 	\caption[Central America Map]{Satellite image displaying Central America focus region from 91$^\circ$W to 81$^\circ$W longitude and 17$^\circ$S to 7$^\circ$S latitude \citep{maps_ca}. Markers indicating positions and number of wind farms have been edited on using data from \citep{twp_hd, twp_nc, twp_cr}.}
 	\label{fig:maps_twp_ca}
 \end{figure}
 
+\subsubsection{Description of region}
+
 We selected the part of \ac{CA} which runs (North to South) from El Salvador and Honduras to Nicaragua to Costa Rica (91$^\circ$W to 81$^\circ$W longitude and 17$^\circ$S to 7$^\circ$S latitude; see Figure~\ref{fig:maps_twp_ca}) because there existed spatially opposing trends in vegetation change. These countries had historically comparable rates of deforestation, but Costa Rica shifted towards reforestation due to policy changes in the 1990s whereas deforestation has continued in Honduras and Nicaragua. The western coastlines for El Salvador, Nicaragua and Costa Rica (where agriculture is concentrated) also have comparable cardinal orientations.
 
-Being located near the equator, annual temperature variation at these locations are relatively minor. This is useful because it provides a comparison where one of the main variables affecting wind flow is relatively controlled for. Furthermore, the entire focus region is on the order of 1000 km, so synoptic weather features (which have a characteristic scale of this order) are less likely to produce contrasting effects over the different subregions\footnote{This comment also applies for the \ac{WA} case.}.
+Being located near the equator, annual temperature variation at these locations are relatively minor. This is useful because it provides a comparison where one of the main variables affecting wind flow is relatively controlled for. Furthermore, the entire focus region is on the order of 1000 km, so synoptic weather features (which have a characteristic scale of this order) are less likely to produce contrasting effects over the different subregions.
+
+\subsubsection{Significance of results from this region}
 
 Wind farms are concentrated on agricultural land along the western coast where there are plans for continued development. But as in the case of \ac{WA}, the value of this focus region isn't necessarily in its direct implications for existing wind farms in the area, but in that it may yield some insights into the principles between land cover change and surface winds, which may then have broader implications for wind energy generation in general.
 
 \subsubsection{Study periods}
 \label{sssec:period_seas_ca}
 
+\paragraph{Selected periods}
+
 For \ac{CA}, the selected periods for the similar comparison was from Jan-2002 to Dec-2006 and from Jan-2014 to Dec-2018 (see Figure~\ref{fig:ca_ind}).
 
-\begin{figure}[!ht]
+\begin{figure}[!htp]
 	\centering
 	\includegraphics[width=0.9\textwidth]{ca_ind.png}
 	\caption[CA's and SA's relevant climate indices for similar comparison]{\ac{NOAA} climate indices for climate drivers in \ac{CA}. Green shading highlights selected periods. Blue and red shading highlight La Nina and El Nino events respectively.}
 	\label{fig:ca_ind}
 \end{figure}
 
+\paragraph{Very similar values and trends in climate indices}
+
 The pair of Jan-2002 to Dec-2006 and Jan-2014 to Dec-2018 was deemed most appropriate since these periods had comparable averages in relevant climate indices and appear to span across the same phase of the relevant atmospheric oscillations. This was true for all of the relevant indices: \ac{AMOI}, \ac{PDOI}, \ac{ONI} (for \ac{ENSO}), and the \ac{EPOI}. The \ac{AOI} and \ac{NAOI} over these periods (not shown) also appeared to span across the same phase but had 5-year averages with slightly higher disparities (but these disparities were nevertheless small in terms of the characteristic size of the oscillations). The \ac{DMI} and the \ac{AAOI} (not shown) over these periods, on the other hand, were considerably different, but these were assumed not to be a major factor due to the distance of the Indian Ocean and Antarctica from the Americas\footnote{Significant effects due to teleconnections are theoretically possible but we have assumed this isn't the case here}.
 
+\paragraph{Summary of El Nino-Southern Oscillation events}
+
 The similarity between these periods is particularly remarkable because even the monthly values and 5-year averages for the \ac{ONI} (which has irregular oscillations) display a similar time evolution pattern. Both periods begin with the conclusion of an El Nino event and end past halfway into an La Nina event, and fully covers another La Nina event in between. The period from Jan-2014 to Dec-2018 contains an additional El Nino event not found in the period from Jan-2002 to Dec-2006 but this appears to mostly be a technicality with the definition of an El Nino event. A look at the monthly values reveals a spike in the \ac{ONI} which could have qualified as an El Nino event under slightly relaxed definitions. Furthermore, the monthly values between the starting El Nino event and ending La Nina event are almost mirror images of each other.
+
+\paragraph{Time difference between periods well suited for studying land cover change}
 
 In the case of Costa Rica, although remote sensing indicates that the rate of forest cover increase here was highest during the 1990s, leaf area index data derived from the \ac{AVHRR} instrument (not shown) for this region showed considerable noise and disagreement with \ac{MODIS} (the more advanced instrument). Given these factors, this set of study periods was also desirable because it was completely contained within the \ac{MODIS} coverage period. In addition to this, a land cover classification study by \citet{marx2017} using Landsat and \ac{UAV} data in lowland Costa Rica suggested an 11-year period for a pasture to transition into secondary forest, so a 13 year difference between selected periods corresponds well with our goals for studying the effects of \ac{LCC}. The change in \ac{MLAI} between these periods is displayed in Figure~\ref{fig:ca_lai_similar}.
 
@@ -202,7 +220,7 @@ Figure~\ref{fig:lc_ca} displays trends in \ac{LULCC} at around the time of perio
 
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width=0.9\textwidth]{lc_ca}
+	\includegraphics[width=0.75\textwidth]{lc_ca}
 	\caption[Central America Land Usage]{Land usage and land cover change in Central America \citep{ipcc_2007}.}
 	\label{fig:lc_ca}
 \end{figure}
@@ -211,10 +229,12 @@ Figure~\ref{fig:lc_ca} displays trends in \ac{LULCC} at around the time of perio
 
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width=0.9\textwidth]{maps_twp_sa}
+	\includegraphics[width=0.75\textwidth]{maps_twp_sa}
 	\caption[Northern Brazil Map]{Satellite image displaying Northern Brazil focus region from 65$^\circ$W to 30$^\circ$W longitude and 15$^\circ$S to 0$^\circ$S latitude \citep{maps_sa}. Markers indicating positions and number of wind farms have been edited on using data from \citep{twp_br}.}
 	\label{fig:maps_twp_sa}
 \end{figure}
+
+\subsubsection{Description of region}
 
 We selected the North to Northeast regions of Brazil (65$^\circ$W to 30$^\circ$W longitude and 15$^\circ$S to 0$^\circ$S latitude; see Figure~\ref{fig:maps_twp_sa}) because there has been extensive deforestation over this area and it was believed that effects resulting from \ac{LCC} here were likely to be especially pronounced. The change in \ac{MLAI} between these periods is displayed in Figure~\ref{fig:sa_lai_similar}.
 
@@ -224,6 +244,8 @@ We selected the North to Northeast regions of Brazil (65$^\circ$W to 30$^\circ$W
 	\caption[MLAI similar comparison for NB focus region]{\ac{MLAI} computed over each period in the similar comparison (left and middle), as well as the difference in these values between the two periods (right).}
 	\label{fig:sa_lai_similar}
 \end{figure}
+
+\subsubsection{Significance of results from this region}
 
 Several studies have identified large-scale changes in precipitation and moisture convergence patterns, which indirectly implicate surface wind changes. Effects here are likely to have immediate implications for energy generation due to the number of wind farms in this region (both existing and in the development pipeline\footnote{Up to 60 GW of offshore wind near the northeastern coast is in the early planning stage \citep{offshore_map}.}).
 
@@ -237,7 +259,7 @@ Figure~\ref{fig:lc_sa} displays trends in \ac{LULCC} at around the time of perio
 
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width=0.9\textwidth]{lc_sa}
+	\includegraphics[width=0.75\textwidth]{lc_sa}
 	\caption[Northern Brazil Land Usage]{Land usage and land cover change in Northern South America \citep{ipcc_2007}.}
 	\label{fig:lc_sa}
 \end{figure}

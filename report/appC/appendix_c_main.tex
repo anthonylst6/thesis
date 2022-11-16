@@ -1,4 +1,4 @@
-\chapter{Codebook, files and reproducibility}
+\chapter{Codebook and reproducibility}
 \label{app:code}
 
 All code created in the course of this project is available at \url{https://github.com/anthonylst6/thesis}. Programs created for automating analysis of an arbitrary ERA5 variable (in terms of mean diurnal profile statistics, hourly means and monthly means) were envisioned for general usage and as such, most of the functions within each script have been documented using Python docstrings, and permission to use these programs are granted subject to MIT License conditions.
@@ -203,7 +203,7 @@ Note: the steps in this section have not been tested as of the time of writing.
 	\end{enumerate}
 \end{itemize}
 
-\section{Steps to reproduce thesis results from scratch}
+\section[Steps to reproduce thesis]{Steps to reproduce thesis results from scratch}
 
 Note: The original project scope included analysis for \ac{WA}, \ac{CA} and \ac{NB} but this was cut short to only \ac{WA} due to time constraints.
 
@@ -220,7 +220,7 @@ Note: The original project scope included analysis for \ac{WA}, \ac{CA} and \ac{
 	\item (If personal computer is limited in RAM) Edit the \verb+results_wa.pbs+, \\ \verb+results_ca.pbs+ and \verb+results_sa.pbs+ job scripts in the \verb+scripts+ directory to be compatible with target HPC facility (the provided scripts were designed for the UNSW Katana computational cluster), then submit these as a batch job
 \end{enumerate}
 
-\section{System and time requirements (for reproducing thesis results only)}
+\section[System and time requirements]{System and time requirements (for reproducing thesis results only)}
 \begin{itemize}
 	\item For Western Australia (WA) raw data and results, up to 25 GB of storage, several days for raw data download (due to queueing in ECMWF CDS), and for data processing up to 60 GB of RAM over 12 hours if using 8 CPUs
 	\item For Central America (CA) raw data and results, up to 25 GB of storage, several days for raw data download (due to queueing in ECMWF CDS), and for data processing up to 60 GB of RAM over 12 hours if using 8 CPUs
