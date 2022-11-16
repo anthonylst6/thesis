@@ -1,0 +1,142 @@
+\chapter{Theory and derivations}
+\label{app:derive}
+
+\section{Commutativity of statistical operations}
+\label{sec:commutativity}
+
+\subsection{Mean of monthly averaged by hour of day values is approximately equal to mean of hourly values}
+
+Let $x^m_d(i)$ be the value of a variable at hour i on the dth day of the mth month in the dataset we are computing over, $n_{months}$ the number of months we are computing over, and $n^m_{days}$ the number of days for the mth month in the dataset. Then:
+\begin{eqnarray}
+	\mbox{Mean of monthly averaged by hour of day values for hour i} \\
+	= \frac{1}{n_{months}} \sum_{m=1}^{n_{months}} \frac{1}{n^m_{days}} \sum_{d=1}^{n^m_{days}} x^m_d (i) \nonumber \\
+	= \sum_{m=1}^{n_{months}} (n_{months} n^m_{days})^{-1} \sum_{d=1}^{n^m_{days}} x^m_d (i) \nonumber \\
+	\mbox{Mean of hourly values at hour i} \\
+	= \left( \sum_{j=1}^{n_{months}} n^j_{days} \right)^{-1} \sum_{m=1}^{n_{months}} \sum_{d=1}^{n^m_{days}} x^m_d (i) \nonumber \\
+	= \sum_{m=1}^{n_{months}} \left( \sum_{j=1}^{n_{months}} n^j_{days} \right)^{-1} \sum_{d=1}^{n^m_{days}} x^m_d (i) \nonumber
+\end{eqnarray}
+So the mean of monthly averaged by hour of day values is equal to the mean of hourly values if $n_{months} n^m_{days} = \sum_{j=1}^{n_{months}} n^j_{days}$. This occurs if $n^m_{days}$ is a constant. This condition is not satisfied in general since the number of days in different months varies from 28 to 31. However, this is a small difference, especially when summation is conducted over long periods. Thus we conclude that the mean of monthly averaged by hour of day values is \textit{approximately} equal to the mean of hourly values, and we are justified in computing the mean diurnal profile using monthly averaged by hour of day data (which requires significantly less computer storage and memory).
+
+\subsection{MDP mean is approximately equal to mean of all hourly data values}
+
+Let $x^m_d(i)$ be the value of a variable at hour i on the dth day of the mth month in the dataset we are computing over, $n_{months}$ the number of months we are computing over, and $n^m_{days}$ the number of days for the mth month in the dataset. Then:
+\begin{eqnarray}
+	\mbox{MDP mean} &=& \frac{1}{n_{months}} \sum_{m=1}^{n_{months}} \frac{1}{n^m_{days}} \sum_{d=1}^{n^m_{days}} \frac{1}{24} \sum_{i=1}^{24} x^m_d (i) \\
+	&=& \frac{1}{24} \sum_{m=1}^{n_{months}} (n_{months} n^m_{days})^{-1} \sum_{d=1}^{n^m_{days}} x^m_d (i) \nonumber \\
+	\mbox{Mean of all hourly data values} &=& \left(24 \sum_{j=1}^{n_{months}} n^j_{days} \right)^{-1} \sum_{m=1}^{n_{months}} \sum_{d=1}^{n^m_{days}} \sum_{i=1}^{24} x^m_d (i) \\
+	&=& \frac{1}{24} \sum_{m=1}^{n_{months}} \left( \sum_{j=1}^{n_{months}} n^j_{days} \right)^{-1} \sum_{d=1}^{n^m_{days}} \sum_{i=1}^{24} x^m_d (i) \nonumber
+\end{eqnarray}
+So we conclude that the \ac{MDP} mean of a variable is \textit{approximately} equal to the mean of all hourly data values, and interpret it as such in our results.
+
+\subsection{Mean of hourly changes is equal to hourly change in mean values}
+
+Let $x^i_j$ be the value of a variable at hour i for the jth instance in the dataset we are computing over, $n$ the number of instances we are computing over, and $mean_j$ the mean computed over all instances of a variable, whether compiled over a month, an entire dataset, or other. Then:
+\begin{eqnarray}
+	mean_j(x^i_j - x^{i-1}_j) &=& \frac{1}{n} \sum_{j=1}^{n} (x^i_j - x^{i-1}_j) \\
+	&=& \frac{1}{n} \sum_{j=1}^{n} x^i_j - \frac{1}{n} \sum_{j=1}^{n} x^{i-1}_j \nonumber \\
+	&=& mean_j(x^i_j) - mean_j(x^{i-1}_j) \nonumber
+\end{eqnarray}
+So we can interpret the \ac{MDP}, hourly means and monthly means for the hourly change as the hourly change in \ac{MDP}, hourly means and monthly means respectively.
+
+\subsection{Maximum and minimum of means does not necessarily equal to mean of maxima and minima}
+
+Let $x^i_d$ be the value of a variable at hour i for the dth day in the dataset we are computing over, $n_{days}$ the number of days we are computing over, and $mean_d$ the mean computed over all day instances of a variable, whether compiled over a month, an entire dataset, or other. Then:
+\begin{eqnarray}
+	max\left( \left\{ mean_d(x^i_d) : i \in \mathbb{Z} \cap [1,24] \right\} \right) \leq mean_d \left( max( \{ x^i_d : d \in \mathbb{Z} \cap [1,24]) \} \right) \\
+	min\left( \left\{ mean_d(x^i_d) : i \in \mathbb{Z} \cap [1,24] \right\} \right) \geq mean_d \left( min( \{ x^i_d : d \in \mathbb{Z} \cap [1,24]) \} \right)
+\end{eqnarray}
+\ac{MDP} maxima and minima correspond to the LHS of these equations and need to be interpreted as such. They do not necessarily describe the maxima and minima of days considered individually.
+
+\subsection{Magnitude of mean vector does not necessarily equal to mean of vector magnitudes}
+
+Let $\vec{v^i_j}$ be a vector quantity at hour i for the jth instance in the dataset we are computing over, and $n$ the number of instances we are computing over. Using the triangle inequality, we have:
+\begin{eqnarray}
+	\mbox{Magnitude of mean vector at hour i} = \left| \frac{1}{n} \sum_{j=1}^{n} \vec{v^i_j} \right| \\
+	\leq \frac{1}{n} \sum_{j=1}^{n} |\vec{v^i_j}| \nonumber \\
+	= \mbox{Mean of vector magnitudes at hour i} \nonumber
+\end{eqnarray}
+Thus the magnitude of mean vector is less than or equal to the mean of vector magnitudes, and this is why an exception was made for wind speed summary statistics in our analysis (these were computed using instantaneous hourly values from zonal and meridional components rather than monthly averaged by hour of day values). This result also implies that the magnitude of wind velocity summary statistics will not necessarily coincide with wind speed summary statistics.
+
+\subsection{Gross capacity factor from mean power curve is equal to mean of gross capacity factors from each power curve}
+
+Let $WS100^i_j$ be the 100 m wind speed at hour i for the jth instance in the dataset we are computing over, $n$ the number of instances we are computing over, and $P_k$ the power curve of the kth turbine. The gross capacity factor is given by the average power generated divided by the nameplate power rating $P_{nameplate}$, so:
+\begin{eqnarray}
+	\mbox{Gross capacity factor from mean power curve} \\
+	= \frac{\frac{1}{24n} \sum_{i=1}^{24} \sum_{j=1}^{n} \left[\frac{1}{3} \sum_{k=1}^{3} P_k (WS100^i_j) \right]}{P_{nameplate}} \nonumber \\
+	= \frac{1}{3} \sum_{k=1}^{3} \left[ \frac{\frac{1}{24n} \sum_{i=1}^{24} \sum_{j=1}^{n} P_k (WS100^i_j)}{P_{nameplate}} \right] \nonumber \\
+	= \mbox{Mean of gross capacity factors from each power curve} \nonumber
+\end{eqnarray}
+
+\section{Derivation for net atmospheric condensation}
+\label{sec:nac_derive}
+
+Here we derive the formula used for \ac{NAC} (Eq~\ref{eq:nac}). The \ac{TCWV} in a grid cell will change under the following scenarios:
+\begin{enumerate}
+	\item The balance between evaporation and condensation in the atmosphere.
+	\item The balance between evaporation and condensation on the Earth's surface.
+	\item The balance between convergence and divergence of water vapour (i.e.\ movement of water vapour into the grid cell from neighbouring grid cells or vice versa).
+	\item The balance between sublimation (change of state from solid to gas) and deposition (change of state from gas to solid).
+	\item The balance between water vapour products and water vapour reactants for chemical reactions occurring within the grid cell.
+\end{enumerate}
+We will assume that the effects of sublimation/deposition and chemical reactions are negligible in comparison to evaporation/condensation and water vapour movement.
+Positive \ac{NSE} constitutes a positive rate of \ac{TCWV} increase (i.e.\ there is an increased concentration of water vapour in that grid cell since liquid water is evaporating into water vapour), while positive \ac{NAC} and positive \ac{VIDMF}\footnote{Moisture refers to water vapour only per ERA5 definition for this variable.} constitutes a negative rate of \ac{TCWV} increase (i.e.\ \ac{TCWV} is decreasing because water vapour is condensing out into liquid droplets or is diverging/leaving the grid cell). So we have:
+\begin{eqnarray}
+	\frac{d}{dt}(TCWV \ [kg m^{-2}]) = -NAC \ [kg m^{-2} s^{-1}] + NSE \ [kg m^{-2} s^{-1}] \\
+	- VIDMF \ [kg m^{-2} s^{-1}] \nonumber \\
+	\label{eq:nac_app}
+	NAC \ [kg m^{-2} s^{-1}] = NSE \ [kg m^{-2} s^{-1}] - VIDMF \ [kg m^{-2} s^{-1}] \\ 
+	- \frac{d}{dt}(TCWV \ [kg m^{-2}]) \nonumber
+\end{eqnarray}
+and the equation used to obtain the jth instance of \ac{NAC} at hour i from raw \ac{ERA5} data is:
+\begin{eqnarray}
+	\label{eq:nac^i_j}
+	NAC^i_j \ [kg m^{-2} s^{-1}] = - \frac{1000 \ kg m^{-2}}{1 \ m \mbox{ of water}} \frac{(NSE^i_j + NSE^{i-1}_j) \ [m \mbox{ of water}]}{2 \times 3600 \ s} \\
+	- VIDMF^i_j \ [kg m^{-2} s^{-1}] - \frac{(TCWV^{i+1}_j - TCWV^{i-1}_j) \ [kg m^{-2}]}{2 \times 3600 \ s} \nonumber
+\end{eqnarray}
+
+This equation uses an approximation for $NSE$ and $\frac{d}{dt} (TCWV)$. The raw \ac{ERA5} data for \ac{NSE} is specified in units of m of water equivalent, with net evaporation being negative, and is an \textit{accumulation} parameter that ends at the specified hour (i.e.\ $NSE^i_j$ corresponds to the total \textit{amount} of net surface evaporation over the hour window beginning at hour i-1 and ending at hour i). To approximate the instantaneous \textit{rate} of net surface evaporation at hour i, we thus average over accumulated net surface evaporation in the hour windows leading up to and immediately after hour i (this corresponds to $NSE^i_j$ and $NSE^{i+1}_j$ respectively). As this is an average over two periods each of 1 hour length, we divide by $2 \times 3600 \ s$ to obtain the \textit{rate}. We also introduce a negative sign in front of the \ac{NSE} term because we are defining positive \ac{NSE} to mean net evaporation in contrast to the raw \ac{ERA5} data definitions. Finally, liquid water has a density of approximately $1000 \ kg m^{-3}$ so 1 m of water is equivalent to an areal density of $1000 \ kg m^{-2}$.
+
+The raw \ac{ERA5} data for \ac{TCWV} is an \textit{instantaneous} parameter for the specified hour (i.e.\ $TCWV^i_j$ models the actual column water vapour at the instant of hour i). To then approximate the instantaneous \textit{rate of change} for \ac{TCWV} at hour i, we use the average rate of change between the instances at hour i-1 and hour i+1 (the values at these hours correspond to $TCWV^{i-1}_j$ and $TCWV^{i+1}_j$ respectively). As the period of time between hour i-1 and hour i+1 is 2 hours, we again divide by $2 \times 3600 \ s$ in obtaining the rate.
+
+By linearity of the mean function, we obtain from Eq~\ref{eq:nac^i_j}:
+\begin{eqnarray}
+	\label{eq:nac^i}
+	mean_j(NAC^i_j) \ [kg m^{-2} s^{-1}] = \\
+	- \frac{1000 \ kg m^{-2}}{1 \ m \mbox{ of water}} \frac{\{mean_j(NSE^i_j) + mean_j(NSE^{i-1}_j)\} \ [m \mbox{ of water} ]}{2 \times 3600 \ s} \nonumber \\
+	- mean_j(VIDMF^i_j) \ [kg m^{-2} s^{-1}] \nonumber \\ 
+	- \frac{\{mean_j(TCWV^{i+1}_j) - mean_j(TCWV^{i-1}_j)\} \ [kg m^{-2}]}{2 \times 3600 \ s} \nonumber
+\end{eqnarray}
+where $mean_j$ is the mean computed over all instances of a variable, whether compiled over a month, an entire dataset, or other. Thus Eqn~\ref{eq:nac^i} can be used to construct the summary statistics for \ac{NAC} regardless of whether hourly data or monthly averaged by hour of day data is being used.
+
+Note that \ac{NAC} is neither an instantaneous or accumulation parameter. It is a hybrid value derived from the average of two accumulations (\ac{NSE}), an instantaneous value (\ac{VIDMF}) and a mean rate of change using two instantaneous values (\ac{TCWV}) as endpoints. These methods mean that maxima and minima for \ac{NSE} may be underestimated and overestimated respectively, while the most positive and most negative rate of change in \ac{TCWV} may be underestimated and overestimated respectively. To the extent that hours for the maxima and minima for \ac{NSE} coincide with the most positive and negative rate of change in \ac{TCWV} respectively (which is possible, given that net evaporation contributes to \ac{TCWV} increase), these biases in \ac{NAC} may cancel each other out (since \ac{NSE} has a positive coefficient on the RHS of Eq~\ref{eq:nac_app} while \ac{TCWV} a negative), but this will not always be the case.
+
+\section{Heuristical argument for anistropy of condensation induced airflow}
+\label{sec:anis_cond}
+
+\begin{itemize}
+	\item Under hydrostatic equilibrium air pressure decreases with altitude. We can roughly divide up the ABL into 3 layers: the high pressure region at the surface, a medium pressure region where the clouds will form (conceptually described later), and a low pressure region above this. 
+	\item Localised parcels of air within a region will have different temperatures and relative humidities, and hence different LCLs. As there are many such air parcels, we can conceptually identify the “region where clouds will form” with a band of heights which the LCLs (bar outliers) span across (in a similar vein to how the discrete energy levels of atoms in close proximity bunch up together to form energy bands).
+	\item Upon condensation there is a drop in pressure such that the middle of the 3 layers is now the one with the lowest pressure. Particles at the first interface (counting from the surface up) will then have a pressure gradient force upwards with magnitude which exceeds that of the gravitational force (they were previously equal when in hydrostatic equilibrium). Meanwhile, the pressure gradient force at the second interface reverses direction and is now compounding upon the downwards effect of gravity. 
+	\item The ensuing circulation is such that air from the surface is directed upwards and accelerates through the first interface, then decelerates and spreads outwards as it penetrates through the second interface. As the fluid enters motion, this subsequently changes the Eulerian pressure field such that the surface layer now has a low pressure relative to the top layer (because air decelerates and accumulates here), while the middle layer where atmospheric condensation occurs continues to have the lowest pressure. At this point there becomes less of a contrast between the forces at each interface (and so the effects of condensation are less anisotropic) but the forces nevertheless remain favourable to the circulation pattern of surface air accelerating upward through the first interface then decelerating and spreading outwards while penetrating through the second interface.
+	\item The final configuration is conceptually similar to the way electrical circuits work if we identify the top layer with the outgoing leg of conventional current from a battery, the middle layer with the battery itself, and the surface layer with the return leg of conventional current. In the circuit / atmosphere there will be low electric potential (potential energy per unit charge) / air pressure (potential energy per unit volume) in the surface layer, a negative electric potential difference / pressure difference across the middle layer (going from the first interface to the second interface)\footnote{By Kirchoff’s voltage law, potential difference across the battery must be negative if potential difference over the remainder of the circuit is positive.} which is sustained by chemical / latent energy, and high electric potential / air pressure in the top layer.
+	\item And in the same way that batteries connect together two material of different electrochemical potential (potential energy per unit mole) so that one end more readily emits electrons and the other accepts (giving rise to anisotropic electron flow), atmospheric condensation under gravity produces two (abstract) interfaces subject to different net forces per unit area (equivalent to pressure and potential energy per unit volume) so that one end more readily expels air (downwards) and the other accepts (upwards).
+	\item Another way to view this is that particles in the middle layer will have a tendency to spread outwards due to internal pressure within this layer, but this motion is either supported or inhibited by the pressure balances (net of gravitational and pressure-gradient forces per unit area) at each interface. This is conceptually similar to how the buildup of electron and hole pressures in a solar cell upon incident radiation are supported or inhibited by the selective membranes at each contact (which have different electron and hole conductivities).
+	\item Note that these circuit analogies might not be merely superficial similarities. Theoretical work by \citet{fedosin2015} suggests that there is a fundamental symmetry embodied within the equations for electromagnetic and pressure fields. The pressure field equations are
+	\begin{eqnarray}
+		\nabla_\nu f^{\mu \nu} = \frac{- 4 \pi \sigma}{c^2} J^\mu = -4 \pi \sigma \epsilon_0 \mu_0 J^\mu \\
+		\nabla_\sigma f_{\mu \nu} + \nabla_\mu f_{\nu \sigma} + \nabla_\nu f_{\sigma \mu} = 0
+	\end{eqnarray}
+	while the electromagnetic field equations are\footnote{Note that these equations are usually expressed with positive coefficient on the RHS. The negative coefficient arises here due to use of the column rather than row index for the nabla operator and the fact that the electromagnetic tensor is antisymmetric.}
+	\begin{eqnarray}
+		\nabla_\nu F^{\mu \nu} = - \mu_0 j^\mu \\
+		\nabla_\sigma F_{\mu \nu} + \nabla_\mu F_{\nu \sigma} + \nabla_\nu F_{\sigma \mu} = 0
+	\end{eqnarray}
+	(in covariant form using Einstein notation). $f_{\mu \nu}$ is the pressure field tensor, $F_{\mu \nu}$ is the electromagnetic tensor, $\epsilon_0$ is the permittivity of free space, $\mu_0$ is the permeability of free space, $\epsilon_0$ is the permittivity of free space, $c$ is the speed of light, $\sigma$ is the pressure field constant, $J^\mu = \rho_0 u^\mu$ is the mass four-current, and $j^\mu = \rho_{0q} u^\mu$ is the charge four-current, where $\rho_0$ is the mass density of matter in the comoving reference frame, $\rho_{0q}$ is the charge density in the comoving reference frame, and $u^\mu$ is the four-velocity.
+	\item Given the symmetry between charge and mass density in these equations, we can further extend the electrical circuit analogy and make the similarities even more apparent by examining the circuit in terms of electric potential multiplied by charge density: this quantity represents potential energy per unit volume of the charges and is analogous to pressure (potential energy per unit volume of the masses). Furthermore, we will use a solar cell rather than battery in the circuit (with positive terminal at the second interface and negative terminal at the first interface). In addition to this, we will conceptualise the atmospheric circulation as discrete localised volumes with fluxes of gas quanta (localised addition of mass density; analogous to localised addition of conventional charge density for hole fluxes) and vacuum quanta (localised removal of mass density; analogous to localised removal of conventional charge density / negative charge for electron fluxes). Because we will be describing conventional charge which is positive, a downwards / upwards flux of electrons will correspond to an upwards / downwards flux of conventional charge density \textit{removal}. The analogue to a downwards / upwards flux of electrons will thus be an upwards / downwards flux of vacuum quanta, while an upwards / downwards flux of holes corresponds to a downwards / upwards flux of gas quanta.
+	\item Within the middle semiconductor / cloud layer of the electrical circuit / atmospheric circulation, there is ongoing electron-hole / vacuum-gas generation and recombination, and these quantas migrate to the two interfaces under the building internal pressure of the layer (as the volume of the middle layer is fixed by definition, a corollary to this is increasing potential energy stored within this layer). The first interface has a relatively high electron conductivity / vacuum quanta permeability while the second interface has a relatively high hole conductivity / gas quanta permeability. The result is an anisotropic flow whereby there is a net upwards flux of conventional charge / mass at both interfaces (i.e. conventional current / wind is flowing upwards at these interfaces). A corollary to this is a downward flux of electrons / vacuum quanta at both interfaces, and no remarkable comments about hole/gas fluxes because these are theoretical constructs which are valid only within the middle semiconductor / cloud layer (not valid within the wider circuit / circulation).
+	\item Within the circuit / circulation, there will be a relatively high potential energy per unit volume above the second interface, and a relatively low potential energy per unit volume below the first interface. For the flow to be sustained, there needs to be external light / latent energy input for the generation of electron-hole / vacuum-gas pairs as it is the pressure buildup from these pairs within the middle layer which drives the flow. That is, energy for the flow \textit{outside of the middle layer} derives from the potential energy \textit{within the middle layer}, and this potential energy must in turn derive from conversion of energy sources external to this layer. In both cases, these energy sources are instantaneously realised within the middle layer since photons (light energy) will either be absorbed in whole or rejected in whole by electrons, while moisture (latent energy) will instantaneously undergo condensation and leave a vacuum quanta by construction of the model (the middle layer was defined as the region where condensation will occur). 
+	\item Note that there is an asymmetry in this treatment because a corollary to external latent energy input is a mass flux (in the form of water vapour), which does not exist in the case of external light energy input. Water vapour which is within the circulation may condense out and to the extent that it drops out of the circulation and onto the surface, there is a loss of mass as the droplets become external to the system. This in turn will mean a reduced air density. Conversely, for external sources of moisture input (eg. if precipitated droplets re-enter the system due to evaporation, or there is moisture advection into the system from afar), mass enters the system and so air density is increased (we are assuming a fixed volume defining the circulation). We have assumed in our treatment that these effects are minor and do not change our conclusions regarding anisotropic air flow. Of course, this treatment in itself is not enough to suggest that real-life atmospheric circulations represent a good approximation to the conditions assumed (both tacit and explicit; with respect to the conclusions regarding anisotropic air flow), and even then questions remain regarding whether such effects will be significant.
+	\item Also, unlike electric potential in the circuit which was independent of height, our treatment of atmospheric circulation tacitly incorporated the effect of height: we were examining pressure divided by density using the net of gravitational and pressure-gradient forces, and the former force does depend on height. So also crucial (for anisotropy of condensation-induced airflow) is that atmospheric condensation is occurring at the appropriate height: not so low that the anisotropy is biased downwards, and not so high that the resulting circulation stalls (a heuristical argument using the previous 3 layer model follows below).
+	\item If condensation happened at the surface rather than middle layer, then upon initial disturbance from hydrostatic equilibrium, the surface layer will become the one with lowest pressure, while the middle and top layers will have a medium and low pressure respectively (as remains from the initial equilibrium due to the relatively short time scale for condensation). Both the pressure gradient and gravitational forces for particles at the first interface will be directed downwards so that air flows downwards. Meanwhile, at the second interface, the downwards gravitational force will have greater magnitude than the upwards pressure-gradient force (this is because the middle region will simultaneously be decreasing in pressure as air at the first interface flows downwards, in the process weakening the pressure-gradient force at the first interface from what was initially a hydrostatic equilibrium). The ensuing fluid circulation will cause the surface layer to have medium pressure (as the effects of condensation and airflow into this layer from above partially counteract each other), but the forces on particles at each interface will still be downwards and so the downward anisotropic bias persists.
+	\item If condensation happened at the top layer instead, then upon initial disturbance of the hydrostatic equilibrium, the top layer will have especially low pressure, while the middle and surface layers will initially still have the medium and high pressures respectively from the initial equilibrium. This is initially conducive for upwards air flow through both the first and second interfaces. But as the fluid is set in motion, the top layer increases in pressure (as air from both the surface and middle layers is sent here) and partially offsets the effect of condensation, resulting in a medium amount of pressure. The middle layer likely retains a medium pressure as air is simultaneously being fed into (from below) and drained (from above) this layer. The surface layer also ends up with a medium pressure as air is initially directed upwards. The result is a weak pressure gradient force but the omnipresent gravitational force at each interface (which goes against the initially induced upwards air motion). Thus the circulation is likely to stall.
+\end{itemize}

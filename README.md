@@ -16,6 +16,7 @@
     
 
 ## High-level description of functions
+
 - The functions created in the course of this thesis allow comparison for the mean leaf area index (MLAI) and mean fraction of absorbed photosynthetically active radiation (MFAPAR) between two arbitrary periods (so long as they are within the range of available data from 1981-2021). And the comparison can further be done in terms of a subset of months from each period. So it is possible, for example, to compare the MLAI over the months of January, March and December between 1990-2000 with the MLAI over the months of July and November between 2005-2007. These variables derive from the GLASS dataset.
 - These functions also allow comparison for various ERA5 variables between two arbitrary periods in terms of each variable's diurnal profile (can choose subset of months), mean (can choose subset of both months and hours), hourly means for each hour of the day (can choose subset of months), and monthly means for each month of the day (can choose subset of hours).
 - For wind speed, there is also a separate function to compute the mean, standard deviation, Weibull distribution parameters resulting from an empirical fit, and other.
@@ -109,7 +110,7 @@ Suppose we were interested in analysing the seasonal differences in the hourly m
 
 ## Analysing other regions and variables
 
-Note: the steps in this section have not been tested.
+Note: the steps in this section have not been tested as of the time of writing.
 
 ### For custom regions
 
@@ -164,6 +165,7 @@ Note: the steps in this section have not been tested.
     3. Edit the try-except blocks in the `plot_means_given_layer_and_type`, `plot_diff_means_given_layer_and_type` and `plot_comp_means_given_layer_and_type` functions in the `plot_funcs.py` script so that a total of 6 ERA5 variables will be displayed at all times (this is an unfortunate design constraint from displaying 8 rows for the comparison plots with the first 2 rows occupied by MLAI and MFAPAR)
 
 ## Steps to reproduce thesis results from scratch
+Note: The original project scope included analysis for WA, CA and NB but this was cut short to only WA due to time constraints.
 1. (If haven't already) Install miniconda for Python 3.9 or later using instructions from  https://docs.conda.io/en/latest/miniconda.html
 2. Download thesis repository by entering `git clone git@github.com:anthonylst6/thesis.git` into a bash shell (Terminal for Linux or Mac, Git Bash recommended for Windows) or clicking Code -> Download ZIP on Github then unzip the folder
 3. Open bash shell in home directory of repository then run `conda env create -f env_thesis.yml`

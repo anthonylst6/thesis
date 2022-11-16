@@ -1,10 +1,10 @@
+.ipynb_checkpoints/
 data_archived/
 data_final/
 data_processed/
 data_raw/
 logs/
-report/
-results/
+report_examples/
 scrap/
 scripts/__pycache__/
 scripts/.ipynb_checkpoints/
