@@ -3,23 +3,100 @@
 
 \section{Background}
 
-\section{Research aims and motivations}
+\subsection[Brief history of WA LCC]{Brief history of land cover in southwest Western Australia}
 
-% why is this a non trivial problem
+The southwest region of \ac{WA} has experienced extensive \ac{LCC} over the past two centuries since European settlement \citep{narisma2003}, including an intensive period from 1950 to 1980 \citep{xinmei1995}. This has primarily taken the form of clearing native trees for livestock pastures, with subsequent adoption of wheat as the main agricultural crop in the region \citep{narisma2003, xinmei1995}. This change has been heavily implicated for significant atmospheric changes in the region, including an estimated 10\% decrease in water vapour flows, significant decline in rainfall, and subsequent drying of the region \citep{gordon2003}.
+
+Subsequent studies have then noted that wheat in the area, which is light in colour and has an annual growing season supported by irrigation, and for which the accompanying farmland is often left bare between harvest and the next growing season, has produced a marked seasonality in the surface temperature and surface energy balances in the agricultural region \citep{lyons1996}. As water vapour flows indict the effect of winds, and temperature is known to correlate with wind speeds \citep{lapworth2003, lapworth2006}, it is then natural to suspect that there have also been changes in surface winds which are attributable to the \ac{LCC}. 
+
+\subsection{Broader context}
+
+It is well known that agricultural cover induces less friction upon surface winds than taller tree cover \citep{geiger1950}. But delineations by the \ac{SBFWA} between agricultural and native vegetation show similar roughnesses \citep{lyons2001} yet still display dramatically different atmospheric conditions \citep{ray2003}. So other effects are likely at play. A better understanding of the driving mechanisms behind these historical changes allows better assessment of what effect future land cover change is likely to have.
+
+Parallel with these developments has been unprecedented anthropogenic change in other regions and countries as well. Studies across different areas often produce seemingly disparate and often contrasting results \citep{xu2022}. But this also provides opportunity for a comparative study to elicit the general principles behind air circulation. This project seeks to further understanding into this by studying in detail the unique land cover delineation observed in southwest \ac{WA}, then placing this in a broader picture consistent with literature findings.
+
+\section{Motivations}
+
+The question of how \ac{LCC} affects \ac{SW} is poorly understood, as evidenced by the limited literature attempting this direct link. From the perspective of wind generation, wind is often viewed as a passive resource for exploitation. But to the extent that the future of winds can be highly variable to the path of land cover trends, this represents an additional risk which may not be internalised in project considerations.
+
+Furthermore, although this thesis was conducted primarily under the context of wind energy generation, the subject of this research also has important ramifications for cognate fields such as hydrology, climate science, environmental sustainability and hydroelectricity generation. As winds affect moisture convergence patterns and subsequent rainfall, this may have important social, geopolitical, and ecological consequences.
+
+\section{Broad research aims}
+
+The broad research aims of this project are:
+\begin{itemize}
+	\item Understand what are the main drivers behind local atmospheric circulations.
+	\item Understand the general principles behind land cover-wind interactions.
+	\item Deduce what ramifications future \ac{LCC} may entail.
+\end{itemize}
 
 \section{Objectives and scope}
 
-- analyse how diurnal variation is affected
-- analyse how atmospheric circulations work
-- analyse surface energy balance
-- evaluate effect of condensation
-- analyse the implications of this for wind energy generation
-- devise a set of general principles for assessing how land cover will affect surface winds
+\begin{itemize}
+	\item Analyse how historical and future \ac{LCC} may have affected or may affect the surface wind resource in southwest \ac{WA}.
+	\item Articulate the likely impacts future \ac{LCC} may have on wind energy operation.
+	\item Evaluate the role which temperature gradients and atmospheric condensation have on the diurnal and seasonal variability of atmospheric energy conversions and surface energy balances.
+	\item Devise, using a combination of project results and literature findings, a set of general heuristics for assessing how land cover affects surface wind patterns.
+\end{itemize}
 
 \section{Thesis statement and hypothesis}
 
+\ac{LCC} has led to a significant change in the surface wind patterns of southwest \ac{WA}. These changes cannot be solely attributed to roughness length changes. There should at least be some effect from surface temperature and energy balance changes, possibly then leading to changes in atmospheric energy conversions. Changes in wind patterns should then produce non-trivial effects on wind energy generation.
+
 \section{Overview and structure of thesis}
 
-Note that you may have multiple \texttt{{\textbackslash}include} statements here, e.g.\ one for each subsection.
+\subsection{Chapters}
 
-General structure of this chapter should read as follows.  This chapter should be used to motivate your study and answer the question ``Why is this important?''. Also, it should define what you set out to achieve (these will be revisited in the conclusions chapter). You should describe your approach to the Aims and Objectives, including an evaluation part.
+\paragraph{Literature Review}
+
+Following this introductory chapter, we first present a literature review (Section~\ref{ch:litreview}) of research into recent \ac{NSWS} changes, debates regarding the relative contribution between urbanisation and large-scale atmospheric oscillations towards observed changes and disparate literature on vegetation-atmosphere interactions.
+
+\paragraph{Methodology}
+
+Secondly, we present the methodology (Section~\ref{ch:method}) used in our analysis, including justifications for our choice of study regions and periods, statistical summaries tailored for investigating diurnal and seasonal variations, as well as the variables, datasets and software used in our analysis.
+
+\paragraph{Results and Discussion of Findings}
+
+Next, we present our results and discussion of findings (Section~\ref{ch:results}), for different types of comparisons including diurnal, seasonal and cross-period analysis punctuated by significant vegetation cover change. We discuss what these results indicate regarding the general principles behind atmospheric circulations, and look at how this is likely to affect wind energy operation.
+
+\paragraph{Extended Discussion}
+
+Then, we present an extended discussion (Section~\ref{ch:discussion}) on a conceptual framework we developed for making sense of apparently contradictory observations in the project results as well as literature. We also discuss the limitations, improvements and future directions given the overall approach taken in this project.
+
+\paragraph{Conclusions and Summary}
+
+Finally, we provide our conclusions and summary (Section~\ref{ch:conclusions}) of the key insights and progress achieved over this project.
+
+\subsection{Ancillary focus on water vapour}
+
+\subsubsection{Reasons for ancillary focus}
+
+Throughout this thesis, there is a heavy ancillary focus on atmospheric water vapour.\footnote{We have used the terms "water vapour" and "moisture" interchangeably in this report.} This is true for the selection of research in the literature review, the choice of study variables in the methodology, and all subsequent analysis. There is an inherent link between winds and atmospheric water vapour since the former is the means by which transport of the latter occurs. More explicit reasons for this focus include:
+
+\begin{itemize}
+	\item There is a limited amount of literature which directly addresses the link between \ac{LCC} and \ac{SW}. In contrast, there is a wealth of literature directly addressing how \ac{LCC} affects atmospheric moisture trends, from which the effects on wind are implicit and from which many valuable insights can be drawn.
+	\item Reanalysis datasets represent gridded averages, which often omit surface wind observations since the open terrain stipulated by \ac{WMO} \ac{AWS} standards are not well represented in grids with large extents.\footnote{This is only the case for terrestrial winds. Modelled output for oceanic surface winds often assimilate ship and buoy observations \citep{ecmwf2016}.} In the case of the \ac{ERA5} dataset used in this analysis, wind speeds at 100 m (the relevant height for wind generation) are modelled using assimilations from aircraft and atmospheric sounding data for higher pressure levels, then extrapolating downward to the 100 m height \citep{ecmwf2016}. But this only represents discrete flight paths or locations. Satellite irradiance data is also assimilated for global coverage, but this in large part relies back on observations of water vapour, making wind velocities at least an extra step removed away from direct observation \citep{ecmwf2016}.\footnote{Again, this is only the case for terrestrial winds. Modelled output for oceanic winds also assimilates satellite scatterometry data \citep{ecmwf2016}.}
+	\item Starting from first principles, the atmospheric energy budget consists of (gravitational) potential, internal (excluding latent), latent and kinetic energy. Wind energy is affected by conversion of other forms of energy into kinetic. Because gravity is always directed downwards, conversion into potential energy can only be an intermediate step rather than an actual driver of the circulation (see Section~\ref{ssec:drivers}). So conversions into kinetic energy ultimately derive from internal energy (related to temperatures) and latent energy (related to \textit{atmospheric moisture}).
+	\item There is also (in our opinion) strong theoretical justification for the existence of \ac{CIAD}, where latent energy plays a dominant role in driving circulations, often with a contribution an order of magnitude higher than that attributable to temperature differences (see Section~\ref{ssec:lit_ciad} and Appendix~\ref{sec:anis_cond}). This is a theory which we actively investigate in our project.
+\end{itemize}
+
+\subsubsection{Interpreting atmospheric moisture findings in terms of wind}
+
+Where a link is not explicitly drawn between observed atmospheric moisture patterns and surface winds, the following heuristical principles apply:
+
+\begin{itemize}
+	\item Direction of moisture transport in most cases should coincide with that of winds.
+	\item Convergence of moisture and winds should in most cases coincide.\footnote{We have used the terms "wind convergence", "atmospheric convergence" and "mass convergence" interchangeably in this report.}
+	\item Cloud formation will often coincide with moisture convergence.
+	\item The position of cloud liquid and rainfall may be offset from that of cloud formation, due to the effect of winds. If the source of moisture for the cloud can be deduced, then a judgement on wind direction can be made as the position of cloud liquid and rainfall should be downwind of the moisture source.
+	\item Storms represent events of increased turbulence and extreme winds.
+\end{itemize}
+
+\subsubsection{Additional considerations regarding air flow in general}
+
+\begin{itemize}
+	\item Upward air movements from convergence must eventually descend due to gravity. To the extent that air mass is not lost to surroundings and there is no intervening phenomena, air descending nearby will in many cases diverge near the surface and return to the point of convergence for a closed circulation.
+	\item Friction against air masses just outside the volume of this primary circulation may then induce a secondary circulation.
+	\item Fluxes of convergence and divergence need not be parallel with the direction of flow. Even if two streams of air are flowing in the same direction, there can be localised changes in mass density which propagate from one stream to the other along the transverse direction.
+	\item A corollary to fluxes of localised mass density anomalies\footnote{"Anomalies" here in the meteorological sense as meaning distinct from background values.} is a mass flux which \textit{might} affect wind energy generation.
+\end{itemize}

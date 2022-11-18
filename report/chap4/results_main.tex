@@ -1,4 +1,4 @@
-\chapter{Results and discussion of findings}
+\chapter{Results and Discussion of Findings}
 \label{ch:results}
 
 \section{How to interpret comparison plots}
@@ -28,7 +28,7 @@ The orographic variables (\ac{LSE} and \ac{SSGO}) for the \ac{WA} focus region a
 
 \subsection{VIEC delineation along fence}
 
-\ac{VIEC} mean values computed over January displayed a marked distinction across the \acf{SBFWA}, with more strongly negative values on the native side of the fence during both the day and night (see Figure~\ref{fig:wa_jan_comb_1}).\footnote{The following results are also observed to varying degrees for the months of February, October, November and December, but we present January because this month displays these trends most distinctly.} During daytime, this also marks the distinction between positive \ac{VIEC} values on the agricultural side and negative values on the native side. Negative $\ac{VIEC}$ values indicate a greater prevalence for upwards air movement (kinetic energy converted into gravitational potential energy), while positive values indicate the opposite.\footnote{There are better variables than \ac{VIEC} in the ERA5 dataset to analyse upwards/downwards air movement since \ac{VIEC} lumps internal and gravitational potential energy together, but these other variables were not included in the original analysis and time constraints in this project did not allow for modification of the methodology.}
+\ac{VIEC} mean values computed over January displayed a marked distinction across the \acf{SBFWA}, with more strongly negative values on the native side of the fence during both the day and night (see Figure~\ref{fig:wa_jan_comb_1}).\footnote{The following results are also observed to varying degrees for the months of February, October, November and December, but we present January because this month displays these trends most distinctly.} During daytime, this also marks the distinction between positive \ac{VIEC} values on the agricultural side and negative values on the native side. Negative $\ac{VIEC}$ values indicate a greater prevalence for upwards air movement (kinetic energy converted into gravitational potential energy), while positive values indicate the opposite.\footnote{There are better variables than \ac{VIEC} in the ERA5 dataset to analyse upwards and downwards air movement since \ac{VIEC} lumps internal and gravitational potential energy together, but these other variables were not included in the original analysis and time constraints in this project did not allow for modification of the methodology. See Section~\ref{ssec:era5_improve}.}
 
 \begin{figure}[!ht]
 	\centering
@@ -37,7 +37,7 @@ The orographic variables (\ac{LSE} and \ac{SSGO}) for the \ac{WA} focus region a
 	\label{fig:wa_jan_comb_1}
 \end{figure}
 
-The large-scale patterns observed for \ac{VIEC}$^{diff}$ in arid \ac{WA} are mostly a reflection of warmer temperatures during daytime, and warmer temperatures on the native side due to thermal retention and lower albedo of native vegetation compared to bare agricultural soil in January. Evidence for this is a remarkable large-scale spatial correlation between \ac{T2}, \ac{MSLP} and \ac{VIEC} for all months of the year (not shown, but January results are displayed in Figure~\ref{fig:wa_jan_comb_2}). This suggests that the large-scale tendencies for vertical air mass movements in inland areas\footnote{Coastal effects are treated separately later on.} are driven by surface heating, in accordance with standard theory.
+The large-scale patterns observed for \ac{VIEC}$^{diff}$ in arid \ac{WA} are mostly a reflection of warmer temperatures during daytime, and warmer temperatures on the native side due to thermal retention and lower albedo of native vegetation compared to bare agricultural soil in January. Evidence for this is a remarkable large-scale spatial correlation between \ac{T2}, \ac{MSLP} and \ac{VIEC} for all months of the year (not shown, but January results are displayed in Figure~\ref{fig:wa_jan_comb_2}). This suggests that the large-scale tendencies for vertical air mass movements in inland areas\footnote{Coastal effects are treated separately in Section~\ref{sec:comp_seasonal_1400}.} are driven by surface heating, in accordance with standard theory.
 
 \begin{figure}[!ht]
 	\centering
@@ -141,9 +141,9 @@ One way in which negative \ac{VIEC} (rising air) could theoretically be concentr
 
 \subsection{The role of coastal differential heating}
 
-Another way in which negative \ac{VIEC} (rising air) could theoretically be concentrated along the coastline is if a localised pressure gradient (arising from a temperature gradient) along the coastline adverse to the wind direction caused a bunching up of mass flux such that air had to be directed upwards. But results indicate the presence of this band regardless of the strength and direction of the coastline temperature gradient relative to prevailing winds. For the case of 1400 \ac{LT}, Figure~\ref{fig:wa_14_comb_2} displays a negligible coastal pressure gradient, temperature gradient and magnitude of \ac{dWV100} in \ac{JJA}, yet the band exists for these months but not \ac{DJF} where these parameters are much more significant. So it also seems highly unlikely that differential heating is the cause.
+Another way in which negative \ac{VIEC} (rising air) could theoretically be concentrated along the coastline is if a localised pressure gradient (arising from a temperature gradient) along the coastline adverse to the wind direction caused a bunching up of mass such that air had to be directed upwards. But results indicate the presence of this band regardless of the strength and direction of the coastline temperature gradient relative to prevailing winds. For the case of 1400 \ac{LT}, Figure~\ref{fig:wa_14_comb_2} displays a negligible coastal pressure gradient, temperature gradient and magnitude of \ac{dWV100} in \ac{JJA}, yet the band exists for these months but not \ac{DJF} where these parameters are much more significant. So it also seems highly unlikely that differential heating is the cause.
 
-Although Figure~\ref{fig:wa_14_comb_2} displays a negligible coastal gradient in \textit{air} temperature for \ac{JJA} at 1400 \ac{LT}, the Leewuin (Ocean) Current during these months actually brings about a significant increase in \ac{SST} for the continental shelf waters \citep{berthot1997}. This can be seen in Figure~\ref{fig:wa_14_comb_1}, where offshore evaporation is significantly higher in \ac{JJA} than \ac{DJF} despite lower solar irradiance.
+Although Figure~\ref{fig:wa_14_comb_2} displays a negligible coastal gradient in \textit{air} temperature for \ac{JJA} at 1400 \ac{LT}, the Leeuwin (Ocean) Current during these months actually brings about a significant increase in \ac{SST} for the continental shelf waters \citep{berthot1997}. This can be seen in Figure~\ref{fig:wa_14_comb_1}, where offshore evaporation is significantly higher in \ac{JJA} than \ac{DJF} despite lower solar irradiance.
 
 \subsection{The role of coastal condensation}
 \label{ssec:coastal_cond}
@@ -165,7 +165,7 @@ On top of this, there is the effect of coastal temperature gradients in determin
 
 \paragraph{Consistency with JJA results}
 
-Weaker winds from temperature gradients in \ac{JJA} compared to \ac{DJF} means the buildup of oceanic moisture along the coasts has a high condensation rate relative to moisture flux transport to inland areas. For the 1400 \ac{LT} case, this is reflected in \ac{JJA} by low \ac{WV100} magnitude, low \ac{dWV100} magnitude and weak coastal \ac{T2} contrast in Figure~\ref{fig:wa_14_comb_2}, as well as a less positive \ac{VIDMF} offshore (west of the coastline) despite higher \ac{NSE} in Figure~\ref{fig:wa_14_comb_1}. The result is that \ac{VIEC} displays a similar band to \ac{NAC} along the coast. This is also supported by the fact that the negative \ac{VIEC} band is absent from around 29$^\circ$S to 27$^\circ$S, which coincides with where \ac{dWV100} is especially strong.
+Weaker winds from temperature gradients in \ac{JJA} compared to \ac{DJF} means the buildup of oceanic moisture along the coasts has a high condensation rate relative to moisture convergence flux to inland areas. For the 1400 \ac{LT} case, this is reflected in \ac{JJA} by low \ac{WV100} magnitude, low \ac{dWV100} magnitude and weak coastal \ac{T2} contrast in Figure~\ref{fig:wa_14_comb_2}, as well as a less positive \ac{VIDMF} offshore (west of the coastline) despite higher \ac{NSE} in Figure~\ref{fig:wa_14_comb_1}. The result is that \ac{VIEC} displays a similar band to \ac{NAC} along the coast. This is also supported by the fact that the negative \ac{VIEC} band is absent from around 29$^\circ$S to 27$^\circ$S, which coincides with where \ac{dWV100} is especially strong.
 
 \paragraph{DJF results and flux of moisture convergence towards fence}
 
@@ -179,6 +179,7 @@ On the other hand, stronger winds from temperature gradients in \ac{DJF} imply t
 \end{figure}
 
 \subsection{Implications for surface wind resource} 
+\label{ssec:implications}
 
 \subsubsection{Effect on coastal breezes}
 
@@ -194,7 +195,7 @@ The replacement of native vegetation with annual crops, where there is irrigatio
 
 In all cases this points towards a loss in inland atmospheric moisture, and may partly explain the well documented loss of rainfall and water vapour in the southwest region \citep{gordon2003, narisma2003, pitman2004, junkermann2009}. To the extent that atmospheric moisture is oceanic in origin (as opposed to from plant transpiration), as is often the case given the coastal location and dry climate of this region, a corollary to reduced inland moisture flux is an increased flood risk from the coastal buildup of moisture.
 
-\subsubsection{Possible exacerbation from CIAD}
+\subsubsection{Possible exacerbation under CIAD}
 
 The available evidence appears to support the \ac{CIAD} framework moreso than it does the notion that cloud formation is a passive byproduct of moist air masses rising (whether due to surface heating, orography or chance convergence of winds). This is unless there is some systematic error in the \ac{ERA5} dataset which we are not aware of and which just so happens to produce misleading results.
 
@@ -210,13 +211,13 @@ Coastal flooding also constitutes a tail risk for wind energy operation. There i
 
 \paragraph{Future changes in land cover}
 
-There is further risk embodied within uncertainty of what future land cover will be. Afforestation efforts are a real possibility given increasing environmental consciousness by the public. Changing geopolitical-economic conditions, climate and public favour may also give way to the growing of different crops (including summer crops) in this region. Continued agricultural and urban expansion is another possibility. In all these cases, it matters what species of trees or crops are being grown and how, as this determines the subsequent surface energy fluxes, temperature, and roughness.
+There is further risk embodied within uncertainty of what future land cover will be. Afforestation efforts are a real possibility given increasing environmental consciousness by the public. Changing geopolitical-economic conditions, climate and public favour may also give way to the growing of different crops (including summer crops) in this region. Continued agricultural expansion is another possibility. In all these cases, it matters what species of trees or crops are being grown and how, as this determines the subsequent surface energy fluxes, temperature, and roughness.
 
-Large-scale coastal afforestation using eucalypts with low albedo and high \ac{SSHF}, for example, are likely to strengthen the summer daytime sea breeze due to higher coastal temperatures (but it is unclear how sustainable this will be without the appropriate matter (e.g.\ water, nutrients) flux feedbacks granted by appropriate biodiversity). The large-scale adoption of summer crops with irrigation on the other hand, is likely to weaken the summer daytime sea breeze due to lower inland temperatures.
+Large-scale coastal afforestation using eucalypts with low albedo and high \ac{SSHF}, for example, are likely to strengthen the summer daytime sea breeze due to higher coastal temperatures (but it is unclear how sustainable this will be without the appropriate matter flux feedbacks (e.g.\ water, nutrients) granted by appropriate biodiversity). The large-scale adoption of summer crops with irrigation on the other hand, is likely to weaken the summer daytime sea breeze due to lower inland temperatures.
 
-\paragraph{Possible changes in turbulence}
+\paragraph{Possible changes in turbulence and condensation hotspots}
 
-If \ac{CIAD} is valid, then the previous comments apply even more so. This also implies that land cover determines the concentration and spatial distribution of turbulence from rising air masses (negative \ac{VIEC}) via atmospheric condensation (positive \ac{NAC}). This in turn can introduce fatigue to turbine components and complex wake effects which inhibit energy generation.
+If \ac{CIAD} is valid, then the previous comments apply even more so. This also implies that land cover determines the concentration and spatial distribution of turbulence from rising air masses (negative \ac{VIEC}) via atmospheric condensation (positive \ac{NAC}). This in turn can introduce fatigue to turbine components and complex wake effects which inhibit energy generation. On top of this, future mining activity may change condensation hotspots and hence circulation patterns via changes in lake geochemistry affecting \ac{CCN} production \citep{junkermann2009}.
 
 \section{Seasonal comparison for MDP statistics}
 
@@ -243,17 +244,17 @@ Modelling by \citet{martius2021} suggests that soil moisture can have significan
 
 \subsection{Possible influence of agriculture on dWS100}
 
-Figure~\ref{fig:wa_stats_seasonal_1} displays a somewhat marked distinction across the fence for $hour_{max}$(\acs{dWS100}) in \ac{JJA}. But the distinction does not sharply match the fence delineation. The results appear to suggest that wind speeds increase at the fastest rate around noon on the agricultural side and around the evening transition on the native side. $max$(\acs{dWS100}) displayed an increase from \ac{JJA} to \ac{DJF} over the entire region, with no obvious distinction across the fence (not shown). It is not known what is causing these results and whether this is reflecting an assimilation cycle artefact in \ac{ERA5} which we missed (see Appendix~\ref{sec:artefact}).
+Figure~\ref{fig:wa_stats_seasonal_1} displays a somewhat marked distinction across the fence for $hour_{max}$(\acs{dWS100}) in \ac{JJA}. But the distinction does not sharply match the fence delineation. The results appear to suggest that wind speeds increase at the fastest rate around noon on the agricultural side and around the evening \ac{ABL} transition on the native side. $max$(\acs{dWS100}) displayed an increase from \ac{JJA} to \ac{DJF} over the entire region, with no obvious distinction across the fence (not shown). It is not known what is causing these results and whether this is reflecting an assimilation cycle artefact in \ac{ERA5} which we missed (see Appendix~\ref{sec:artefact}).
 
 \subsection[Effect of native vegetation on VIEC diurnal phase]{Effect of native vegetation on phase of VIEC diurnal cycle}
 
 \subsubsection{Minimum VIEC}
 
-Figure~\ref{fig:wa_stats_seasonal_1} displays a delineation along the \ac{SBFWA} for $hour_{max}$(\acs{VIEC}) and $hour_{min}$(\acs{VIEC}) in \ac{DJF}. The bare agricultural cover in \ac{DJF} sees most negative \ac{VIEC} around noon, probably due to surface heating producing uplift of air. The native side sees most negative \ac{VIEC} (maximum uplift) at around the evening transition, well past the prime hours for solar heating. This is possibly associated with atmospheric condensation (in line with the \ac{CIAD} framework), but this is difficult to confirm due to assimilation cycle artefacts in \ac{NAC} during these hours (see Appendix~\ref{sec:artefact}).
+Figure~\ref{fig:wa_stats_seasonal_1} displays a delineation along the \ac{SBFWA} for $hour_{max}$(\acs{VIEC}) and $hour_{min}$(\acs{VIEC}) in \ac{DJF}. The bare agricultural cover in \ac{DJF} sees most negative \ac{VIEC} around noon, probably due to surface heating producing uplift of air. The native side sees most negative \ac{VIEC} (maximum uplift) at around the evening \ac{ABL} transition, well past the prime hours for solar heating. This is possibly associated with atmospheric condensation (in line with the \ac{CIAD} framework), but this is difficult to confirm due to assimilation cycle artefacts in \ac{NAC} during these hours (see Appendix~\ref{sec:artefact}).
 
 \subsubsection{Maximum VIEC}
 
-Interestingly, most positive \ac{VIEC} (minimum uplift) on the agricultural side also occurs around the evening transition. This indicates the possibility for atmospheric energy exchanges across the fence, where rising air on the native side spreads outwards then sinks on the agricultural side before returning to the native side. This would be consistent with the flux of atmospheric moisture convergence towards the native side of the fence noted in Section~\ref{ssec:nac_t2}.
+Interestingly, most positive \ac{VIEC} (minimum uplift) on the agricultural side also occurs around the evening \ac{ABL} transition. This indicates the possibility for atmospheric energy exchanges across the fence, where rising air on the native side spreads outwards then sinks on the agricultural side before returning to the native side. This would be consistent with the flux of atmospheric moisture convergence towards the native side of the fence noted in Section~\ref{ssec:nac_t2}.
 
 \subsubsection{Divergent wind changes during evening}
 
@@ -268,7 +269,7 @@ Hourly means analysis for \ac{WV100} in \ac{DJF} reveals that surface winds have
 
 \paragraph{Modulation of convergence}
 
-That is, there is a component of energy exchange flux across the fence, as well as a component of the moisture convergence flux towards the fence displayed in Figure~\ref{fig:wa_vidmf}, which appears to occur in a direction \textit{perpendicular} to that of the prevailing wind direction. In this picture, the native vegetation is not necessarily increasing moisture convergence on the native side of the fence by drawing winds directly to itself, but rather it does so by modulating where atmospheric convergence (reflected by effects on \ac{VIEC}) occurs so that there is a flux of localised air density changes across the fence.
+That is, there is a component of energy exchange flux across the fence, as well as a component of the moisture convergence flux towards the fence displayed in Figure~\ref{fig:wa_vidmf}, which appears to occur in a direction \textit{perpendicular} to that of the prevailing wind direction. In this picture, the native vegetation is not necessarily increasing moisture convergence on the native side of the fence by drawing winds directly to itself, but rather it does so by modulating where atmospheric convergence (reflected by effects on \ac{VIEC}) occurs so that there is a flux of localised mass density changes across the fence.
 
 \paragraph{Possible evidence for CIAD}
 
@@ -325,7 +326,7 @@ For \ac{WA}, the selected periods for the similar comparison was from Jun-1997 t
 	\label{fig:wa_ind}
 \end{figure}
 
-Between these periods was extensive vegetation loss concentrated along the coastal forests (see Figure~\ref{fig:wa_lai_similar}), resulting from a mix of drought events and human activities such as mining and forestry (beyond vegetation clearing, these activities are also implicated in causing a drop in the region's water table \citep{bauxite_hydro, johnson2003}).
+Between these periods was extensive vegetation loss concentrated along the coastal forests (see Figure~\ref{fig:wa_lai_similar}), resulting from a mix of drought events and human activities such as mining and forestry (beyond vegetation clearing, these activities are also implicated in causing a drop in the region's water table \citep{gordon2003, bauxite_hydro, johnson2003}).
 
 \begin{figure}[!ht]
 	\centering
@@ -336,10 +337,19 @@ Between these periods was extensive vegetation loss concentrated along the coast
 
 \subsubsection{Comparable values in climate indices}
 
-The main climate drivers for this region are the \ac{IOD} and \ac{AAO} (also known as \ac{SAM}) \citep{wa_drivers}. The corresponding indices are the \ac{DMI} and \ac{AAOI} respectively, and these = have similar averages over these periods. In fact, the 5-year averages over all the indices apart from the \ac{EPOI} (which is distant and not expected to have significant effects\footnote{Significant effects due to teleconnections are theoretically possible but we have assumed this isn't the case here}.) have very similar values (not shown), although they appear to span across different phases for the longer-term oscillations.
+The main climate drivers for this region are the \ac{IOD} and \ac{AAO} (also known as \ac{SAM}) \citep{wa_drivers}. The corresponding indices are the \ac{DMI} and \ac{AAOI} respectively, and these = have similar averages over these periods. In fact, the 5-year averages over all the indices apart from the \ac{EPOI} (which is distant and not expected to have significant effects\footnote{Significant effects from teleconnections are possible but we have assumed this isn't the case here}.) have very similar values (not shown), although they appear to span across different phases for the longer-term oscillations.
 
 \subsubsection{Summary of IOD events}
 
 The period from Jun-1997 to May-2002 contains one Negative \ac{IOD} event and one Positive \ac{IOD} event, both of which display relatively high magnitudes for monthly values. Although the period from Sep-2010 to Aug-2015 contain two Negative \ac{IOD} events and two Positive \ac{IOD} events, each of these display relatively low magnitude in monthly values and so should still be comparable against the first period.
 
-\enlargethispage{\baselineskip} % so you do not get a single line in another page
+\subsection{Findings}
+\label{ssec:similar_find}
+
+No obviously remarkable correlations with coastal \ac{MLAI} loss was observed. Occasional delineations along forest cover did occur, but were too inconsistent to rule out the possibility of spurious relationships. It was also difficult to distinguish whether the occasional trends resulted from coastal \ac{MLAI} loss or modulation of atmospheric differences by the coast itself. However, sharp delineations along the fence are observed again in \ac{JJA} \ac{MDP} statistics despite minimal \ac{MLAI} loss around here, indicating that land cover imposes a local modulation upon changes in the synoptic background.
+
+A change in \ac{JJA} synoptic conditions between periods sees an increase of \ac{MSLP} through the region despite increased \ac{T2}. The \ac{MSLP} increase in the northern part of the focus region is especially weak due to being offset by increased temperatures (especially on the native side of the fence). There is increased cloud formation (positive \ac{NAC}$^{diff}$) in subregions on the native side of the fence despite the increase in surface pressure. As with previous results, more positive \ac{NAC}$^{diff}$ correlates with more negative \ac{VIEC}$^{diff}$. \ac{VIEC}$^{diff}$, \ac{NAC}$^{diff}$ and \ac{VIDMF}$^{diff}$ all show sharp distinctions along the fence, with increased moisture convergence on the native side of the fence. See Figure~\ref{fig:wa_stats_similiar_1}.
+
+While agricultural crops continued to transpire under the drier conditions, native vegetation reduced its transpiration, with a sharp decrease in its \ac{MDP} maximum. This in turn led to dramatic fence delineations in the \ac{MDP} maximum and minimum for \ac{NAC}, although this is partially confounded by \ac{ERA5} assimilation cycle artefacts (see Appendix~\ref{sec:artefact}). $range$(\ac{VIKE}) for \ac{JJA} continued to show delineation along the fence, but less so along the coastal forests, and a delineation is observed in the hour of \textit{minimum} rather than maximum. It is not clear what causes these \ac{VIKE} effects. See Figure~\ref{fig:wa_stats_similiar_2}.
+
+%\enlargethispage{\baselineskip} % so you do not get a single line in another page
