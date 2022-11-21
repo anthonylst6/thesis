@@ -209,7 +209,7 @@ Note: The original project scope included analysis for \ac{WA}, \ac{CA} and \ac{
 
 \begin{enumerate}
 	\item (If haven't already) Install miniconda for Python 3.9 or later using instructions from \url{https://docs.conda.io/en/latest/miniconda.html}
-	\item Download thesis repository by entering \\ \verb+git clone git@github.com:anthonylst6/thesis.git+ into a bash shell (Terminal for Linux or Mac, Git Bash recommended for Windows) or clicking Code -> Download ZIP on Github then unzip the folder
+	\item Download thesis repository by entering \\ \verb+git clone https://github.com/anthonylst6/thesis.git+ into a bash shell (Terminal for Linux or Mac, Git Bash recommended for Windows) or clicking Code -> Download ZIP on Github then unzip the folder
 	\item Open bash shell in home directory of repository then run \\ \verb+conda env create -f env_thesis.yml+
 	\item (If haven't already) Set up \ac{ECMWF} \ac{CDS} API using instructions from \url{https://confluence.ecmwf.int/display/CKB/How+to+download+ERA5#HowtodownloadERA5-4-DownloadERA5familydatathroughtheCDSAPI}
 	\item Download raw data by entering \verb+conda activate thesis+ into bash shell then running the \verb+data_download.ipynb+ notebook in the \verb+scripts+ directory (open the notebook by running \verb+jupyter lab &+ in the bash shell)
@@ -222,8 +222,8 @@ Note: The original project scope included analysis for \ac{WA}, \ac{CA} and \ac{
 
 \section[System and time requirements]{System and time requirements (for reproducing thesis results only)}
 \begin{itemize}
-	\item For \acf{WA} raw data and results, up to 25 GB of storage, several days for raw data download (due to queueing in \ac{ECMWF} \ac{CDS}), and for data processing up to 60 GB of RAM over 12 hours if using 8 CPUs
-	\item For \acf{CA} raw data and results, up to 25 GB of storage, several days for raw data download (due to queueing in \ac{ECMWF} \ac{CDS}), and for data processing up to 60 GB of RAM over 12 hours if using 8 CPUs
-	\item For \acf{NB} raw data and results, up to 80 GB of storage, several days for raw data download (due to queueing in \ac{ECMWF} \ac{CDS}), and for data processing up to 140 GB of RAM over 12 hours if using 8 CPUs
-	\item The data processing can also be run with less RAM and fewer CPU cores but this will be slower and will require manual restarting of code everytime RAM limit is reached (the code was designed to pick up from where it left off). But in this case there should at least be 8 GB of RAM for \ac{WA} and \ac{CA} results, and at least 24 GB of RAM for \ac{NB} results.
+	\item For \acf{WA} raw data and results, up to 25 GB of storage, up to a day for raw data download (due to queueing in \ac{ECMWF} \ac{CDS}), and for data processing up to 60 GB of RAM over 12 hours if using 8 CPUs
+	\item For \acf{CA} raw data and results, up to 25 GB of storage, up to a day for raw data download (due to queueing in \ac{ECMWF} \ac{CDS}), and for data processing up to 60 GB of RAM over 12 hours if using 8 CPUs
+	\item For \acf{NB} raw data and results, up to 80 GB of storage, 1-2 days for raw data download (due to queueing in \ac{ECMWF} \ac{CDS}), and for data processing up to 140 GB of RAM over 12 hours if using 8 CPUs
+	\item The data processing can also be run with less RAM and fewer CPU cores but this will be slower and will require manual restarting of code everytime RAM limit is reached (the code was designed to pick up from where it left off). But in this case there should at least be 8 GB of RAM for \ac{WA} and \ac{CA} results, and at least 24 GB of RAM for \ac{NB} results (if using 4 CPU cores).
 \end{itemize}

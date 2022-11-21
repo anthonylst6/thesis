@@ -167,7 +167,7 @@ Note: the steps in this section have not been tested as of the time of writing.
 ## Steps to reproduce thesis results from scratch
 Note: The original project scope included analysis for WA, CA and NB but this was cut short to only WA due to time constraints.
 1. (If haven't already) Install miniconda for Python 3.9 or later using instructions from  https://docs.conda.io/en/latest/miniconda.html
-2. Download thesis repository by entering `git clone git@github.com:anthonylst6/thesis.git` into a bash shell (Terminal for Linux or Mac, Git Bash recommended for Windows) or clicking Code -> Download ZIP on Github then unzip the folder
+2. Download thesis repository by entering `git clone https://github.com/anthonylst6/thesis.git` into a bash shell (Terminal for Linux or Mac, Git Bash recommended for Windows) or clicking Code -> Download ZIP on Github then unzip the folder
 3. Open bash shell in home directory of repository then run `conda env create -f env_thesis.yml`
 4. (If haven't already) Set up ECMWF CDS API using instructions from https://confluence.ecmwf.int/display/CKB/How+to+download+ERA5#HowtodownloadERA5-4-DownloadERA5familydatathroughtheCDSAPI
 5. Download raw data by entering `conda activate thesis` into bash shell then running the `data_download.ipynb` notebook in the `scripts` directory (open the notebook by running `jupyter lab &` in the bash shell)
@@ -178,8 +178,7 @@ Note: The original project scope included analysis for WA, CA and NB but this wa
 10. (If personal computer is limited in RAM) Edit the `results_wa.pbs`, `results_ca.pbs` and `results_sa.pbs` job scripts in the `scripts` directory to be compatible with target HPC facility (the provided scripts were designed for the UNSW Katana computational cluster), then submit these as a batch job
 
 ## System and time requirements (for reproducing thesis results only)
-- For Western Australia (WA) raw data and results, up to 25 GB of storage, several days for raw data download (due to queueing in ECMWF CDS), and for data processing up to 60 GB of RAM over 12 hours if using 8 CPUs
-- For Central America (CA) raw data and results, up to 25 GB of storage, several days for raw data download (due to queueing in ECMWF CDS), and for data processing up to 60 GB of RAM over 12 hours if using 8 CPUs
-- For South America (SA) raw data and results, up to 80 GB of storage, several days for raw data download (due to queueing in ECMWF CDS), and for data processing up to 140 GB of RAM over 12 hours if using 8 CPUs
-- The data processing can also be run with less RAM and fewer CPU cores but this will be slower and will require manual restarting of code everytime RAM limit is reached (the code was designed to pick up from where it left off). But in this case there should at least be 8 GB of RAM for WA and CA results, and at least 24 GB of RAM for SA results.
-
+- For Western Australia (WA) raw data and results, up to 25 GB of storage, up to a day for raw data download (due to queueing in ECMWF CDS), and for data processing up to 60 GB of RAM over 12 hours if using 8 CPUs
+- For Central America (CA) raw data and results, up to 25 GB of storage, up to a day for raw data download (due to queueing in ECMWF CDS), and for data processing up to 60 GB of RAM over 12 hours if using 8 CPUs
+- For South America (SA) raw data and results, up to 80 GB of storage, 1-2 days for raw data download (due to queueing in ECMWF CDS), and for data processing up to 140 GB of RAM over 12 hours if using 8 CPUs
+- The data processing can also be run with less RAM and fewer CPU cores but this will be slower and will require manual restarting of code everytime RAM limit is reached (the code was designed to pick up from where it left off). But in this case there should at least be 8 GB of RAM for WA and CA results, and at least 24 GB of RAM for NB results (if using 4 CPU cores).
