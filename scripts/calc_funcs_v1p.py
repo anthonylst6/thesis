@@ -4197,13 +4197,13 @@ def calc_diff(calc_func, region, period1_start, period1_end,
 def calc_era5_orog():
     
     """
-    Calculate the elevation and slope of sub-gridscale orography for the global
-    land surface using ERA5 data.
+    Calculate the land surface elevation and slope of sub-gridscale orography 
+    for the global land surface using ERA5 data.
                         
     Returns:
-        ../data_processed/era5_orog/{calc_funcs_ver}_calc_global_static_orog.nc:
-            Output netcdf4 file in data_processed folder containing the elevation and 
-            slope of sub-gridscale orography for the global land surface. 
+        ../data_processed/era5_orog/{calc_funcs_ver}_calc_global_era5-orog.nc:
+            Output netcdf4 file in data_processed folder containing the land surface 
+            elevation and slope of sub-gridscale orography for the global land surface. 
             {calc_funcs_ver} is the version of the calc_funcs script being used.
     
     For each grid cell, calculate the global land surface elevation (m above mean sea 
@@ -4324,7 +4324,7 @@ def calc_glass_rolling_avg_of_annual_diff(region, year_start, year_end, period_m
     Returns:
         ../data_processed/glass_rolling_avg_of_annual_diff/{calc_funcs_ver}_calc_
         {region}_{year_start}_{year_end}_{period_months_str}_{window_size}-year_
-        glass-rolling-diff_{glass_source_pref}.nc:
+        glass-rolling-diff_pref-{glass_source_pref}.nc:
             Output netcdf4 file in data_processed folder containing the rolling average
             of the annual difference in MLAI and MFAPAR. {calc_funcs_ver} is the version 
             of the calc_funcs script being used. {period_months_str} is a string 
@@ -4581,7 +4581,7 @@ def proc_noaa_ind():
             calc_funcs script being used.
     
     This function reads in the raw climate index files then processes them into a 
-    netcdf4file containing monthly values for all the indices. The processing uses 
+    netcdf4 file containing monthly values for all the indices. The processing uses 
     text data from the data_raw folder as input, then outputs the result as a 
     netcdf4 file into the data_processed folder.
     """
